@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private InputActionReference lightAttackControl;
     
+    [SerializeField] 
+    private InputActionReference heavyAttackControl;
+    
     [SerializeField]
     private float playerSpeed = 10f;
 
@@ -35,13 +38,16 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int IsFalling = Animator.StringToHash("isFalling");
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
-    private static readonly int Attack = Animator.StringToHash("Attack");
-
+    private static readonly int LightAttack = Animator.StringToHash("LightAttack");
+    private static readonly int HeavyAttack = Animator.StringToHash("HeavyAttack");
+    private float lastAttackTime;
+    
     private void OnEnable()
     {
         movementControl.action.Enable();
         jumpControl.action.Enable();
         lightAttackControl.action.Enable();
+        heavyAttackControl.action.Enable();
     }
 
     private void OnDisable()
@@ -49,6 +55,7 @@ public class PlayerController : MonoBehaviour
         movementControl.action.Disable();
         jumpControl.action.Disable();
         lightAttackControl.action.Disable();
+        heavyAttackControl.action.Disable();
     }
 
     private void Start()
@@ -95,8 +102,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(IsMoving, false);
         }
         
-        playerVelocity.y += gravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        ApplyGravity();
         
         if (controller.isGrounded && jumpControl.action.triggered)
         {
@@ -104,11 +110,24 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(playerJumpHeight * gravity * -3.0f);
         }
         
+        ApplyGravity();
+
+        if (lightAttackControl.action.triggered && lastAttackTime > 0.85f)
+        {
+            animator.SetTrigger(LightAttack);
+            lastAttackTime = 0f;
+        }
+        
+        if(heavyAttackControl.action.triggered)
+            animator.SetTrigger(HeavyAttack);
+        
+        lastAttackTime += Time.deltaTime;
+    }
+
+    private void ApplyGravity()
+    {
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-        
-        if(lightAttackControl.action.triggered)
-            animator.SetTrigger(Attack);
     }
     
     /**
