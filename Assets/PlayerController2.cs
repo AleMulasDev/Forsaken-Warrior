@@ -183,12 +183,16 @@ public class PlayerController2 : MonoBehaviour
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-1") ||
             _animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-2") ||
             _animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-3") ||
-            _animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-4"))
+            _animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-4") ||
+            _animator.GetCurrentAnimatorStateInfo(0).IsName("Light-Attack-5"))
         {
             _playerInput.PlayerControls.Move.Disable();
             _playerInput.PlayerControls.Jump.Disable();
         }else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Heavy-Attack-Loop"))
         {
+            if(_playerInput.PlayerControls.Jump.enabled)
+                _playerInput.PlayerControls.Jump.Disable();
+
             _heavyAttackCurrentDuration += Time.deltaTime;
             
             if(_heavyAttackCurrentDuration > heavyAttackMaxDuration)
@@ -197,7 +201,9 @@ public class PlayerController2 : MonoBehaviour
         else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Heavy-Attack-End"))
         {
             _playerInput.PlayerControls.Move.Disable();
-            _playerInput.PlayerControls.Jump.Disable();
+            
+            if(_playerInput.PlayerControls.Jump.enabled)
+                _playerInput.PlayerControls.Jump.Disable();
         }
         else
         {
