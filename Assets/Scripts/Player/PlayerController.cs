@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private CharacterController _controller;
     private Animator _animator;
-    private ECharacterTypes _characterState = ECharacterTypes.ECT_Inoccupied;
+    private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
     [Header("Player parameters")] 
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float attackRotationSpeed;
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
@@ -56,33 +57,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnHeavyAttackOnGoing(InputAction.CallbackContext obj)
-    {
-        Debug.Log("OnGoing");
-    }
+    #region inputFunctions
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
     {
         _heavyAttackCoroutine = StartCoroutine(HeavyAttackCoroutine());
-        //_animator.SetBool(HeavyAttackInput, true);
-        //_characterState = ECharacterTypes.ECT_HeavyAttack;
     }
 
     private void OnHeavyAttackEnded(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Ended");
-
         if(_heavyAttackCoroutine != null)
             StopCoroutine(_heavyAttackCoroutine);
 
-        //_animator.SetBool(HeavyAttackInput, false);
+        ResetHeavyAttack();
     }
     
     private void OnLightAttackStarted(InputAction.CallbackContext ctx)
     {
-        //Debug.Log("OnLightAttackStarted");
         _animator.SetBool(LightAttackInput, true);
-        _characterState = ECharacterTypes.ECT_LightAttack;
+        _characterState = ECharacterStates.ECS_LightAttack;
     }
 
     private void OnLightAttackEnded(InputAction.CallbackContext ctx)
@@ -98,22 +91,32 @@ public class PlayerController : MonoBehaviour
         _movement.z = _movementInput.y;
         _isMoving = _movementInput != Vector2.zero;
 
-        if (_characterState == ECharacterTypes.ECT_LightAttack)
+        if (_characterState == ECharacterStates.ECS_LightAttack)
         {
-            transform.Rotate(0, _movementInput.x*rotationSpeed, 0);
+            transform.Rotate(0, _movementInput.x * attackRotationSpeed, 0);
         }        
     }
-
+    #endregion
     private IEnumerator HeavyAttackCoroutine()
     {
         float heavyAttackTimer = 0.0f;
 
-        while (heavyAttackTimer < 3.0f) {
-            heavyAttackTimer += Time.deltaTime;
-            Debug.Log("HeavyAttackOnGoing");
-            yield return null; }
+        _animator.SetBool(HeavyAttackInput, true);
+        _characterState = ECharacterStates.ECS_HeavyAttack;
 
-        Debug.Log("HeavyAttackEnded");
+        while (heavyAttackTimer < 3.0f)
+        {
+            heavyAttackTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        ResetHeavyAttack();
+    }
+
+    private void ResetHeavyAttack()
+    {
+        _animator.SetBool(HeavyAttackInput, false);
+        _characterState = ECharacterStates.ECS_Inoccupied;
     }
 
     private void HandleRotation()
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (isFalling)
         {
+            print(_movement.y);
             _animator.SetBool(IsFalling, true);
             _animator.SetBool(IsLanded, false);
             
@@ -208,8 +212,7 @@ public class PlayerController : MonoBehaviour
 
         _cameraBasedMovement = ConvertToCameraSpace(_movement);
 
-        if (_characterState == ECharacterTypes.ECT_Inoccupied && _isMoving
-            || _characterState == ECharacterTypes.ECT_HeavyAttack)
+        if (CanMove() || _isJumping)
         {
             _animator.SetBool(IsMoving, _isMoving);
             _controller.Move(playerSpeed * Time.deltaTime * _cameraBasedMovement);
@@ -222,13 +225,19 @@ public class PlayerController : MonoBehaviour
         HandleJump();
     }
 
+    bool CanMove()
+    {
+        return _characterState == ECharacterStates.ECS_Inoccupied && _isMoving
+            || _characterState == ECharacterStates.ECS_HeavyAttack;
+    }
+
     private void CheckAnimationState()
     {
-        if (_characterState == ECharacterTypes.ECT_LightAttack)
+        if (_characterState == ECharacterStates.ECS_LightAttack)
         {
             _playerInput.PlayerControls.Move.Disable();
             _playerInput.PlayerControls.Jump.Disable();
-        }else if (_characterState == ECharacterTypes.ECT_HeavyAttack)
+        }else if (_characterState == ECharacterStates.ECS_HeavyAttack)
         {
             if(_playerInput.PlayerControls.Jump.enabled)
                 _playerInput.PlayerControls.Jump.Disable();
@@ -266,7 +275,7 @@ public class PlayerController : MonoBehaviour
 
     private void ResetState()
     {
-        _characterState = ECharacterTypes.ECT_Inoccupied;
+        _characterState = ECharacterStates.ECS_Inoccupied;
     }
     
     private void OnEnable()
