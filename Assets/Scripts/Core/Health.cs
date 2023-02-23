@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
+    private CharacterController _characterController;
 
     private bool _isDead = false;
 
@@ -20,18 +21,23 @@ public class Health : MonoBehaviour
         _animator = GetComponent<Animator>();
         _currentHealth = _maxHealth;
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _characterController = GetComponent<CharacterController>();
     }
     public void TakeDamage(float damage)
     {
         if (_navMeshAgent != null) {
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _navMeshAgent.height / 2, 0), _bloodParticle.transform.rotation), 1f);
                 }
+        else
+        {
+            Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _characterController.height / 2, 0), _bloodParticle.transform.rotation), 1f);
+        }
 
         _currentHealth = Mathf.Max(_currentHealth - damage, 0);
 
-        if (_currentHealth == 0)
+        if (_currentHealth == 0 && !_isDead)
         {
-            _animator.SetBool("isDead", true);
+            _animator.SetTrigger("isDead");
             _isDead = true;
         }
     }

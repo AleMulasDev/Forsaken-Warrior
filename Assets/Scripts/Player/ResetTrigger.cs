@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResetTrigger : StateMachineBehaviour
 {
     private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
+    private static readonly int Attack = Animator.StringToHash("attack");
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,7 +22,13 @@ public class ResetTrigger : StateMachineBehaviour
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger(LightAttackInputMovement);
+        if (animator.gameObject.tag.Equals("Player"))
+            animator.ResetTrigger(LightAttackInputMovement);
+        else
+        {
+            animator.ResetTrigger(Attack);
+            animator.GetComponent<AIController>().ResetAttackTimer();
+        }
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

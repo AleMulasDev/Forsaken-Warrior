@@ -8,7 +8,9 @@ public class HandleRootMotion : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.applyRootMotion = true;
-        animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Dodging);
+
+        if(animator.gameObject.tag.Equals("Player"))
+            animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Dodging);
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -21,7 +23,9 @@ public class HandleRootMotion : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.applyRootMotion = false;
-        animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Inoccupied);
+
+        if (animator.gameObject.tag.Equals("Player"))
+            animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Inoccupied);
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

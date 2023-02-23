@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     private Animator _animator;
     private Sword _sword;
+    private MeleeWeaponTrail _weaponTrail;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
     [Header("Player parameters")] 
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _sword = GetComponentInChildren<Sword>();
+        _weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
         
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
@@ -305,6 +307,7 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         _sword.EnableBox();
+        EnableTrail();
     }
 
     private void DisableBox()
@@ -324,6 +327,18 @@ public class PlayerController : MonoBehaviour
     private void ResetState()
     {
         _characterState = ECharacterStates.ECS_Inoccupied;
+        _animator.SetBool(CanDoCombo, false);
+        DisableTrail();
+    }
+
+    public void EnableTrail()
+    {
+        _weaponTrail.Emit = true;
+    }
+
+    public void DisableTrail()
+    {
+        _weaponTrail.Emit = false;
     }
     
     private void OnEnable()

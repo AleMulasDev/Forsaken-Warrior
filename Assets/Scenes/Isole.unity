@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf2f409951e9394badca12a47df3386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodParticle: {fileID: 1489431029902184, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
+  _bloodParticle: {fileID: 1489431029902184, guid: 027d391e502ace04caeb8c80599c3472, type: 3}
   _maxHealth: 100
   _currentHealth: 0
 --- !u!54 &692322078
@@ -726,7 +726,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1091,6 +1091,68 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: -2109432024787323450, guid: ad73b2b0f0ba34191ba230208dbd3f20, type: 3}
   ZAxis: {fileID: 0}
+--- !u!1 &1401370850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1401370851}
+  m_Layer: 0
+  m_Name: SwordBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1401370851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401370850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.152, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779872166137994377}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1430976240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430976241}
+  m_Layer: 0
+  m_Name: SwordTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1430976241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430976240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.406, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779872166137994377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433299693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3581,7 @@ GameObject:
   - component: {fileID: 1262625068234872640}
   - component: {fileID: 1262625068234872642}
   - component: {fileID: 1262625068234872643}
+  - component: {fileID: 1262625068234872644}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4452,6 +4515,21 @@ MonoBehaviour:
   - {fileID: 5173427560926668776, guid: 880c519bb3845084fb22f3469527b782, type: 3}
   - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
   - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
+--- !u!114 &1262625068234872644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212386613055854742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf2f409951e9394badca12a47df3386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bloodParticle: {fileID: 1489431029902184, guid: 4430919f14c50f84085d287cbcb2c30e, type: 3}
+  _maxHealth: 100
+  _currentHealth: 0
 --- !u!4 &1779872166137994377
 Transform:
   m_ObjectHideFlags: 0
@@ -4463,7 +4541,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1430976241}
+  - {fileID: 1401370851}
   m_Father: {fileID: 1606839682}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -4478,6 +4558,7 @@ GameObject:
   - component: {fileID: 1779872166137994377}
   - component: {fileID: 1779872166141389877}
   - component: {fileID: 1779872166140347211}
+  - component: {fileID: 1779872166141389878}
   m_Layer: 0
   m_Name: SM_Wep_Greatsword_Straight_01
   m_TagString: Untagged
@@ -4535,6 +4616,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779872166138344549}
   m_Mesh: {fileID: 4300000, guid: 1b5a637a2abea174d9aff7195a85a687, type: 3}
+--- !u!114 &1779872166141389878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779872166138344549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ceb339997c8304e9354d4ce5ddc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emit: 0
+  _emitTime: 0
+  _material: {fileID: 2100000, guid: 5f402d1520e5fa74fa21e08f85b71370, type: 2}
+  _lifeTime: 0.25
+  _colors: []
+  _sizes: []
+  _minVertexDistance: 0.1
+  _maxVertexDistance: 10
+  _maxAngle: 3
+  _autoDestruct: 0
+  subdivisions: 4
+  _base: {fileID: 1401370851}
+  _tip: {fileID: 1430976241}
 --- !u!1001 &4532589847187864192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4552,7 +4658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4532589847611655575, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4532589847611655575, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
       propertyPath: m_TagString
@@ -4625,6 +4731,10 @@ PrefabInstance:
     - target: {fileID: 4532589847611655578, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
       propertyPath: _attackRadius
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532589847611655578, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
+      propertyPath: _attackFirerate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
