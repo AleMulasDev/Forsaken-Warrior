@@ -5,14 +5,16 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    [SerializeField] private float _attackRadius;
+    [SerializeField] private float _attackDistance;
     [SerializeField] private float _attackFirerate;
+    [SerializeField] private Collider[] colliders;
 
     private NavMeshAgent _navMeshAgent;
     private GameObject _playerController;
     private Animator _animator;
     private Health _health;
     private CapsuleCollider _capsuleCollider;
+    private EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
 
     private Vector3 newDestination;
     private float _attackTimer = 0.0f;
@@ -26,6 +28,8 @@ public class AIController : MonoBehaviour
         _animator = GetComponent<Animator>();   
         _health = GetComponent<Health>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+
+        _navMeshAgent.updateRotation = false;
     }
 
     private void Update()
@@ -35,23 +39,36 @@ public class AIController : MonoBehaviour
             return;
         }
         
+        RotateToPlayer();
 
         newDestination = _playerController.transform.position;
 
-        if (Vector3.Distance(transform.position, newDestination) > _attackRadius)
+        if (Vector3.Distance(transform.position, newDestination) > _attackDistance)
         {
-            _navMeshAgent.isStopped = false;
-            _navMeshAgent.destination = newDestination;
+            EnableNavMesh();
         }
         else
         {
-            _navMeshAgent.velocity = Vector3.zero;
-            _navMeshAgent.isStopped = true;
             AttackBehaviour();
         }
 
         UpdateAnimator();
         _attackTimer += Time.deltaTime;
+    }
+
+    private void EnableNavMesh()
+    {
+        if (!(_enemyState == EEnemyState.EES_Inoccupied))
+            return;
+
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.destination = newDestination;
+    }
+
+    private void DisableNavMesh()
+    {
+        _navMeshAgent.velocity = Vector3.zero;
+        _navMeshAgent.isStopped = true;
     }
 
     private void UpdateAnimator()
@@ -72,23 +89,43 @@ public class AIController : MonoBehaviour
 
     private void AttackBehaviour()
     {
-        if(Vector3.Distance(transform.position, newDestination) <= _attackRadius && _attackTimer > _attackFirerate 
+        DisableNavMesh();
+
+        if (Vector3.Distance(transform.position, newDestination) <= _attackDistance && _attackTimer > _attackFirerate
             && !_playerController.GetComponent<Health>().IsDead())
         {
+            _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger(Attack);
         }
     }
 
-    public void ResetAttackTimer()
+    private void RotateToPlayer()
     {
-        _attackTimer = 0.0f;
+        Vector3 newPlayerLocation = new Vector3(_playerController.transform.position.x, transform.position.y, _playerController.transform.position.z);
+        var targetRotation = Quaternion.LookRotation(newPlayerLocation - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
-    private void Hit()
+    public void ResetState()
     {
-        if (Vector3.Distance(transform.position, newDestination) <= _attackRadius)
+        _attackTimer = 0.0f;
+        _enemyState = EEnemyState.EES_Inoccupied;
+        EnableNavMesh();
+    }
+
+    private void EnableBox()
+    {
+        foreach(Collider c in colliders)
         {
-            _playerController.GetComponent<Health>().TakeDamage(20f);
+            c.enabled = true;
+        }
+    }
+
+    private void DisableBox()
+    {
+        foreach (Collider c in colliders)
+        {
+            c.enabled = false;
         }
     }
 }

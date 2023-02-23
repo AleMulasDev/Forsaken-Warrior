@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ResetTrigger : StateMachineBehaviour
 {
@@ -10,7 +11,7 @@ public class ResetTrigger : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+
     //}
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -27,7 +28,7 @@ public class ResetTrigger : StateMachineBehaviour
         else
         {
             animator.ResetTrigger(Attack);
-            animator.GetComponent<AIController>().ResetAttackTimer();
+            animator.GetComponent<AIController>().ResetState();
         }
     }
 

@@ -66,15 +66,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.20711462
-        functionName: Hit
+      - time: 0.16392215
+        functionName: EnableBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.24664031
-        functionName: Hit
+      - time: 0.30885497
+        functionName: DisableBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

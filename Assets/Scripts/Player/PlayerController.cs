@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private CharacterController _controller;
     private Animator _animator;
-    private Sword _sword;
     private MeleeWeaponTrail _weaponTrail;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
@@ -22,9 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
     [Space]
-    [Header("Bones references")]
+    [Header("References")]
     [SerializeField] private Transform rFoot;
     [SerializeField] private Transform lFoot;
+    [SerializeField] private Collider weaponCollider;
     [Space]
     [Header("Particles")]
     [SerializeField] private GameObject[] footstepParticles;
@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
         _playerInput = new PlayerInput();
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
-        _sword = GetComponentInChildren<Sword>();
         _weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
         
         _playerInput.PlayerControls.Move.started += OnMovementInput;
@@ -273,46 +272,15 @@ public class PlayerController : MonoBehaviour
             || _characterState == ECharacterStates.ECS_HeavyAttack;
     }
 
-    private void CheckAnimationState()
-    {
-        if (_characterState == ECharacterStates.ECS_LightAttack)
-        {
-            _playerInput.PlayerControls.Move.Disable();
-            _playerInput.PlayerControls.Jump.Disable();
-        }else if (_characterState == ECharacterStates.ECS_HeavyAttack)
-        {
-            if(_playerInput.PlayerControls.Jump.enabled)
-                _playerInput.PlayerControls.Jump.Disable();
-
-            _heavyAttackCurrentDuration += Time.deltaTime;
-            
-            if(_heavyAttackCurrentDuration > heavyAttackMaxDuration)
-                _playerInput.PlayerControls.HeavyAttack.Disable();
-        }
-        else if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Heavy-Attack-End"))
-        {
-            _playerInput.PlayerControls.Move.Disable();
-            
-            if(_playerInput.PlayerControls.Jump.enabled)
-                _playerInput.PlayerControls.Jump.Disable();
-        }
-        else
-        {
-            _playerInput.PlayerControls.Move.Enable();
-            _playerInput.PlayerControls.Jump.Enable();
-            _playerInput.PlayerControls.HeavyAttack.Enable();
-            _heavyAttackCurrentDuration = 0f;
-        }   
-    }
     private void EnableBox()
     {
-        _sword.EnableBox();
+        weaponCollider.enabled = true;
         EnableTrail();
     }
 
     private void DisableBox()
     {
-        _sword.DisableBox();
+        weaponCollider.enabled = false;
     }
     private void EnableCombo()
     {
