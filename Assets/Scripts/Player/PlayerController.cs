@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private CharacterController _controller;
     private Animator _animator;
+    private Sword _sword;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
     [Header("Player parameters")] 
@@ -29,7 +30,8 @@ public class PlayerController : MonoBehaviour
     
     private bool _isMoving;
     private bool _isJumping;
-    
+    private bool _isFalling;
+
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int IsFalling = Animator.StringToHash("isFalling");
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
         _playerInput = new PlayerInput();
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
+        _sword = GetComponentInChildren<Sword>();
         
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
@@ -138,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        bool isFalling = _movement.y <= -1.0f;
+        _isFalling = _movement.y <= -1.0f;
         float fallMultiplier = 2.0f;
 
         if (_controller.isGrounded)
@@ -148,14 +151,14 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool(IsLanded, true);
             _movement.y = Gravity * Time.deltaTime;
         }
-        else if (isFalling)
+        else if (_isFalling)
         {
-            print(_movement.y);
             _animator.SetBool(IsFalling, true);
             _animator.SetBool(IsLanded, false);
             
             float oldYVel = _movement.y;
             float newYVel = _movement.y + (Gravity * fallMultiplier * Time.deltaTime);
+            print((oldYVel + newYVel) / 2);
             float nextYVel = Mathf.Max((oldYVel + newYVel) / 2, -20.0f);
             _movement.y = nextYVel;
         }
@@ -212,7 +215,7 @@ public class PlayerController : MonoBehaviour
 
         _cameraBasedMovement = ConvertToCameraSpace(_movement);
 
-        if (CanMove() || _isJumping)
+        if (CanMove() || _isJumping || _isFalling)
         {
             _animator.SetBool(IsMoving, _isMoving);
             _controller.Move(playerSpeed * Time.deltaTime * _cameraBasedMovement);
@@ -262,7 +265,15 @@ public class PlayerController : MonoBehaviour
             _heavyAttackCurrentDuration = 0f;
         }   
     }
-    
+    private void EnableBox()
+    {
+        _sword.EnableBox();
+    }
+
+    private void DisableBox()
+    {
+        _sword.DisableBox();
+    }
     private void EnableCombo()
     {
         _animator.SetBool(CanDoCombo, true);
