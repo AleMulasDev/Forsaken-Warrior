@@ -20,7 +20,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerSpeed;
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
-    
+    [Space]
+    [Header("Bones references")]
+    [SerializeField] private Transform rFoot;
+    [SerializeField] private Transform lFoot;
+    [Space]
+    [Header("Particles")]
+    [SerializeField] private GameObject[] footstepParticles;
+
     private float _heavyAttackCurrentDuration;
     
     private Vector2 _movementInput;
@@ -38,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int IsLanded = Animator.StringToHash("isLanded");
     private static readonly int CanDoCombo = Animator.StringToHash("canDoCombo");
     private static readonly int LightAttackInput = Animator.StringToHash("lightAttackInput");
+    private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
     private static readonly int HeavyAttackInput = Animator.StringToHash("heavyAttackInput");
 
     private const float Gravity = -9.81F;
@@ -58,9 +66,25 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerControls.HeavyAttack.canceled += OnHeavyAttackEnded;
         _playerInput.PlayerControls.HeavyAttack.started += OnHeavyAttackStarted;
 
+        _playerInput.PlayerControls.Dodge.started += Dodge;
+
     }
 
     #region inputFunctions
+
+    private void Dodge(InputAction.CallbackContext ctx)
+    {
+        if (!(_characterState == ECharacterStates.ECS_Inoccupied))
+            return;
+
+        if (_movementInput == Vector2.zero)
+            _animator.SetTrigger("jumpB");
+        else
+        {
+            _animator.SetTrigger("dodgeF");
+        }
+
+    }
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
     {
@@ -77,8 +101,15 @@ public class PlayerController : MonoBehaviour
     
     private void OnLightAttackStarted(InputAction.CallbackContext ctx)
     {
-        _animator.SetBool(LightAttackInput, true);
-        _characterState = ECharacterStates.ECS_LightAttack;
+        if (_movementInput != Vector2.zero)
+        {
+            _animator.SetTrigger(LightAttackInputMovement);
+        }
+        else
+        {
+            _animator.SetBool(LightAttackInput, true);
+            _characterState = ECharacterStates.ECS_LightAttack;
+        }
     }
 
     private void OnLightAttackEnded(InputAction.CallbackContext ctx)
@@ -173,18 +204,24 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (_controller.isGrounded && _playerInput.PlayerControls.Jump.triggered && !_isJumping)
+        if (_controller.isGrounded && _playerInput.PlayerControls.Jump.triggered && !_isJumping
+            && _characterState == ECharacterStates.ECS_Inoccupied)
         {
+            _characterState = ECharacterStates.ECS_Jumping;
             _animator.SetBool(IsJumping, true);
             _animator.SetBool(IsLanded, false);
-            
+
             _isJumping = true;
             float oldYVel = _movement.y;
             float newYVel = _movement.y + Mathf.Sqrt(playerJumpHeight * Gravity * -3.0f);
             float nextYVel = (oldYVel + newYVel) / 2;
             _movement.y = nextYVel;
-        }else if (_controller.isGrounded && _isJumping)
+        }
+        else if (_controller.isGrounded && _isJumping)
+        {
+            _characterState = ECharacterStates.ECS_Inoccupied;
             _isJumping = false;
+        }
         
     }
 
@@ -297,5 +334,19 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         _playerInput.PlayerControls.Disable();
+    }
+
+    public void SetCharacterState(ECharacterStates characterState) { _characterState = characterState; }
+
+    private void FootR()
+    {
+        int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
+    }
+
+    private void FootL()
+    {
+        int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
     }
 }

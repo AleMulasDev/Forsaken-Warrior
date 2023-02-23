@@ -4446,6 +4446,12 @@ MonoBehaviour:
   playerSpeed: 10
   playerJumpHeight: 1.2
   heavyAttackMaxDuration: 1
+  rFoot: {fileID: 1208977186064766814}
+  lFoot: {fileID: 1213952829868444686}
+  footstepParticles:
+  - {fileID: 5173427560926668776, guid: 880c519bb3845084fb22f3469527b782, type: 3}
+  - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
+  - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
 --- !u!4 &1779872166137994377
 Transform:
   m_ObjectHideFlags: 0
@@ -4546,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4532589847611655575, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4532589847611655575, guid: 58af1539fe8c2ba44b4067580649c255, type: 3}
       propertyPath: m_TagString

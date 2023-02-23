@@ -759,14 +759,28 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.40931374
+      - time: 0.32132965
+        functionName: EnableBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.45738366
         functionName: EnableCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.49264705
+      - time: 0.53739613
+        functionName: DisableBox
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7453783
         functionName: DisableCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -775,20 +789,6 @@ ModelImporter:
         messageOptions: 0
       - time: 0.80873185
         functionName: ResetState
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.32132965
-        functionName: EnableBox
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.53739613
-        functionName: DisableBox
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
