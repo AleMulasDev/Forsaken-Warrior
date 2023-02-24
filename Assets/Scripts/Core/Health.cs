@@ -34,11 +34,11 @@ public class Health : MonoBehaviour
             _isDead = true;
         }
 
-        if (_navMeshAgent != null)
+        if (_navMeshAgent != null) // Enemy
         {
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _navMeshAgent.height / 2, 0), _bloodParticle.transform.rotation), 1f);
         }
-        else
+        else // Player
         {
             _multipleIconValueBarTool.SetNowValue(_currentHealth);
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _characterController.height / 2, 0), _bloodParticle.transform.rotation), 1f);
