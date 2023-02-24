@@ -14614,6 +14614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupAura: {fileID: 198636194039707924, guid: 9ab168a77239b3d43be281129b95e8b8, type: 3}
+  IsPickup: 1
   healthAmount: 2
 --- !u!1 &8196536529839667738
 GameObject:

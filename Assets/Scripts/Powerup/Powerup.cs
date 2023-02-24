@@ -37,6 +37,7 @@ public abstract class Powerup : MonoBehaviour
     protected void DestroyPowerup()
     {
         GetComponent<ParticleSystem>().Stop(true);
+        Destroy(gameObject, 2f);
     }
 
     public abstract void ApplyPowerup(GameObject player);

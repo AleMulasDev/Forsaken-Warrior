@@ -14613,7 +14613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f848e3f6cf83342bf54b4657d98a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupAura: {fileID: 0}
+  powerupAura: {fileID: 198636194039707924, guid: 7a834a7cd13eb0244a447ec6bd05d449, type: 3}
+  IsPickup: 1
   heartAmount: 1
 --- !u!1 &7672943238054581227
 GameObject:

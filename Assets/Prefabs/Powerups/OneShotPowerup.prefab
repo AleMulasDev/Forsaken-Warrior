@@ -19496,4 +19496,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupAura: {fileID: 198136987243302988, guid: 075e5130831f9304f8e5e0e2ccd2dc27, type: 3}
-  powerupDuration: 5
+  IsPickup: 0
+  powerupDuration: 3
