@@ -6,12 +6,12 @@ public class OneShotPowerup : Powerup
 {
     [SerializeField] private float powerupDuration;
 
-    private PlayerController _playerController;
+    private PowerupManager _powerupManager;
     public override void ApplyPowerup(GameObject player)
     {
-        _playerController = player.GetComponent<PlayerController>();
-        InstantiatePowerupAura(powerupDuration, _playerController);
-        StartCoroutine(_playerController.OneShotCoroutine(powerupDuration));
+        _powerupManager = player.GetComponent<PowerupManager>();
+        InstantiatePowerupAura(powerupDuration, player.GetComponent<PowerupManager>());
+        StartCoroutine(_powerupManager.PowerupCoroutine(powerupDuration));
         DestroyPowerup();
     }
 }

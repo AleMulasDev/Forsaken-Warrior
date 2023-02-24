@@ -7,20 +7,25 @@ public class Weapon : MonoBehaviour
     [SerializeField] private string targetTag;
     [SerializeField] private float damage;
 
-    private PlayerController _playerController;
+    private PowerupManager _powerupManager;
     private void Start()
     {
-        _playerController = GetComponentInParent<PlayerController>();
+        _powerupManager = GetComponentInParent<PowerupManager>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(_playerController != null && _playerController.GetOneShotPowerup() && !(other.tag.Equals("Player")))
+        if (IsOneShotEnabled(other))
         {
             other.GetComponent<Health>().Kill();
         }
-        else if(other.tag.Equals(targetTag))
+        else if (other.tag.Equals(targetTag))
         {
             other.GetComponent<Health>().TakeDamage(damage);
         }
+    }
+
+    private bool IsOneShotEnabled(Collider other)
+    {
+        return _powerupManager != null && (_powerupManager.GetCurrentPowerup() is OneShotPowerup) && !(other.tag.Equals("Player"));
     }
 }

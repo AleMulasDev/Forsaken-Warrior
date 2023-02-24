@@ -10,25 +10,25 @@ public abstract class Powerup : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {
+            other.GetComponent<PowerupManager>().SetCurrentPowerup(this);
             ApplyPowerup(other.gameObject);
         }
     }
 
-    protected void InstantiatePowerupAura(float powerupDuration, PlayerController _playerController)
+    protected void InstantiatePowerupAura(float powerupDuration, PowerupManager _powerupManager)
     {
         if (powerupDuration > 0)
         {
-            _playerController.InstantiatePowerupAura(powerupAura, powerupDuration);
+            _powerupManager.InstantiatePowerupAura(powerupAura, powerupDuration);
         } else
         {
-            _playerController.InstantiatePowerupAura(powerupAura);
+            _powerupManager.InstantiatePowerupAura(powerupAura);
         }
     }
 
     protected void DestroyPowerup()
     {
         GetComponent<ParticleSystem>().Stop(true);
-        Destroy(gameObject, 2f);
     }
 
     public abstract void ApplyPowerup(GameObject player);

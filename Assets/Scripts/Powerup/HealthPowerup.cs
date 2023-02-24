@@ -8,7 +8,7 @@ public class HealthPowerup : Powerup
     public override void ApplyPowerup(GameObject player)
     {
         player.GetComponent<Health>().AddHealth(healthAmount);
-        InstantiatePowerupAura(1, player.GetComponent<PlayerController>());
+        InstantiatePowerupAura(-1, player.GetComponent<PowerupManager>());
         DestroyPowerup();
     }
 }
