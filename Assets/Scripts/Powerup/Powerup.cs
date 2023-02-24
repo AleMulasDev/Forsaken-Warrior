@@ -5,13 +5,21 @@ using UnityEngine;
 public abstract class Powerup : MonoBehaviour
 {
     [SerializeField] private ParticleSystem powerupAura;
+    [SerializeField] private bool IsPickup;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag.Equals("Player"))
         {
-            other.GetComponent<PowerupManager>().SetCurrentPowerup(this);
-            ApplyPowerup(other.gameObject);
+            PowerupManager _powerupManager = other.GetComponent<PowerupManager>();
+
+            if (_powerupManager.GetCurrentPowerup() == null)
+            {
+                if(!IsPickup)
+                    _powerupManager.SetCurrentPowerup(this);
+
+                ApplyPowerup(other.gameObject);
+            }
         }
     }
 

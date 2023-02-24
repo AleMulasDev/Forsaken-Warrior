@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     private Animator _animator;
     private MeleeWeaponTrail _weaponTrail;
+    private PowerupManager _powerupManager;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
     [Header("Player parameters")] 
@@ -28,15 +29,12 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Particles")]
     [SerializeField] private GameObject[] footstepParticles;
-
-    private float _heavyAttackCurrentDuration;
     
     private Vector2 _movementInput;
     private Vector3 _movement;
     private Vector3 _cameraBasedMovement;
     private Coroutine _heavyAttackCoroutine;
 
-    private bool _oneShotPowerup = false;
     private bool _isMoving;
     private bool _isJumping;
     private bool _isFalling;
@@ -58,6 +56,7 @@ public class PlayerController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
+        _powerupManager = GetComponent<PowerupManager>();
         
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
@@ -257,7 +256,7 @@ public class PlayerController : MonoBehaviour
         if (CanMove() || _isJumping || _isFalling)
         {
             _animator.SetBool(IsMoving, _isMoving);
-            _controller.Move(playerSpeed * Time.deltaTime * _cameraBasedMovement);
+            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
         } else
         {
             _animator.SetBool(IsMoving, false);
@@ -265,6 +264,11 @@ public class PlayerController : MonoBehaviour
 
         HandleGravity();
         HandleJump();
+    }
+
+    private float GetSpeed()
+    {
+        return (_powerupManager.GetCurrentPowerup() is BoostPowerup) ? playerSpeed * 1.5f : playerSpeed;
     }
 
     bool CanMove()

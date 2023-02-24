@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
 
     public void AddHeart(float heart)
     {
-        _maxHealth += (heart * 4);
+        _currentHealth = _maxHealth += (heart * 4);
         _multipleIconValueBarTool.SetMaxValue(_maxHealth);
         _multipleIconValueBarTool.SetNowValue(_maxHealth);
         _multipleIconValueBarTool.RefreshUI();
