@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     private Vector3 _cameraBasedMovement;
     private Coroutine _heavyAttackCoroutine;
-    
+
+    private bool _oneShotPowerup = false;
     private bool _isMoving;
     private bool _isJumping;
     private bool _isFalling;
@@ -332,4 +333,28 @@ public class PlayerController : MonoBehaviour
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
     }
+
+    public void SwitchOneShotPowerup(bool switchState)
+    {
+        _oneShotPowerup = switchState;
+    }
+
+    public IEnumerator OneShotCoroutine(float powerupDuration)
+    {
+        SwitchOneShotPowerup(true);
+        yield return new WaitForSeconds(powerupDuration);
+        SwitchOneShotPowerup(false);
+    }
+
+    public void InstantiatePowerupAura(ParticleSystem auraPowerup)
+    {
+        ParticleSystem auraPowerupInstance = Instantiate(auraPowerup, transform); 
+    }
+
+    public void InstantiatePowerupAura(ParticleSystem auraPowerup, float powerupDuration)
+    {
+        ParticleSystem auraPowerupInstance = Instantiate(auraPowerup, transform);
+    }
+
+    public bool GetOneShotPowerup() { return _oneShotPowerup; }
 }

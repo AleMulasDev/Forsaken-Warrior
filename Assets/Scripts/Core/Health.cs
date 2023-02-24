@@ -45,5 +45,25 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void AddHeart(float heart)
+    {
+        _maxHealth += (heart * 4);
+        _multipleIconValueBarTool.SetMaxValue(_maxHealth);
+        _multipleIconValueBarTool.SetNowValue(_maxHealth);
+        _multipleIconValueBarTool.RefreshUI();
+    }
+
+    public void AddHealth(float health)
+    {
+        _currentHealth += health;
+        _multipleIconValueBarTool.SetNowValue(_currentHealth);
+        _multipleIconValueBarTool.RefreshUI();
+    }
+
+    public void Kill()
+    {
+        TakeDamage(_maxHealth);
+    }
+
     public bool IsDead() { return _isDead; }
 }
