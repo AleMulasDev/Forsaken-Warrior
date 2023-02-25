@@ -1,3 +1,4 @@
+using AmazingAssets.AdvancedDissolve.ExampleScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour
         {
             _animator.SetTrigger("isDead");
             _isDead = true;
+            GetComponentInChildren<AnimateCutout>()?.Dissolve();
         }
 
         if (_navMeshAgent != null) // Enemy

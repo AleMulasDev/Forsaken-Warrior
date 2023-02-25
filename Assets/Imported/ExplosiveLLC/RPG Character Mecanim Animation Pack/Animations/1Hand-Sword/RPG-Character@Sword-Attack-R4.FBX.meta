@@ -778,7 +778,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.31426883
+      - time: 0.40700066
         functionName: EnableCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -792,14 +792,14 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6402923
+      - time: 0.8006933
         functionName: DisableCombo
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.6569646
+      - time: 0.8248844
         functionName: ResetState
         data: 
         objectReferenceParameter: {instanceID: 0}

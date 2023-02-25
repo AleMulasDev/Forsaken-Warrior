@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnLightAttackStarted(InputAction.CallbackContext ctx)
     {
-        if (_movementInput != Vector2.zero)
+        if (_movementInput != Vector2.zero && _characterState != ECharacterStates.ECS_LightAttack)
         {
             _animator.SetTrigger(LightAttackInputMovement);
         }
@@ -268,7 +268,13 @@ public class PlayerController : MonoBehaviour
 
     private float GetSpeed()
     {
-        return (_powerupManager.GetCurrentPowerup() is BoostPowerup) ? playerSpeed * 1.5f : playerSpeed;
+        if (_powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is BoostPowerup)
+        {
+            return playerSpeed * 1.5f;
+        }
+        else {
+            return playerSpeed;
+        }
     }
 
     bool CanMove()
@@ -299,6 +305,7 @@ public class PlayerController : MonoBehaviour
 
     private void ResetState()
     {
+        print("ResetState");
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();
