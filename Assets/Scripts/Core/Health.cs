@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if (_characterController && _powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup)
+        if (_characterController && _powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup && _powerupManager.GetCurrentPowerup() != null)
             return;
 
         _currentHealth = Mathf.Max(_currentHealth - damage, 0);

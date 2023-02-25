@@ -1961,5 +1961,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 027d391e502ace04caeb8c80599c3472, type: 3}
   _multipleIconValueBarTool: {fileID: 0}
-  _maxHealth: 100
+  _maxHealth: 8
   _currentHealth: 0

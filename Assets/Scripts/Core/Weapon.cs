@@ -20,12 +20,23 @@ public class Weapon : MonoBehaviour
         }
         else if (other.tag.Equals(targetTag))
         {
-            other.GetComponent<Health>().TakeDamage(damage);
+            other.GetComponent<Health>().TakeDamage(GetDamage());
         }
     }
-
     private bool IsOneShotEnabled(Collider other)
     {
-        return _powerupManager != null && (_powerupManager.GetCurrentPowerup() is OneShotPowerup) && !(other.tag.Equals("Player"));
+        return _powerupManager != null && (_powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is OneShotPowerup) && !(other.tag.Equals("Player"));
+    }
+
+    private float GetDamage()
+    {
+        if (_powerupManager != null && _powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is DamagePowerup)
+        {
+            print("palle");
+            return damage * 3f;
+        }
+        else {
+            return damage;
+        }
     }
 }
