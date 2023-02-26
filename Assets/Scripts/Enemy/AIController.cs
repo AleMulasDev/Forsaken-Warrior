@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(NavMeshAgent))]
+
 public class AIController : MonoBehaviour
 {
     [SerializeField] private float _attackDistance;
@@ -127,5 +133,10 @@ public class AIController : MonoBehaviour
         {
             c.enabled = false;
         }
+    }
+
+    public void SetEnemyState(EEnemyState newEnemyState)
+    {
+        _enemyState = newEnemyState;
     }
 }

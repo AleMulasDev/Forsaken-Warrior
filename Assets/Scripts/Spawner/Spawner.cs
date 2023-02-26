@@ -12,7 +12,8 @@ public class Spawner : MonoBehaviour
         {
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
-            Instantiate(enemies[0], spawnPosition, Quaternion.identity);
+            int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
+            Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity);
         }
     }
 }

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PolygonHorrorMansion_Mat_01_A_Dissolve
+  m_Name: PolygonPirates_Characters_Material_01_A Dissolve
   m_Shader: {fileID: 4800000, guid: 977ce85d64e1849409668a559c7d1c4d, type: 3}
   m_ValidKeywords:
   - _AD_CUTOUT_STANDARD_SOURCE_TWO_CUSTOM_MAPS
@@ -67,11 +67,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: c9ceea1d6789bd64ea0970c837e138a5, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ad2462185548fec429a89a13ef0b2fca, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6fa6e3a289a54da4387f58e1eb847ef8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -188,6 +188,6 @@ Material:
     - _AdvancedDissolveEdgeUVDistortionMapScroll: {r: 0, g: 0, b: 0, a: 0}
     - _AdvancedDissolveEdgeUVDistortionMapTiling: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
