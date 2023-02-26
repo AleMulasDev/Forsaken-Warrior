@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float _attackDistance;
     [SerializeField] private float _attackFirerate;
     [SerializeField] private Collider[] colliders;
+    [SerializeField] private bool shouldEnableRootMotion;
 
     private NavMeshAgent _navMeshAgent;
     private GameObject _playerController;
@@ -138,5 +139,10 @@ public class AIController : MonoBehaviour
     public void SetEnemyState(EEnemyState newEnemyState)
     {
         _enemyState = newEnemyState;
+    }
+
+    public bool GetShouldEnableRootMotion()
+    {
+        return shouldEnableRootMotion;
     }
 }

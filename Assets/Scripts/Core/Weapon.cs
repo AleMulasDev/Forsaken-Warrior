@@ -8,12 +8,16 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float damage;
 
     private PowerupManager _powerupManager;
+    private Health _health;
     private void Start()
     {
         _powerupManager = GetComponentInParent<PowerupManager>();
+        _health = GetComponentInParent<Health>();
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(_health.IsDead()) return;
+
         if (IsOneShotEnabled(other))
         {
             other.GetComponent<Health>().Kill();
@@ -25,14 +29,15 @@ public class Weapon : MonoBehaviour
     }
     private bool IsOneShotEnabled(Collider other)
     {
-        return _powerupManager != null && (_powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is OneShotPowerup) && !(other.tag.Equals("Player"));
+        return _powerupManager != null && 
+            (_powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is OneShotPowerup) 
+            && !(other.tag.Equals("Player"));
     }
 
     private float GetDamage()
     {
         if (_powerupManager != null && _powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is DamagePowerup)
         {
-            print("palle");
             return damage * 3f;
         }
         else {

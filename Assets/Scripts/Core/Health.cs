@@ -38,7 +38,9 @@ public class Health : MonoBehaviour
         {
             _animator.SetTrigger("isDead");
             _isDead = true;
-            GetComponentInChildren<AnimateCutout>()?.Dissolve();
+            foreach(AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
+                aC.Dissolve();
+            Destroy(gameObject, 7f);
         }
 
         if (_navMeshAgent != null) // Enemy

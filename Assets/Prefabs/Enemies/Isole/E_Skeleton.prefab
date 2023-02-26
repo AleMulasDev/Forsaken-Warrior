@@ -1663,7 +1663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTimer: 3
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
 --- !u!114 &6453004196966871240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,7 +2670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf2f409951e9394badca12a47df3386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodParticle: {fileID: 1489431029902184, guid: 027d391e502ace04caeb8c80599c3472, type: 3}
+  _bloodParticle: {fileID: 1489431029902184, guid: 77ba31720714a1d40961e4e42ffaf485, type: 3}
   _multipleIconValueBarTool: {fileID: 0}
   _maxHealth: 8
   _currentHealth: 0
@@ -2712,6 +2713,7 @@ MonoBehaviour:
   colliders:
   - {fileID: 6453004196967063049}
   - {fileID: 6453004196966879491}
+  shouldEnableRootMotion: 1
 --- !u!1 &6453004196967055959
 GameObject:
   m_ObjectHideFlags: 0

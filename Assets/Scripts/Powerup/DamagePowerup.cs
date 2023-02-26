@@ -11,7 +11,7 @@ public class DamagePowerup : Powerup
     {
         _powerupManager = player.GetComponent<PowerupManager>();
         InstantiatePowerupAura(powerupDuration, player.GetComponent<PowerupManager>());
-        StartCoroutine(_powerupManager.PowerupCoroutine(powerupDuration));
-        DestroyPowerup();
+        _powerupManager.StartPowerup(powerupDuration);
+        HidePowerup();
     }
 }

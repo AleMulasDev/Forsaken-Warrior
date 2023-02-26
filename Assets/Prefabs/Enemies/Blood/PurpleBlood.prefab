@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198104090543139058}
   - component: {fileID: 199800286776331750}
   m_Layer: 0
-  m_Name: BloodEnemy
+  m_Name: PurpleBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

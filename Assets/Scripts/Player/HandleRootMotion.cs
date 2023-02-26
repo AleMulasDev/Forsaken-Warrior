@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class HandleRootMotion : StateMachineBehaviour
@@ -7,25 +8,38 @@ public class HandleRootMotion : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.applyRootMotion = true;
-
-        if(animator.gameObject.tag.Equals("Player"))
+        if (animator.TryGetComponent<AIController>(out AIController enemy))
+        {
+            animator.applyRootMotion = enemy.GetShouldEnableRootMotion();
+        }
+        else
+        {
             animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Dodging);
+        }
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (stateInfo.IsName("Roll-Forward"))
+        {
+            animator.GetComponent<PlayerController>()?.Dash();
+        } else if (stateInfo.IsName("Jump-Backward"))
+        {
+            animator.GetComponent<PlayerController>()?.JumpBackward();
+        }
+    }
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.applyRootMotion = false;
-
-        if (animator.gameObject.tag.Equals("Player"))
-            animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Inoccupied);
+        if (animator.TryGetComponent<AIController>(out AIController enemy))
+        {
+            animator.applyRootMotion = enemy.GetShouldEnableRootMotion();
+        } else
+        {
+            animator.GetComponent<PlayerController>().ResetState();
+        }
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

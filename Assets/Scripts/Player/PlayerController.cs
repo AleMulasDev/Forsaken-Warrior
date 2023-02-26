@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float attackRotationSpeed;
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float dodgeSpeed;
+    [SerializeField] private float jumpBackwardSpeed;
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
     [Space]
@@ -75,16 +77,29 @@ public class PlayerController : MonoBehaviour
 
     private void Dodge(InputAction.CallbackContext ctx)
     {
-        if (!(_characterState == ECharacterStates.ECS_Inoccupied))
+        if (!(_characterState == ECharacterStates.ECS_Inoccupied
+            || _characterState == ECharacterStates.ECS_LightAttack))
             return;
 
         if (_movementInput == Vector2.zero)
+        {
             _animator.SetTrigger("jumpB");
+        }
         else
         {
             _animator.SetTrigger("dodgeF");
         }
 
+    }
+
+    public void Dash()
+    {
+        _controller.Move(dodgeSpeed * Time.deltaTime * transform.forward);
+    }
+
+    public void JumpBackward()
+    {
+        _controller.Move(jumpBackwardSpeed * Time.deltaTime * (transform.forward * -1));
     }
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
@@ -183,7 +198,7 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool(IsLanded, true);
             _movement.y = Gravity * Time.deltaTime;
         }
-        else if (_isFalling)
+        else if (_isFalling && _characterState == ECharacterStates.ECS_Jumping)
         {
             _animator.SetBool(IsFalling, true);
             _animator.SetBool(IsLanded, false);
@@ -303,9 +318,8 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool(CanDoCombo, false);
     }
 
-    private void ResetState()
+    public void ResetState()
     {
-        print("ResetState");
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();

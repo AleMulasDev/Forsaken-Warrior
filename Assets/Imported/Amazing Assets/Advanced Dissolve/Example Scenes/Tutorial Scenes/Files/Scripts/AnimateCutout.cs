@@ -8,7 +8,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 {
     public class AnimateCutout : MonoBehaviour
     {
-        [SerializeField] private float lerpTimer = 0.0f;
+        [SerializeField] private float lerpTimerSpawn = 0.0f;
+        [SerializeField] private float lerpTimerDeath = 0.0f;
         private Material _material;
         private Health _health;
         private float timeElapsedSpawn = 0.0f;
@@ -36,9 +37,9 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator DissolveCoroutine()
         {
-            while (timeElapsedDissolve < lerpTimer)
+            while (timeElapsedDissolve < lerpTimerDeath)
             {
-                float propertyValue = Mathf.Lerp(0, 1, timeElapsedDissolve / lerpTimer);
+                float propertyValue = Mathf.Lerp(0, 1, timeElapsedDissolve / lerpTimerDeath);
                 AmazingAssets.AdvancedDissolve.AdvancedDissolveProperties.Cutout.Standard.UpdateLocalProperty(_material, AdvancedDissolveProperties.Cutout.Standard.Property.Clip, propertyValue);
                 timeElapsedDissolve += Time.deltaTime;
                 yield return null;
@@ -47,9 +48,9 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator SpawnEffectCoroutine()
         {
-            while (timeElapsedSpawn < lerpTimer)
+            while (timeElapsedSpawn < lerpTimerSpawn)
             {
-                float propertyValue = Mathf.Lerp(1, 0, timeElapsedSpawn / lerpTimer);
+                float propertyValue = Mathf.Lerp(1, 0, timeElapsedSpawn / lerpTimerSpawn);
                 AmazingAssets.AdvancedDissolve.AdvancedDissolveProperties.Cutout.Standard.UpdateLocalProperty(_material, AdvancedDissolveProperties.Cutout.Standard.Property.Clip, propertyValue);
                 timeElapsedSpawn += Time.deltaTime;
                 yield return null;

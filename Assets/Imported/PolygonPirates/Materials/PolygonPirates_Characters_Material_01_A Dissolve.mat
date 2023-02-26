@@ -31,7 +31,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AdvancedDissolveCutoutStandardMap1:
-        m_Texture: {fileID: 2800000, guid: e18a719abfc5a7c42bfdfd18fc29c2c5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1ab69e9b96ad9f5409665263c3c8dc31, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AdvancedDissolveCutoutStandardMap2:
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AdvancedDissolveEdgeAdditionalColorMap:
-        m_Texture: {fileID: 2800000, guid: 57c963618d29cc14ba880371c6930cd3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6486150a841936d43beba58c31875c40, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AdvancedDissolveEdgeUVDistortionMap:

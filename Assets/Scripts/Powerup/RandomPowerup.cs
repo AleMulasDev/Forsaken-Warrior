@@ -9,6 +9,6 @@ public class RandomPowerup : Powerup
     {
         int randomPowerupSelection = UnityEngine.Random.Range(0, powerups.Length);
         Instantiate(powerups[randomPowerupSelection], transform.position, powerups[randomPowerupSelection].transform.rotation);
-        DestroyPowerup();
+        HidePowerup();
     }
 }

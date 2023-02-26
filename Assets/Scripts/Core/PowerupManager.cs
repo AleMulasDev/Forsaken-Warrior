@@ -10,7 +10,13 @@ public class PowerupManager : MonoBehaviour
 
     public void DisablePowerup()
     {
+        Destroy(_currentPowerup.gameObject);
         _currentPowerup = null;
+    }
+
+    public void StartPowerup(float powerupDuration)
+    {
+        StartCoroutine(PowerupCoroutine(powerupDuration));
     }
 
     public IEnumerator PowerupCoroutine(float powerupDuration)
@@ -39,7 +45,7 @@ public class PowerupManager : MonoBehaviour
         StartCoroutine(HandleAura(powerupDuration, auraPowerupInstance));
     }
 
-    public void SetCurrentPowerup(Powerup currentPowerup) { 
+    public void SetCurrentPowerup(Powerup currentPowerup) {
         this._currentPowerup = currentPowerup;
     }
 

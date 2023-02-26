@@ -11,7 +11,7 @@ public class HeartPowerup : Powerup
     {
         player.GetComponent<Health>().AddHeart(heartAmount);
         InstantiatePowerupAura(-1, player.GetComponent<PowerupManager>());
-        DestroyPowerup();
+        HidePowerup();
     }
 
 }

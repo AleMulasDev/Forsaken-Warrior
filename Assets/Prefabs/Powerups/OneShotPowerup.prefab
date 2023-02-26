@@ -19481,7 +19481,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6537338, y: 0.6537338, z: 0.6537338}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5509698167800375178
 MonoBehaviour:
@@ -19497,4 +19497,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupAura: {fileID: 198136987243302988, guid: 075e5130831f9304f8e5e0e2ccd2dc27, type: 3}
   IsPickup: 0
-  powerupDuration: 3
+  powerupDuration: 5

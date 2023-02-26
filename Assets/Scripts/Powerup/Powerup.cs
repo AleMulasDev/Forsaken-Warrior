@@ -9,15 +9,15 @@ public abstract class Powerup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Player"))
+        if (other.tag.Equals("Player"))
         {
             PowerupManager _powerupManager = other.GetComponent<PowerupManager>();
 
-            if (_powerupManager.GetCurrentPowerup() == null)
+            if (IsPickup)
+                ApplyPowerup(other.gameObject);
+            else if (_powerupManager.GetCurrentPowerup() == null)
             {
-                if(!IsPickup)
-                    _powerupManager.SetCurrentPowerup(this);
-
+                _powerupManager.SetCurrentPowerup(this);
                 ApplyPowerup(other.gameObject);
             }
         }
@@ -28,16 +28,16 @@ public abstract class Powerup : MonoBehaviour
         if (powerupDuration > 0)
         {
             _powerupManager.InstantiatePowerupAura(powerupAura, powerupDuration);
-        } else
+        }
+        else
         {
             _powerupManager.InstantiatePowerupAura(powerupAura);
         }
     }
 
-    protected void DestroyPowerup()
+    protected void HidePowerup()
     {
-        GetComponent<ParticleSystem>().Stop(true);
-        Destroy(gameObject, 2f);
+        gameObject.SetActive(false);
     }
 
     public abstract void ApplyPowerup(GameObject player);
