@@ -15,12 +15,14 @@ public class AIController : MonoBehaviour
     [SerializeField] private float _attackFirerate;
     [SerializeField] private Collider[] colliders;
     [SerializeField] private bool shouldEnableRootMotion;
+    [SerializeField] Projectile bullet;
 
     private NavMeshAgent _navMeshAgent;
     private GameObject _playerController;
     private Animator _animator;
     private Health _health;
     private CapsuleCollider _capsuleCollider;
+    private Weapon _weapon;
     private EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
 
     private Vector3 newDestination;
@@ -35,6 +37,7 @@ public class AIController : MonoBehaviour
         _animator = GetComponent<Animator>();   
         _health = GetComponent<Health>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        _weapon = GetComponentInChildren<Weapon>();
 
         _navMeshAgent.updateRotation = false;
     }
@@ -144,5 +147,10 @@ public class AIController : MonoBehaviour
     public bool GetShouldEnableRootMotion()
     {
         return shouldEnableRootMotion;
+    }
+
+    private void Shoot()
+    {
+        _weapon.Shoot(bullet, _playerController);
     }
 }

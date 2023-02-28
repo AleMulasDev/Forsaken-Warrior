@@ -44,4 +44,11 @@ public class Weapon : MonoBehaviour
             return damage;
         }
     }
+
+    public void Shoot(Projectile bullet, GameObject player)
+    {
+        GetComponentInChildren<SpawnParticle>()?.SpawnParticleAtPosition();
+        Projectile bulletInstance = Instantiate(bullet, transform.position, bullet.transform.rotation);
+        bulletInstance.SetProjectile(player);
+    }
 }

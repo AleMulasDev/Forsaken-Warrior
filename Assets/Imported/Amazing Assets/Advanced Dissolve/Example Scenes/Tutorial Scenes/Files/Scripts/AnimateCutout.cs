@@ -8,8 +8,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 {
     public class AnimateCutout : MonoBehaviour
     {
-        [SerializeField] private float lerpTimerSpawn = 0.0f;
-        [SerializeField] private float lerpTimerDeath = 0.0f;
+        [SerializeField] private float lerpTimerSpawn = 3.0f;
+        [SerializeField] private float lerpTimerDeath = 5.0f;
         private Material _material;
         private Health _health;
         private float timeElapsedSpawn = 0.0f;
