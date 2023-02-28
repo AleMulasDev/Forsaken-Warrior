@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerControls.HeavyAttack.started += OnHeavyAttackStarted;
 
         _playerInput.PlayerControls.Dodge.started += Dodge;
-
     }
 
     #region inputFunctions
@@ -359,4 +358,8 @@ public class PlayerController : MonoBehaviour
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
     }
 
+    public void DecreaseDodgeSpeed()
+    {
+        dodgeSpeed -= Time.deltaTime;
+    }
 }
