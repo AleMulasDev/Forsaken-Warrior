@@ -192,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127703461}
-  m_LocalRotation: {x: 0.17121495, y: 1e-45, z: -0, w: 0.9852337}
+  m_LocalRotation: {x: 0.17121494, y: 1e-45, z: -0, w: 0.9852337}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2464,6 +2464,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 4198217662428380715, guid: 5107f4d22ed4d3540a7ce6d1e2718375, type: 3}
+  - {fileID: 2739579125779529824, guid: c30619e8b427db54a85aef59d61815fa, type: 3}
+  - {fileID: 590509082398142215, guid: 55b1000023068e44fa89df6dc2c04293, type: 3}
+  - {fileID: 6453004196966908966, guid: 58275e3e668894749850cd7af51666f0, type: 3}
+  - {fileID: 8348146869656252732, guid: 4aa1d8cb2383fee49a226dd8d88adf05, type: 3}
 --- !u!1 &2043559961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,7 +2546,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043559961}
-  m_LocalRotation: {x: 0.17121497, y: -0, z: -0, w: 0.9852337}
+  m_LocalRotation: {x: 0.17121495, y: -0, z: -0, w: 0.9852337}
   m_LocalPosition: {x: 0, y: 5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9847,8 +9851,8 @@ MonoBehaviour:
   rotationSpeed: 15
   attackRotationSpeed: 1
   playerSpeed: 5
-  dodgeSpeed: 10
-  jumpBackwardSpeed: 5
+  dodgeSpeed: 15
+  jumpBackwardSpeed: 10
   playerJumpHeight: 1.2
   heavyAttackMaxDuration: 1
   rFoot: {fileID: 1208977186064766814}

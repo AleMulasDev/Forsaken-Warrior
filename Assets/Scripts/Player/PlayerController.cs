@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private bool _isMoving;
     private bool _isJumping;
     private bool _isFalling;
+    private float tempDodgeSpeed;
+    private float tempJumpBSpeed;
 
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
@@ -93,12 +95,14 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
-        _controller.Move(dodgeSpeed * Time.deltaTime * transform.forward);
+        _controller.Move(tempDodgeSpeed * Time.deltaTime * transform.forward);
+        DecreaseVelocity();
     }
 
     public void JumpBackward()
     {
-        _controller.Move(jumpBackwardSpeed * Time.deltaTime * (transform.forward * -1));
+        _controller.Move(tempJumpBSpeed * Time.deltaTime * (transform.forward * -1));
+        DecreaseVelocity();
     }
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
@@ -358,8 +362,15 @@ public class PlayerController : MonoBehaviour
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
     }
 
-    public void DecreaseDodgeSpeed()
+    public void DecreaseVelocity()
     {
-        dodgeSpeed -= Time.deltaTime;
+        tempDodgeSpeed = Mathf.Max(0, tempDodgeSpeed - 0.05f);
+        tempJumpBSpeed = Mathf.Max(0, tempJumpBSpeed - 0.05f);
+    }
+
+    public void ResetDodgeSpeed()
+    {
+        tempDodgeSpeed = dodgeSpeed;
+        tempJumpBSpeed = jumpBackwardSpeed;
     }
 }

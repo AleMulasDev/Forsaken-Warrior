@@ -15,6 +15,7 @@ public class HandleRootMotion : StateMachineBehaviour
         else
         {
             animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Dodging);
+            animator.GetComponent<PlayerController>().ResetDodgeSpeed();
         }
     }
 
