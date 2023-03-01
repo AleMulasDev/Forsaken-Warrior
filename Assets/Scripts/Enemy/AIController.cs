@@ -18,23 +18,24 @@ public class AIController : MonoBehaviour
     [SerializeField] Projectile bullet;
 
     private NavMeshAgent _navMeshAgent;
-    private GameObject _playerController;
-    private Animator _animator;
+    protected GameObject _playerController;
+    protected Animator _animator;
     private Health _health;
     private CapsuleCollider _capsuleCollider;
     private Weapon _weapon;
-    private EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
+    protected EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
 
     private Vector3 newDestination;
-    private float _attackTimer = 0.0f;
+    protected float _attackTimer = 0.0f;
 
     private static readonly int Attack = Animator.StringToHash("attack");
 
-    private void Start()
+    virtual protected void Start()
     {
+        print("AIController");
         _playerController = GameObject.FindGameObjectWithTag("Player");
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _animator = GetComponent<Animator>();   
+        _animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _weapon = GetComponentInChildren<Weapon>();
@@ -42,14 +43,17 @@ public class AIController : MonoBehaviour
         _navMeshAgent.updateRotation = false;
     }
 
-    private void Update()
+    virtual protected void Update()
     {
-        if (_health.IsDead()) {
+        if (_health.IsDead())
+        {
             Die();
             return;
         }
-        
-        RotateToPlayer();
+
+        if (_enemyState == EEnemyState.EES_Inoccupied)
+            RotateToPlayer();
+
 
         newDestination = _playerController.transform.position;
 
@@ -63,6 +67,7 @@ public class AIController : MonoBehaviour
         }
 
         UpdateAnimator();
+
         _attackTimer += Time.deltaTime;
     }
 
@@ -75,7 +80,7 @@ public class AIController : MonoBehaviour
         _navMeshAgent.destination = newDestination;
     }
 
-    private void DisableNavMesh()
+    protected void DisableNavMesh()
     {
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
@@ -125,7 +130,7 @@ public class AIController : MonoBehaviour
 
     private void EnableBox()
     {
-        foreach(Collider c in colliders)
+        foreach (Collider c in colliders)
         {
             c.enabled = true;
         }

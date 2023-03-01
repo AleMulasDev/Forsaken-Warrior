@@ -37,6 +37,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator DissolveCoroutine()
         {
+            yield return new WaitForSeconds(2f);
+
             while (timeElapsedDissolve < lerpTimerDeath)
             {
                 float propertyValue = Mathf.Lerp(0, 1, timeElapsedDissolve / lerpTimerDeath);

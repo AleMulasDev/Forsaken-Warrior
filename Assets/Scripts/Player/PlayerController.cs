@@ -364,8 +364,8 @@ public class PlayerController : MonoBehaviour
 
     public void DecreaseVelocity()
     {
-        tempDodgeSpeed = Mathf.Max(0, tempDodgeSpeed - 0.05f);
-        tempJumpBSpeed = Mathf.Max(0, tempJumpBSpeed - 0.05f);
+        tempDodgeSpeed = Mathf.Max(0.05f, tempDodgeSpeed - 0.03f);
+        tempJumpBSpeed = Mathf.Max(0.05f, tempJumpBSpeed - 0.03f);
     }
 
     public void ResetDodgeSpeed()
