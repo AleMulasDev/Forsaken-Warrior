@@ -8,6 +8,9 @@ public class SwitchState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.tag.Equals("Player"))
+            return;
+
         MinibossController miniboss = GetComponentInParent<MinibossController>();
 
         if(miniboss != null && other.gameObject.tag.Equals("Player"))

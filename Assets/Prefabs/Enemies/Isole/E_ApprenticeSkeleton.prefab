@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 2739579125779529831}
   - component: {fileID: 2739579125779529830}
   - component: {fileID: 2739579125779529825}
-  - component: {fileID: 2739579125779529824}
+  - component: {fileID: 1617411340088360252}
   m_Layer: 0
   m_Name: E_ApprenticeSkeleton
   m_TagString: Enemy
@@ -1296,7 +1296,7 @@ NavMeshAgent:
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2739579125779529824
+--- !u!114 &1617411340088360252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1305,15 +1305,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2739579125779529827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea603e14d1b0d445b44e78ba75d8193, type: 3}
+  m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 2739579125779560979}
+  - {fileID: 2739579125779541433}
+  shouldEnableRootMotion: 0
   _attackDistance: 1.1
   _attackFirerate: 1
-  colliders:
-  - {fileID: 2739579125779541433}
-  - {fileID: 2739579125779560979}
-  shouldEnableRootMotion: 1
   bullet: {fileID: 0}
 --- !u!1 &2739579125779532799
 GameObject:

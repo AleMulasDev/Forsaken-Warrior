@@ -1150,10 +1150,10 @@ GameObject:
   - component: {fileID: 4198217662428380716}
   - component: {fileID: 4198217662428380717}
   - component: {fileID: 4198217662428380714}
-  - component: {fileID: 4198217662428380715}
+  - component: {fileID: -4847785709254757084}
   m_Layer: 0
   m_Name: E_Deckhand
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,7 +1263,7 @@ NavMeshAgent:
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4198217662428380715
+--- !u!114 &-4847785709254757084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1272,13 +1272,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4198217662418966822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea603e14d1b0d445b44e78ba75d8193, type: 3}
+  m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackDistance: 10
-  _attackFirerate: 1
   colliders: []
   shouldEnableRootMotion: 0
+  _attackDistance: 10
+  _attackFirerate: 1
   bullet: {fileID: -4315479916804622947, guid: 5f059e0a1393bef4ab2f3dbfb7cc963f, type: 3}
 --- !u!1 &4198217662418968318
 GameObject:

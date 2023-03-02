@@ -3270,12 +3270,12 @@ GameObject:
   - component: {fileID: 8348146869098557264}
   - component: {fileID: 8348146869656252728}
   - component: {fileID: 8348146869656252735}
-  - component: {fileID: 8348146869656252732}
   - component: {fileID: 8348146869656252733}
   - component: {fileID: 8348146869656252734}
+  - component: {fileID: 4474121016267416679}
   m_Layer: 0
   m_Name: E_Seaman
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3347,23 +3347,6 @@ CapsuleCollider:
   m_Height: 2.0082407
   m_Direction: 1
   m_Center: {x: 0, y: 0.96344495, z: 0}
---- !u!114 &8348146869656252732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8348146869108158024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea603e14d1b0d445b44e78ba75d8193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackDistance: 1.1
-  _attackFirerate: 1
-  colliders:
-  - {fileID: 8348146869017399219}
-  shouldEnableRootMotion: 0
 --- !u!195 &8348146869656252733
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3402,6 +3385,24 @@ MonoBehaviour:
   _multipleIconValueBarTool: {fileID: 0}
   _maxHealth: 8
   _currentHealth: 0
+--- !u!114 &4474121016267416679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348146869108158024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+  - {fileID: 8348146869017399219}
+  shouldEnableRootMotion: 0
+  _attackDistance: 1.5
+  _attackFirerate: 1
+  bullet: {fileID: 0}
 --- !u!1 &8348146869108158306
 GameObject:
   m_ObjectHideFlags: 0

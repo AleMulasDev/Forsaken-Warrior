@@ -11,67 +11,32 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    [SerializeField] private float _attackDistance;
-    [SerializeField] private float _attackFirerate;
+    
     [SerializeField] private Collider[] colliders;
     [SerializeField] private bool shouldEnableRootMotion;
-    [SerializeField] Projectile bullet;
 
     private NavMeshAgent _navMeshAgent;
     protected GameObject _playerController;
     protected Animator _animator;
-    private Health _health;
+    protected Health _health;
     private CapsuleCollider _capsuleCollider;
-    private Weapon _weapon;
     protected EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
 
-    private Vector3 newDestination;
+    protected Vector3 newDestination;
     protected float _attackTimer = 0.0f;
-
-    private static readonly int Attack = Animator.StringToHash("attack");
 
     virtual protected void Start()
     {
-        print("AIController");
         _playerController = GameObject.FindGameObjectWithTag("Player");
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        _weapon = GetComponentInChildren<Weapon>();
 
         _navMeshAgent.updateRotation = false;
     }
 
-    virtual protected void Update()
-    {
-        if (_health.IsDead())
-        {
-            Die();
-            return;
-        }
-
-        if (_enemyState == EEnemyState.EES_Inoccupied)
-            RotateToPlayer();
-
-
-        newDestination = _playerController.transform.position;
-
-        if (Vector3.Distance(transform.position, newDestination) > _attackDistance)
-        {
-            EnableNavMesh();
-        }
-        else
-        {
-            AttackBehaviour();
-        }
-
-        UpdateAnimator();
-
-        _attackTimer += Time.deltaTime;
-    }
-
-    private void EnableNavMesh()
+    protected void EnableNavMesh()
     {
         if (!(_enemyState == EEnemyState.EES_Inoccupied))
             return;
@@ -86,7 +51,7 @@ public class AIController : MonoBehaviour
         _navMeshAgent.isStopped = true;
     }
 
-    private void UpdateAnimator()
+    protected void UpdateAnimator()
     {
         Vector3 velocity = _navMeshAgent.velocity;
 
@@ -95,26 +60,14 @@ public class AIController : MonoBehaviour
         _animator.SetFloat("forwardSpeed", localVelocity.z);
     }
 
-    private void Die()
+    protected void Die()
     {
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
         _capsuleCollider.enabled = false;
     }
 
-    private void AttackBehaviour()
-    {
-        DisableNavMesh();
-
-        if (Vector3.Distance(transform.position, newDestination) <= _attackDistance && _attackTimer > _attackFirerate
-            && !_playerController.GetComponent<Health>().IsDead())
-        {
-            _enemyState = EEnemyState.EES_Attack;
-            _animator.SetTrigger(Attack);
-        }
-    }
-
-    private void RotateToPlayer()
+    protected void RotateToPlayer()
     {
         Vector3 newPlayerLocation = new Vector3(_playerController.transform.position.x, transform.position.y, _playerController.transform.position.z);
         var targetRotation = Quaternion.LookRotation(newPlayerLocation - transform.position);
@@ -152,10 +105,5 @@ public class AIController : MonoBehaviour
     public bool GetShouldEnableRootMotion()
     {
         return shouldEnableRootMotion;
-    }
-
-    private void Shoot()
-    {
-        _weapon.Shoot(bullet, _playerController);
     }
 }

@@ -9,17 +9,19 @@ public class Projectile : MonoBehaviour
 
     private GameObject _player;
     private Rigidbody _rigidbody;
-
+    private Vector3 _startingPosition;
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
 
-        transform.LookAt(_player.transform.position + new Vector3(0, _player.GetComponent<CharacterController>().height/2, 0));
+        _startingPosition = _player.transform.position + new Vector3(0, _player.GetComponent<CharacterController>().height / 2, 0);
+
+        transform.LookAt(_startingPosition);
     }
 
     private void Update()
     {
-        _rigidbody.AddForce(transform.forward * bulletSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
     }
 
     public void SetProjectile(GameObject player)
@@ -29,6 +31,8 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other);
+
         if (!other.tag.Equals("Player"))
             return;
 

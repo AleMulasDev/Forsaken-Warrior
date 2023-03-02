@@ -16,4 +16,14 @@ public class Spawner : MonoBehaviour
             Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity);
         }
     }
+
+    public void SpawnAll()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Vector3 randomPos = Random.insideUnitCircle * 5;
+            Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
+            Instantiate(enemies[i], spawnPosition, Quaternion.identity);
+        }
+    }
 }
