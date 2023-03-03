@@ -34,6 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c40b01b66400b14faba46518d93b95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerName: attack
 --- !u!1107 &-3515427603882632307
 AnimatorStateMachine:
   serializedVersion: 6

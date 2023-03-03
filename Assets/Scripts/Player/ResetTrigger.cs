@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class ResetTrigger : StateMachineBehaviour
 {
     private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
-    private static readonly int Attack = Animator.StringToHash("attack");
+    [SerializeField] private string triggerName;
 
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,7 +27,7 @@ public class ResetTrigger : StateMachineBehaviour
             animator.ResetTrigger(LightAttackInputMovement);
         else
         {
-            animator.ResetTrigger(Attack);
+            animator.ResetTrigger(triggerName);
             animator.GetComponent<AIController>().ResetState();
         }
     }

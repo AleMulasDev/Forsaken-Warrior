@@ -31,8 +31,6 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
-
         if (!other.tag.Equals("Player"))
             return;
 

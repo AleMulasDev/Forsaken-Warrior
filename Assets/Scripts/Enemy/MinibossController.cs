@@ -13,21 +13,34 @@ public struct CircleWeapon
     public Weapon leftHandWeapon;
     public Projectile bullet;
     public EWeaponType weaponType;
+    public Collider collider;
 }
 
 public class MinibossController : AIController
 {
     [SerializeField] private int maxCircles;
     [SerializeField] CircleWeapon[] weapons;
+    
 
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
+    [SerializeField] private float spawnTimer;
 
     private EBossMode _bossMode = EBossMode.EBM_None;
     private CircleWeapon _circleWeapon;
+    private float _spawnTimer;
+    private List<Spawner> enemiesSpawners;
 
     private Weapon _currentLeftHandWeaponInstance;
     private Weapon _currentRightHandWeaponInstance;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        enemiesSpawners = new List<Spawner>(GetComponentsInChildren<Spawner>());
+        _spawnTimer = Mathf.Infinity;
+    }
 
     // Update is called once per frame
     void Update()
@@ -38,9 +51,6 @@ public class MinibossController : AIController
         if (_enemyState == EEnemyState.EES_Inoccupied)
             RotateToPlayer();
 
-        if (_bossMode == EBossMode.EBM_None)
-            return;
-
         switch (_bossMode)
         {
             case EBossMode.EBM_FirstCircle:
@@ -50,9 +60,10 @@ public class MinibossController : AIController
                 ShootBehaviour();
                 break;
             case EBossMode.EBM_ThirdCircle:
-                //AttackBehaviour();
+                AttackBehaviour();
                 break;
             case EBossMode.EBM_None:
+                SpawnEnemies();
                 break;
             default:
                 Debug.LogWarning("Error while evaluating the current miniboss circle");
@@ -60,11 +71,59 @@ public class MinibossController : AIController
         }
 
         _attackTimer += Time.deltaTime;
+        _spawnTimer += Time.deltaTime;
+    }
+
+    private void SpawnEnemies()
+    {
+        if (_spawnTimer > spawnTimer)
+        {
+            _spawnTimer = 0f;
+            _animator.SetTrigger("spawnEnemies");
+        }
+    }
+
+    private void Spawn()
+    {
+        foreach(Spawner s in enemiesSpawners)
+            s.SpawnAll();
+    }
+
+    private void AttackBehaviour()
+    {
+        if (_enemyState != EEnemyState.EES_Inoccupied)
+            return;
+
+        UpdateAnimator();
+
+        if (!_playerController.GetComponent<Health>().IsDead())
+            newDestination = _playerController.transform.position;
+
+        if (Vector3.Distance(transform.position, newDestination) > 1.5f)
+        {
+            EnableNavMesh();
+        }
+        else
+        {
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        DisableNavMesh();
+
+        if (Vector3.Distance(transform.position, newDestination) <= 1.5f && _attackTimer > _circleWeapon.fireRate
+            && !_playerController.GetComponent<Health>().IsDead())
+        {
+            _enemyState = EEnemyState.EES_Attack;
+            _animator.SetTrigger(GetCurrentTrigger());
+        }
     }
 
     private void ShootBehaviour()
     {
-        if (_enemyState == EEnemyState.EES_Attack)
+        if (_enemyState != EEnemyState.EES_Inoccupied)
             return;
 
         DisableNavMesh();
@@ -108,8 +167,15 @@ public class MinibossController : AIController
 
     public void SetBossMode(EBossMode bossMode)
     {
+        DisableNavMesh();
+        _enemyState = EEnemyState.EES_DrawingWeapon;
         _bossMode = bossMode;
         _animator.SetTrigger(GetCurrentUnsheathTrigger());
+
+        if (bossMode == EBossMode.EBM_ThirdCircle)
+            GetComponentInChildren<MinibossHealthBar>().ShowHealthBar();
+        else
+            GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
     }
 
     private void WeaponSwitch()
@@ -132,6 +198,13 @@ public class MinibossController : AIController
                 _currentRightHandWeaponInstance = Instantiate(_circleWeapon.rightHandWeapon, rightHand);
                 break;
         }
+
+        if (_currentLeftHandWeaponInstance != null && _currentLeftHandWeaponInstance.TryGetComponent<Collider>(out Collider leftWeaponCollider))
+            colliders.Add(leftWeaponCollider);
+
+        if (_currentRightHandWeaponInstance != null && _currentRightHandWeaponInstance.TryGetComponent<Collider>(out Collider rightWeaponCollider))
+            colliders.Add(rightWeaponCollider);
+
     }
 
     private void ShootR()

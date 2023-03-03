@@ -12,7 +12,8 @@ using UnityEngine.AI;
 public class AIController : MonoBehaviour
 {
     
-    [SerializeField] private Collider[] colliders;
+    [SerializeField] protected List<Collider> colliders;
+
     [SerializeField] private bool shouldEnableRootMotion;
 
     private NavMeshAgent _navMeshAgent;
