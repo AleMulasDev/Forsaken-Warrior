@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         DisableBox();
-
+        DisableTrail();
+        
         if (_movementInput == Vector2.zero)
         {
             _animator.SetTrigger("jumpB");
