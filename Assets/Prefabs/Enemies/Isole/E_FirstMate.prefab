@@ -1115,6 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSpawnChance: 0.1
   colliders:
   - {fileID: 2475894939274278540}
   lFoot: {fileID: 2799244034086077688}

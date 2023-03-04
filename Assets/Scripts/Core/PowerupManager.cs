@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PowerupManager : MonoBehaviour
 {
+    [SerializeField] private PowerupBar powerupBar;
     [SerializeField] private float _pickupAuraDuration;
 
     private Powerup _currentPowerup = null;
 
     public void DisablePowerup()
     {
+        powerupBar.Hide();
         Destroy(_currentPowerup.gameObject);
         _currentPowerup = null;
     }
@@ -21,6 +23,7 @@ public class PowerupManager : MonoBehaviour
 
     public IEnumerator PowerupCoroutine(float powerupDuration)
     {
+        powerupBar.SetPowerupBar(powerupDuration);
         yield return new WaitForSeconds(powerupDuration);
         DisablePowerup();
     }

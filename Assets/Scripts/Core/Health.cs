@@ -34,10 +34,14 @@ public class Health : MonoBehaviour
 
         if (_currentHealth == 0 && !_isDead)
         {
+            GetComponent<AIController>()?.SpawnPowerup();
+
             _animator.SetTrigger("isDead");
             _isDead = true;
+
             foreach(AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
                 aC.Dissolve();
+
             Destroy(gameObject, 7f);
         }
 

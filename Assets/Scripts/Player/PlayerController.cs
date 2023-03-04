@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     private PowerupManager _powerupManager;
     private Weapon _weapon;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
-    
-    [Header("Player parameters")] 
+
+    [Header("Player parameters")]
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float attackRotationSpeed;
     [SerializeField] private float playerSpeed;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Particles")]
     [SerializeField] private GameObject[] footstepParticles;
-    
+
     private Vector2 _movementInput;
     private Vector3 _movement;
     private Vector3 _cameraBasedMovement;
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
 
         DisableBox();
         DisableTrail();
-        
+
         if (_movementInput == Vector2.zero)
         {
             _animator.SetTrigger("jumpB");
@@ -122,12 +122,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnHeavyAttackEnded(InputAction.CallbackContext ctx)
     {
-        if(_heavyAttackCoroutine != null)
+        if (_heavyAttackCoroutine != null)
             StopCoroutine(_heavyAttackCoroutine);
 
         ResetHeavyAttack();
     }
-    
+
     private void OnLightAttackStarted(InputAction.CallbackContext ctx)
     {
         if (_movementInput != Vector2.zero && _characterState != ECharacterStates.ECS_LightAttack)
@@ -145,10 +145,16 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetBool(LightAttackInput, false);
     }
-    
+
     private void OnMovementInput(InputAction.CallbackContext ctx)
     {
         _movementInput = ctx.ReadValue<Vector2>();
+
+        if (_characterState == ECharacterStates.ECS_Dodging)
+        {
+            _isMoving = false;
+            return;
+        }
 
         _movement.x = _movementInput.x;
         _movement.z = _movementInput.y;
@@ -157,7 +163,7 @@ public class PlayerController : MonoBehaviour
         if (_characterState == ECharacterStates.ECS_LightAttack)
         {
             transform.Rotate(0, _movementInput.x * attackRotationSpeed, 0);
-        }        
+        }
     }
     #endregion
     private IEnumerator HeavyAttackCoroutine()
@@ -182,6 +188,11 @@ public class PlayerController : MonoBehaviour
         _characterState = ECharacterStates.ECS_Inoccupied;
     }
 
+    public void Save()
+    {
+        
+    }
+
     private void HandleRotation()
     {
         Vector3 direction;
@@ -192,7 +203,7 @@ public class PlayerController : MonoBehaviour
 
         Quaternion currentRotation = transform.rotation;
 
-        if (_isMoving)
+        if (_isMoving && direction != Vector3.zero)
         {
             Quaternion newRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(currentRotation, newRotation, rotationSpeed * Time.deltaTime);
@@ -215,7 +226,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool(IsFalling, true);
             _animator.SetBool(IsLanded, false);
-            
+
             float oldYVel = _movement.y;
             float newYVel = _movement.y + (Gravity * fallMultiplier * Time.deltaTime);
             print((oldYVel + newYVel) / 2);
@@ -251,7 +262,7 @@ public class PlayerController : MonoBehaviour
             _characterState = ECharacterStates.ECS_Inoccupied;
             _isJumping = false;
         }
-        
+
     }
 
     private Vector3 ConvertToCameraSpace(Vector3 playerMovement)
@@ -259,7 +270,7 @@ public class PlayerController : MonoBehaviour
         Transform camera = Camera.main.transform;
 
         float currentY = playerMovement.y;
-        
+
         Vector3 forward = camera.forward.normalized;
         Vector3 right = camera.right.normalized;
 
@@ -271,10 +282,10 @@ public class PlayerController : MonoBehaviour
 
         Vector3 res = rotatedZ + rotatedX;
         res.y = currentY;
-        
+
         return res;
     }
-    
+
     private void Update()
     {
         HandleRotation();
@@ -285,7 +296,8 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool(IsMoving, _isMoving);
             _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
-        } else
+        }
+        else
         {
             _animator.SetBool(IsMoving, false);
         }
@@ -300,15 +312,15 @@ public class PlayerController : MonoBehaviour
         {
             return playerSpeed * 1.5f;
         }
-        else {
+        else
+        {
             return playerSpeed;
         }
     }
 
     bool CanMove()
     {
-        return _characterState == ECharacterStates.ECS_Inoccupied && _isMoving
-            || _characterState == ECharacterStates.ECS_HeavyAttack;
+        return _characterState == ECharacterStates.ECS_Inoccupied && _isMoving || _characterState == ECharacterStates.ECS_HeavyAttack;
     }
 
     private void EnableBox()
@@ -325,7 +337,7 @@ public class PlayerController : MonoBehaviour
     {
         _animator.SetBool(CanDoCombo, true);
     }
-    
+
     private void DisableCombo()
     {
         _animator.SetBool(CanDoCombo, false);
@@ -347,7 +359,7 @@ public class PlayerController : MonoBehaviour
     {
         _weaponTrail.Emit = false;
     }
-    
+
     private void OnEnable()
     {
         _playerInput.PlayerControls.Enable();

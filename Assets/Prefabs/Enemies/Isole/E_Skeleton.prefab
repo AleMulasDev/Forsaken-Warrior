@@ -2707,6 +2707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSpawnChance: 0.1
   colliders:
   - {fileID: 6453004196967063049}
   - {fileID: 6453004196966879491}

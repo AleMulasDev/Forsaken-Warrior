@@ -49,9 +49,12 @@ public class Weapon : MonoBehaviour
         {
             return damage * 3f * _damageModifier;
         }
-        else {
+        else if (_powerupManager != null)
+        {
             return damage * _damageModifier;
         }
+        else
+            return damage;
     }
 
     public void Shoot(Projectile bullet, GameObject player)

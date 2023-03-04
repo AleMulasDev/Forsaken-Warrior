@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
-  damage: 2
+  damage: 1
 --- !u!114 &4252342527598204443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3396,6 +3396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3747b88b404b5c24185d3f2397392022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerupSpawnChance: 0.1
   colliders:
   - {fileID: 8348146869017399219}
   lFoot: {fileID: 8348146869108263346}
@@ -3405,7 +3406,7 @@ MonoBehaviour:
   - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
   - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
   shouldEnableRootMotion: 0
-  _attackDistance: 1.5
+  _attackDistance: 1.1
   _attackFirerate: 2
   bullet: {fileID: 0}
 --- !u!1 &8348146869108158306

@@ -10,7 +10,7 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    
+    [SerializeField] float powerupSpawnChance;
     [SerializeField] protected List<Collider> colliders;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
@@ -67,6 +67,44 @@ public class AIController : MonoBehaviour
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
         _capsuleCollider.enabled = false;
+    }
+
+    
+
+    public void SpawnPowerup()
+    {
+        if (Random.Range(0.0f, 1.0f) > powerupSpawnChance) return;
+
+        int randomVal = Random.Range(0, 101);
+
+        Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
+
+        if(randomVal < 25)
+        {
+            Instantiate(Resources.Load<Powerup>("BoostPowerup"), spawnPosition, Quaternion.identity);
+        } 
+        else if (randomVal < 45)
+        {
+           Instantiate(Resources.Load<Powerup>("HealthPowerup"), spawnPosition, Quaternion.identity);
+        }
+        else if (randomVal < 60)
+        {
+                Instantiate(Resources.Load<Powerup>("DamagePowerup"), spawnPosition, Quaternion.identity);
+        }
+        else if (randomVal < 75)
+        {
+            Instantiate(Resources.Load<Powerup>("HeartPowerup"), spawnPosition, Quaternion.identity);
+        }
+        else if (randomVal < 85)
+        {
+            Instantiate(Resources.Load<Powerup>("InvulnerabilityPowerup"), spawnPosition, Quaternion.identity);
+        } else if (randomVal < 95)
+        {
+            Instantiate(Resources.Load<Powerup>("OneShotPowerup"), spawnPosition, Quaternion.identity);
+        } else
+        {
+            Instantiate(Resources.Load<Powerup>("RandomPowerup"), spawnPosition, Quaternion.identity);
+        }
     }
 
     protected void RotateToPlayer()
