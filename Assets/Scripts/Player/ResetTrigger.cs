@@ -28,7 +28,6 @@ public class ResetTrigger : StateMachineBehaviour
         else
         {
             animator.ResetTrigger(triggerName);
-            animator.GetComponent<AIController>().ResetState();
         }
     }
 

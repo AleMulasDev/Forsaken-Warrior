@@ -6,14 +6,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshAgent))]
 
 public class AIController : MonoBehaviour
 {
     
     [SerializeField] protected List<Collider> colliders;
-
+    [SerializeField] private Transform lFoot;
+    [SerializeField] private Transform rFoot;
+    [SerializeField] private GameObject[] footstepParticles;
     [SerializeField] private bool shouldEnableRootMotion;
 
     private NavMeshAgent _navMeshAgent;
@@ -61,7 +62,7 @@ public class AIController : MonoBehaviour
         _animator.SetFloat("forwardSpeed", localVelocity.z);
     }
 
-    protected void Die()
+    virtual protected void Die()
     {
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
@@ -106,5 +107,17 @@ public class AIController : MonoBehaviour
     public bool GetShouldEnableRootMotion()
     {
         return shouldEnableRootMotion;
+    }
+
+    private void FootR()
+    {
+        int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
+    }
+
+    private void FootL()
+    {
+        int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
     }
 }

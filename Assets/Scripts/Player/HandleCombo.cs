@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class HandleCombo : StateMachineBehaviour
 {
+    [SerializeField] private float newDamageModifier;
     private static readonly int CanDoCombo = Animator.StringToHash("canDoCombo");
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool(CanDoCombo, false);
+        animator.gameObject.GetComponent<PlayerController>().ChangeDamageModifier(newDamageModifier);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

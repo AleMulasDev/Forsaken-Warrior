@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SwitchState : MonoBehaviour
 {
-    [SerializeField] private EBossMode changeTo;
+    [SerializeField] private EBossMode onEnter;
+    [SerializeField] private EBossMode onExit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +15,17 @@ public class SwitchState : MonoBehaviour
         MinibossController miniboss = GetComponentInParent<MinibossController>();
 
         if(miniboss != null && other.gameObject.tag.Equals("Player"))
-            miniboss.SetBossMode(changeTo);
+            miniboss.SetBossMode(onEnter);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.tag.Equals("Player"))
+            return;
+
+        MinibossController miniboss = GetComponentInParent<MinibossController>();
+
+        if (miniboss != null && other.gameObject.tag.Equals("Player"))
+            miniboss.SetBossMode(onExit);
     }
 }

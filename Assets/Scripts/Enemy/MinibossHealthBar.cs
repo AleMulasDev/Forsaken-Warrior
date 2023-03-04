@@ -1,11 +1,15 @@
+using AmazingAssets.AdvancedDissolve;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum EUIMode { EUIM_Show, EUIM_Hide }
 
 public class MinibossHealthBar : MonoBehaviour
 {
+    [SerializeField] private Image backFill;
+
     private CanvasGroup _canvasGroup;
 
     private void Start()
@@ -19,7 +23,17 @@ public class MinibossHealthBar : MonoBehaviour
 
     public void HideHealthBar()
     {
+        print("Hide");
         StartCoroutine(HealthBarCoroutine(EUIMode.EUIM_Hide));
+    }
+
+    private IEnumerator UpdateHealthBarCoroutine(float amount)
+    {
+        while(backFill.fillAmount > amount)
+        {
+            backFill.fillAmount = Mathf.MoveTowards(backFill.fillAmount, amount, .5f * Time.deltaTime);
+            yield return null;
+        }
     }
 
     private IEnumerator HealthBarCoroutine(EUIMode uiMode)
@@ -42,5 +56,10 @@ public class MinibossHealthBar : MonoBehaviour
                 break;
         }
         
+    }
+
+    public void UpdateHealthBar(float amount)
+    {
+        StartCoroutine(UpdateHealthBarCoroutine(amount));
     }
 }

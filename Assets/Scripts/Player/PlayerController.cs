@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private MeleeWeaponTrail _weaponTrail;
     private PowerupManager _powerupManager;
+    private Weapon _weapon;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     
     [Header("Player parameters")] 
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
         _powerupManager = GetComponent<PowerupManager>();
-        
+        _weapon = GetComponentInChildren<Weapon>();
+
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
         _playerInput.PlayerControls.Move.canceled += OnMovementInput;
@@ -76,11 +78,18 @@ public class PlayerController : MonoBehaviour
 
     #region inputFunctions
 
+    public void ChangeDamageModifier(float newDamageModifier)
+    {
+        _weapon.ChangeDamageModifier(newDamageModifier);
+    }
+
     private void Dodge(InputAction.CallbackContext ctx)
     {
         if (!(_characterState == ECharacterStates.ECS_Inoccupied
             || _characterState == ECharacterStates.ECS_LightAttack))
             return;
+
+        DisableBox();
 
         if (_movementInput == Vector2.zero)
         {

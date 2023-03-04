@@ -42,9 +42,21 @@ public class MinibossController : AIController
         _spawnTimer = Mathf.Infinity;
     }
 
+    protected override void Die()
+    {
+        GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
+        base.Die();
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (_health.IsDead())
+        {
+            Die();
+            return;
+        }
+
         if (_bossMode != EBossMode.EBM_None)
             _circleWeapon = weapons[(int)_bossMode];
 
@@ -160,6 +172,8 @@ public class MinibossController : AIController
                 return "secondCircleUnsheath";
             case EBossMode.EBM_ThirdCircle:
                 return "thirdCircleUnsheath";
+            case EBossMode.EBM_None:
+                return "unequip";
             default:
                 return string.Empty;
         }
@@ -168,9 +182,9 @@ public class MinibossController : AIController
     public void SetBossMode(EBossMode bossMode)
     {
         DisableNavMesh();
-        _enemyState = EEnemyState.EES_DrawingWeapon;
         _bossMode = bossMode;
         _animator.SetTrigger(GetCurrentUnsheathTrigger());
+        _enemyState = EEnemyState.EES_DrawingWeapon;
 
         if (bossMode == EBossMode.EBM_ThirdCircle)
             GetComponentInChildren<MinibossHealthBar>().ShowHealthBar();
@@ -184,6 +198,8 @@ public class MinibossController : AIController
             Destroy(_currentRightHandWeaponInstance.gameObject);
         if (_currentLeftHandWeaponInstance != null)
             Destroy(_currentLeftHandWeaponInstance.gameObject);
+
+        if (_bossMode == EBossMode.EBM_None) return;
 
         switch (_circleWeapon.weaponType)
         {
@@ -209,16 +225,19 @@ public class MinibossController : AIController
 
     private void ShootR()
     {
+        _enemyState = EEnemyState.EES_Attack;
         _currentRightHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
     }
 
     private void ShootL()
     {
+        _enemyState = EEnemyState.EES_Attack;
         _currentLeftHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
     }
 
     private void Shoot()
     {
+        _enemyState = EEnemyState.EES_Attack;
         _currentRightHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
     }
 }

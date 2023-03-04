@@ -21,6 +21,7 @@ public class SimpleEnemyController : AIController
 
     void Update()
     {
+        if(_enemyState == EEnemyState.EES_Spawning) { return; }
         if (_health.IsDead())
         {
             Die();

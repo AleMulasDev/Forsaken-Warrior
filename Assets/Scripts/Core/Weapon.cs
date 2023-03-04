@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ public class Weapon : MonoBehaviour
 
     private PowerupManager _powerupManager;
     private Health _health;
+    private float _damageModifier = 1;
     private void Start()
     {
         _powerupManager = GetComponentInParent<PowerupManager>();
@@ -28,6 +30,12 @@ public class Weapon : MonoBehaviour
             other.GetComponent<Health>().TakeDamage(GetDamage());
         }
     }
+
+    public void ChangeDamageModifier(float newDamageModifier)
+    {
+        _damageModifier = newDamageModifier;
+    }
+
     private bool IsOneShotEnabled(Collider other)
     {
         return _powerupManager != null && 
@@ -39,10 +47,10 @@ public class Weapon : MonoBehaviour
     {
         if (_powerupManager != null && _powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is DamagePowerup)
         {
-            return damage * 3f;
+            return damage * 3f * _damageModifier;
         }
         else {
-            return damage;
+            return damage * _damageModifier;
         }
     }
 

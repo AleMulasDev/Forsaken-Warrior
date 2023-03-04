@@ -11,7 +11,6 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
         [SerializeField] private float lerpTimerSpawn = 3.0f;
         [SerializeField] private float lerpTimerDeath = 5.0f;
         private Material _material;
-        private Health _health;
         private float timeElapsedSpawn = 0.0f;
         private float timeElapsedDissolve = 0.0f;
 
@@ -20,7 +19,6 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
             GetComponent<Renderer>();
 
             _material = GetComponent<Renderer>().material;
-            _health = GetComponentInParent<Health>();
 
             SpawnEffect();
         }
@@ -50,6 +48,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator SpawnEffectCoroutine()
         {
+            GetComponentInParent<AIController>().SetEnemyState(EEnemyState.EES_Spawning);
+
             while (timeElapsedSpawn < lerpTimerSpawn)
             {
                 float propertyValue = Mathf.Lerp(1, 0, timeElapsedSpawn / lerpTimerSpawn);
@@ -57,6 +57,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
                 timeElapsedSpawn += Time.deltaTime;
                 yield return null;
             }
+
+            GetComponentInParent<AIController>().SetEnemyState(EEnemyState.EES_Inoccupied);
         }
     }
 }

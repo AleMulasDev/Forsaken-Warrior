@@ -7,9 +7,8 @@ using UnityEngine.AI;
 public class Health : MonoBehaviour
 {
     [SerializeField] GameObject _bloodParticle;
-    [SerializeField] MultipleIconValueBarTool _multipleIconValueBarTool;
-    [SerializeField] private float _maxHealth;
-    [SerializeField] private float _currentHealth;
+    [SerializeField] protected float _maxHealth;
+    [SerializeField] protected float _currentHealth;
 
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
@@ -17,7 +16,6 @@ public class Health : MonoBehaviour
     private PowerupManager _powerupManager;
 
     private bool _isDead = false;
-
 
     private void Start()
     {
@@ -27,7 +25,7 @@ public class Health : MonoBehaviour
         _powerupManager = GetComponent<PowerupManager>();
         _characterController = GetComponent<CharacterController>();
     }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (_characterController && _powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup && _powerupManager.GetCurrentPowerup() != null)
             return;
@@ -49,24 +47,8 @@ public class Health : MonoBehaviour
         }
         else // Player
         {
-            _multipleIconValueBarTool.SetNowValue(_currentHealth);
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _characterController.height / 2, 0), _bloodParticle.transform.rotation), 1f);
         }
-    }
-
-    public void AddHeart(float heart)
-    {
-        _currentHealth = _maxHealth += (heart * 4);
-        _multipleIconValueBarTool.SetMaxValue(_maxHealth);
-        _multipleIconValueBarTool.SetNowValue(_maxHealth);
-        _multipleIconValueBarTool.RefreshUI();
-    }
-
-    public void AddHealth(float health)
-    {
-        _currentHealth += health;
-        _multipleIconValueBarTool.SetNowValue(_currentHealth);
-        _multipleIconValueBarTool.RefreshUI();
     }
 
     public void Kill()

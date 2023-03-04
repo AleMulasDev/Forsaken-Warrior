@@ -1271,7 +1271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 77ba31720714a1d40961e4e42ffaf485, type: 3}
-  _multipleIconValueBarTool: {fileID: 0}
   _maxHealth: 8
   _currentHealth: 0
 --- !u!195 &2739579125779529825
@@ -1311,9 +1310,15 @@ MonoBehaviour:
   colliders:
   - {fileID: 2739579125779560979}
   - {fileID: 2739579125779541433}
+  lFoot: {fileID: 2739579125779846507}
+  rFoot: {fileID: 2739579125779899123}
+  footstepParticles:
+  - {fileID: 5173427560926668776, guid: 880c519bb3845084fb22f3469527b782, type: 3}
+  - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
+  - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
   shouldEnableRootMotion: 0
   _attackDistance: 1.1
-  _attackFirerate: 1
+  _attackFirerate: 2
   bullet: {fileID: 0}
 --- !u!1 &2739579125779532799
 GameObject:
