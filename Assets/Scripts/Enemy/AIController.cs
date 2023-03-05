@@ -81,29 +81,29 @@ public class AIController : MonoBehaviour
 
         if(randomVal < 25)
         {
-            Instantiate(Resources.Load<Powerup>("BoostPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/BoostPowerup"), spawnPosition, Quaternion.identity);
         } 
         else if (randomVal < 45)
         {
-           Instantiate(Resources.Load<Powerup>("HealthPowerup"), spawnPosition, Quaternion.identity);
+           Instantiate(Resources.Load<Powerup>("Powerups/HealthPowerup"), spawnPosition, Quaternion.identity);
         }
         else if (randomVal < 60)
         {
-                Instantiate(Resources.Load<Powerup>("DamagePowerup"), spawnPosition, Quaternion.identity);
+                Instantiate(Resources.Load<Powerup>("Powerups/DamagePowerup"), spawnPosition, Quaternion.identity);
         }
         else if (randomVal < 75)
         {
-            Instantiate(Resources.Load<Powerup>("HeartPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/HeartPowerup"), spawnPosition, Quaternion.identity);
         }
         else if (randomVal < 85)
         {
-            Instantiate(Resources.Load<Powerup>("InvulnerabilityPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/InvulnerabilityPowerup"), spawnPosition, Quaternion.identity);
         } else if (randomVal < 95)
         {
-            Instantiate(Resources.Load<Powerup>("OneShotPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/OneShotPowerup"), spawnPosition, Quaternion.identity);
         } else
         {
-            Instantiate(Resources.Load<Powerup>("RandomPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/RandomPowerup"), spawnPosition, Quaternion.identity);
         }
     }
 

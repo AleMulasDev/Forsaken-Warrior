@@ -7,8 +7,8 @@ using UnityEngine.AI;
 public class Health : MonoBehaviour
 {
     [SerializeField] GameObject _bloodParticle;
-    [SerializeField] protected float _maxHealth;
-    [SerializeField] protected float _currentHealth;
+    [SerializeField] protected int _maxHealth;
+    [SerializeField] protected int _currentHealth;
 
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
         _powerupManager = GetComponent<PowerupManager>();
         _characterController = GetComponent<CharacterController>();
     }
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(int damage)
     {
         if (_characterController && _powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup && _powerupManager.GetCurrentPowerup() != null)
             return;
@@ -61,4 +61,6 @@ public class Health : MonoBehaviour
     }
 
     public bool IsDead() { return _isDead; }
+
+    public int GetHealth() { return _currentHealth; }
 }

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class HeartPowerup : Powerup
+public class HeartPowerup : PickupPowerup
 {
-    [SerializeField] private float heartAmount;
+    [SerializeField] private int heartAmount;
 
     public override void ApplyPowerup(GameObject player)
     {
         player.GetComponent<PlayerHealth>().AddHeart(heartAmount);
         InstantiatePowerupAura(-1, player.GetComponent<PowerupManager>());
-        HidePowerup();
+        Destroy(gameObject);
     }
 
 }

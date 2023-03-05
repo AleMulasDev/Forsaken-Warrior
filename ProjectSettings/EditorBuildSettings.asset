@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Isles.unity
+    guid: 091856d3878184403acdd73f42d4a2c3
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 3c7ff9aa8c5a640a3a65f5f154e97bfc
   m_configObjects: {}

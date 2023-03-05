@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomPowerup : Powerup
+public class RandomPowerup : PickupPowerup
 {
     [SerializeField] Powerup[] powerups;
     public override void ApplyPowerup(GameObject player)

@@ -8,12 +8,12 @@ public class PlayerHealth : Health
 
     // Start is called before the first frame update
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
         _multipleIconValueBarTool.SetNowValue(_currentHealth);
     }
-    public void AddHeart(float heart)
+    public void AddHeart(int heart)
     {
         _currentHealth = _maxHealth += (heart * 8);
         _multipleIconValueBarTool.SetMaxValue(_maxHealth);
@@ -21,7 +21,7 @@ public class PlayerHealth : Health
         _multipleIconValueBarTool.RefreshUI();
     }
 
-    public void AddHealth(float health)
+    public void AddHealth(int health)
     {
         _currentHealth += health;
         _multipleIconValueBarTool.SetNowValue(_currentHealth);

@@ -7,7 +7,7 @@ public class PowerupManager : MonoBehaviour
     [SerializeField] private PowerupBar powerupBar;
     [SerializeField] private float _pickupAuraDuration;
 
-    private Powerup _currentPowerup = null;
+    private TimerPowerup _currentPowerup = null;
 
     public void DisablePowerup()
     {
@@ -23,7 +23,7 @@ public class PowerupManager : MonoBehaviour
 
     public IEnumerator PowerupCoroutine(float powerupDuration)
     {
-        powerupBar.SetPowerupBar(powerupDuration);
+        powerupBar.SetPowerupBar(powerupDuration, _currentPowerup);
         yield return new WaitForSeconds(powerupDuration);
         DisablePowerup();
     }
@@ -49,7 +49,7 @@ public class PowerupManager : MonoBehaviour
     }
 
     public void SetCurrentPowerup(Powerup currentPowerup) {
-        this._currentPowerup = currentPowerup;
+        this._currentPowerup = (TimerPowerup)currentPowerup;
     }
 
     public Powerup GetCurrentPowerup() { return _currentPowerup; }

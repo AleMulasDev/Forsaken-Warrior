@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OneShotPowerup : Powerup
+public class OneShotPowerup : TimerPowerup
 {
-    [SerializeField] private float powerupDuration;
-
     private PowerupManager _powerupManager;
     public override void ApplyPowerup(GameObject player)
     {

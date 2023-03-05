@@ -5,23 +5,6 @@ using UnityEngine;
 public abstract class Powerup : MonoBehaviour
 {
     [SerializeField] private ParticleSystem powerupAura;
-    [SerializeField] private bool IsPickup;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag.Equals("Player"))
-        {
-            PowerupManager _powerupManager = other.GetComponent<PowerupManager>();
-
-            if (IsPickup)
-                ApplyPowerup(other.gameObject);
-            else if (_powerupManager.GetCurrentPowerup() == null)
-            {
-                _powerupManager.SetCurrentPowerup(this);
-                ApplyPowerup(other.gameObject);
-            }
-        }
-    }
 
     protected void InstantiatePowerupAura(float powerupDuration, PowerupManager _powerupManager)
     {

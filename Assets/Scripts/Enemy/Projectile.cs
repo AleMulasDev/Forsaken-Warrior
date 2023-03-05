@@ -5,18 +5,18 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private float bulletDamage;
+    [SerializeField] private int bulletDamage;
 
     private GameObject _player;
-    private Rigidbody _rigidbody;
     private Vector3 _startingPosition;
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
 
         _startingPosition = _player.transform.position + new Vector3(0, _player.GetComponent<CharacterController>().height / 2, 0);
 
         transform.LookAt(_startingPosition);
+
+        Destroy(gameObject, 5f);
     }
 
     private void Update()

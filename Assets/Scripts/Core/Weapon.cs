@@ -7,11 +7,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private string targetTag;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
 
     private PowerupManager _powerupManager;
     private Health _health;
-    private float _damageModifier = 1;
+    private int _damageModifier = 1;
     private void Start()
     {
         _powerupManager = GetComponentInParent<PowerupManager>();
@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public void ChangeDamageModifier(float newDamageModifier)
+    public void ChangeDamageModifier(int newDamageModifier)
     {
         _damageModifier = newDamageModifier;
     }
@@ -43,11 +43,11 @@ public class Weapon : MonoBehaviour
             && !(other.tag.Equals("Player"));
     }
 
-    private float GetDamage()
+    private int GetDamage()
     {
         if (_powerupManager != null && _powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is DamagePowerup)
         {
-            return damage * 3f * _damageModifier;
+            return damage * 3 * _damageModifier;
         }
         else if (_powerupManager != null)
         {

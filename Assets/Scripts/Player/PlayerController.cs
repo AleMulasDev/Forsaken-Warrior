@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpBackwardSpeed;
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
+    [SerializeField] private float heightOffset;
     [Space]
     [Header("References")]
     [SerializeField] private Transform rFoot;
@@ -39,21 +40,28 @@ public class PlayerController : MonoBehaviour
     private Coroutine _heavyAttackCoroutine;
 
     private bool _isMoving;
-    private bool _isJumping;
-    private bool _isFalling;
     private float tempDodgeSpeed;
     private float tempJumpBSpeed;
+    private float _velocity;
 
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
-    private static readonly int IsJumping = Animator.StringToHash("isJumping");
-    private static readonly int IsFalling = Animator.StringToHash("isFalling");
-    private static readonly int IsLanded = Animator.StringToHash("isLanded");
     private static readonly int CanDoCombo = Animator.StringToHash("canDoCombo");
     private static readonly int LightAttackInput = Animator.StringToHash("lightAttackInput");
     private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
     private static readonly int HeavyAttackInput = Animator.StringToHash("heavyAttackInput");
 
     private const float Gravity = -9.81F;
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag.Equals("Ground"))
+            SetIsLanded(true);
+    }
+
+    private void OnTriggerExit(Collider collision) {
+        if (collision.gameObject.tag.Equals("Ground"))
+            SetIsLanded(false);
+    }
 
     private void Awake()
     {
@@ -67,6 +75,9 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
         _playerInput.PlayerControls.Move.canceled += OnMovementInput;
+
+        _playerInput.PlayerControls.Jump.started += Jump;
+
         _playerInput.PlayerControls.LightAttack.started += OnLightAttackStarted;
         _playerInput.PlayerControls.LightAttack.canceled += OnLightAttackEnded;
 
@@ -76,9 +87,75 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerControls.Dodge.started += Dodge;
     }
 
+    private void Update()
+    {
+        HandleRotation();
+        HandleMovement();
+        HandleGravity();
+        HandleJump();
+    }
+
+    private void HandleRotation()
+    {
+        Vector3 direction;
+
+        direction.x = _cameraBasedMovement.x;
+        direction.y = 0;
+        direction.z = _cameraBasedMovement.z;
+
+        Quaternion currentRotation = transform.rotation;
+
+        if (_isMoving && direction != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(currentRotation, newRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    private void HandleMovement()
+    {
+        _cameraBasedMovement = ConvertToCameraSpace(_movement);
+
+        if (CanMove() || _characterState == ECharacterStates.ECS_Jumping)
+        {
+            _animator.SetBool(IsMoving, _isMoving);
+            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
+        }
+        else
+        {
+            _animator.SetBool(IsMoving, false);
+        }
+    }
+
+    private void HandleGravity()
+    {
+        _velocity += Gravity * 1.0f * Time.deltaTime;
+        _movement.y = _velocity;
+    }
+
+    private void HandleJump()
+    {
+        if (_characterState == ECharacterStates.ECS_Jumping)
+        {
+            float oldYVel = _movement.y;
+            float newYVel = _movement.y + Mathf.Sqrt(playerJumpHeight * Gravity * -3.0f);
+            float nextYVel = (oldYVel + newYVel) / 2;
+            _movement.y = nextYVel;
+        }
+    }
+
     #region inputFunctions
 
-    public void ChangeDamageModifier(float newDamageModifier)
+    private void Jump(InputAction.CallbackContext ctx)
+    {
+        if (_characterState != ECharacterStates.ECS_Inoccupied && _characterState != ECharacterStates.ECS_LightAttack) return;
+
+        ResetState();
+        _characterState = ECharacterStates.ECS_Jumping;
+        _animator.SetTrigger("jump");
+    }
+
+    public void ChangeDamageModifier(int newDamageModifier)
     {
         _weapon.ChangeDamageModifier(newDamageModifier);
     }
@@ -117,11 +194,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
     {
+        if (_characterState == ECharacterStates.ECS_Jumping) return;
+
         _heavyAttackCoroutine = StartCoroutine(HeavyAttackCoroutine());
     }
 
     private void OnHeavyAttackEnded(InputAction.CallbackContext ctx)
     {
+        if (_characterState == ECharacterStates.ECS_Jumping) return;
+
         if (_heavyAttackCoroutine != null)
             StopCoroutine(_heavyAttackCoroutine);
 
@@ -130,6 +211,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnLightAttackStarted(InputAction.CallbackContext ctx)
     {
+        if (_characterState == ECharacterStates.ECS_Jumping) return;
+
         if (_movementInput != Vector2.zero && _characterState != ECharacterStates.ECS_LightAttack)
         {
             _animator.SetTrigger(LightAttackInputMovement);
@@ -143,6 +226,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnLightAttackEnded(InputAction.CallbackContext ctx)
     {
+        if (_characterState == ECharacterStates.ECS_Jumping) return;
         _animator.SetBool(LightAttackInput, false);
     }
 
@@ -185,84 +269,6 @@ public class PlayerController : MonoBehaviour
     private void ResetHeavyAttack()
     {
         _animator.SetBool(HeavyAttackInput, false);
-        _characterState = ECharacterStates.ECS_Inoccupied;
-    }
-
-    public void Save()
-    {
-        
-    }
-
-    private void HandleRotation()
-    {
-        Vector3 direction;
-
-        direction.x = _cameraBasedMovement.x;
-        direction.y = 0;
-        direction.z = _cameraBasedMovement.z;
-
-        Quaternion currentRotation = transform.rotation;
-
-        if (_isMoving && direction != Vector3.zero)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(currentRotation, newRotation, rotationSpeed * Time.deltaTime);
-        }
-    }
-
-    private void HandleGravity()
-    {
-        _isFalling = _movement.y <= -1.0f;
-        float fallMultiplier = 2.0f;
-
-        if (_controller.isGrounded)
-        {
-            _animator.SetBool(IsFalling, false);
-            _animator.SetBool(IsJumping, false);
-            _animator.SetBool(IsLanded, true);
-            _movement.y = Gravity * Time.deltaTime;
-        }
-        else if (_isFalling && _characterState == ECharacterStates.ECS_Jumping)
-        {
-            _animator.SetBool(IsFalling, true);
-            _animator.SetBool(IsLanded, false);
-
-            float oldYVel = _movement.y;
-            float newYVel = _movement.y + (Gravity * fallMultiplier * Time.deltaTime);
-            print((oldYVel + newYVel) / 2);
-            float nextYVel = Mathf.Max((oldYVel + newYVel) / 2, -20.0f);
-            _movement.y = nextYVel;
-        }
-        else
-        {
-            float oldYVel = _movement.y;
-            float newYVel = _movement.y + (Gravity * Time.deltaTime);
-            float nextYVel = (oldYVel + newYVel) / 2;
-            _movement.y = nextYVel;
-        }
-    }
-
-    private void HandleJump()
-    {
-        if (_controller.isGrounded && _playerInput.PlayerControls.Jump.triggered && !_isJumping
-            && _characterState == ECharacterStates.ECS_Inoccupied)
-        {
-            _characterState = ECharacterStates.ECS_Jumping;
-            _animator.SetBool(IsJumping, true);
-            _animator.SetBool(IsLanded, false);
-
-            _isJumping = true;
-            float oldYVel = _movement.y;
-            float newYVel = _movement.y + Mathf.Sqrt(playerJumpHeight * Gravity * -3.0f);
-            float nextYVel = (oldYVel + newYVel) / 2;
-            _movement.y = nextYVel;
-        }
-        else if (_controller.isGrounded && _isJumping)
-        {
-            _characterState = ECharacterStates.ECS_Inoccupied;
-            _isJumping = false;
-        }
-
     }
 
     private Vector3 ConvertToCameraSpace(Vector3 playerMovement)
@@ -286,24 +292,9 @@ public class PlayerController : MonoBehaviour
         return res;
     }
 
-    private void Update()
+    public void SetIsLanded(bool isLanded)
     {
-        HandleRotation();
-
-        _cameraBasedMovement = ConvertToCameraSpace(_movement);
-
-        if (CanMove() || _isJumping || _isFalling)
-        {
-            _animator.SetBool(IsMoving, _isMoving);
-            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
-        }
-        else
-        {
-            _animator.SetBool(IsMoving, false);
-        }
-
-        HandleGravity();
-        HandleJump();
+        _animator.SetBool("isLanded", isLanded);
     }
 
     private float GetSpeed()
@@ -345,6 +336,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetState()
     {
+        _velocity = -1.0f;
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();
