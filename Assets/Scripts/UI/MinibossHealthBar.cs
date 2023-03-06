@@ -23,7 +23,6 @@ public class MinibossHealthBar : MonoBehaviour
 
     public void HideHealthBar()
     {
-        print("Hide");
         StartCoroutine(HealthBarCoroutine(EUIMode.EUIM_Hide));
     }
 

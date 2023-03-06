@@ -19495,7 +19495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51bacabb13b7f1b4aa7c8fc66034250f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupSprite: {fileID: 21300000, guid: 921721f12c02cc54bbb6602f144da04a, type: 3}
   powerupAura: {fileID: 198136987243302988, guid: 075e5130831f9304f8e5e0e2ccd2dc27, type: 3}
-  IsPickup: 0
+  powerupSprite: {fileID: 21300000, guid: 9dde46eb5e29d40d7bfcfe0245d0377e, type: 3}
+  powerupColor: {r: 0.24957943, g: 0, b: 1, a: 1}
   powerupDuration: 5

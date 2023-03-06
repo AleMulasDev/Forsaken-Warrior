@@ -4849,9 +4849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbabf9c20af29de4f8f605f567fed75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupSprite: {fileID: 0}
   powerupAura: {fileID: 0}
-  IsPickup: 1
   powerups:
   - {fileID: 3038907193710439913, guid: c809530b40255bf4ca9e831444ba2b28, type: 3}
   - {fileID: 8194811113818209266, guid: a8d7494cc90925747addcc51a6f67c7d, type: 3}

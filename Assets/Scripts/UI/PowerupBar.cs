@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class PowerupBar : MonoBehaviour
 {
     [SerializeField] private Image powerupImage; 
-    [SerializeField] private Image powerupFill;
+    [SerializeField] private Slider powerupFill;
+    [SerializeField] private Image powerupFillImage;
+    [SerializeField] private Image powerupFrame;
 
     private CanvasGroup _cg;
     private Powerup _currentPowerup;
@@ -26,6 +28,8 @@ public class PowerupBar : MonoBehaviour
         _tempPowerupDuration = powerupDuration;
         StartCoroutine(PowerupBarCoroutine(EUIMode.EUIM_Show));
         powerupImage.sprite = powerup.GetSprite();
+        powerupFillImage.color = powerup.GetPowerupColor();
+        powerupFrame.color = powerup.GetPowerupColor();
     }
 
     public void Hide()
@@ -37,7 +41,7 @@ public class PowerupBar : MonoBehaviour
     {
         if (_powerupDuration > 0)
         {
-            powerupFill.fillAmount = _tempPowerupDuration / _powerupDuration;
+            powerupFill.value = _tempPowerupDuration / _powerupDuration;
             _tempPowerupDuration -= Time.deltaTime;
         }
     }

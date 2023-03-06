@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI scoreText;
-    
+    [SerializeField] private TextMeshProUGUI keysText;
+
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         _time += Time.deltaTime;
-        timeText.text = "Time: " + GetTime();
+        timeText.text = GetTime();
     }
 
     public void SpeedTime()
@@ -75,5 +76,6 @@ public class GameManager : MonoBehaviour
     public void AddKey()
     {
         _keys++;
+        keysText.text = _keys + "/3";
     }
 }
