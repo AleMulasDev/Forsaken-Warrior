@@ -18,12 +18,12 @@ public class MinibossHealthBar : MonoBehaviour
     }
     public void ShowHealthBar()
     {
-        StartCoroutine(HealthBarCoroutine(EUIMode.EUIM_Show));
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, _canvasGroup));
     }
 
     public void HideHealthBar()
     {
-        StartCoroutine(HealthBarCoroutine(EUIMode.EUIM_Hide));
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _canvasGroup));
     }
 
     private IEnumerator UpdateHealthBarCoroutine(float amount)
@@ -33,28 +33,6 @@ public class MinibossHealthBar : MonoBehaviour
             backFill.fillAmount = Mathf.MoveTowards(backFill.fillAmount, amount, .5f * Time.deltaTime);
             yield return null;
         }
-    }
-
-    private IEnumerator HealthBarCoroutine(EUIMode uiMode)
-    {
-        switch(uiMode)
-        {
-            case EUIMode.EUIM_Show:
-                while (_canvasGroup.alpha < 1.0f)
-                {
-                    _canvasGroup.alpha += 0.01f;
-                    yield return null;
-                }
-                break;
-            case EUIMode.EUIM_Hide:
-                while (_canvasGroup.alpha > 0f)
-                {
-                    _canvasGroup.alpha -= 0.01f;
-                    yield return null;
-                }
-                break;
-        }
-        
     }
 
     public void UpdateHealthBar(float amount)

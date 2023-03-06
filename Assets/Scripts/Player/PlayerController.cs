@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInput _playerInput;
+    public static PlayerInput _playerInput;
     private CharacterController _controller;
     private Animator _animator;
     private MeleeWeaponTrail _weaponTrail;
@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider collision) {
         if (collision.gameObject.tag.Equals("Ground"))
             SetIsLanded(false);
+    }
+
+    public static PlayerInput GetPlayerInput()
+    {
+        return _playerInput;
     }
 
     private void Awake()

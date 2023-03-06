@@ -51,6 +51,16 @@ public class GameManager : MonoBehaviour
             return Mathf.RoundToInt(_time).ToString() + "s";
         }
     }
+    
+    public void GiveUp()
+    {
+
+    }
+    
+    public void Restart()
+    {
+
+    }
 
     public float GetTimeRaw()
     {

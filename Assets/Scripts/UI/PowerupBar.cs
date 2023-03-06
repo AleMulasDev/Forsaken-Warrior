@@ -26,7 +26,7 @@ public class PowerupBar : MonoBehaviour
         _currentPowerup = powerup;
         _powerupDuration = powerupDuration;
         _tempPowerupDuration = powerupDuration;
-        StartCoroutine(PowerupBarCoroutine(EUIMode.EUIM_Show));
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, _cg));
         powerupImage.sprite = powerup.GetSprite();
         powerupFillImage.color = powerup.GetPowerupColor();
         powerupFrame.color = powerup.GetPowerupColor();
@@ -34,7 +34,7 @@ public class PowerupBar : MonoBehaviour
 
     public void Hide()
     {
-        StartCoroutine(PowerupBarCoroutine(EUIMode.EUIM_Hide));
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _cg));
     }
 
     private void Update()
@@ -44,27 +44,5 @@ public class PowerupBar : MonoBehaviour
             powerupFill.value = _tempPowerupDuration / _powerupDuration;
             _tempPowerupDuration -= Time.deltaTime;
         }
-    }
-
-    private IEnumerator PowerupBarCoroutine(EUIMode uiMode)
-    {
-        switch (uiMode)
-        {
-            case EUIMode.EUIM_Show:
-                while (_cg.alpha < 1.0f)
-                {
-                    _cg.alpha += 0.01f;
-                    yield return null;
-                }
-                break;
-            case EUIMode.EUIM_Hide:
-                while (_cg.alpha > 0f)
-                {
-                    _cg.alpha -= 0.01f;
-                    yield return null;
-                }
-                break;
-        }
-
     }
 }

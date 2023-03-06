@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class OneShotPowerup : TimerPowerup
 {
-    private PowerupManager _powerupManager;
     public override void ApplyPowerup(GameObject player)
     {
         _powerupManager = player.GetComponent<PowerupManager>();
