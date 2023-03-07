@@ -1,18 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
-public class SettingsMenu : MonoBehaviour
+public class MenuSettings : MonoBehaviour
 {
-    private Resolution[] _screenRes;
+    [SerializeField] private TextMeshProUGUI mouseSensValue;
+    [SerializeField] private TextMeshProUGUI cameraSensValue;
+    [SerializeField] private CanvasGroup pauseCanvasGroup;
 
-    private void Start()
+    private Resolution[] _screenRes;
+    private CanvasGroup _canvasGroup;
+    private UIHandler _uiHandler;
+
+    private void Awake()
     {
+        _uiHandler = GetComponentInParent<UIHandler>();
+        _canvasGroup = GetComponent<CanvasGroup>();
         _screenRes = Screen.resolutions;
         //audioMixer.SetFloat("musicVol", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+    }
+
+    public void OpenPauseMenu()
+    {
+        _uiHandler.OpenPauseMenu();
+        _uiHandler.CloseSettings();
+        pauseCanvasGroup.transform.SetAsLastSibling();
+    }
+
+    public void ChangeCameraSens(float value)
+    {
+        cameraSensValue.text = value.ToString();
+    }
+
+    public void ChangeMouseSens(float value)
+    {
+        mouseSensValue.text = value.ToString();
     }
 
     public void SetSFXVolume(float volume)
@@ -49,7 +75,7 @@ public class SettingsMenu : MonoBehaviour
         PlayerPrefs.SetInt("fullscreen", (isFullscreen ? 1 : 0));
     }
 
-    public void SetResolution(int resIndex, string resOption)
+    public void SetResolution(int resIndex)
     {
         if (_screenRes == null)
             return;

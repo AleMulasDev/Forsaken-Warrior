@@ -13,7 +13,7 @@ public class Utils
         switch (uiMode)
         {
             case EUIMode.EUIM_Show:
-                canvasGroup.gameObject.SetActive(true);
+                canvasGroup.interactable = true;
                 while (canvasGroup.alpha < 1.0f)
                 {
                     canvasGroup.alpha += 0.01f;
@@ -21,12 +21,12 @@ public class Utils
                 }
                 break;
             case EUIMode.EUIM_Hide:
+                canvasGroup.interactable = false;
                 while (canvasGroup.alpha > 0f)
                 {
                     canvasGroup.alpha -= 0.01f;
                     yield return null;
                 }
-                canvasGroup.gameObject.SetActive(false);
                 break;
         }
 

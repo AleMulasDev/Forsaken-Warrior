@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
     
     public void GiveUp()
     {
-
+        SceneManager.LoadScene("Menu");
     }
     
     public void Restart()
@@ -87,5 +88,15 @@ public class GameManager : MonoBehaviour
     {
         _keys++;
         keysText.text = _keys + "/3";
+    }
+
+    public void Show(CanvasGroup canvasGroup)
+    {
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, canvasGroup));
+    }
+
+    public void Hide(CanvasGroup canvasGroup)
+    {
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, canvasGroup));
     }
 }
