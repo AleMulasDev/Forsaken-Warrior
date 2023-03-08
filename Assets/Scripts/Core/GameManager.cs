@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,11 +21,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        scoreText.text = "Score: " + _score;
+
+        if(scoreText != null)
+            scoreText.text = "Score: " + _score;
     }
 
     private void Update()
     {
+        if (timeText == null) return;
+
         _time += Time.deltaTime;
         timeText.text = GetTime();
     }
