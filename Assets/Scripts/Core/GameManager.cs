@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        print(SavingSystem.instance.GetPlayerData().playerName);
+
         instance = this;
 
         if(scoreText != null)
