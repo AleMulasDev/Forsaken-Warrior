@@ -8,7 +8,7 @@ public struct CircleWeapon
 {
     public EBossMode circle;
     public float fireRate;
-    public float damage;
+    public int damage;
     public Weapon rightHandWeapon;
     public Weapon leftHandWeapon;
     public Projectile bullet;
@@ -20,7 +20,6 @@ public class MinibossController : AIController
 {
     [SerializeField] private int maxCircles;
     [SerializeField] CircleWeapon[] weapons;
-    
 
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
@@ -51,6 +50,9 @@ public class MinibossController : AIController
     // Update is called once per frame
     void Update()
     {
+
+        _animator.SetFloat("bossMode", (int)_bossMode);
+
         if (_health.IsDead())
         {
             Die();
@@ -97,7 +99,7 @@ public class MinibossController : AIController
 
     private void Spawn()
     {
-        foreach(Spawner s in enemiesSpawners)
+        foreach (Spawner s in enemiesSpawners)
             s.SpawnAll();
     }
 
@@ -129,7 +131,7 @@ public class MinibossController : AIController
             && !_playerController.GetComponent<Health>().IsDead())
         {
             _enemyState = EEnemyState.EES_Attack;
-            _animator.SetTrigger(GetCurrentTrigger());
+            _animator.SetTrigger("attack");
         }
     }
 
@@ -143,39 +145,7 @@ public class MinibossController : AIController
         if (_attackTimer > _circleWeapon.fireRate && !_playerController.GetComponent<Health>().IsDead())
         {
             _enemyState = EEnemyState.EES_Attack;
-            _animator.SetTrigger(GetCurrentTrigger());
-        }
-    }
-
-    private string GetCurrentTrigger()
-    {
-        switch (_bossMode)
-        {
-            case EBossMode.EBM_FirstCircle:
-                return "firstCircleAttack";
-            case EBossMode.EBM_SecondCircle:
-                return "secondCircleAttack";
-            case EBossMode.EBM_ThirdCircle:
-                return "thirdCircleAttack";
-            default:
-                return string.Empty;
-        }
-    }
-
-    private string GetCurrentUnsheathTrigger()
-    {
-        switch (_bossMode)
-        {
-            case EBossMode.EBM_FirstCircle:
-                return "firstCircleUnsheath";
-            case EBossMode.EBM_SecondCircle:
-                return "secondCircleUnsheath";
-            case EBossMode.EBM_ThirdCircle:
-                return "thirdCircleUnsheath";
-            case EBossMode.EBM_None:
-                return "unequip";
-            default:
-                return string.Empty;
+            _animator.SetTrigger("attack");
         }
     }
 
@@ -183,7 +153,7 @@ public class MinibossController : AIController
     {
         DisableNavMesh();
         _bossMode = bossMode;
-        _animator.SetTrigger(GetCurrentUnsheathTrigger());
+        _animator.SetTrigger("unsheath");
         _enemyState = EEnemyState.EES_DrawingWeapon;
 
         if (bossMode == EBossMode.EBM_ThirdCircle)
@@ -205,13 +175,16 @@ public class MinibossController : AIController
         {
             case EWeaponType.EWT_LeftHand:
                 _currentLeftHandWeaponInstance = Instantiate(_circleWeapon.leftHandWeapon, leftHand);
+                UpdateWeapon();
                 break;
             case EWeaponType.EWT_RightHand:
                 _currentRightHandWeaponInstance = Instantiate(_circleWeapon.rightHandWeapon, rightHand);
+                UpdateWeapon();
                 break;
             case EWeaponType.EWT_Both:
                 _currentLeftHandWeaponInstance = Instantiate(_circleWeapon.leftHandWeapon, leftHand);
                 _currentRightHandWeaponInstance = Instantiate(_circleWeapon.rightHandWeapon, rightHand);
+                UpdateWeapon();
                 break;
         }
 
@@ -221,6 +194,20 @@ public class MinibossController : AIController
         if (_currentRightHandWeaponInstance != null && _currentRightHandWeaponInstance.TryGetComponent<Collider>(out Collider rightWeaponCollider))
             colliders.Add(rightWeaponCollider);
 
+    }
+
+    private void SpawnWeapon(bool isRightHanded)
+    {
+        if (isRightHanded)
+            _currentRightHandWeaponInstance = Instantiate(_circleWeapon.rightHandWeapon, rightHand);
+        else
+            _currentLeftHandWeaponInstance = Instantiate(_circleWeapon.leftHandWeapon, leftHand);
+    }
+
+    private void UpdateWeapon()
+    {
+        _currentRightHandWeaponInstance?.SetDamage(_circleWeapon.damage);
+        _currentLeftHandWeaponInstance?.SetDamage(_circleWeapon.damage);
     }
 
     private void ShootR()

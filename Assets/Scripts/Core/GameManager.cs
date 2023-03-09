@@ -16,16 +16,25 @@ public class GameManager : MonoBehaviour
     private float _time = 0;
     private int _keys = 0;
 
+    private ParticleSystem[] footstepParticles;
+
     public static GameManager instance;
 
-    private void Start()
+    private void Awake()
     {
-        print(SavingSystem.instance.GetPlayerData().playerName);
+        //print(SavingSystem.instance.GetPlayerData().playerName);
+
+        footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
 
         instance = this;
 
         if(scoreText != null)
             scoreText.text = "Score: " + _score;
+    }
+
+    public ParticleSystem[] GetFootstepParticles()
+    {
+        return footstepParticles;
     }
 
     private void Update()

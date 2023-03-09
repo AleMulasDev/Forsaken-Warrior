@@ -22,6 +22,6 @@ public class MinibossHealth : Health
             GetComponent<AIController>().SetEnemyState(EEnemyState.EES_Stunned);
         }
 
-        healthBar.UpdateHealthBar(_currentHealth / _maxHealth);
+        healthBar.UpdateHealthBar((float)_currentHealth / _maxHealth);
     }
 }

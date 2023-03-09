@@ -30,10 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rFoot;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
-    [Space]
-    [Header("Particles")]
-    [SerializeField] private GameObject[] footstepParticles;
 
+    private ParticleSystem[] footstepParticles;
     private Vector2 _movementInput;
     private Vector3 _movement;
     private Vector3 _cameraBasedMovement;
@@ -92,6 +90,10 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerControls.Dodge.started += Dodge;
     }
 
+    private void Start()
+    {
+        footstepParticles = GameManager.instance.GetFootstepParticles();
+    }
     private void Update()
     {
         HandleRotation();

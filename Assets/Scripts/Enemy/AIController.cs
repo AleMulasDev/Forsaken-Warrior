@@ -11,12 +11,13 @@ using UnityEngine.AI;
 public class AIController : MonoBehaviour
 {
     [SerializeField] float powerupSpawnChance;
+    [SerializeField] int onKillScore;
     [SerializeField] protected List<Collider> colliders;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
-    [SerializeField] private GameObject[] footstepParticles;
     [SerializeField] private bool shouldEnableRootMotion;
 
+    private ParticleSystem[] footstepParticles;
     private NavMeshAgent _navMeshAgent;
     protected GameObject _playerController;
     protected Animator _animator;
@@ -36,6 +37,8 @@ public class AIController : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider>();
 
         _navMeshAgent.updateRotation = false;
+
+        footstepParticles = GameManager.instance.GetFootstepParticles();
     }
 
     protected void EnableNavMesh()
@@ -71,7 +74,13 @@ public class AIController : MonoBehaviour
 
     
 
-    public void SpawnPowerup()
+    public void HandleDeath()
+    {
+        SpawnPowerup();
+        GameManager.instance.AddScore(onKillScore);
+    }
+
+    private void SpawnPowerup()
     {
         if (Random.Range(0.0f, 1.0f) > powerupSpawnChance) return;
 
@@ -79,17 +88,17 @@ public class AIController : MonoBehaviour
 
         Vector3 spawnPosition = transform.position + new Vector3(0, 0.5f, 0);
 
-        if(randomVal < 25)
+        if (randomVal < 25)
         {
             Instantiate(Resources.Load<Powerup>("Powerups/BoostPowerup"), spawnPosition, Quaternion.identity);
-        } 
+        }
         else if (randomVal < 45)
         {
-           Instantiate(Resources.Load<Powerup>("Powerups/HealthPowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/HealthPowerup"), spawnPosition, Quaternion.identity);
         }
         else if (randomVal < 60)
         {
-                Instantiate(Resources.Load<Powerup>("Powerups/DamagePowerup"), spawnPosition, Quaternion.identity);
+            Instantiate(Resources.Load<Powerup>("Powerups/DamagePowerup"), spawnPosition, Quaternion.identity);
         }
         else if (randomVal < 75)
         {
@@ -98,10 +107,12 @@ public class AIController : MonoBehaviour
         else if (randomVal < 85)
         {
             Instantiate(Resources.Load<Powerup>("Powerups/InvulnerabilityPowerup"), spawnPosition, Quaternion.identity);
-        } else if (randomVal < 95)
+        }
+        else if (randomVal < 95)
         {
             Instantiate(Resources.Load<Powerup>("Powerups/OneShotPowerup"), spawnPosition, Quaternion.identity);
-        } else
+        }
+        else
         {
             Instantiate(Resources.Load<Powerup>("Powerups/RandomPowerup"), spawnPosition, Quaternion.identity);
         }

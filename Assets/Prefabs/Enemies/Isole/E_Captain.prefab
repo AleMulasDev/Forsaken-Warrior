@@ -2407,16 +2407,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9386edf88a8a9854681fe9d259fefa29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupSpawnChance: 0
+  powerupSpawnChance: 0.1
   colliders: []
-  lFoot: {fileID: 0}
-  rFoot: {fileID: 0}
-  footstepParticles: []
+  lFoot: {fileID: 2760284867535136740}
+  rFoot: {fileID: 2760284867535151830}
   shouldEnableRootMotion: 0
   maxCircles: 3
   weapons:
   - circle: 0
-    fireRate: 1
+    fireRate: 2
     damage: 1
     rightHandWeapon: {fileID: 5136357666334308197, guid: 42cc46ac720fae04ba03e81ae859a008, type: 3}
     leftHandWeapon: {fileID: 6941930556950479469, guid: cb44112ae311fd64890ff1977e97bed4, type: 3}
@@ -2424,7 +2423,7 @@ MonoBehaviour:
     weaponType: 2
     collider: {fileID: 0}
   - circle: 1
-    fireRate: 2
+    fireRate: 3
     damage: 3
     rightHandWeapon: {fileID: 5136357666334308197, guid: bea138ba55dbed54f930380b8310a9f2, type: 3}
     leftHandWeapon: {fileID: 0}
@@ -3051,7 +3050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6679447264075605237
 Transform:
   m_ObjectHideFlags: 0
@@ -3255,7 +3254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6679447264858896608
 Transform:
   m_ObjectHideFlags: 0

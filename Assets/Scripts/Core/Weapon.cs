@@ -17,6 +17,11 @@ public class Weapon : MonoBehaviour
         _powerupManager = GetComponentInParent<PowerupManager>();
         _health = GetComponentInParent<Health>();
     }
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(_health.IsDead()) return;
@@ -61,6 +66,6 @@ public class Weapon : MonoBehaviour
     {
         GetComponentInChildren<SpawnParticle>()?.SpawnParticleAtPosition();
         Projectile bulletInstance = Instantiate(bullet, transform.position, bullet.transform.rotation);
-        bulletInstance.SetProjectile(player);
+        bulletInstance.SetProjectile(player, damage);
     }
 }

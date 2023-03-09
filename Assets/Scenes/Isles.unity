@@ -8875,7 +8875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Enemy
-  damage: 0
+  damage: 1
 --- !u!65 &1327232608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10399,7 +10399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2760284867535147748, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.72
+      value: -23.46
       objectReference: {fileID: 0}
     - target: {fileID: 2760284867535147748, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10441,9 +10441,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: E_Captain
       objectReference: {fileID: 0}
-    - target: {fileID: 2760284867535494282, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 2760284867535494283, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
+      propertyPath: onKillScore
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760284867535494283, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
+      propertyPath: weapons.Array.data[2].damage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760284867535494283, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
+      propertyPath: weapons.Array.data[2].fireRate
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
@@ -15473,7 +15481,6 @@ GameObject:
   - component: {fileID: 1262625068234872645}
   - component: {fileID: 1262625068234872646}
   - component: {fileID: 1262625068234872647}
-  - component: {fileID: 1262625068234872648}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -15542,10 +15549,6 @@ MonoBehaviour:
   rFoot: {fileID: 2102589754}
   lFoot: {fileID: 1629041772}
   weaponCollider: {fileID: 1327232608}
-  footstepParticles:
-  - {fileID: 5173427560926668776, guid: 880c519bb3845084fb22f3469527b782, type: 3}
-  - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
-  - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
 --- !u!114 &1262625068234872645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15592,19 +15595,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1262625068234872648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212386613055854742}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25, y: 1, z: 0.25}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!1 &2573772441579751939
 GameObject:
   m_ObjectHideFlags: 0

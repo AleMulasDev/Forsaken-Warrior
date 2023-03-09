@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private int bulletDamage;
 
+    private int _damage;
     private GameObject _player;
     private Vector3 _startingPosition;
     private void Start()
@@ -24,9 +24,10 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
     }
 
-    public void SetProjectile(GameObject player)
+    public void SetProjectile(GameObject player, int damage)
     {
         _player = player;
+        _damage = damage;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +35,7 @@ public class Projectile : MonoBehaviour
         if (!other.tag.Equals("Player"))
             return;
 
-        _player.GetComponent<Health>().TakeDamage(bulletDamage);
+        _player.GetComponent<Health>().TakeDamage(_damage);
         Destroy(gameObject);
     }
 }

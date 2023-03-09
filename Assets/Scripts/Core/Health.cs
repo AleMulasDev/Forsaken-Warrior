@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
 
         if (_currentHealth == 0 && !_isDead)
         {
-            GetComponent<AIController>()?.SpawnPowerup();
+            GetComponent<AIController>()?.HandleDeath();
 
             _animator.SetTrigger("isDead");
             _isDead = true;
