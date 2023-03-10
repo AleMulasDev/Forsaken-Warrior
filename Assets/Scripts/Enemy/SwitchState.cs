@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SwitchState : MonoBehaviour
 {
-    [SerializeField] private EBossMode onEnter;
-    [SerializeField] private EBossMode onExit;
+    [SerializeField] private EMinibossMode onEnter;
+    [SerializeField] private EMinibossMode onExit;
 
     private void OnTriggerEnter(Collider other)
     {

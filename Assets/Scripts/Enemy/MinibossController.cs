@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public struct CircleWeapon
 {
-    public EBossMode circle;
+    public EMinibossMode circle;
     public float fireRate;
     public int damage;
     public Weapon rightHandWeapon;
@@ -25,7 +25,7 @@ public class MinibossController : AIController
     [SerializeField] private Transform rightHand;
     [SerializeField] private float spawnTimer;
 
-    private EBossMode _bossMode = EBossMode.EBM_None;
+    private EMinibossMode _bossMode = EMinibossMode.EMM_None;
     private CircleWeapon _circleWeapon;
     private float _spawnTimer;
     private List<Spawner> enemiesSpawners;
@@ -59,7 +59,7 @@ public class MinibossController : AIController
             return;
         }
 
-        if (_bossMode != EBossMode.EBM_None)
+        if (_bossMode != EMinibossMode.EMM_None)
             _circleWeapon = weapons[(int)_bossMode];
 
         if (_enemyState == EEnemyState.EES_Inoccupied)
@@ -67,16 +67,16 @@ public class MinibossController : AIController
 
         switch (_bossMode)
         {
-            case EBossMode.EBM_FirstCircle:
+            case EMinibossMode.EMM_FirstCircle:
                 ShootBehaviour();
                 break;
-            case EBossMode.EBM_SecondCircle:
+            case EMinibossMode.EMM_SecondCircle:
                 ShootBehaviour();
                 break;
-            case EBossMode.EBM_ThirdCircle:
+            case EMinibossMode.EMM_ThirdCircle:
                 AttackBehaviour();
                 break;
-            case EBossMode.EBM_None:
+            case EMinibossMode.EMM_None:
                 SpawnEnemies();
                 break;
             default:
@@ -149,14 +149,14 @@ public class MinibossController : AIController
         }
     }
 
-    public void SetBossMode(EBossMode bossMode)
+    public void SetBossMode(EMinibossMode bossMode)
     {
         DisableNavMesh();
         _bossMode = bossMode;
         _animator.SetTrigger("unsheath");
         _enemyState = EEnemyState.EES_DrawingWeapon;
 
-        if (bossMode == EBossMode.EBM_ThirdCircle)
+        if (bossMode == EMinibossMode.EMM_ThirdCircle)
             GetComponentInChildren<MinibossHealthBar>().ShowHealthBar();
         else
             GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
@@ -169,7 +169,7 @@ public class MinibossController : AIController
         if (_currentLeftHandWeaponInstance != null)
             Destroy(_currentLeftHandWeaponInstance.gameObject);
 
-        if (_bossMode == EBossMode.EBM_None) return;
+        if (_bossMode == EMinibossMode.EMM_None) return;
 
         switch (_circleWeapon.weaponType)
         {

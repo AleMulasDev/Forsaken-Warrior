@@ -15,7 +15,6 @@ public class AIController : MonoBehaviour
     [SerializeField] protected List<Collider> colliders;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
-    [SerializeField] private bool shouldEnableRootMotion;
 
     private ParticleSystem[] footstepParticles;
     private NavMeshAgent _navMeshAgent;
@@ -129,6 +128,7 @@ public class AIController : MonoBehaviour
     {
         _attackTimer = 0.0f;
         _enemyState = EEnemyState.EES_Inoccupied;
+        _animator.applyRootMotion = false;
         EnableNavMesh();
     }
 
@@ -155,7 +155,7 @@ public class AIController : MonoBehaviour
 
     public bool GetShouldEnableRootMotion()
     {
-        return shouldEnableRootMotion;
+        return false;
     }
 
     private void FootR()

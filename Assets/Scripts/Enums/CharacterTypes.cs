@@ -6,6 +6,8 @@ public enum ECharacterStates { ECS_Inoccupied, ECS_LightAttack, ECS_HeavyAttack,
 
 public enum EEnemyState { EES_Inoccupied, EES_Attack, EES_DrawingWeapon, EES_Spawning, EES_Stunned }
 
-public enum EBossMode { EBM_FirstCircle, EBM_SecondCircle, EBM_ThirdCircle, EBM_None }
+public enum EMinibossMode { EMM_FirstCircle, EMM_SecondCircle, EMM_ThirdCircle, EMM_None }
+
+public enum EBossPhase { EBP_FirstPhase, EBP_SecondPhase, EBP_ThirdPhase }
 
 public enum EWeaponType { EWT_LeftHand, EWT_RightHand, EWT_Both }
