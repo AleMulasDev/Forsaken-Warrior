@@ -161,12 +161,12 @@ public class AIController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
+        Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation), 1f);
+        Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 }

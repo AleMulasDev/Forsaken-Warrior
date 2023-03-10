@@ -549,6 +549,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2382673485041098733}
   - component: {fileID: 2382673485041098732}
+  - component: {fileID: 8280929075355694235}
+  - component: {fileID: 4166760076139611032}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -591,7 +593,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ef71fb53ed68fd4180e64d11bb0de5b, type: 2}
+  - {fileID: 2100000, guid: d7b347dd26920af4ba9e233975129fbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -674,6 +676,32 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.85450345, z: -0.014261112}
     m_Extent: {x: 1.0571928, y: 0.96503633, z: 0.27960896}
   m_DirtyAABB: 0
+--- !u!114 &8280929075355694235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382673485041098730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &4166760076139611032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382673485041098730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2382673485112239369
 GameObject:
   m_ObjectHideFlags: 0

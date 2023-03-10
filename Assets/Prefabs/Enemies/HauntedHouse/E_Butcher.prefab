@@ -351,7 +351,6 @@ MonoBehaviour:
   - {fileID: 3465818063443214307}
   lFoot: {fileID: 363972441557935795}
   rFoot: {fileID: 364217860411665037}
-  shouldEnableRootMotion: 0
   _attackDistance: 1.1
   _attackFirerate: 3
   bullet: {fileID: 0}
@@ -1280,6 +1279,8 @@ GameObject:
   m_Component:
   - component: {fileID: 365525716157136657}
   - component: {fileID: 353779435652369133}
+  - component: {fileID: 8142441643190737364}
+  - component: {fileID: 8281368503949708756}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -1322,7 +1323,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ef71fb53ed68fd4180e64d11bb0de5b, type: 2}
+  - {fileID: 2100000, guid: d7b347dd26920af4ba9e233975129fbb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1405,6 +1406,32 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000059604645, y: 0.8749945, z: -0.033635154}
     m_Extent: {x: 1.0245595, y: 0.99133813, z: 0.33328265}
   m_DirtyAABB: 0
+--- !u!114 &8142441643190737364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362231415144571939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &8281368503949708756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362231415144571939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &362258881462965717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +1923,8 @@ GameObject:
   - component: {fileID: 3478544345769446541}
   - component: {fileID: 3465818063443214308}
   - component: {fileID: 3465818063443214307}
+  - component: {fileID: 1909712287798455887}
+  - component: {fileID: 7972655451718538135}
   m_Layer: 0
   m_Name: ButcherKnife
   m_TagString: Untagged
@@ -1995,3 +2024,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.2, z: 0.30530524}
   m_Center: {x: 0.00029322808, y: -0.058409527, z: 0.2497897}
+--- !u!114 &1909712287798455887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464245523884576321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &7972655451718538135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464245523884576321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
