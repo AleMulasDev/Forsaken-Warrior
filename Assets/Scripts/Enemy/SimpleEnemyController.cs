@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class SimpleEnemyController : AIController
 {
@@ -9,8 +9,9 @@ public class SimpleEnemyController : AIController
     [SerializeField] private float _attackFirerate;
     [SerializeField] private Projectile bullet;
 
-    private Weapon _weapon;
+    public UnityEvent onEnemyBossKill; 
 
+    private Weapon _weapon;
     private static readonly int Attack = Animator.StringToHash("attack");
 
     protected override void Start()

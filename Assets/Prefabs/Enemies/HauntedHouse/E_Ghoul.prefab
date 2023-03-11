@@ -1136,6 +1136,9 @@ MonoBehaviour:
   _attackDistance: 1.1
   _attackFirerate: 2
   bullet: {fileID: 0}
+  onEnemyBossKill:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6446200640559649084
 GameObject:
   m_ObjectHideFlags: 0

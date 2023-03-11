@@ -35,6 +35,7 @@ public class Health : MonoBehaviour
         if (_currentHealth == 0 && !_isDead)
         {
             GetComponent<AIController>()?.HandleDeath();
+            GetComponent<SimpleEnemyController>()?.onEnemyBossKill?.Invoke();
 
             _animator.SetTrigger("isDead");
             _isDead = true;

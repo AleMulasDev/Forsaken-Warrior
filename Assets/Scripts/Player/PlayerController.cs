@@ -170,7 +170,8 @@ public class PlayerController : MonoBehaviour
     private void Dodge(InputAction.CallbackContext ctx)
     {
         if (!(_characterState == ECharacterStates.ECS_Inoccupied
-            || _characterState == ECharacterStates.ECS_LightAttack))
+            || _characterState == ECharacterStates.ECS_LightAttack
+            || _characterState == ECharacterStates.ECS_HeavyAttack))
             return;
 
         DisableBox();
