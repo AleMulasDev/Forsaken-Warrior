@@ -96,6 +96,15 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        if (_characterState == ECharacterStates.ECS_Dodging)
+        {
+            _isMoving = false;
+        }
+        else
+        {
+            _isMoving = _movementInput != Vector2.zero;
+        }
+
         HandleRotation();
         HandleMovement();
         HandleGravity();
@@ -242,15 +251,8 @@ public class PlayerController : MonoBehaviour
     {
         _movementInput = ctx.ReadValue<Vector2>();
 
-        if (_characterState == ECharacterStates.ECS_Dodging)
-        {
-            _isMoving = false;
-            return;
-        }
-
         _movement.x = _movementInput.x;
         _movement.z = _movementInput.y;
-        _isMoving = _movementInput != Vector2.zero;
 
         if (_characterState == ECharacterStates.ECS_LightAttack)
         {
@@ -386,8 +388,8 @@ public class PlayerController : MonoBehaviour
 
     public void DecreaseVelocity()
     {
-        tempDodgeSpeed = Mathf.Max(0.05f, tempDodgeSpeed - 0.03f);
-        tempJumpBSpeed = Mathf.Max(0.05f, tempJumpBSpeed - 0.03f);
+        tempDodgeSpeed = Mathf.Max(0f, tempDodgeSpeed - 0.05f);
+        tempJumpBSpeed = Mathf.Max(0f, tempJumpBSpeed - 0.05f);
     }
 
     public void ResetDodgeSpeed()

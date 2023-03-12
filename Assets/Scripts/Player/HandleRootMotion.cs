@@ -37,9 +37,6 @@ public class HandleRootMotion : StateMachineBehaviour
         if (animator.TryGetComponent<AIController>(out AIController enemy))
         {
             animator.applyRootMotion = enemy.GetShouldEnableRootMotion();
-        } else
-        {
-            animator.GetComponent<PlayerController>().ResetState();
         }
     }
 

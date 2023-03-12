@@ -50,7 +50,6 @@ public class MinibossController : AIController
     // Update is called once per frame
     void Update()
     {
-
         _animator.SetFloat("bossMode", (int)_bossMode);
 
         if (_health.IsDead())
