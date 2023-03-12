@@ -171,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fd77d05c-f174-46f8-b205-c9f50beda208",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c65ac6c0-5d7c-49bb-a7a5-d01923ada26d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",

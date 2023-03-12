@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rFoot;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
-
+    [Header("Sounds")]
+    [SerializeField] private AudioClip footstep;
+    [SerializeField] private AudioClip swordWhip;
+    
     private ParticleSystem[] footstepParticles;
     private Vector2 _movementInput;
     private Vector3 _movement;
@@ -327,6 +330,11 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
+        if(_characterState == ECharacterStates.ECS_HeavyAttack)
+            AudioManager.Instance.PlaySoundEffect(swordWhip, true);
+        else
+            AudioManager.Instance.PlaySoundEffect(swordWhip, false);
+        
         EnableTrail();
     }
 
@@ -348,6 +356,7 @@ public class PlayerController : MonoBehaviour
     {
         _velocity = -1.0f;
         _characterState = ECharacterStates.ECS_Inoccupied;
+        AudioManager.Instance.StopSoundEffect();
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();
     }
@@ -377,19 +386,23 @@ public class PlayerController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        if(_characterState != ECharacterStates.ECS_HeavyAttack)
+            AudioManager.Instance.PlaySoundEffect(footstep, false);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        if(_characterState != ECharacterStates.ECS_HeavyAttack)
+            AudioManager.Instance.PlaySoundEffect(footstep, false);        
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     public void DecreaseVelocity()
     {
-        tempDodgeSpeed = Mathf.Max(0f, tempDodgeSpeed - 0.05f);
-        tempJumpBSpeed = Mathf.Max(0f, tempJumpBSpeed - 0.05f);
+        tempDodgeSpeed = Mathf.Max(0f, tempDodgeSpeed - 0.03f);
+        tempJumpBSpeed = Mathf.Max(0f, tempJumpBSpeed - 0.03f);
     }
 
     public void ResetDodgeSpeed()
