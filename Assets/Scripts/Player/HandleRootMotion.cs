@@ -14,21 +14,20 @@ public class HandleRootMotion : StateMachineBehaviour
         }
         else
         {
-            animator.GetComponent<PlayerController>().SetCharacterState(ECharacterStates.ECS_Dodging);
-            animator.GetComponent<PlayerController>().ResetDodgeSpeed();
+            
         }
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.IsName("Roll-Forward"))
-        {
-            animator.GetComponent<PlayerController>()?.Dash();
-        } else if (stateInfo.IsName("Jump-Backward"))
-        {
-            animator.GetComponent<PlayerController>()?.JumpBackward();
-        }
+        //if (stateInfo.IsName("Roll-Forward"))
+        //{
+        //    animator.GetComponent<PlayerController>()?.Dash();
+        //} else if (stateInfo.IsName("Jump-Backward"))
+        //{
+        //    animator.GetComponent<PlayerController>()?.JumpBackward();
+        //}
     }
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine

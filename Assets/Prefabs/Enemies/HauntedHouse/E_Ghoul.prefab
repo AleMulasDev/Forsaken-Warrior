@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 6038bd03568537044a67fd05f826768a, type: 3}
-  _maxHealth: 8
+  _maxHealth: 3
   _currentHealth: 0
 --- !u!195 &6446200640519447774
 NavMeshAgent:

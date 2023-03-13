@@ -99,7 +99,7 @@ public class MinibossController : AIController
     private void Spawn()
     {
         foreach (Spawner s in enemiesSpawners)
-            s.SpawnAll();
+            s.SpawnAllEnemies();
     }
 
     private void AttackBehaviour()

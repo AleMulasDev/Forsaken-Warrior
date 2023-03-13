@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
             _isDead = true;
 
             foreach(AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
-                aC.Dissolve();
+                aC.Dissolve(2f);
 
             Destroy(gameObject, 7f);
         }

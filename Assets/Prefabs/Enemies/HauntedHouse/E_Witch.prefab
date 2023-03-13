@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 027d391e502ace04caeb8c80599c3472, type: 3}
-  _maxHealth: 10
+  _maxHealth: 3
   _currentHealth: 0
 --- !u!1 &1009913724414258891
 GameObject:

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float playerJumpHeight;
     [SerializeField] private float heavyAttackMaxDuration;
     [SerializeField] private float heightOffset;
+    [SerializeField] private float velocityModifier;
     [Space]
     [Header("References")]
     [SerializeField] private Transform rFoot;
@@ -99,15 +100,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (_characterState == ECharacterStates.ECS_Dodging)
-        {
-            _isMoving = false;
-        }
-        else
-        {
-            _isMoving = _movementInput != Vector2.zero;
-        }
-
         HandleRotation();
         HandleMovement();
         HandleGravity();
@@ -144,6 +136,20 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool(IsMoving, false);
         }
+
+        if (_characterState == ECharacterStates.ECS_Dodging)
+        {
+            _isMoving = false;
+            Dash();
+        }
+        else if (_characterState == ECharacterStates.ECS_BackwardJumping)
+        {
+            JumpBackward();
+        } else
+        {
+            _isMoving = _movementInput != Vector2.zero;
+        }
+
     }
 
     private void HandleGravity()
@@ -186,16 +192,19 @@ public class PlayerController : MonoBehaviour
             || _characterState == ECharacterStates.ECS_HeavyAttack))
             return;
 
+        ResetDodgeSpeed();
         DisableBox();
         DisableTrail();
 
         if (_movementInput == Vector2.zero)
         {
             _animator.SetTrigger("jumpB");
+            _characterState = ECharacterStates.ECS_BackwardJumping;
         }
         else
         {
             _animator.SetTrigger("dodgeF");
+            _characterState = ECharacterStates.ECS_Dodging;
         }
 
     }
@@ -330,6 +339,7 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
+
         if(_characterState == ECharacterStates.ECS_HeavyAttack)
             AudioManager.Instance.PlaySoundEffect(swordWhip, true);
         else
@@ -386,23 +396,21 @@ public class PlayerController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        if(_characterState != ECharacterStates.ECS_HeavyAttack)
-            AudioManager.Instance.PlaySoundEffect(footstep, false);
+        AudioSource.PlayClipAtPoint(footstep, rFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        if(_characterState != ECharacterStates.ECS_HeavyAttack)
-            AudioManager.Instance.PlaySoundEffect(footstep, false);        
+        AudioSource.PlayClipAtPoint(footstep, lFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     public void DecreaseVelocity()
     {
-        tempDodgeSpeed = Mathf.Max(0f, tempDodgeSpeed - 0.03f);
-        tempJumpBSpeed = Mathf.Max(0f, tempJumpBSpeed - 0.03f);
+        tempDodgeSpeed = Mathf.Max(0f, tempDodgeSpeed - velocityModifier);
+        tempJumpBSpeed = Mathf.Max(0f, tempJumpBSpeed - velocityModifier);
     }
 
     public void ResetDodgeSpeed()

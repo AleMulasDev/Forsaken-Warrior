@@ -23,9 +23,9 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
             SpawnEffect();
         }
 
-        public void Dissolve()
+        public void Dissolve(float delay)
         {
-            StartCoroutine(DissolveCoroutine());
+            StartCoroutine(DissolveCoroutine(delay));
         }
 
         public void SpawnEffect()
@@ -33,9 +33,9 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
             StartCoroutine(SpawnEffectCoroutine());
         }
 
-        private IEnumerator DissolveCoroutine()
+        private IEnumerator DissolveCoroutine(float delay)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(delay);
 
             while (timeElapsedDissolve < lerpTimerDeath)
             {
@@ -48,7 +48,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator SpawnEffectCoroutine()
         {
-            GetComponentInParent<AIController>().SetEnemyState(EEnemyState.EES_Spawning);
+            GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Spawning);
+            GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Spawning);
 
             while (timeElapsedSpawn < lerpTimerSpawn)
             {
@@ -58,7 +59,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
                 yield return null;
             }
 
-            GetComponentInParent<AIController>().SetEnemyState(EEnemyState.EES_Inoccupied);
+            GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
+            GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
         }
     }
 }

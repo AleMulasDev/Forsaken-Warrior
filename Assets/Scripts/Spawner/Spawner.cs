@@ -5,10 +5,11 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private AIController[] enemies;
+    [SerializeField] private BossProp bossProp;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
 
-    public List<AIController> Spawn(int enemiesNumber)
+    public List<AIController> SpawnEnemies(int enemiesNumber)
     {
         _spawnedEnemies.Clear();
 
@@ -23,7 +24,7 @@ public class Spawner : MonoBehaviour
         return _spawnedEnemies;
     }
 
-    public void SpawnAll()
+    public void SpawnAllEnemies()
     {
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -31,5 +32,11 @@ public class Spawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
             Instantiate(enemies[i], spawnPosition, Quaternion.identity);
         }
+    }
+
+    public void SpawnProp()
+    {
+        BossProp prop = Instantiate(bossProp, transform);
+        prop.transform.position = new Vector3(prop.transform.position.x, 2f, prop.transform.position.z);
     }
 }

@@ -19,7 +19,6 @@ public class BossBar : MonoBehaviour
 
     private IEnumerator UpdateBossBarCoroutine(float amount)
     {
-        print("Amount: " + amount + ", slider value: " + _slider.value);
         while (amount > _slider.value)
         {
             _slider.value = Mathf.MoveTowards(_slider.value, amount, .5f * Time.deltaTime);
