@@ -10,23 +10,27 @@ public class BossController : AIController
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
 
     private float _spawnTimer = 0;
+    private float _timer = 0;
     private float _bossPhasePercentage = 0;
     private int _enemiesToSpawn = 0;
-    private List<AIController> spawnedEnemies;
+    private List<AIController> spawnedEnemies = new List<AIController>();
 
     override protected void Start()
     {
         base.Start();
-        InitiateBossPhase();
     }
 
     private void Update()
     {
+        _timer += Time.deltaTime;
+
         switch (_bossPhase)
         {
             case EBossPhase.EBP_FirstPhase:
+                FirstPhase();
                 break;
             case EBossPhase.EBP_SecondPhase:
+                SecondPhase();
                 break;
             case EBossPhase.EBP_ThirdPhase:
                 break;
@@ -34,51 +38,52 @@ public class BossController : AIController
                 Debug.LogWarning("Error while evaluating the current boss phase");
                 break;
         }
-
-        if (_bossPhase == EBossPhase.EBP_SecondPhase && _bossPhasePercentage >= 66)
-        {
-            _bossPhase = EBossPhase.EBP_ThirdPhase;
-            foreach (AIController ai in spawnedEnemies)
-                ai.GetComponent<Health>().Kill();
-        }
     }
 
-    public void InitiateBossPhase()
+    private void FirstPhase()
     {
-        StartCoroutine(BossPhaseCoroutine());
-    }
-
-    private IEnumerator BossPhaseCoroutine()
-    {
-        spawnedEnemies = new List<AIController>();
-        _bossPhase = EBossPhase.EBP_FirstPhase;
-        while (_bossPhasePercentage < 33f) // First phase
+        if(_timer > _spawnTimer)
         {
+            _timer = 0;
+            _spawnTimer += 3;
+
             if (_enemiesToSpawn < 10)
                 _enemiesToSpawn++;
 
-            _spawnTimer += 2;
-            yield return new WaitForSeconds(_spawnTimer);
-            spawnedEnemies = mobSpawners[Random.Range(0, mobSpawners.Length)].SpawnEnemies(_enemiesToSpawn);
+            UpdateEnemyList(mobSpawners[Random.Range(0, mobSpawners.Length)].SpawnEnemies(_enemiesToSpawn));
+
+            foreach (SimpleEnemyController enemy in spawnedEnemies)
+                enemy.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(1f));
+        }
+
+        if (_bossPhasePercentage >= 33)
+        {
+            _bossPhase = EBossPhase.EBP_SecondPhase;
+            _spawnTimer = 0;
+            _enemiesToSpawn = 0;
 
             foreach (SimpleEnemyController enemy in spawnedEnemies)
             {
-                enemy.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(1f));
+                if (enemy == null) continue;
+
+                enemy.onEnemyBossKill.RemoveAllListeners();
+                enemy.GetComponent<Health>().Kill();
             }
+
+            foreach (Spawner s in mobSpawners)
+                s.SpawnProp();
+
+            spawnedEnemies.Clear();
         }
+    }
 
-        //IncreaseBossPhasePercentage(33);
-
-        _bossPhase = EBossPhase.EBP_SecondPhase;
-        _spawnTimer = 10;
-        _enemiesToSpawn = 0;
-        spawnedEnemies.Clear();
-
-        foreach (Spawner s in mobSpawners)
-            s.SpawnProp();
-
-        while (_bossPhasePercentage < 66f) // Second phase
+    private void SecondPhase()
+    {
+        if (_timer > _spawnTimer)
         {
+            _timer = 0;
+            _spawnTimer += 5;
+
             if (_enemiesToSpawn < 5)
                 _enemiesToSpawn++;
 
@@ -86,7 +91,13 @@ public class BossController : AIController
             {
                 UpdateEnemyList(s.SpawnEnemies(_enemiesToSpawn));
             }
-            yield return new WaitForSeconds(_spawnTimer);
+        }
+
+        if (_bossPhasePercentage >= 66)
+        {
+            _bossPhase = EBossPhase.EBP_ThirdPhase;
+            foreach (SimpleEnemyController enemy in spawnedEnemies)
+                enemy.GetComponent<Health>().Kill();
         }
     }
 

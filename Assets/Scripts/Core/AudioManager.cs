@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     [SerializeField] private AudioSource musicSource, effectSource, environmentSource;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -21,7 +22,7 @@ public class AudioManager : MonoBehaviour
         }
         
         //effect and environment audio default settings
-        effectSource.volume = environmentSource.volume = 0.4f;
+        effectSource.volume = environmentSource.volume = 0.2f;
         effectSource.loop = false;
         environmentSource.loop = true;
         
@@ -30,21 +31,16 @@ public class AudioManager : MonoBehaviour
         musicSource.loop = true;
     }
 
-    public void PlaySoundEffect(AudioClip clip, bool isLoop)
+    public void PlaySoundEffect(AudioClip clip)
     {
-        effectSource.loop = isLoop;
-        
-        if (isLoop)
-        {
-            effectSource.clip = clip;
-            effectSource.Play();
-        }
-        else
-        {
-            effectSource.PlayOneShot(clip);
-        }
+        effectSource.PlayOneShot(clip);
     }
 
+    public void PlaySoundEffectAtPoint(AudioClip clip, Vector3 position)
+    {
+        AudioSource.PlayClipAtPoint(clip, position);
+    }
+    
     public void StopSoundEffect()
     {
         effectSource.Stop();

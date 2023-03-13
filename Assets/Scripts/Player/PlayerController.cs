@@ -5,6 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,8 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
     [Header("Sounds")]
-    [SerializeField] private AudioClip footstep;
-    [SerializeField] private AudioClip swordWhip;
+    [SerializeField] private AudioClip[] footstepAudioClips;
+    [SerializeField] private AudioClip[] attackAudioClips;
+    [SerializeField] private AudioClip[] dodgeAudioClips;
     
     private ParticleSystem[] footstepParticles;
     private Vector2 _movementInput;
@@ -52,8 +54,13 @@ public class PlayerController : MonoBehaviour
     private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
     private static readonly int HeavyAttackInput = Animator.StringToHash("heavyAttackInput");
 
-    private const float Gravity = -9.81F;
+    private const float Gravity = -6F;
 
+    public void SLowTime()
+    {
+        Time.timeScale = 0.1f;
+    }
+    
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))
@@ -163,20 +170,24 @@ public class PlayerController : MonoBehaviour
         if (_characterState == ECharacterStates.ECS_Jumping)
         {
             float oldYVel = _movement.y;
-            float newYVel = _movement.y + Mathf.Sqrt(playerJumpHeight * Gravity * -3.0f);
+            float newYVel = _movement.y + Mathf.Sqrt(playerJumpHeight * Gravity * -1f);
             float nextYVel = (oldYVel + newYVel) / 2;
             _movement.y = nextYVel;
         }
     }
 
+    public void SetJumpTrigger()
+    {
+        ResetState();
+        _characterState = ECharacterStates.ECS_Jumping;
+    }
+    
     #region inputFunctions
 
     private void Jump(InputAction.CallbackContext ctx)
     {
         if (_characterState != ECharacterStates.ECS_Inoccupied && _characterState != ECharacterStates.ECS_LightAttack) return;
 
-        ResetState();
-        _characterState = ECharacterStates.ECS_Jumping;
         _animator.SetTrigger("jump");
     }
 
@@ -195,16 +206,22 @@ public class PlayerController : MonoBehaviour
         ResetDodgeSpeed();
         DisableBox();
         DisableTrail();
-
+        
         if (_movementInput == Vector2.zero)
         {
             _animator.SetTrigger("jumpB");
             _characterState = ECharacterStates.ECS_BackwardJumping;
+            AudioManager.Instance.PlaySoundEffect(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)]);
+            //AudioManager.Instance.PlaySoundEffectAtPoint(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)],
+                //transform.position);
         }
         else
         {
             _animator.SetTrigger("dodgeF");
             _characterState = ECharacterStates.ECS_Dodging;
+            AudioManager.Instance.PlaySoundEffect(dodgeAudioClips[Random.Range(0, dodgeAudioClips.Length / 2)]);
+            //AudioManager.Instance.PlaySoundEffectAtPoint(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)],
+                //transform.position);
         }
 
     }
@@ -339,15 +356,21 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
+        AudioManager.Instance.PlaySoundEffect(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+        //AudioManager.Instance.PlaySoundEffectAtPoint(attackAudioClips[Random.Range(0, attackAudioClips.Length)],
+            //_weapon.transform.position);
 
-        if(_characterState == ECharacterStates.ECS_HeavyAttack)
-            AudioManager.Instance.PlaySoundEffect(swordWhip, true);
-        else
-            AudioManager.Instance.PlaySoundEffect(swordWhip, false);
-        
         EnableTrail();
     }
 
+    public void PlayHeavyAttackSound()
+    {
+        AudioManager.Instance.PlaySoundEffect(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+
+        //AudioManager.Instance.PlaySoundEffectAtPoint(attackAudioClips[Random.Range(0, attackAudioClips.Length)],
+            //_weapon.transform.position);
+    }
+    
     private void DisableBox()
     {
         weaponCollider.enabled = false;
@@ -396,14 +419,16 @@ public class PlayerController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioSource.PlayClipAtPoint(footstep, rFoot.position);
+        AudioManager.Instance.PlaySoundEffect(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        //AudioManager.Instance.PlaySoundEffectAtPoint(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)], rFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioSource.PlayClipAtPoint(footstep, lFoot.position);
+        AudioManager.Instance.PlaySoundEffect(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        //AudioManager.Instance.PlaySoundEffectAtPoint(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)], lFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 

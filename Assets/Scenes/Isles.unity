@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -818,7 +818,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127703461}
-  m_LocalRotation: {x: -0.16637108, y: 0.23269431, z: -0.040437855, w: -0.9573604}
+  m_LocalRotation: {x: -0.16637108, y: 0.23269433, z: -0.04043786, w: -0.9573604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3819,7 +3819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &598838634
 Transform:
   m_ObjectHideFlags: 0
@@ -9123,10 +9123,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 95747538171490624}
-        m_TargetAssemblyTypeName: BossController, Assembly-CSharp
-        m_MethodName: IncreaseBossPhasePercentage
-        m_Mode: 4
+      - m_Target: {fileID: 1262625068234872643}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SLowTime
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9670,7 +9670,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_YAxisRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 4
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -10362,7 +10362,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1422004399}
   m_FillRect: {fileID: 1825033360}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -10930,7 +10930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1445927002
 Transform:
   m_ObjectHideFlags: 0
@@ -11360,7 +11360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1525083637
 Transform:
   m_ObjectHideFlags: 0
@@ -15771,7 +15771,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043559961}
-  m_LocalRotation: {x: -0.013701482, y: 0.98207396, z: -0.17066583, w: -0.07884339}
+  m_LocalRotation: {x: -0.013701481, y: 0.98207396, z: -0.17066582, w: -0.07884337}
   m_LocalPosition: {x: 1.5953681, y: 5, z: 25.351921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17485,7 +17485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1916398780880294
 GameObject:
   m_ObjectHideFlags: 0
@@ -19126,17 +19126,39 @@ MonoBehaviour:
   rotationSpeed: 15
   attackRotationSpeed: 1
   playerSpeed: 8
-  dodgeSpeed: 15
+  dodgeSpeed: 17
   jumpBackwardSpeed: 8
-  playerJumpHeight: 5
+  playerJumpHeight: 10
   heavyAttackMaxDuration: 1
   heightOffset: 1
   velocityModifier: 0.06
   rFoot: {fileID: 2102589754}
   lFoot: {fileID: 1629041772}
   weaponCollider: {fileID: 1327232608}
-  footstep: {fileID: 8300000, guid: a058cd1b4328b4d1aa227ee7aba587e0, type: 3}
-  swordWhip: {fileID: 8300000, guid: b059afb3eb6af4e51861887cfdebc434, type: 3}
+  footstepAudioClips:
+  - {fileID: 8300000, guid: 4a92628f22efa1348982ba316c7deffc, type: 3}
+  - {fileID: 8300000, guid: d268ffa9c758c66448250f40807a6cdd, type: 3}
+  - {fileID: 8300000, guid: d1a8237a4b21e17499d519b3e0fc733b, type: 3}
+  - {fileID: 8300000, guid: 88093a2cdecf583449dee157d43ee7c1, type: 3}
+  - {fileID: 8300000, guid: 42524743a635468459f7ca0b64d681cc, type: 3}
+  - {fileID: 8300000, guid: 2b22b8ec191cba14e8824043a756a9bf, type: 3}
+  attackAudioClips:
+  - {fileID: 8300000, guid: 03e9f874800c3824e9894fa1efebc1b6, type: 3}
+  - {fileID: 8300000, guid: 648a49a9e4ddd2d4fa24cae77adafc27, type: 3}
+  - {fileID: 8300000, guid: 62e01ed3ce2a4b14d9b052e9df242c7e, type: 3}
+  - {fileID: 8300000, guid: 55bf53a6018947e4e8c3384c356e03e0, type: 3}
+  - {fileID: 8300000, guid: 931648b0eaa83c64a845c63ffa30263e, type: 3}
+  - {fileID: 8300000, guid: c14d47d10bbcb924290beafea8c865eb, type: 3}
+  - {fileID: 8300000, guid: e187d7bca1e34ba4cba204dc5cf4e340, type: 3}
+  - {fileID: 8300000, guid: 165123e6f821f5c40ac2d84b9bee4f40, type: 3}
+  - {fileID: 8300000, guid: 373499188b9692c47bfcc48fab324ff8, type: 3}
+  - {fileID: 8300000, guid: 56f1f35ffe50aef49b125db465fe80ea, type: 3}
+  dodgeAudioClips:
+  - {fileID: 8300000, guid: b8482c361bad80b40bb9c652353997b3, type: 3}
+  - {fileID: 8300000, guid: 285f21309ac516b4fba8e73a8b979604, type: 3}
+  - {fileID: 8300000, guid: 8fca470b024f00d45b3a6569dadd5a76, type: 3}
+  - {fileID: 8300000, guid: 0f5ae637099d6af49bb3bf12fa82323a, type: 3}
+  - {fileID: 8300000, guid: d58a7ec62be121d41a554d38d79829c1, type: 3}
 --- !u!114 &1262625068234872645
 MonoBehaviour:
   m_ObjectHideFlags: 0
