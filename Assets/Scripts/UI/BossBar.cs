@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BossBar : MonoBehaviour
 {
     private Slider _slider;
+    private Coroutine _coroutine;
 
     private void Start()
     {
@@ -14,7 +15,10 @@ public class BossBar : MonoBehaviour
 
     public void UpdateBossBar(float value)
     {
-        StartCoroutine(UpdateBossBarCoroutine(value));
+        if(_coroutine != null )
+            StopCoroutine(_coroutine);    
+
+        _coroutine = StartCoroutine(UpdateBossBarCoroutine(value));
     }
 
     private IEnumerator UpdateBossBarCoroutine(float amount)

@@ -52,11 +52,19 @@ public class BossController : AIController
                 SecondPhase();
                 break;
             case EBossPhase.EBP_ThirdPhase:
+                ThirdPhase();
                 break;
             default:
                 Debug.LogWarning("Error while evaluating the current boss phase");
                 break;
         }
+    }
+    
+    private void ThirdPhase()
+    {
+        if (_bossPhasePercentage == 100) return;
+
+
     }
 
     private void FirstPhase()
@@ -102,10 +110,10 @@ public class BossController : AIController
 
         yield return new WaitForSeconds(3f);
 
-        _animator.SetTrigger("cast");
+        _animator.SetTrigger("spawnEnemies");
     }
 
-    public void Cast()
+    public void SpawnEnemies()
     {
         _bossPhase = EBossPhase.EBP_SecondPhase;
 
@@ -116,8 +124,40 @@ public class BossController : AIController
             ac.Dissolve(1f);
     }
 
+    public void DestroyProps()
+    {
+        foreach (Spawner s in mobSpawners)
+            s.DestroyProp();
+    }
+
+    public void SpawnMiniboss()
+    {
+        StartCoroutine(SpawnMinibossesCoroutine());
+    }
+
+    private IEnumerator SpawnMinibossesCoroutine()
+    {
+        for (int i = 0; i < mobSpawners.Length; i++)
+        {
+            if (mobSpawners[i].GetShouldSpawnMiniboss())
+                mobSpawners[i].SpawnMiniboss();
+            else
+                continue;
+            yield return new WaitForSeconds(5f);
+        }
+
+        _animator.SetTrigger("endCast");
+
+        yield return new WaitForSeconds(2f);
+
+        foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
+            ac.Dissolve(1f);
+    }
+
     private void SecondPhase()
     {
+        if (_bossPhasePercentage > 66) return;
+
         if (_timer > _spawnTimer)
         {
             _timer = 0;
@@ -132,12 +172,30 @@ public class BossController : AIController
             }
         }
 
-        if (_bossPhasePercentage >= 66)
+        if (_bossPhasePercentage == 66)
         {
-            _bossPhase = EBossPhase.EBP_ThirdPhase;
+            _spawnTimer = 0;
+            _enemiesToSpawn = 0;
+            IncreaseBossPhasePercentage(1f);
             foreach (SimpleEnemyController enemy in spawnedEnemies)
                 enemy.GetComponent<Health>().Kill();
+            spawnedEnemies.Clear();
+            StartCoroutine(EndSecondPhase());
         }
+    }
+
+    private IEnumerator EndSecondPhase()
+    {
+        foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
+            ac.SpawnEffect();
+
+        yield return new WaitForSeconds(3f);
+
+        _animator.SetTrigger("spawnMinibosses");
+
+        yield return new WaitForSeconds(1f);
+
+        SpawnMiniboss();
     }
 
     public void UpdateEnemyList(List<AIController> list)

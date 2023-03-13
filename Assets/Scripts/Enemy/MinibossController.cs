@@ -33,6 +33,8 @@ public class MinibossController : AIController
     private Weapon _currentLeftHandWeaponInstance;
     private Weapon _currentRightHandWeaponInstance;
 
+    private bool _shouldSpawnEnemies = true;
+
     protected override void Start()
     {
         base.Start();
@@ -47,9 +49,16 @@ public class MinibossController : AIController
         base.Die();
     }
 
+    public void SetShouldSpawnEnemies(bool shouldSpawn)
+    {
+        _shouldSpawnEnemies = shouldSpawn;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (_enemyState == EEnemyState.EES_Spawning) return;
+
         _animator.SetFloat("bossMode", (int)_bossMode);
 
         if (_health.IsDead())
@@ -89,6 +98,8 @@ public class MinibossController : AIController
 
     private void SpawnEnemies()
     {
+        if (!_shouldSpawnEnemies) return;
+
         if (_spawnTimer > spawnTimer)
         {
             _spawnTimer = 0f;
@@ -152,8 +163,8 @@ public class MinibossController : AIController
     {
         DisableNavMesh();
         _bossMode = bossMode;
-        _animator.SetTrigger("unsheath");
-        _enemyState = EEnemyState.EES_DrawingWeapon;
+
+        UnsheathWeapon();
 
         if (bossMode == EMinibossMode.EMM_ThirdCircle)
             GetComponentInChildren<MinibossHealthBar>().ShowHealthBar();
@@ -161,8 +172,16 @@ public class MinibossController : AIController
             GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
     }
 
+    public void UnsheathWeapon()
+    {
+        _animator.SetTrigger("unsheath");
+        _enemyState = EEnemyState.EES_DrawingWeapon;
+    }
+
     private void WeaponSwitch()
     {
+        colliders.Clear();
+
         if (_currentRightHandWeaponInstance != null)
             Destroy(_currentRightHandWeaponInstance.gameObject);
         if (_currentLeftHandWeaponInstance != null)

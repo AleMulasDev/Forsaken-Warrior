@@ -1,3 +1,4 @@
+using AmazingAssets.AdvancedDissolve.ExampleScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private AIController[] enemies;
     [SerializeField] private BossProp bossProp;
+    [SerializeField] private MinibossController miniboss;
+    [SerializeField] private bool shouldSpawnMiniboss;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
-
+    private BossProp _propInstance;
     public List<AIController> SpawnEnemies(int enemiesNumber)
     {
         _spawnedEnemies.Clear();
@@ -24,6 +27,11 @@ public class Spawner : MonoBehaviour
         return _spawnedEnemies;
     }
 
+    public bool GetShouldSpawnMiniboss()
+    {
+        return shouldSpawnMiniboss;
+    }
+
     public void SpawnAllEnemies()
     {
         for (int i = 0; i < enemies.Length; i++)
@@ -36,7 +44,19 @@ public class Spawner : MonoBehaviour
 
     public void SpawnProp()
     {
-        BossProp prop = Instantiate(bossProp, transform);
-        prop.transform.position = new Vector3(prop.transform.position.x, 2f, prop.transform.position.z);
+        _propInstance = Instantiate(bossProp, transform);
+        _propInstance.transform.position = new Vector3(_propInstance.transform.position.x, 2f, _propInstance.transform.position.z);
+    }
+
+    public void DestroyProp()
+    {
+        if (_propInstance != null)
+            _propInstance.DestroyProp();
+    }
+
+    public void SpawnMiniboss()
+    {
+        MinibossController minibossInstance = Instantiate(miniboss, transform.position, miniboss.transform.rotation);
+        miniboss.SetShouldSpawnEnemies(false);
     }
 }

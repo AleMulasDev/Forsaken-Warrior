@@ -52,9 +52,14 @@ public class BossProp : MonoBehaviour
     {
         if (other.CompareTag("Sword") && !_isDestroyed)
         {
-            _isDestroyed = true;
-            Shake();
+            DestroyProp();
         }
+    }
+
+    public void DestroyProp()
+    {
+        _isDestroyed = true;
+        Shake();
     }
 
     private void Shake()

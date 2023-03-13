@@ -828,7 +828,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.45701358
-        functionName: Cast
+        functionName: SpawnEnemies
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

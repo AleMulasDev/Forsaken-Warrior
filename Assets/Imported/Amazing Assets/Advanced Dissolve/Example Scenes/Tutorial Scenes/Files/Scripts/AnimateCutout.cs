@@ -10,6 +10,7 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
     {
         [SerializeField] private float lerpTimerSpawn = 3.0f;
         [SerializeField] private float lerpTimerDeath = 5.0f;
+
         private Material _material;
         private float timeElapsedSpawn = 0.0f;
         private float timeElapsedDissolve = 0.0f;
