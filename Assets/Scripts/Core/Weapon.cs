@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
         }
         else if (other.tag.Equals(targetTag))
         {
+            other.GetComponent<AIController>()?.PlayDamageSound();
             other.GetComponent<Health>().TakeDamage(GetDamage());
         }
     }

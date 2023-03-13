@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private MeleeWeaponTrail _weaponTrail;
     private PowerupManager _powerupManager;
     private Weapon _weapon;
+    private AudioSource source;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
 
     [Header("Player parameters")]
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviour
         _weaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
         _powerupManager = GetComponent<PowerupManager>();
         _weapon = GetComponentInChildren<Weapon>();
+        source = GetComponent<AudioSource>();
 
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
@@ -167,7 +169,7 @@ public class PlayerController : MonoBehaviour
             _movement.y = _velocity;
         }
         else
-            _velocity = 0.0f;
+            _velocity = -1.0f;
     }
 
     private void HandleJump()
@@ -216,7 +218,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetTrigger("jumpB");
             _characterState = ECharacterStates.ECS_BackwardJumping;
-            AudioManager.Instance.PlaySoundEffect(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)]);
+            AudioManager.Instance.PlaySoundEffect(source, dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)]);
             //AudioManager.Instance.PlaySoundEffectAtPoint(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)],
                 //transform.position);
         }
@@ -224,7 +226,7 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetTrigger("dodgeF");
             _characterState = ECharacterStates.ECS_Dodging;
-            AudioManager.Instance.PlaySoundEffect(dodgeAudioClips[Random.Range(0, dodgeAudioClips.Length / 2)]);
+            AudioManager.Instance.PlaySoundEffect(source, dodgeAudioClips[Random.Range(0, dodgeAudioClips.Length / 2)]);
             //AudioManager.Instance.PlaySoundEffectAtPoint(dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)],
                 //transform.position);
         }
@@ -361,7 +363,7 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
-        AudioManager.Instance.PlaySoundEffect(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
         //AudioManager.Instance.PlaySoundEffectAtPoint(attackAudioClips[Random.Range(0, attackAudioClips.Length)],
             //_weapon.transform.position);
 
@@ -370,7 +372,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayHeavyAttackSound()
     {
-        AudioManager.Instance.PlaySoundEffect(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
 
         //AudioManager.Instance.PlaySoundEffectAtPoint(attackAudioClips[Random.Range(0, attackAudioClips.Length)],
             //_weapon.transform.position);
@@ -394,7 +396,6 @@ public class PlayerController : MonoBehaviour
     {
         _velocity = -1.0f;
         _characterState = ECharacterStates.ECS_Inoccupied;
-        AudioManager.Instance.StopSoundEffect();
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();
     }
@@ -424,7 +425,7 @@ public class PlayerController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioManager.Instance.PlaySoundEffect(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         //AudioManager.Instance.PlaySoundEffectAtPoint(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)], rFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
@@ -432,7 +433,7 @@ public class PlayerController : MonoBehaviour
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioManager.Instance.PlaySoundEffect(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         //AudioManager.Instance.PlaySoundEffectAtPoint(footstepAudioClips[Random.Range(0, footstepAudioClips.Length)], lFoot.position);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }

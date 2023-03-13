@@ -1308,19 +1308,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
+  onKillScore: 0
   colliders:
   - {fileID: 2739579125779560979}
   - {fileID: 2739579125779541433}
   lFoot: {fileID: 2739579125779846507}
   rFoot: {fileID: 2739579125779899123}
-  footstepParticles:
-  - {fileID: 5173427560926668776, guid: 880c519bb3845084fb22f3469527b782, type: 3}
-  - {fileID: 4409708914479989396, guid: 4a3f42addfd9cea4bbb52b918c8c5e74, type: 3}
-  - {fileID: 4805939662081834795, guid: 53260690c6dc2eb41bfa3e6542cf8553, type: 3}
-  shouldEnableRootMotion: 0
+  footstepAudioClips:
+  - {fileID: 8300000, guid: fdba3582e91ff49a5a93de23f68506c6, type: 3}
+  - {fileID: 8300000, guid: 93b7106dcc1ea42c89c3a0e6b9964fd6, type: 3}
+  - {fileID: 8300000, guid: ef5f48b2489d04a16a0701bfb2335f45, type: 3}
+  - {fileID: 8300000, guid: a683af98aab7c456bb84a104cfa50993, type: 3}
   _attackDistance: 1.1
   _attackFirerate: 2
   bullet: {fileID: 0}
+  onEnemyBossKill:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2739579125779532799
 GameObject:
   m_ObjectHideFlags: 0

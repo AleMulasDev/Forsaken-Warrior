@@ -55,10 +55,11 @@ public class SimpleEnemyController : AIController
         DisableNavMesh();
 
         if (Vector3.Distance(transform.position, newDestination) <= _attackDistance && _attackTimer > _attackFirerate
-            && !_playerController.GetComponent<Health>().IsDead())
+            && !_playerController.GetComponent<Health>().IsDead() && _enemyState != EEnemyState.EES_Attack)
         {
             _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger(Attack);
+            AudioManager.Instance.PlaySoundEffect(_audioSource, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
         }
     }
     protected void Shoot()

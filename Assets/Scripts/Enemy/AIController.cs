@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -15,9 +17,16 @@ public class AIController : MonoBehaviour
     [SerializeField] protected List<Collider> colliders;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
-
+    
+    [Header("Sounds")]
+    [SerializeField] private AudioClip[] footstepAudioClips;
+    [SerializeField] private AudioClip[] deathAudioClips;
+    [SerializeField] private AudioClip[] takeDamageAudioClips;
+    [SerializeField] protected AudioClip[] attackAudioClips;
+     
     private ParticleSystem[] footstepParticles;
     private NavMeshAgent _navMeshAgent;
+    protected AudioSource _audioSource;
     protected GameObject _playerController;
     protected Animator _animator;
     protected Health _health;
@@ -34,6 +43,7 @@ public class AIController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        _audioSource = GetComponent<AudioSource>();
 
         _navMeshAgent.updateRotation = false;
 
@@ -70,15 +80,19 @@ public class AIController : MonoBehaviour
         _navMeshAgent.isStopped = true;
         _capsuleCollider.enabled = false;
     }
-
     
-
     public void HandleDeath()
     {
         SpawnPowerup();
         GameManager.instance.AddScore(onKillScore);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
     }
 
+    public void PlayDamageSound()
+    {
+        AudioManager.Instance.PlaySoundEffect(_audioSource, takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Length)]);
+    }
+    
     private void SpawnPowerup()
     {
         if (Random.Range(0.0f, 1.0f) > powerupSpawnChance) return;
@@ -161,12 +175,14 @@ public class AIController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 }
