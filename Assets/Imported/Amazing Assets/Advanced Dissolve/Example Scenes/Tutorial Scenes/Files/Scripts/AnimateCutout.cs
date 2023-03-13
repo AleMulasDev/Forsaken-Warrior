@@ -44,6 +44,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
                 timeElapsedDissolve += Time.deltaTime;
                 yield return null;
             }
+
+            timeElapsedDissolve = 0f;
         }
 
         private IEnumerator SpawnEffectCoroutine()
@@ -61,6 +63,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
             GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
             GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
+
+            timeElapsedSpawn = 0f;
         }
     }
 }

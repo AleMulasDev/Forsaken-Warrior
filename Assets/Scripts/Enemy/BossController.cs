@@ -1,3 +1,4 @@
+using AmazingAssets.AdvancedDissolve.ExampleScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class BossController : AIController
 {
     [SerializeField] private Spawner[] mobSpawners;
     [SerializeField] private BossBar bossBar;
+    [SerializeField] private float standDelay;
 
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
 
@@ -13,15 +15,32 @@ public class BossController : AIController
     private float _timer = 0;
     private float _bossPhasePercentage = 0;
     private int _enemiesToSpawn = 0;
+    private bool _introOver = false;
     private List<AIController> spawnedEnemies = new List<AIController>();
 
     override protected void Start()
     {
         base.Start();
+        StartCoroutine(StandCoroutine());
+    }
+
+    private IEnumerator StandCoroutine()
+    {
+        yield return new WaitForSeconds(standDelay);
+        _animator.SetTrigger("standUp");
+    }
+
+    public void FinishIntro()
+    {
+        _introOver = true;
+        foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
+            ac.Dissolve(0f);
     }
 
     private void Update()
     {
+        if (!_introOver) return;
+
         _timer += Time.deltaTime;
 
         switch (_bossPhase)
@@ -42,6 +61,8 @@ public class BossController : AIController
 
     private void FirstPhase()
     {
+        if (_bossPhasePercentage > 32) return;
+
         if(_timer > _spawnTimer)
         {
             _timer = 0;
@@ -56,9 +77,9 @@ public class BossController : AIController
                 enemy.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(1f));
         }
 
-        if (_bossPhasePercentage >= 33)
+        if (_bossPhasePercentage == 32)
         {
-            _bossPhase = EBossPhase.EBP_SecondPhase;
+            IncreaseBossPhasePercentage(1f);
             _spawnTimer = 0;
             _enemiesToSpawn = 0;
 
@@ -69,12 +90,30 @@ public class BossController : AIController
                 enemy.onEnemyBossKill.RemoveAllListeners();
                 enemy.GetComponent<Health>().Kill();
             }
-
-            foreach (Spawner s in mobSpawners)
-                s.SpawnProp();
-
             spawnedEnemies.Clear();
+            StartCoroutine(EndFirstPhase());
         }
+    }
+
+    private IEnumerator EndFirstPhase()
+    {
+        foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
+            ac.SpawnEffect();
+
+        yield return new WaitForSeconds(3f);
+
+        _animator.SetTrigger("cast");
+    }
+
+    public void Cast()
+    {
+        _bossPhase = EBossPhase.EBP_SecondPhase;
+
+        foreach (Spawner s in mobSpawners)
+            s.SpawnProp();
+
+        foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
+            ac.Dissolve(1f);
     }
 
     private void SecondPhase()
