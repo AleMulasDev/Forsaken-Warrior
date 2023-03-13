@@ -161,8 +161,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        _velocity += Gravity * 1.0f * Time.deltaTime;
-        _movement.y = _velocity;
+        if (_characterState == ECharacterStates.ECS_Jumping)
+        {
+            _velocity += Gravity * 1.0f * Time.deltaTime;
+            _movement.y = _velocity;
+        }
+        else
+            _velocity = 0.0f;
     }
 
     private void HandleJump()
