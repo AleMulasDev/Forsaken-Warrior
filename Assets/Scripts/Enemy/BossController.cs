@@ -8,6 +8,7 @@ public class BossController : AIController
     [SerializeField] private Spawner[] mobSpawners;
     [SerializeField] private BossBar bossBar;
     [SerializeField] private float standDelay;
+    [SerializeField] private ParticleSystem groundCrackEffect;
 
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
 
@@ -64,7 +65,7 @@ public class BossController : AIController
     {
         if (_bossPhasePercentage == 100) return;
 
-
+        Utils.UIWindowHandler(EUIMode.EUIM_Hide, bossBar.GetComponent<CanvasGroup>());
     }
 
     private void FirstPhase()
@@ -115,6 +116,11 @@ public class BossController : AIController
 
     public void SpawnEnemies()
     {
+        CinemachineShake.instance.ShakeCamera(3.5f, 3.5f);
+        ParticleSystem groundCrackInstance = Instantiate(groundCrackEffect, transform.position, groundCrackEffect.transform.rotation);
+        groundCrackInstance.transform.position = new Vector3(groundCrackInstance.transform.position.x, 0.01f, groundCrackInstance.transform.position.z);
+        Destroy(groundCrackInstance.gameObject, 2f);
+
         _bossPhase = EBossPhase.EBP_SecondPhase;
 
         foreach (Spawner s in mobSpawners)

@@ -45,7 +45,7 @@ public class MinibossController : AIController
 
     protected override void Die()
     {
-        GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
+        GetComponentInChildren<EnemyHealthBar>().HideHealthBar();
         base.Die();
     }
 
@@ -167,9 +167,9 @@ public class MinibossController : AIController
         UnsheathWeapon();
 
         if (bossMode == EMinibossMode.EMM_ThirdCircle)
-            GetComponentInChildren<MinibossHealthBar>().ShowHealthBar();
+            GetComponentInChildren<EnemyHealthBar>().ShowHealthBar();
         else
-            GetComponentInChildren<MinibossHealthBar>().HideHealthBar();
+            GetComponentInChildren<EnemyHealthBar>().HideHealthBar();
     }
 
     public void UnsheathWeapon()

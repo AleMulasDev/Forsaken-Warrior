@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum EUIMode { EUIM_Show, EUIM_Hide }
 
-public class MinibossHealthBar : MonoBehaviour
+public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] private Image backFill;
 

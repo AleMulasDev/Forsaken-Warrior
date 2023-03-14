@@ -2896,6 +2896,7 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
+  minibossSpawnEffect: {fileID: 0}
 --- !u!1 &6679447264224074039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3104,7 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
+  minibossSpawnEffect: {fileID: 0}
 --- !u!1 &6679447264991273857
 GameObject:
   m_ObjectHideFlags: 0

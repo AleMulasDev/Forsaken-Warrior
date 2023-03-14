@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MinibossHealth : Health
 {
-    [SerializeField] private MinibossHealthBar healthBar;
+    [SerializeField] private EnemyHealthBar healthBar;
     [SerializeField] GameObject stunStars;
 
     bool alreadyStunned = false;

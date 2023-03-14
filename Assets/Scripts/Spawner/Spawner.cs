@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private BossProp bossProp;
     [SerializeField] private MinibossController miniboss;
     [SerializeField] private bool shouldSpawnMiniboss;
+    [SerializeField] private ParticleSystem minibossSpawnEffect;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
     private BossProp _propInstance;
@@ -56,7 +57,14 @@ public class Spawner : MonoBehaviour
 
     public void SpawnMiniboss()
     {
+        Destroy(Instantiate(minibossSpawnEffect, transform.position, minibossSpawnEffect.transform.rotation), 3f);
+        StartCoroutine(SpawnMinibossCoroutine());
+    }
+
+    private IEnumerator SpawnMinibossCoroutine()
+    {
+        yield return new WaitForSeconds(.25f);
         MinibossController minibossInstance = Instantiate(miniboss, transform.position, miniboss.transform.rotation);
-        miniboss.SetShouldSpawnEnemies(false);
+        minibossInstance.SetShouldSpawnEnemies(false);
     }
 }
