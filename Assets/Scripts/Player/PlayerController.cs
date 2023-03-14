@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] footstepAudioClips;
     [SerializeField] private AudioClip[] attackAudioClips;
     [SerializeField] private AudioClip[] dodgeAudioClips;
-    
+    [SerializeField] private AudioClip[] takeDamageAudioClips;
+    [SerializeField] private AudioClip[] deathAudioClips;
+
     private ParticleSystem[] footstepParticles;
     private Vector2 _movementInput;
     private Vector3 _movement;
@@ -349,6 +351,21 @@ public class PlayerController : MonoBehaviour
         {
             return playerSpeed;
         }
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return source;
+    }
+
+    public AudioClip GetDamageAudioClip()
+    {
+        return takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Length)];
+    }
+
+    public AudioClip GetDeathAudioClip()
+    {
+        return deathAudioClips[Random.Range(0, deathAudioClips.Length)];
     }
 
     bool CanMove()

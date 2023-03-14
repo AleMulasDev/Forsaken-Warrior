@@ -88,11 +88,16 @@ public class AIController : MonoBehaviour
         AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
     }
 
-    public void PlayDamageSound()
+    public AudioSource GetAudioSource()
     {
-        AudioManager.Instance.PlaySoundEffect(_audioSource, takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Length)]);
+        return _audioSource;
     }
-    
+
+    public AudioClip GetDamageAudioClip()
+    {
+        return takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Length)];
+    }
+
     private void SpawnPowerup()
     {
         if (Random.Range(0.0f, 1.0f) > powerupSpawnChance) return;

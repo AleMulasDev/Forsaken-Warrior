@@ -12,6 +12,7 @@ public class Weapon : MonoBehaviour
     private PowerupManager _powerupManager;
     private Health _health;
     private int _damageModifier = 1;
+
     private void Start()
     {
         _powerupManager = GetComponentInParent<PowerupManager>();
@@ -22,6 +23,7 @@ public class Weapon : MonoBehaviour
     {
         this.damage = damage;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if(_health.IsDead()) return;
@@ -32,7 +34,11 @@ public class Weapon : MonoBehaviour
         }
         else if (other.tag.Equals(targetTag))
         {
-            other.GetComponent<AIController>()?.PlayDamageSound();
+            if(targetTag.Equals("Enemy"))
+                AudioManager.Instance.PlaySoundEffect(other.GetComponent<AIController>().GetAudioSource(), other.GetComponent<AIController>().GetDamageAudioClip());
+            else if(targetTag.Equals("Player"))
+                AudioManager.Instance.PlaySoundEffect(other.GetComponent<PlayerController>().GetAudioSource(), other.GetComponent<PlayerController>().GetDamageAudioClip());
+
             other.GetComponent<Health>().TakeDamage(GetDamage());
         }
     }

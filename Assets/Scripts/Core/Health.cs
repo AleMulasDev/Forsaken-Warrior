@@ -40,6 +40,8 @@ public class Health : MonoBehaviour
             _animator.SetTrigger("isDead");
             _isDead = true;
 
+            if (GetComponent<PlayerController>() != null)
+                AudioManager.Instance.PlaySoundEffect(GetComponent<PlayerController>()?.GetAudioSource(), GetComponent<PlayerController>()?.GetDeathAudioClip());
             foreach(AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
                 aC.Dissolve(2f);
 

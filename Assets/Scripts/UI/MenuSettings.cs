@@ -11,6 +11,7 @@ public class MenuSettings : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mouseSensValue;
     [SerializeField] private TextMeshProUGUI cameraSensValue;
     [SerializeField] private CanvasGroup pauseCanvasGroup;
+    [SerializeField] private AudioMixer audioMixer;
 
     private Resolution[] _screenRes;
     private CanvasGroup _canvasGroup;
@@ -21,7 +22,9 @@ public class MenuSettings : MonoBehaviour
         _uiHandler = GetComponentInParent<UIHandler>();
         _canvasGroup = GetComponent<CanvasGroup>();
         _screenRes = Screen.resolutions;
-        //audioMixer.SetFloat("musicVol", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+        audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
     }
 
     public void OpenPauseMenu()
@@ -41,15 +44,22 @@ public class MenuSettings : MonoBehaviour
         mouseSensValue.text = value.ToString();
     }
 
+    public void SetMasterVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("masterVolume", volume);
+        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+    }
+
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("sfxVolume", volume);
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
     }
 
     public void SetMusicVolume(float volume)
     {
         PlayerPrefs.SetFloat("musicVolume", volume);
-        //audioMixer.SetFloat("musicVol", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+        audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
     }
 
     public void SetBrightness(float brightness)
