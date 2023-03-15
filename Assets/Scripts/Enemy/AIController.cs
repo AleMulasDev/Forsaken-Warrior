@@ -88,7 +88,7 @@ public class AIController : MonoBehaviour
     {
         SpawnPowerup();
         GameManager.instance.AddScore(onKillScore);
-        //AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
     }
 
     public AudioSource GetAudioSource()
@@ -183,14 +183,14 @@ public class AIController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        //AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        //AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 }
