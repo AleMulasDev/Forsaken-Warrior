@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
-public struct CircleWeapon
+public struct MinibossWeapon
 {
     public EMinibossMode circle;
     public float fireRate;
@@ -19,14 +19,14 @@ public struct CircleWeapon
 public class MinibossController : AIController
 {
     [SerializeField] private int maxCircles;
-    [SerializeField] CircleWeapon[] weapons;
+    [SerializeField] MinibossWeapon[] weapons;
 
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private float spawnTimer;
 
     private EMinibossMode _bossMode = EMinibossMode.EMM_None;
-    private CircleWeapon _circleWeapon;
+    private MinibossWeapon _circleWeapon;
     private float _spawnTimer;
     private List<Spawner> enemiesSpawners;
 

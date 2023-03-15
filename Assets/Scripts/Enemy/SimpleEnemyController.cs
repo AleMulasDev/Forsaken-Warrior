@@ -9,8 +9,6 @@ public class SimpleEnemyController : AIController
     [SerializeField] private float _attackFirerate;
     [SerializeField] private Projectile bullet;
 
-    public UnityEvent onEnemyBossKill; 
-
     private Weapon _weapon;
     private static readonly int Attack = Animator.StringToHash("attack");
 

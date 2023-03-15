@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ParticleSystem minibossSpawnEffect;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
+    private MinibossController _spawnedMiniboss;
     private BossProp _propInstance;
     public List<AIController> SpawnEnemies(int enemiesNumber)
     {
@@ -55,16 +56,16 @@ public class Spawner : MonoBehaviour
             _propInstance.DestroyProp();
     }
 
-    public void SpawnMiniboss()
+    public MinibossController SpawnMiniboss()
     {
         Destroy(Instantiate(minibossSpawnEffect, transform.position, minibossSpawnEffect.transform.rotation), 3f);
         StartCoroutine(SpawnMinibossCoroutine());
+        return _spawnedMiniboss;
     }
 
     private IEnumerator SpawnMinibossCoroutine()
     {
         yield return new WaitForSeconds(.25f);
-        MinibossController minibossInstance = Instantiate(miniboss, transform.position, miniboss.transform.rotation);
-        minibossInstance.SetShouldSpawnEnemies(false);
+        _spawnedMiniboss = Instantiate(miniboss, transform.position, miniboss.transform.rotation);
     }
 }

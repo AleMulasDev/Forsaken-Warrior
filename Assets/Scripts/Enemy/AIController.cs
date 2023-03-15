@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -25,7 +26,7 @@ public class AIController : MonoBehaviour
     [SerializeField] protected AudioClip[] attackAudioClips;
      
     private ParticleSystem[] footstepParticles;
-    private NavMeshAgent _navMeshAgent;
+    protected NavMeshAgent _navMeshAgent;
     protected AudioSource _audioSource;
     protected GameObject _playerController;
     protected Animator _animator;
@@ -35,6 +36,8 @@ public class AIController : MonoBehaviour
 
     protected Vector3 newDestination;
     protected float _attackTimer = 0.0f;
+
+    [HideInInspector] public UnityEvent onEnemyBossKill;
 
     virtual protected void Start()
     {
@@ -143,7 +146,7 @@ public class AIController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
-    public void ResetState()
+    public virtual void ResetState()
     {
         _attackTimer = 0.0f;
         _enemyState = EEnemyState.EES_Inoccupied;

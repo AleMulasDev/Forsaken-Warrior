@@ -20718,8 +20718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTimerSpawn: 3
-  lerpTimerDeath: 5
+  lerpTimerSpawn: 1
+  lerpTimerDeath: 1
 --- !u!33 &33823535420454810
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20752,8 +20752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTimerSpawn: 3
-  lerpTimerDeath: 5
+  lerpTimerSpawn: 1
+  lerpTimerDeath: 1
 --- !u!95 &95722143102585232
 Animator:
   serializedVersion: 4
@@ -20815,14 +20815,34 @@ MonoBehaviour:
   deathAudioClips: []
   takeDamageAudioClips: []
   attackAudioClips: []
+  onEnemyBossKill:
+    m_PersistentCalls:
+      m_Calls: []
   mobSpawners:
   - {fileID: 1935034675}
   - {fileID: 1561689884}
   - {fileID: 1526479599}
   - {fileID: 41769795}
   bossBar: {fileID: 1422004401}
+  bossHealthBar: {fileID: 0}
   standDelay: 2.5
   groundCrackEffect: {fileID: 198106895250101352, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
+  startingPhase: 3
+  bullet: {fileID: 0}
+  spell: {fileID: 0}
+  weapons:
+  - bossWeaponType: 0
+    fireRate: 5
+    damage: 2
+    teleportTime: 10
+  - bossWeaponType: 1
+    fireRate: 0
+    damage: 0
+    teleportTime: 0
+  - bossWeaponType: 2
+    fireRate: 0
+    damage: 0
+    teleportTime: 0
 --- !u!195 &95747538171490625
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20974,8 +20994,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTimerSpawn: 3
-  lerpTimerDeath: 5
+  lerpTimerSpawn: 1
+  lerpTimerDeath: 1
 --- !u!137 &137602419237861124
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -21103,8 +21123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpTimerSpawn: 3
-  lerpTimerDeath: 5
+  lerpTimerSpawn: 1
+  lerpTimerDeath: 1
 --- !u!1 &199520465393496610
 GameObject:
   m_ObjectHideFlags: 0
