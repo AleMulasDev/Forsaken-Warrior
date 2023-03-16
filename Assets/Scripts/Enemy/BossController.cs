@@ -187,26 +187,34 @@ public class BossController : AIController
             FirstAttackStage();
         } else if (currentHealth > (maxHealth * 0.33f))
         {
-
+            SecondAttackStage();
         } else
         {
 
         }
     }
+    private void SecondAttackStage() {
+        AttackBehaviour(EBossAttackStage.EBAS_SecondStage);
+    }
 
-    public void FirstAttackStage()
+    private void AttackBehaviour(EBossAttackStage attackStage)
     {
-        _attackStage = EBossAttackStage.EBAS_FirstStage;
+        _attackStage = attackStage;
 
         if (_enemyState == EEnemyState.EES_Inoccupied && _attackTimer > weapons[(int)_attackStage].fireRate && !_isTeleporting)
         {
             _attackTimer = 0f;
             StartCoroutine(AttackCoroutine());
-        } else if (_teleportTimer > weapons[(int)_attackStage].teleportTime && !_isTeleporting)
+        }
+        else if (_teleportTimer > weapons[(int)_attackStage].teleportTime && !_isTeleporting)
         {
             _isTeleporting = true;
             StartCoroutine(TeleportCoroutine());
         }
+    }
+    private void FirstAttackStage()
+    {
+        AttackBehaviour(EBossAttackStage.EBAS_FirstStage);
     }
 
     private IEnumerator AttackCoroutine()
@@ -216,7 +224,15 @@ public class BossController : AIController
         yield return new WaitForSeconds(1);
 
         _enemyState = EEnemyState.EES_Attack;
-        _animator.SetTrigger("shootProjectile");
+
+        if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Projectile)
+            _animator.SetTrigger("shootProjectile");
+        else if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Spell)
+            _animator.SetTrigger("castSpell");
+        else
+        {
+            _animator.SetTrigger(Random.Range(0, 2) == 0 ? "shootProjectile" : "castSpell");
+        }
     }
 
     private IEnumerator TeleportCoroutine()
@@ -318,9 +334,14 @@ public class BossController : AIController
         bossBar.UpdateBossBar(_bossPhasePercentage / 100f);
     }
 
-    private void ShootL()
+    private void Shoot()
     {
         _enemyState = EEnemyState.EES_Attack;
         spellbook.Shoot(bullet, _playerController);
+    }
+
+    private void CastSpell()
+    {
+
     }
 }

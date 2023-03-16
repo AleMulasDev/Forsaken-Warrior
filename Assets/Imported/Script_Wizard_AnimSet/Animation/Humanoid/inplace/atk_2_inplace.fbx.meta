@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 35547ce01645d63439b01f91a7a66ec1
+guid: 58c1b2ebc0e25884dacdf3ce026aed92
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -434,7 +434,7 @@ ModelImporter:
     second: STYLIZED-BASEMESH-BIGMALE-OBJ
   - first:
       74: 7400000
-    second: atk_1
+    second: atk_2
   - first:
       95: 9500000
     second: //RootNode
@@ -471,11 +471,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: atk_1
-      takeName: atk_1
+      name: atk_2
+      takeName: atk_2
       internalID: 0
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -495,15 +495,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.8135593
-        functionName: ResetState
+      - time: 0.510828
+        functionName: CastSpell
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.56729263
-        functionName: ShootL
+      - time: 0.7643312
+        functionName: ResetState
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
