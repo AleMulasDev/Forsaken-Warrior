@@ -26,6 +26,8 @@ public class BossController : AIController
 
     [SerializeField] private List<BossWeapon> weapons;
 
+    [SerializeField] private Weapon spellbook;
+
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
     private EBossAttackStage _attackStage = EBossAttackStage.EBAS_FirstStage;
 
@@ -173,6 +175,8 @@ public class BossController : AIController
 
     private void FourthPhase()
     {
+        RotateToPlayer();
+
         _animator.SetBool("attackMode", true);
 
         float currentHealth = _health.GetHealth();
@@ -196,6 +200,7 @@ public class BossController : AIController
 
         if (_enemyState == EEnemyState.EES_Inoccupied && _attackTimer > weapons[(int)_attackStage].fireRate && !_isTeleporting)
         {
+            _attackTimer = 0f;
             StartCoroutine(AttackCoroutine());
         } else if (_teleportTimer > weapons[(int)_attackStage].teleportTime && !_isTeleporting)
         {
@@ -226,7 +231,10 @@ public class BossController : AIController
 
         Vector3 randomPos = Random.insideUnitCircle * 25;
         Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
-        _navMeshAgent.Warp(spawnPosition);
+        //_navMeshAgent.Warp(spawnPosition);
+        //_navMeshAgent.isStopped = true;
+        transform.position = spawnPosition;
+        transform.LookAt(_playerController.transform);
     }
 
     public void Appear()
@@ -308,5 +316,11 @@ public class BossController : AIController
     {
         _bossPhasePercentage += amount;
         bossBar.UpdateBossBar(_bossPhasePercentage / 100f);
+    }
+
+    private void ShootL()
+    {
+        _enemyState = EEnemyState.EES_Attack;
+        spellbook.Shoot(bullet, _playerController);
     }
 }

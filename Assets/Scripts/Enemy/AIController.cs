@@ -6,11 +6,6 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(NavMeshAgent))]
-
 public class AIController : MonoBehaviour
 {
     [SerializeField] float powerupSpawnChance;
@@ -18,13 +13,13 @@ public class AIController : MonoBehaviour
     [SerializeField] protected List<Collider> colliders;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Transform rFoot;
-    
+
     [Header("Sounds")]
     [SerializeField] private AudioClip[] footstepAudioClips;
     [SerializeField] private AudioClip[] deathAudioClips;
     [SerializeField] private AudioClip[] takeDamageAudioClips;
     [SerializeField] protected AudioClip[] attackAudioClips;
-     
+
     private ParticleSystem[] footstepParticles;
     protected NavMeshAgent _navMeshAgent;
     protected AudioSource _audioSource;
@@ -48,7 +43,8 @@ public class AIController : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _audioSource = GetComponent<AudioSource>();
 
-        _navMeshAgent.updateRotation = false;
+        if (_navMeshAgent != null)
+            _navMeshAgent.updateRotation = false;
 
         footstepParticles = GameManager.instance.GetFootstepParticles();
     }
@@ -58,18 +54,25 @@ public class AIController : MonoBehaviour
         if (!(_enemyState == EEnemyState.EES_Inoccupied))
             return;
 
+        if (_navMeshAgent == null) return;
+
         _navMeshAgent.isStopped = false;
         _navMeshAgent.destination = newDestination;
+
     }
 
     protected void DisableNavMesh()
     {
+        if (_navMeshAgent == null) return;
+
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
     }
 
     protected void UpdateAnimator()
     {
+        if (_navMeshAgent == null) return;
+
         Vector3 velocity = _navMeshAgent.velocity;
 
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);
@@ -79,11 +82,14 @@ public class AIController : MonoBehaviour
 
     virtual protected void Die()
     {
+        _capsuleCollider.enabled = false;
+
+        if (_navMeshAgent == null) return;
+
         _navMeshAgent.velocity = Vector3.zero;
         _navMeshAgent.isStopped = true;
-        _capsuleCollider.enabled = false;
     }
-    
+
     public void HandleDeath()
     {
         SpawnPowerup();

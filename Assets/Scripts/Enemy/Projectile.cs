@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private bool fixedSpeed;
+    [SerializeField] private float incrementalSpeedStep;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private float detachDistance;
     [SerializeField] private bool isParticleSystem;
 
     private int _damage;
     private GameObject _player;
     private Vector3 _startingPosition;
     private bool _followPlayer = true;
+    private bool _shouldMove = true;
+
     private void Start()
     {
         _startingPosition = _player.transform.position + new Vector3(0, _player.GetComponent<CharacterController>().height / 2, 0);
@@ -28,13 +33,25 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (isParticleSystem && Vector3.Distance(transform.position, _player.transform.position) > 2f && _followPlayer)
+        if (!_shouldMove) return;
+
+        if (isParticleSystem && Vector3.Distance(transform.position, _player.transform.position) > detachDistance && _followPlayer)
         {
             transform.LookAt(_player.transform.position + new Vector3(0, 1f, 0));
         } else
             _followPlayer = false;
 
-        transform.Translate(Vector3.forward * Time.deltaTime * bulletSpeed);
+        transform.Translate(Vector3.forward * Time.deltaTime * GetSpeed());
+    }
+
+    public float GetSpeed()
+    {
+        if (fixedSpeed)
+            return bulletSpeed;
+
+        bulletSpeed += incrementalSpeedStep;
+
+        return bulletSpeed;
     }
 
     public void SetProjectile(GameObject player, int damage)
@@ -57,10 +74,12 @@ public class Projectile : MonoBehaviour
     {
         if (isParticleSystem)
         {
-            GetComponent<ParticleSystem>().Stop(true);
+            GetComponentInChildren<ParticleSystem>().Stop(true);
             Destroy(gameObject, 2f);
         }
         else
             Destroy(gameObject);
+
+        _shouldMove = false;
     }
 }
