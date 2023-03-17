@@ -22,7 +22,6 @@ public class BossController : AIController
     [SerializeField] private EBossPhase startingPhase;
 
     [SerializeField] private Projectile bullet;
-    [SerializeField] private ParticleSystem spell;
 
     [SerializeField] private List<BossWeapon> weapons;
 
@@ -40,6 +39,8 @@ public class BossController : AIController
     private bool _isTeleporting = false;
 
     private List<AIController> spawnedEnemies = new List<AIController>();
+    private ParticleSystem lightningStrike;
+    private GameObject targetMarker;
 
     override protected void Start()
     {
@@ -47,6 +48,9 @@ public class BossController : AIController
         _bossPhase = startingPhase;
         Disappear();
         //StartCoroutine(StandCoroutine());
+
+        lightningStrike = Resources.Load<ParticleSystem>("MalignoSpell/LightningStrike");
+        targetMarker = Resources.Load<GameObject>("MalignoSpell/TargetMarker");
     }
 
     private void Update()
@@ -76,12 +80,12 @@ public class BossController : AIController
                 break;
         }
     }
-    
+
     private void FirstPhase()
     {
         if (_bossPhasePercentage > 32) return;
 
-        if(_timer > _spawnTimer)
+        if (_timer > _spawnTimer)
         {
             _timer = 0;
             _spawnTimer += 3;
@@ -182,18 +186,21 @@ public class BossController : AIController
         float currentHealth = _health.GetHealth();
         float maxHealth = _health.GetMaxHealth();
 
-        if(currentHealth > (maxHealth * 0.66f))
+        if (currentHealth > (maxHealth * 0.66f))
         {
             FirstAttackStage();
-        } else if (currentHealth > (maxHealth * 0.33f))
+        }
+        else if (currentHealth > (maxHealth * 0.33f))
         {
             SecondAttackStage();
-        } else
+        }
+        else
         {
 
         }
     }
-    private void SecondAttackStage() {
+    private void SecondAttackStage()
+    {
         AttackBehaviour(EBossAttackStage.EBAS_SecondStage);
     }
 
@@ -221,6 +228,8 @@ public class BossController : AIController
     {
         Appear();
 
+        var indicator = IndicatorProManager.Activate("FireBall", transform);
+
         yield return new WaitForSeconds(1);
 
         _enemyState = EEnemyState.EES_Attack;
@@ -233,6 +242,8 @@ public class BossController : AIController
         {
             _animator.SetTrigger(Random.Range(0, 2) == 0 ? "shootProjectile" : "castSpell");
         }
+
+        IndicatorProManager.Deactivate(indicator);
     }
 
     private IEnumerator TeleportCoroutine()
@@ -342,6 +353,45 @@ public class BossController : AIController
 
     private void CastSpell()
     {
+        StartCoroutine(CastSpellCoroutine());
+    }
 
+    private IEnumerator CastSpellCoroutine()
+    {
+        int total = 0;
+
+        while (total < 10)
+        {
+            total++;
+            Vector3 spawnPosition = _playerController.transform.forward;
+            Destroy(Instantiate(lightningStrike, spawnPosition, Quaternion.identity), 5f);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    public void SpawnLightning()
+    {
+        StartCoroutine(LightningCoroutine());
+    }
+
+    private IEnumerator LightningCoroutine()
+    {
+        bool isMoving = _playerController.GetComponent<PlayerController>().GetIsMoving();
+        var markerInstance = Instantiate(targetMarker, _playerController.transform);
+
+        if (!isMoving)
+            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), 0, 1f);
+        else
+            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), 0, 3f);
+        
+        markerInstance.transform.parent = null;
+
+        Destroy(markerInstance.gameObject, 0.75f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
+
+        Destroy(Instantiate(lightningStrike, spawnPos, Quaternion.identity), 3f);
     }
 }

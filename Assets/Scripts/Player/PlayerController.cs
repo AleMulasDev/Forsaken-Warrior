@@ -59,11 +59,13 @@ public class PlayerController : MonoBehaviour
 
     private const float Gravity = -6F;
 
-    public void SLowTime()
+    private GameObject lightningInstance;
+
+    public bool GetIsMoving()
     {
-        Time.timeScale = 0.1f;
+        return _isMoving;
     }
-    
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))

@@ -1758,9 +1758,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1350917380}
-        m_TargetAssemblyTypeName: CinemachineShake, Assembly-CSharp
-        m_MethodName: Shake
+      - m_Target: {fileID: 95747538171490624}
+        m_TargetAssemblyTypeName: BossController, Assembly-CSharp
+        m_MethodName: SpawnLightning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10426,7 +10426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Enemy
-  damage: 1
+  damage: 10
 --- !u!65 &1327232608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17221,6 +17221,7 @@ GameObject:
   - component: {fileID: 2043559963}
   - component: {fileID: 2043559965}
   - component: {fileID: 2043559966}
+  - component: {fileID: 2043559967}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17380,6 +17381,42 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &2043559967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043559961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5727edf962d4d4ec09992d1b70ee3b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioOn: 1
+  audioVolumeMin: 0.2
+  audioVolumeMax: 1
+  audioChannels: 4
+  audioDistance: 0.09
+  indicatorDistance: 1
+  indicatorAngle: 0
+  indicatorScale: 0.25
+  indicatorBend: 0.24
+  indicatorPreview: 0
+  indicatorCamera: {fileID: 2043559963}
+  indicatorsActive: 
+  indicators:
+  - {fileID: 11400000, guid: b69574f4771454ef5b38caf9f4360891, type: 2}
+  - {fileID: 11400000, guid: f7a837b00784d4ef69c0ce24dd438779, type: 2}
+  - {fileID: 11400000, guid: 5e559673d7b1f4b8391f0d53d738ab29, type: 2}
+  - {fileID: 11400000, guid: 2c4c3c1f54a764fbaa8acf051925f1ae, type: 2}
+  - {fileID: 11400000, guid: 0d01d1dc674a441fc9fb7e696a95757f, type: 2}
+  - {fileID: 11400000, guid: 937ee16d265054991b0ef6e557487e0f, type: 2}
+  - {fileID: 11400000, guid: 81d463bfea7b74e5cb5168563d057d2a, type: 2}
+  indicatorAdd: {fileID: 0}
+  onRenderObject: 1
+  diIndex: 0
+  drawPreview: 0
 --- !u!1 &2046051226
 GameObject:
   m_ObjectHideFlags: 0
@@ -19073,7 +19110,7 @@ GameObject:
   - component: {fileID: 95747538171490628}
   m_Layer: 0
   m_Name: B_Maligno
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21003,21 +21040,20 @@ MonoBehaviour:
   - {fileID: 1526479599}
   - {fileID: 41769795}
   bossBar: {fileID: 1422004401}
-  bossHealthBar: {fileID: 0}
+  bossHealthBar: {fileID: 1930187172}
   standDelay: 2.5
   groundCrackEffect: {fileID: 198106895250101352, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
   startingPhase: 3
   bullet: {fileID: 4022279801653669454, guid: bbf0097ca33fb2249992f924ae14ac72, type: 3}
-  spell: {fileID: 0}
   weapons:
   - bossWeaponType: 0
     fireRate: 5
     damage: 2
     teleportTime: 10
   - bossWeaponType: 1
-    fireRate: 0
-    damage: 0
-    teleportTime: 0
+    fireRate: 10
+    damage: 5
+    teleportTime: 20
   - bossWeaponType: 2
     fireRate: 0
     damage: 0
@@ -21034,9 +21070,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2.3515742
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.9902259, z: 0}
 --- !u!54 &95747538171490627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21065,9 +21101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a14772980b6b840a2fddaa4222fdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bloodParticle: {fileID: 0}
+  _bloodParticle: {fileID: 1489431029902184, guid: 027d391e502ace04caeb8c80599c3472, type: 3}
   _maxHealth: 120
   _currentHealth: 0
+  healthBar: {fileID: 1930187172}
 --- !u!137 &137449693130004910
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

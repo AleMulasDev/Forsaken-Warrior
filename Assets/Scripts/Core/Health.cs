@@ -52,10 +52,11 @@ public class Health : MonoBehaviour
         {
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _navMeshAgent.height / 2, 0), _bloodParticle.transform.rotation), 1f);
         }
-        else // Player
+        else if (_characterController != null) // Player
         {
             Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, _characterController.height / 2, 0), _bloodParticle.transform.rotation), 1f);
-        }
+        } else
+            Destroy(Instantiate(_bloodParticle, transform.position + new Vector3(0, 1f, 0), _bloodParticle.transform.rotation), 1f);
     }
 
     public void Kill()
