@@ -42,6 +42,8 @@ public class BossController : AIController
     private bool _eligibleForTakeDamage = true;
     private bool _needsReset = false;
 
+    private Weapon _spellbookInstance;
+
     private List<AIController> spawnedEnemies = new List<AIController>();
     private ParticleSystem lightningStrike;
     private GameObject targetMarker;
@@ -200,7 +202,7 @@ public class BossController : AIController
         _attackTimer = 0;
         _teleportTimer = 0;
         Appear();
-        Instantiate(spellbook, rHand);
+        _spellbookInstance = Instantiate(spellbook, rHand);
     }
 
     private void FourthPhase()
@@ -397,7 +399,7 @@ public class BossController : AIController
     private void Shoot()
     {
         _enemyState = EEnemyState.EES_Attack;
-        spellbook.Shoot(bullet, _playerController);
+        _spellbookInstance.Shoot(bullet, _playerController);
     }
 
     private void CastSpell()

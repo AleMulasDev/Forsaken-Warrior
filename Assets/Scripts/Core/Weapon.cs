@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
         {
             other.GetComponent<Health>().Kill();
         }
-        else if (other.tag.Equals(targetTag))
+        else if (other.tag.Equals(targetTag) && !(other is BoxCollider))
         {
             /*if(targetTag.Equals("Enemy"))
                 AudioManager.Instance.PlaySoundEffect(other.GetComponent<AIController>().GetAudioSource(), other.GetComponent<AIController>().GetDamageAudioClip());
