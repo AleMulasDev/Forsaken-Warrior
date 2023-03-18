@@ -2078,12 +2078,16 @@ MonoBehaviour:
   colliders: []
   lFoot: {fileID: 1011252087336042347}
   rFoot: {fileID: 1011330279744764539}
-  _attackDistance: 20
-  _attackFirerate: 3
-  bullet: {fileID: 3192226738859674063, guid: 2fd6a7eef5999ba44a7b754d5b95c193, type: 3}
+  footstepAudioClips: []
+  deathAudioClips: []
+  takeDamageAudioClips: []
+  attackAudioClips: []
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []
+  _attackDistance: 20
+  _attackFirerate: 3
+  bullet: {fileID: 4116078973741939833, guid: 2fd6a7eef5999ba44a7b754d5b95c193, type: 3}
 --- !u!114 &1105511526866036672
 MonoBehaviour:
   m_ObjectHideFlags: 0

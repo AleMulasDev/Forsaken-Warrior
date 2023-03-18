@@ -12,6 +12,7 @@ public class LightningParticle : MonoBehaviour
 
     private void Start()
     {
+        SetDamage(1);
         StartCoroutine(SwitchCollider(true, onEnableTime));
         StartCoroutine(SwitchCollider(false, onDisableTime));
     }

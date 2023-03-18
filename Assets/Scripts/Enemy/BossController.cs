@@ -10,6 +10,7 @@ public struct BossWeapon
     public float fireRate;
     public int damage;
     public float teleportTime;
+    public float teleportDelay;
 }
 
 public class BossController : AIController
@@ -36,30 +37,37 @@ public class BossController : AIController
     private float _bossPhasePercentage = 0;
     private int _enemiesToSpawn = 0;
     private bool _introOver = false;
-    private bool _isTeleporting = false;
+    private bool _teleported = true;
+    private bool _eligibleForTakeDamage = true;
+    private bool _needsReset = false;
 
     private List<AIController> spawnedEnemies = new List<AIController>();
     private ParticleSystem lightningStrike;
     private GameObject targetMarker;
 
+    private Coroutine _infiniteLightningCoroutine;
+    private Coroutine _lightningCoroutine;
+
     override protected void Start()
     {
         base.Start();
-        _bossPhase = startingPhase;
-        Disappear();
-        //StartCoroutine(StandCoroutine());
-
+        _eligibleForTakeDamage = false;
+        StartCoroutine(StandCoroutine());
+        _animator.SetFloat("attackSpeed", 0.75f);
         lightningStrike = Resources.Load<ParticleSystem>("MalignoSpell/LightningStrike");
         targetMarker = Resources.Load<GameObject>("MalignoSpell/TargetMarker");
     }
 
     private void Update()
     {
-        //if (!_introOver) return;
+        if (!_introOver) return;
 
         _timer += Time.deltaTime;
         _attackTimer += Time.deltaTime;
         _teleportTimer += Time.deltaTime;
+
+        if (_enemyState == EEnemyState.EES_Inoccupied)
+            RotateToPlayer();
 
         switch (_bossPhase)
         {
@@ -179,6 +187,14 @@ public class BossController : AIController
 
     private void FourthPhase()
     {
+        if(_needsReset)
+        {
+            _needsReset = false;
+            _animator.SetTrigger("reset");
+            StartCoroutine(TeleportCoroutine());
+            return;
+        }
+
         RotateToPlayer();
 
         _animator.SetBool("attackMode", true);
@@ -196,9 +212,21 @@ public class BossController : AIController
         }
         else
         {
-
+            ThirdAttackStage();
         }
     }
+
+    private void ThirdAttackStage()
+    {
+        AttackBehaviour(EBossAttackStage.EBAS_ThirdStage);
+
+        if (_infiniteLightningCoroutine == null)
+        {
+            StopCoroutine(_lightningCoroutine);
+            _infiniteLightningCoroutine = InfiniteLightnings();
+        }
+    }
+
     private void SecondAttackStage()
     {
         AttackBehaviour(EBossAttackStage.EBAS_SecondStage);
@@ -208,14 +236,14 @@ public class BossController : AIController
     {
         _attackStage = attackStage;
 
-        if (_enemyState == EEnemyState.EES_Inoccupied && _attackTimer > weapons[(int)_attackStage].fireRate && !_isTeleporting)
+        if (_enemyState == EEnemyState.EES_Inoccupied && _attackTimer > weapons[(int)_attackStage].fireRate && _teleported)
         {
+            _teleported = false;
             _attackTimer = 0f;
-            StartCoroutine(AttackCoroutine());
+            Attack();
         }
-        else if (_teleportTimer > weapons[(int)_attackStage].teleportTime && !_isTeleporting)
+        else if (_teleportTimer > weapons[(int)_attackStage].teleportTime && !_teleported)
         {
-            _isTeleporting = true;
             StartCoroutine(TeleportCoroutine());
         }
     }
@@ -224,14 +252,8 @@ public class BossController : AIController
         AttackBehaviour(EBossAttackStage.EBAS_FirstStage);
     }
 
-    private IEnumerator AttackCoroutine()
+    private void Attack()
     {
-        Appear();
-
-        var indicator = IndicatorProManager.Activate("FireBall", transform);
-
-        yield return new WaitForSeconds(1);
-
         _enemyState = EEnemyState.EES_Attack;
 
         if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Projectile)
@@ -240,40 +262,47 @@ public class BossController : AIController
             _animator.SetTrigger("castSpell");
         else
         {
-            _animator.SetTrigger(Random.Range(0, 2) == 0 ? "shootProjectile" : "castSpell");
-        }
+            _animator.SetTrigger("shootProjectile");
 
-        IndicatorProManager.Deactivate(indicator);
+        }
     }
 
     private IEnumerator TeleportCoroutine()
     {
-        Disappear();
-
-        yield return new WaitForSeconds(1f);
-
+        _eligibleForTakeDamage = false;
+        Disappear(0f);
         _teleportTimer = 0f;
         _attackTimer = 0.0f;
-        _isTeleporting = false;
+
+        yield return new WaitForSeconds(weapons[(int)_attackStage].teleportDelay);
+
+        if (!spellbook.gameObject.activeSelf)
+            spellbook.gameObject.SetActive(true);
 
         Vector3 randomPos = Random.insideUnitCircle * 25;
         Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
-        //_navMeshAgent.Warp(spawnPosition);
-        //_navMeshAgent.isStopped = true;
         transform.position = spawnPosition;
         transform.LookAt(_playerController.transform);
+        _teleported = true;
+        Appear();
+        _playerController.GetComponent<PlayerController>().SetEnemy(transform);
+        _eligibleForTakeDamage = true;
     }
 
     public void Appear()
     {
         foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
             ac.SpawnEffect();
+
+        GetComponent<Collider>().enabled = true;
     }
 
-    public void Disappear()
+    public void Disappear(float delay)
     {
         foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
-            ac.Dissolve(0f);
+            ac.Dissolve(delay);
+
+        GetComponent<Collider>().enabled = false;
     }
 
     public void SpawnEnemies()
@@ -288,7 +317,7 @@ public class BossController : AIController
         foreach (Spawner s in mobSpawners)
             s.SpawnProp();
 
-        Disappear();
+        Disappear(2f);
     }
 
     public void DestroyProps()
@@ -307,7 +336,10 @@ public class BossController : AIController
         for (int i = 0; i < mobSpawners.Length; i++)
         {
             if (mobSpawners[i].GetShouldSpawnMiniboss())
-                mobSpawners[i].SpawnMiniboss().onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(11f));
+            {
+                var minibossInstance = mobSpawners[i].SpawnMiniboss();
+                minibossInstance.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(11f));
+            }
             else
                 continue;
             yield return new WaitForSeconds(5f);
@@ -317,20 +349,20 @@ public class BossController : AIController
 
         yield return new WaitForSeconds(2f);
 
-        Disappear();
+        Disappear(0f);
     }
 
     private IEnumerator StandCoroutine()
     {
         yield return new WaitForSeconds(standDelay);
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, bossBar.gameObject.GetComponent<CanvasGroup>()));
         _animator.SetTrigger("standUp");
     }
 
     public void FinishIntro()
     {
         _introOver = true;
-
-        Disappear();
+        Disappear(0f);
     }
 
     public void UpdateEnemyList(List<AIController> list)
@@ -353,19 +385,25 @@ public class BossController : AIController
 
     private void CastSpell()
     {
-        StartCoroutine(CastSpellCoroutine());
+        _lightningCoroutine = StartCoroutine(CastSpellCoroutine(false, 1f));
     }
 
-    private IEnumerator CastSpellCoroutine()
+
+    private Coroutine InfiniteLightnings()
+    {
+        _animator.SetFloat("attackSpeed", 1f);
+        return StartCoroutine(CastSpellCoroutine(true, 0.75f));
+    }
+
+    private IEnumerator CastSpellCoroutine(bool loop, float delay)
     {
         int total = 0;
 
-        while (total < 10)
+        while (total < 10 || loop)
         {
             total++;
-            Vector3 spawnPosition = _playerController.transform.forward;
-            Destroy(Instantiate(lightningStrike, spawnPosition, Quaternion.identity), 5f);
-            yield return new WaitForSeconds(1f);
+            SpawnLightning();
+            yield return new WaitForSeconds(delay);
         }
     }
 
@@ -392,6 +430,15 @@ public class BossController : AIController
 
         Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
 
-        Destroy(Instantiate(lightningStrike, spawnPos, Quaternion.identity), 3f);
+        Destroy(Instantiate(lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
     }
+
+    public void NeedsReset()
+    {
+        _needsReset = true;
+    }
+
+    public bool EligibleForTakeDamage() { return _eligibleForTakeDamage; }
+
+    public EBossAttackStage GetAttackStage() { return _attackStage; }
 }

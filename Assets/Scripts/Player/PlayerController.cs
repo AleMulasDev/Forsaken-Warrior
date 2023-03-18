@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rFoot;
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
+    [SerializeField] private GameObject indicator;
     [Header("Sounds")]
     [SerializeField] private AudioClip[] footstepAudioClips;
     [SerializeField] private AudioClip[] attackAudioClips;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     private Vector3 _cameraBasedMovement;
     private Coroutine _heavyAttackCoroutine;
+    private Transform _enemy;
 
     private bool _isMoving;
     private float tempDodgeSpeed;
@@ -111,12 +113,24 @@ public class PlayerController : MonoBehaviour
     {
         footstepParticles = GameManager.instance.GetFootstepParticles();
     }
+
+    public void SetEnemy(Transform source)
+    {
+        _enemy = source;
+        indicator.GetComponentInChildren<ParticleSystem>().Play(true);
+    }
+
     private void Update()
     {
         HandleRotation();
         HandleMovement();
         HandleGravity();
         HandleJump();
+
+        if (_enemy == null) return;
+
+        indicator.transform.position = transform.position;
+        indicator.transform.LookAt(_enemy.position);
     }
 
     private void HandleRotation()

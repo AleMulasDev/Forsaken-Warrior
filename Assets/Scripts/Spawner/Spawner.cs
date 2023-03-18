@@ -59,13 +59,6 @@ public class Spawner : MonoBehaviour
     public MinibossController SpawnMiniboss()
     {
         Destroy(Instantiate(minibossSpawnEffect, transform.position, minibossSpawnEffect.transform.rotation), 3f);
-        StartCoroutine(SpawnMinibossCoroutine());
-        return _spawnedMiniboss;
-    }
-
-    private IEnumerator SpawnMinibossCoroutine()
-    {
-        yield return new WaitForSeconds(.25f);
-        _spawnedMiniboss = Instantiate(miniboss, transform.position, miniboss.transform.rotation);
+        return Instantiate(miniboss, transform.position, miniboss.transform.rotation);
     }
 }
