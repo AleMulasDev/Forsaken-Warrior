@@ -3499,6 +3499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &590509082393721003
@@ -3677,12 +3678,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
   - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
   - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
-  _attackDistance: 1.1
-  _attackFirerate: 2
-  bullet: {fileID: 0}
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []
+  _attackDistance: 1.1
+  _attackFirerate: 2
+  bullet: {fileID: 0}
 --- !u!82 &311984917758783599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3692,7 +3693,7 @@ AudioSource:
   m_GameObject: {fileID: 590509082388705770}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1

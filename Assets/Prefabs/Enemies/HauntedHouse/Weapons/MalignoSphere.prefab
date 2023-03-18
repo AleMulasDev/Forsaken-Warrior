@@ -52,7 +52,7 @@ MonoBehaviour:
   fixedSpeed: 0
   incrementalSpeedStep: 0.1
   bulletSpeed: 1
-  detachDistance: 5
+  detachDistance: 4
   isParticleSystem: 1
 --- !u!54 &8524585144719120141
 Rigidbody:

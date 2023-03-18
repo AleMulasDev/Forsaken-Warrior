@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &6490096142704969292
@@ -1317,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &5068993988956264463
@@ -1810,12 +1812,16 @@ MonoBehaviour:
   - {fileID: 336913178757294648}
   lFoot: {fileID: 3582874001581831016}
   rFoot: {fileID: 3582628745923755862}
-  _attackDistance: 1.1
-  _attackFirerate: 3
-  bullet: {fileID: 0}
+  footstepAudioClips: []
+  deathAudioClips: []
+  takeDamageAudioClips: []
+  attackAudioClips: []
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []
+  _attackDistance: 1.1
+  _attackFirerate: 3
+  bullet: {fileID: 0}
 --- !u!114 &3523142664327254449
 MonoBehaviour:
   m_ObjectHideFlags: 0

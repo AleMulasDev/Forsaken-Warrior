@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &7023475427430775741
@@ -2093,6 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &2179110383379921936
@@ -2550,6 +2552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &5448539685531361160
@@ -3280,7 +3283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8348146869108229536
 Transform:
   m_ObjectHideFlags: 0
@@ -3631,6 +3634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &144712474072926040

@@ -27,6 +27,7 @@ public class BossController : AIController
     [SerializeField] private List<BossWeapon> weapons;
 
     [SerializeField] private Weapon spellbook;
+    [SerializeField] private Transform rHand;
 
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
     private EBossAttackStage _attackStage = EBossAttackStage.EBAS_FirstStage;
@@ -175,14 +176,31 @@ public class BossController : AIController
         yield return new WaitForSeconds(1f);
 
         SpawnMiniboss();
+
+        _bossPhase = EBossPhase.EBP_ThirdPhase;
     }
 
     private void ThirdPhase()
     {
-        if (_bossPhasePercentage == 100) return;
+        if (_bossPhasePercentage == 100)
+        {
+            StartCoroutine(EndThirdPhase());
+            IncreaseBossPhasePercentage(1f);
+        }
+    }
 
-        Utils.UIWindowHandler(EUIMode.EUIM_Hide, bossBar.GetComponent<CanvasGroup>());
-        Utils.UIWindowHandler(EUIMode.EUIM_Show, bossHealthBar.GetComponent<CanvasGroup>());
+    private IEnumerator EndThirdPhase()
+    {
+        yield return StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, bossBar.GetComponent<CanvasGroup>()));
+        yield return StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, bossHealthBar.GetComponent<CanvasGroup>()));
+
+        yield return new WaitForSeconds(1f);
+
+        _bossPhase = EBossPhase.EBP_FourthPhase;
+        _attackTimer = 0;
+        _teleportTimer = 0;
+        Appear();
+        Instantiate(spellbook, rHand);
     }
 
     private void FourthPhase()
@@ -191,6 +209,8 @@ public class BossController : AIController
         {
             _needsReset = false;
             _animator.SetTrigger("reset");
+            _attackTimer = 0;
+            _teleportTimer = 0;
             StartCoroutine(TeleportCoroutine());
             return;
         }
@@ -276,9 +296,6 @@ public class BossController : AIController
 
         yield return new WaitForSeconds(weapons[(int)_attackStage].teleportDelay);
 
-        if (!spellbook.gameObject.activeSelf)
-            spellbook.gameObject.SetActive(true);
-
         Vector3 randomPos = Random.insideUnitCircle * 25;
         Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
         transform.position = spawnPosition;
@@ -307,7 +324,7 @@ public class BossController : AIController
 
     public void SpawnEnemies()
     {
-        CinemachineShake.instance.ShakeCamera(3.5f, 3.5f);
+        CinemachineShake.instance.ShakeCamera(5f, 5f);
         ParticleSystem groundCrackInstance = Instantiate(groundCrackEffect, transform.position, groundCrackEffect.transform.rotation);
         groundCrackInstance.transform.position = new Vector3(groundCrackInstance.transform.position.x, 0.01f, groundCrackInstance.transform.position.z);
         Destroy(groundCrackInstance.gameObject, 2f);

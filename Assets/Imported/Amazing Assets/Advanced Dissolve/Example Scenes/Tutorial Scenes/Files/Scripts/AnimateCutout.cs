@@ -8,6 +8,7 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 {
     public class AnimateCutout : MonoBehaviour
     {
+        [SerializeField] private bool enableSpawnEffect = true;
         [SerializeField] private float lerpTimerSpawn = 3.0f;
         [SerializeField] private float lerpTimerDeath = 5.0f;
 
@@ -21,7 +22,8 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
             _material = GetComponent<Renderer>().material;
 
-            SpawnEffect();
+            if(enableSpawnEffect)
+                SpawnEffect();
         }
 
         public void Dissolve(float delay)

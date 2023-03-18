@@ -270,6 +270,8 @@ GameObject:
   - component: {fileID: 2760284867535062872}
   - component: {fileID: 2760284867536388952}
   - component: {fileID: 2760284867537383856}
+  - component: {fileID: 4324667515982812722}
+  - component: {fileID: 1506161240200076910}
   m_Layer: 0
   m_Name: SM_Wep_Sabre_01
   m_TagString: Untagged
@@ -342,6 +344,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4324667515982812722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535377184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &1506161240200076910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535377184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535378544
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +954,8 @@ GameObject:
   - component: {fileID: 2760284867535089302}
   - component: {fileID: 2760284867536437424}
   - component: {fileID: 2760284867537340572}
+  - component: {fileID: 7197508165301400227}
+  - component: {fileID: 4053506977642095077}
   m_Layer: 0
   m_Name: SM_Wep_MusketPistol_01
   m_TagString: Untagged
@@ -997,6 +1028,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7197508165301400227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535411210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &4053506977642095077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535411210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535412452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1130,8 @@ GameObject:
   - component: {fileID: 2760284867535132758}
   - component: {fileID: 2760284867536468702}
   - component: {fileID: 2760284867537341172}
+  - component: {fileID: 8271260045541511517}
+  - component: {fileID: 5852164581977244104}
   m_Layer: 0
   m_Name: SM_Item_Bomb_Attachment_02
   m_TagString: Untagged
@@ -1144,6 +1204,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8271260045541511517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535416654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &5852164581977244104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535416654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535417112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1484,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2760284867535067144}
   - component: {fileID: 2760284867538640026}
+  - component: {fileID: 1690749878116468610}
+  - component: {fileID: 2646273627975104922}
   m_Layer: 0
   m_Name: Renderer
   m_TagString: Untagged
@@ -1519,6 +1608,33 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000076293945, y: 93.59691, z: -5.065159}
     m_Extent: {x: 102.45597, y: 103.96217, z: 37.3432}
   m_DirtyAABB: 0
+--- !u!114 &1690749878116468610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535424508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &2646273627975104922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535424508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535424710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1772,8 @@ GameObject:
   - component: {fileID: 2760284867535147134}
   - component: {fileID: 2760284867536474468}
   - component: {fileID: 2760284867537432978}
+  - component: {fileID: 8368692525522051442}
+  - component: {fileID: 7064977541295533460}
   m_Layer: 0
   m_Name: SM_Item_Skull_Attachment_01
   m_TagString: Untagged
@@ -1728,6 +1846,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8368692525522051442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535432684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &7064977541295533460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535432684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535432996
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,6 +2421,9 @@ MonoBehaviour:
   deathAudioClips: []
   takeDamageAudioClips: []
   attackAudioClips: []
+  onEnemyBossKill:
+    m_PersistentCalls:
+      m_Calls: []
   maxCircles: 3
   weapons:
   - circle: 0
@@ -2365,6 +2513,8 @@ GameObject:
   - component: {fileID: 2760284867535063728}
   - component: {fileID: 2760284867536447718}
   - component: {fileID: 2760284867537365576}
+  - component: {fileID: 5137014915524467390}
+  - component: {fileID: 5767310504282056778}
   m_Layer: 0
   m_Name: SM_Wep_Pistol_03
   m_TagString: Untagged
@@ -2437,6 +2587,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5137014915524467390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535500458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &5767310504282056778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535500458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2760284867535500760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,6 +2657,8 @@ GameObject:
   - component: {fileID: 2760284867535174662}
   - component: {fileID: 2760284867536402762}
   - component: {fileID: 2760284867537435654}
+  - component: {fileID: 2574930876855145795}
+  - component: {fileID: 4571581752482457827}
   m_Layer: 0
   m_Name: SM_Wep_Pistol_04
   m_TagString: Untagged
@@ -2552,6 +2731,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2574930876855145795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535501402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &4571581752482457827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535501402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6679447263084875918
 GameObject:
   m_ObjectHideFlags: 0

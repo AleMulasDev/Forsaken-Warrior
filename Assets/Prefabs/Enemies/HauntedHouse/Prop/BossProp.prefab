@@ -143,5 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 3

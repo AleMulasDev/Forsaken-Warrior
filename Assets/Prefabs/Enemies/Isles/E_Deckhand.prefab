@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &4198217662418917701
@@ -702,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &4198217662418943297
@@ -1695,6 +1697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!1 &4198217662419003452
@@ -2272,6 +2275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &4198217662419170927
@@ -2477,6 +2481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &1149884903377389571

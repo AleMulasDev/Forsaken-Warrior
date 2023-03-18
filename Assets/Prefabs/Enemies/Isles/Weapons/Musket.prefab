@@ -57,6 +57,8 @@ GameObject:
   - component: {fileID: 6669754807910995952}
   - component: {fileID: 6669754807909800202}
   - component: {fileID: 5136357666334308197}
+  - component: {fileID: -5894047115152787892}
+  - component: {fileID: 2223131377097921590}
   m_Layer: 0
   m_Name: Musket
   m_TagString: Untagged
@@ -144,3 +146,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Enemy
   damage: 1
+--- !u!114 &-5894047115152787892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669754807907782430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &2223131377097921590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6669754807907782430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
