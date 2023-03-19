@@ -1537,10 +1537,20 @@ MonoBehaviour:
   - {fileID: 2382673486141096759}
   lFoot: {fileID: 2382673484649811303}
   rFoot: {fileID: 2382673486134474501}
-  footstepAudioClips: []
-  deathAudioClips: []
-  takeDamageAudioClips: []
-  attackAudioClips: []
+  footstepAudioClips:
+  - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+  - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+  - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+  - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+  - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+  deathAudioClips:
+  - {fileID: 8300000, guid: c0b4bf2720a6d2c4786d21afca38976a, type: 3}
+  takeDamageAudioClips:
+  - {fileID: 8300000, guid: f6b0476cd486ec947851727a4e6ba417, type: 3}
+  - {fileID: 8300000, guid: 5de53675fd1b04343b3953990d0e2026, type: 3}
+  attackAudioClips:
+  - {fileID: 8300000, guid: 83c16dc09cf46f545a48cd9c744902d8, type: 3}
+  - {fileID: 8300000, guid: b2044ec1a5dc9aa4a8f9f58c0914b035, type: 3}
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []

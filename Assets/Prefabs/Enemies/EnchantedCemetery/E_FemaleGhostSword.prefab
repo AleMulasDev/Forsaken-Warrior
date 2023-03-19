@@ -1068,18 +1068,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef5f48b2489d04a16a0701bfb2335f45, type: 3}
   - {fileID: 8300000, guid: a683af98aab7c456bb84a104cfa50993, type: 3}
   deathAudioClips:
-  - {fileID: 8300000, guid: 17fa1fffe95f34760801d800b1252908, type: 3}
-  - {fileID: 8300000, guid: baa2a736a96b446d4b0249612c1719b2, type: 3}
-  - {fileID: 8300000, guid: e2b1cfb53b77f4f2ebe4f5852969a8b2, type: 3}
+  - {fileID: 8300000, guid: 42df765963a22e84987af2bd42ff99dc, type: 3}
+  - {fileID: 8300000, guid: 78acc8abafb15ee4b85848933aa837ce, type: 3}
+  - {fileID: 8300000, guid: d9e1a86d55e00e647be0b3468aad28f5, type: 3}
   takeDamageAudioClips:
   - {fileID: 8300000, guid: 01d492501a8314509a7751ba7931c251, type: 3}
   - {fileID: 8300000, guid: b2119b3cc732b4a0abfeea7179478077, type: 3}
   - {fileID: 8300000, guid: 7b582c71f1073427b961f8b82f5cd752, type: 3}
   attackAudioClips:
-  - {fileID: 8300000, guid: 41a52325d0fcf4ff4acd31dfb58b32c1, type: 3}
-  - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
-  - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
-  - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
+  - {fileID: 8300000, guid: f1cabf316f6f9304a8846de3479806dd, type: 3}
+  - {fileID: 8300000, guid: 6aeb1f047fd075c42bb924e48d74ddb0, type: 3}
+  - {fileID: 8300000, guid: 8e11e7623c76bd742ac3a0951ab2ffb4, type: 3}
+  - {fileID: 8300000, guid: 3b7e20ddc90a0784aa33c4dc7cb0f409, type: 3}
+  - {fileID: 8300000, guid: d1e5df0830232074b917c4ccb430ac80, type: 3}
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []
