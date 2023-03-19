@@ -13,7 +13,6 @@ public struct MinibossWeapon
     public Weapon leftHandWeapon;
     public Projectile bullet;
     public EWeaponType weaponType;
-    public Collider collider;
 }
 
 public class MinibossController : AIController
@@ -24,6 +23,7 @@ public class MinibossController : AIController
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private float spawnTimer;
+    [SerializeField] private bool skipUnsheath;
 
     private EMinibossMode _bossMode = EMinibossMode.EMM_None;
     private MinibossWeapon _circleWeapon;
@@ -34,6 +34,8 @@ public class MinibossController : AIController
     private Weapon _currentRightHandWeaponInstance;
 
     private bool _shouldSpawnEnemies = true;
+
+    private GameObject _pickedInstance;
 
     protected override void Start()
     {
@@ -66,9 +68,6 @@ public class MinibossController : AIController
             Die();
             return;
         }
-
-        if (_bossMode != EMinibossMode.EMM_None)
-            _circleWeapon = weapons[(int)_bossMode];
 
         if (_enemyState == EEnemyState.EES_Inoccupied)
             RotateToPlayer();
@@ -164,7 +163,19 @@ public class MinibossController : AIController
         DisableNavMesh();
         _bossMode = bossMode;
 
-        UnsheathWeapon();
+        if (_bossMode != EMinibossMode.EMM_None)
+            _circleWeapon = weapons[(int)_bossMode];
+
+        if (skipUnsheath)
+        {
+            WeaponSwitch();
+            _enemyState = EEnemyState.EES_Inoccupied;
+            _animator.SetTrigger("reset");
+        }
+        else
+            UnsheathWeapon();
+
+        _attackTimer = 0f;
 
         if (bossMode == EMinibossMode.EMM_ThirdCircle)
             GetComponentInChildren<EnemyHealthBar>().ShowHealthBar();
@@ -181,6 +192,9 @@ public class MinibossController : AIController
     private void WeaponSwitch()
     {
         colliders.Clear();
+
+        if (_pickedInstance != null)
+            Destroy(_pickedInstance);
 
         if (_currentRightHandWeaponInstance != null)
             Destroy(_currentRightHandWeaponInstance.gameObject);
@@ -238,11 +252,34 @@ public class MinibossController : AIController
     {
         _enemyState = EEnemyState.EES_Attack;
         _currentLeftHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
+
+
+        if (_pickedInstance != null)
+            Destroy(_pickedInstance.gameObject);
     }
 
     private void Shoot()
     {
         _enemyState = EEnemyState.EES_Attack;
         _currentRightHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
+
+    }
+
+    private void Pick()
+    {
+        string pickedElement;
+
+        if (_bossMode == EMinibossMode.EMM_FirstCircle)
+            pickedElement = "Log";
+        else
+            pickedElement = "Boulder";
+
+        _pickedInstance = Instantiate(Resources.Load<GameObject>("MBThrowables/" + pickedElement), leftHand);
+    }
+
+    public void GroundHit()
+    {
+        GetComponentInChildren<SpawnParticle>().SpawnParticleAtPosition();
+        CinemachineShake.instance.ShakeCamera(5f, 5f);
     }
 }

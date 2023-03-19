@@ -1,3 +1,4 @@
+using AmazingAssets.AdvancedDissolve.ExampleScripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,19 +11,21 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float detachDistance;
     [SerializeField] private bool isParticleSystem;
 
+    [SerializeField] private bool isThrowable;
+    [SerializeField] private float throwableSpeed;
+    [SerializeField] private bool shouldDestroy;
+    [SerializeField] private bool shouldDissolve;
+
     private int _damage;
     private GameObject _player;
-    private Vector3 _startingPosition;
     private bool _followPlayer = true;
     private bool _shouldMove = true;
 
+
     private void Start()
     {
-        _startingPosition = _player.transform.position + new Vector3(0, _player.GetComponent<CharacterController>().height / 2, 0);
-
-        transform.LookAt(_startingPosition);
-
         StartCoroutine(DestroyProjectileCoroutine());
+        transform.LookAt(_player.transform.position + new Vector3(0, 1f, 0));
     }
 
     private IEnumerator DestroyProjectileCoroutine()
@@ -62,8 +65,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.tag.Equals("Player"))
+        if (!other.tag.Equals("Player") || other is BoxCollider)
             return;
+
+        print(other);
 
         _player.GetComponent<Health>().TakeDamage(_damage);
 
@@ -72,14 +77,24 @@ public class Projectile : MonoBehaviour
 
     public void DestroyProjectile()
     {
-        if (isParticleSystem)
+        _shouldMove = false;
+
+        if(shouldDissolve)
+        {
+            GetComponentInChildren<AnimateCutout>().Dissolve(0f);
+            GetComponentInChildren<RotationRandomizer>().StopRotating();
+            Destroy(gameObject, 2f);
+            return;
+        }
+
+        if (isParticleSystem && GetComponentInChildren<ParticleSystem>() != null)
         {
             GetComponentInChildren<ParticleSystem>().Stop(true);
             Destroy(gameObject, 2f);
         }
-        else
+        else if (shouldDestroy)
             Destroy(gameObject);
-
-        _shouldMove = false;
+        else
+            GetComponentInChildren<Collider>().isTrigger = false;
     }
 }

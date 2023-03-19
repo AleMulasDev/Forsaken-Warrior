@@ -9,6 +9,7 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
     public class AnimateCutout : MonoBehaviour
     {
         [SerializeField] private bool enableSpawnEffect = true;
+        [SerializeField] private bool resetParentState = true;
         [SerializeField] private float lerpTimerSpawn = 3.0f;
         [SerializeField] private float lerpTimerDeath = 5.0f;
 
@@ -53,8 +54,11 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
         private IEnumerator SpawnEffectCoroutine()
         {
-            GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Spawning);
-            GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Spawning);
+            if (resetParentState)
+            {
+                GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Spawning);
+                GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Spawning);
+            }
 
             while (timeElapsedSpawn < lerpTimerSpawn)
             {
@@ -63,9 +67,11 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
                 timeElapsedSpawn += Time.deltaTime;
                 yield return null;
             }
-
-            GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
-            GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
+            if (resetParentState)
+            {
+                GetComponentInParent<AIController>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
+                GetComponent<BossProp>()?.SetEnemyState(EEnemyState.EES_Inoccupied);
+            }
 
             timeElapsedSpawn = 0f;
         }
