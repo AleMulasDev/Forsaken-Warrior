@@ -17,6 +17,7 @@ public class MenuSettings : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private UIHandler _uiHandler;
 
+
     private void Awake()
     {
         _uiHandler = GetComponentInParent<UIHandler>();
@@ -102,5 +103,10 @@ public class MenuSettings : MonoBehaviour
             Application.targetFrameRate = -1;
 
         PlayerPrefs.SetInt("vsync", (isVsync ? 1 : 0));
+    }
+
+    public void SwitchCheats(bool enabled)
+    {
+        GameManager.instance.SwitchCheats(enabled);
     }
 }

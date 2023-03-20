@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timeText;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI keysText;
+    private TextMeshProUGUI _timeText;
+    private TextMeshProUGUI _scoreText;
+    private TextMeshProUGUI _keysText;
 
+    private bool _enabledCheats = false;
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
@@ -20,16 +21,37 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public void SwitchCheats(bool enabled)
+    {
+        _enabledCheats = enabled;
+    }
+
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
         //print(SavingSystem.instance.GetPlayerData().playerName);
 
         footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
 
         instance = this;
 
-        if(scoreText != null)
-            scoreText.text = "Score: " + _score;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetGameManager();
+    }
+
+    private void ResetGameManager()
+    {
+        _timeText = GameObject.FindGameObjectWithTag("timeText").GetComponentInChildren<TextMeshProUGUI>();
+        _scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponentInChildren<TextMeshProUGUI>();
+        _keysText = GameObject.FindGameObjectWithTag("keysText").GetComponentInChildren<TextMeshProUGUI>();
+
+        _score = 0;
+        _time = 0;
     }
 
     public ParticleSystem[] GetFootstepParticles()
@@ -39,10 +61,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timeText == null) return;
+        if (_timeText == null) return;
 
         _time += Time.deltaTime;
-        timeText.text = GetTime();
+        _timeText.text = GetTime();
     }
 
     public void SpeedTime()
@@ -74,6 +96,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
     
+
     public void Restart()
     {
 
@@ -97,13 +120,13 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
-        scoreText.text = "Score: " + _score;
+        _scoreText.text = "Score: " + _score;
     }
 
     public void AddKey()
     {
         _keys++;
-        keysText.text = _keys + "/3";
+        _keysText.text = _keys + "/3";
     }
 
     public void Show(CanvasGroup canvasGroup)

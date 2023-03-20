@@ -122,7 +122,7 @@ public class MinibossController : AIController
         if (!_playerController.GetComponent<Health>().IsDead())
             newDestination = _playerController.transform.position;
 
-        if (Vector3.Distance(transform.position, newDestination) > 1.5f)
+        if (Vector3.Distance(transform.position, newDestination) > 2f)
         {
             EnableNavMesh();
         }
@@ -136,7 +136,7 @@ public class MinibossController : AIController
     {
         DisableNavMesh();
 
-        if (Vector3.Distance(transform.position, newDestination) <= 1.5f && _attackTimer > _circleWeapon.fireRate
+        if (Vector3.Distance(transform.position, newDestination) <= 2f && _attackTimer > _circleWeapon.fireRate
             && !_playerController.GetComponent<Health>().IsDead())
         {
             _enemyState = EEnemyState.EES_Attack;

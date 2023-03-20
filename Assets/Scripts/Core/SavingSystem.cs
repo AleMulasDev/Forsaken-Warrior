@@ -46,7 +46,7 @@ public class SavingSystem : MonoBehaviour
     public void SetLoadedData(PlayerData loadedData)
     {
         this.loadedData = loadedData;
-        SceneManager.LoadScene(loadedData.sceneName);
+        SceneManager.LoadScene("LevelChooser");
     }
 
     public void SaveGame()
