@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Weapon _weapon;
     private AudioSource source;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
+    private string _audioPath = "PlayerAudioClips";
 
     [Header("Player parameters")]
     [SerializeField] private float rotationSpeed;
@@ -34,12 +35,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
     [SerializeField] private GameObject indicator;
-    [Header("Sounds")]
-    [SerializeField] private AudioClip[] footstepAudioClips;
-    [SerializeField] private AudioClip[] attackAudioClips;
-    [SerializeField] private AudioClip[] dodgeAudioClips;
-    [SerializeField] private AudioClip[] takeDamageAudioClips;
-    [SerializeField] private AudioClip[] deathAudioClips;
+    
+    private AudioClip[] _footstepAudioClips;
+    private AudioClip[] _attackAudioClips;
+    private AudioClip[] _dodgeAudioClips;
+    private AudioClip[] _takeDamageAudioClips;
+    private AudioClip[] _deathAudioClips;
 
     private ParticleSystem[] footstepParticles;
     private Vector2 _movementInput;
@@ -93,6 +94,11 @@ public class PlayerController : MonoBehaviour
         _powerupManager = GetComponent<PowerupManager>();
         _weapon = GetComponentInChildren<Weapon>();
         source = GetComponent<AudioSource>();
+        _footstepAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Footstep");
+        _attackAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Attack");
+        _deathAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Death");
+        _takeDamageAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Damage");
+        _dodgeAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Dodge");
 
         _playerInput.PlayerControls.Move.started += OnMovementInput;
         _playerInput.PlayerControls.Move.performed += OnMovementInput;
@@ -236,13 +242,13 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetTrigger("jumpB");
             _characterState = ECharacterStates.ECS_BackwardJumping;
-            AudioManager.Instance.PlaySoundEffect(source, dodgeAudioClips[Random.Range(dodgeAudioClips.Length / 2 + 1, dodgeAudioClips.Length)]);
+            AudioManager.Instance.PlaySoundEffect(source, _dodgeAudioClips[Random.Range(_dodgeAudioClips.Length / 2 + 1, _dodgeAudioClips.Length)]);
         }
         else
         {
             _animator.SetTrigger("dodgeF");
             _characterState = ECharacterStates.ECS_Dodging;
-            AudioManager.Instance.PlaySoundEffect(source, dodgeAudioClips[Random.Range(0, dodgeAudioClips.Length / 2)]);
+            AudioManager.Instance.PlaySoundEffect(source, _dodgeAudioClips[Random.Range(0, _dodgeAudioClips.Length / 2)]);
         }
 
     }
@@ -376,12 +382,12 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip GetDamageAudioClip()
     {
-        return takeDamageAudioClips[Random.Range(0, takeDamageAudioClips.Length)];
+        return _takeDamageAudioClips[Random.Range(0, _takeDamageAudioClips.Length)];
     }
 
     public AudioClip GetDeathAudioClip()
     {
-        return deathAudioClips[Random.Range(0, deathAudioClips.Length)];
+        return _deathAudioClips[Random.Range(0, _deathAudioClips.Length)];
     }
 
     bool CanMove()
@@ -392,14 +398,14 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
-        AudioManager.Instance.PlaySoundEffect(source, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
 
         EnableTrail();
     }
 
     public void PlayHeavyAttackSound()
     {
-        AudioManager.Instance.PlaySoundEffect(source, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
     }
     
     private void DisableBox()
@@ -449,14 +455,14 @@ public class PlayerController : MonoBehaviour
     private void FootR()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioManager.Instance.PlaySoundEffect(source, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, _footstepAudioClips[Random.Range(0, _footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], rFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
     private void FootL()
     {
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
-        AudioManager.Instance.PlaySoundEffect(source, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, _footstepAudioClips[Random.Range(0, _footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
     }
 
