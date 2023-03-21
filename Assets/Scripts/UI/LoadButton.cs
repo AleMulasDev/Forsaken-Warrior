@@ -20,6 +20,6 @@ public class LoadButton : MonoBehaviour
 
         _button = GetComponent<Button>();
         _button.onClick.RemoveAllListeners();
-        _button.onClick.AddListener(() => SavingSystem.instance.SetLoadedData(_data));
+        _button.onClick.AddListener(() => SavingSystem.Instance.SetLoadedData(_data));
     }
 }

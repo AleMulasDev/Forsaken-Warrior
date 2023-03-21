@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
     {
         if(_health.IsDead()) return;
 
-        if (IsOneShotEnabled(other))
+        if (IsOneShotEnabled(other) || HasCheats())
         {
             other.GetComponent<Health>().Kill();
         }
@@ -53,6 +53,11 @@ public class Weapon : MonoBehaviour
         return _powerupManager != null && 
             (_powerupManager.GetCurrentPowerup() != null && _powerupManager.GetCurrentPowerup() is OneShotPowerup) 
             && !(other.tag.Equals("Player"));
+    }
+
+    private bool HasCheats()
+    {
+        return _powerupManager != null && GameManager.Instance.AreCheatsEnabled();
     }
 
     private int GetDamage()

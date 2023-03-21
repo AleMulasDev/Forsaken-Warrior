@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform lFoot;
     [SerializeField] private Collider weaponCollider;
     [SerializeField] private GameObject indicator;
-    
+
     private AudioClip[] _footstepAudioClips;
     private AudioClip[] _attackAudioClips;
     private AudioClip[] _dodgeAudioClips;
@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
             SetIsLanded(true);
     }
 
-    private void OnTriggerExit(Collider collision) {
+    private void OnTriggerExit(Collider collision)
+    {
         if (collision.gameObject.tag.Equals("Ground"))
             SetIsLanded(false);
     }
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        footstepParticles = GameManager.instance.GetFootstepParticles();
+        footstepParticles = GameManager.Instance.GetFootstepParticles();
     }
 
     public void SetEnemy(Transform source)
@@ -178,7 +179,8 @@ public class PlayerController : MonoBehaviour
         else if (_characterState == ECharacterStates.ECS_BackwardJumping)
         {
             JumpBackward();
-        } else
+        }
+        else
         {
             _isMoving = _movementInput != Vector2.zero;
         }
@@ -187,13 +189,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        if (_characterState == ECharacterStates.ECS_Jumping)
-        {
-            _velocity += Gravity * 1.0f * Time.deltaTime;
-            _movement.y = _velocity;
-        }
-        else
-            _velocity = -1.0f;
+        _velocity += Gravity * 1.0f * Time.deltaTime;
+        _movement.y = _velocity;
     }
 
     private void HandleJump()
@@ -212,7 +209,7 @@ public class PlayerController : MonoBehaviour
         ResetState();
         _characterState = ECharacterStates.ECS_Jumping;
     }
-    
+
     #region inputFunctions
 
     private void Jump(InputAction.CallbackContext ctx)
@@ -237,7 +234,7 @@ public class PlayerController : MonoBehaviour
         ResetDodgeSpeed();
         DisableBox();
         DisableTrail();
-        
+
         if (_movementInput == Vector2.zero)
         {
             _animator.SetTrigger("jumpB");
@@ -407,7 +404,7 @@ public class PlayerController : MonoBehaviour
     {
         AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
     }
-    
+
     private void DisableBox()
     {
         weaponCollider.enabled = false;

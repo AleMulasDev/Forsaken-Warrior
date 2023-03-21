@@ -12,35 +12,41 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _scoreText;
     private TextMeshProUGUI _keysText;
 
-    private bool _enabledCheats = false;
+    [SerializeField] private bool _enabledCheats = false;
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
 
     private ParticleSystem[] footstepParticles;
 
-    public static GameManager instance;
+    public static GameManager Instance;
 
     public void SwitchCheats(bool enabled)
     {
         _enabledCheats = enabled;
     }
 
+    public bool AreCheatsEnabled()
+    {
+        return _enabledCheats;
+    }
+
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
-        //print(SavingSystem.instance.GetPlayerData().playerName);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
         footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
-
-        instance = this;
-
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "Menu" || scene.name == "LevelChooser")
+            return;
+
         ResetGameManager();
     }
 
@@ -52,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         _score = 0;
         _time = 0;
+        _scoreText.text = "0";
+        _timeText.text = "0s";
     }
 
     public ParticleSystem[] GetFootstepParticles()

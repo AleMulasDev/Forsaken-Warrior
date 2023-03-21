@@ -9,9 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 393764307ed5f424e859e002809a1560
   - enabled: 1
+    path: Assets/Scenes/LevelChooser.unity
+    guid: 67e4ded21deb00a4bb64d4bd5425a929
+  - enabled: 1
     path: Assets/Scenes/Isles.unity
     guid: 091856d3878184403acdd73f42d4a2c3
   - enabled: 1
-    path: Assets/Scenes/Forest.unity
+    path: Assets/Scenes/EnchantedCemetery.unity
     guid: 3c7ff9aa8c5a640a3a65f5f154e97bfc
+  - enabled: 1
+    path: Assets/Scenes/MedievalVillage.unity
+    guid: e005e2fc9b8a844a9a09d7c07de071ce
+  - enabled: 1
+    path: Assets/Scenes/HauntedHouse.unity
+    guid: ba2c5a1f85e644ca9bfa41420edab360
   m_configObjects: {}
