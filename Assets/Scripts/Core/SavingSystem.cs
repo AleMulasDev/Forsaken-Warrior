@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,17 +18,18 @@ public class PlayerData
 
 public class SavingSystem : MonoBehaviour
 {
-    public static SavingSystem instance;
+    public static SavingSystem Instance;
 
     private PlayerData loadedData;
     private GameObject _player;
     private string _path;
+
     private void Awake()
     {
-        if(instance == null)
-            instance = this;
-
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     private void Update()
@@ -46,7 +48,17 @@ public class SavingSystem : MonoBehaviour
     public void SetLoadedData(PlayerData loadedData)
     {
         this.loadedData = loadedData;
+        SceneManager.LoadScene("LevelChooser");
+    }
+
+    public void LoadSavedData()
+    {
         SceneManager.LoadScene(loadedData.sceneName);
+    }
+
+    public void LoadDesiredLevel(string desiredLevel)
+    {
+        SceneManager.LoadScene(desiredLevel);
     }
 
     public void SaveGame()
@@ -59,10 +71,10 @@ public class SavingSystem : MonoBehaviour
         data.playerName = "Maswa";
         data.sceneName = SceneManager.GetActiveScene().name;
         data.position = _player.transform.position;
-        data.score = GameManager.instance.GetScore();
-        data.time = GameManager.instance.GetTimeRaw();
+        data.score = GameManager.Instance.GetScore();
+        data.time = GameManager.Instance.GetTimeRaw();
         data.health = _player.GetComponent<Health>().GetHealth();
-        data.keys = GameManager.instance.GetKeys();
+        data.keys = GameManager.Instance.GetKeys();
 
         string json = JsonUtility.ToJson(data);
 

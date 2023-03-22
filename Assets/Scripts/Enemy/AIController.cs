@@ -46,7 +46,7 @@ public class AIController : MonoBehaviour
         if (_navMeshAgent != null)
             _navMeshAgent.updateRotation = false;
 
-        footstepParticles = GameManager.instance.GetFootstepParticles();
+        footstepParticles = GameManager.Instance.GetFootstepParticles();
     }
 
     protected void EnableNavMesh()
@@ -93,8 +93,8 @@ public class AIController : MonoBehaviour
     public void HandleDeath()
     {
         SpawnPowerup();
-        GameManager.instance.AddScore(onKillScore);
-        AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
+        GameManager.Instance.AddScore(onKillScore);
+        //AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
     }
 
     public AudioSource GetAudioSource()

@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
     }
     public virtual void TakeDamage(int damage)
     {
-        if (_characterController && _powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup && _powerupManager.GetCurrentPowerup() != null)
+        if (_characterController && (_powerupManager.GetCurrentPowerup() is InvulnerabilityPowerup && _powerupManager.GetCurrentPowerup() != null || GameManager.Instance.AreCheatsEnabled()))
             return;
 
         _currentHealth = Mathf.Max(_currentHealth - damage, 0);

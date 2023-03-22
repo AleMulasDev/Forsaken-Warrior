@@ -10,28 +10,17 @@ public class MenuSettings : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI mouseSensValue;
     [SerializeField] private TextMeshProUGUI cameraSensValue;
-    [SerializeField] private CanvasGroup pauseCanvasGroup;
     [SerializeField] private AudioMixer audioMixer;
 
     private Resolution[] _screenRes;
-    private CanvasGroup _canvasGroup;
-    private UIHandler _uiHandler;
+
 
     private void Awake()
     {
-        _uiHandler = GetComponentInParent<UIHandler>();
-        _canvasGroup = GetComponent<CanvasGroup>();
         _screenRes = Screen.resolutions;
-        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
-        audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
-        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
-    }
-
-    public void OpenPauseMenu()
-    {
-        _uiHandler.OpenPauseMenu();
-        _uiHandler.CloseSettings();
-        pauseCanvasGroup.transform.SetAsLastSibling();
+        //audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+        //audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+        //audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
     }
 
     public void ChangeCameraSens(float value)
@@ -102,5 +91,10 @@ public class MenuSettings : MonoBehaviour
             Application.targetFrameRate = -1;
 
         PlayerPrefs.SetInt("vsync", (isVsync ? 1 : 0));
+    }
+
+    public void SwitchCheats(bool enabled)
+    {
+        GameManager.Instance.SwitchCheats(enabled);
     }
 }

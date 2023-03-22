@@ -8,28 +8,58 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timeText;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI keysText;
+    private TextMeshProUGUI _timeText;
+    private TextMeshProUGUI _scoreText;
+    private TextMeshProUGUI _keysText;
 
+    [SerializeField] private bool _enabledCheats = false;
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
 
     private ParticleSystem[] footstepParticles;
 
-    public static GameManager instance;
+    public static GameManager Instance;
+
+    public void SwitchCheats(bool enabled)
+    {
+        _enabledCheats = enabled;
+    }
+
+    public bool AreCheatsEnabled()
+    {
+        return _enabledCheats;
+    }
 
     private void Awake()
     {
-        //print(SavingSystem.instance.GetPlayerData().playerName);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
 
         footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        instance = this;
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Menu" || scene.name == "LevelChooser")
+            return;
 
-        if(scoreText != null)
-            scoreText.text = "Score: " + _score;
+        ResetGameManager();
+    }
+
+    private void ResetGameManager()
+    {
+        _timeText = GameObject.FindGameObjectWithTag("timeText").GetComponentInChildren<TextMeshProUGUI>();
+        _scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponentInChildren<TextMeshProUGUI>();
+        _keysText = GameObject.FindGameObjectWithTag("keysText").GetComponentInChildren<TextMeshProUGUI>();
+
+        _score = 0;
+        _time = 0;
+        _scoreText.text = "0";
+        _timeText.text = "0s";
     }
 
     public ParticleSystem[] GetFootstepParticles()
@@ -39,10 +69,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (timeText == null) return;
+        if (_timeText == null) return;
 
         _time += Time.deltaTime;
-        timeText.text = GetTime();
+        _timeText.text = GetTime();
     }
 
     public void SpeedTime()
@@ -74,6 +104,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
     
+
     public void Restart()
     {
 
@@ -97,13 +128,13 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
-        scoreText.text = "Score: " + _score;
+        _scoreText.text = "Score: " + _score;
     }
 
     public void AddKey()
     {
         _keys++;
-        keysText.text = _keys + "/3";
+        _keysText.text = _keys + "/3";
     }
 
     public void Show(CanvasGroup canvasGroup)

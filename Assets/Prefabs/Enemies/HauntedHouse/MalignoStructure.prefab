@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6703648937879108459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6703648937879108456}
+  - component: {fileID: 6703648937879108457}
+  m_Layer: 0
+  m_Name: Spawner4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6703648937879108456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648937879108459}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6703648939291654256}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6703648937879108457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648937879108459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f03d6d12f699534e83f2ceb1ee271c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 311113944799118446, guid: f349a71bc269e4349a6ac0ab840efed5, type: 3}
+  - {fileID: 6446200640519447769, guid: 146ed64d137fe6e49ab014b48917de87, type: 3}
+  - {fileID: 3523142664327254453, guid: fe964fd4259a19843a1a0b1d6eeb8997, type: 3}
+  - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
+  - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
+  bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
+  miniboss: {fileID: 0}
+  shouldSpawnMiniboss: 0
+  minibossSpawnEffect: {fileID: 0}
+--- !u!1 &6703648939095366343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6703648939095366340}
+  - component: {fileID: 6703648939095366341}
+  m_Layer: 0
+  m_Name: Spawner3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6703648939095366340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939095366343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6703648939291654256}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6703648939095366341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939095366343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f03d6d12f699534e83f2ceb1ee271c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 311113944799118446, guid: f349a71bc269e4349a6ac0ab840efed5, type: 3}
+  - {fileID: 6446200640519447769, guid: 146ed64d137fe6e49ab014b48917de87, type: 3}
+  - {fileID: 3523142664327254453, guid: fe964fd4259a19843a1a0b1d6eeb8997, type: 3}
+  - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
+  - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
+  bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
+  miniboss: {fileID: 0}
+  shouldSpawnMiniboss: 0
+  minibossSpawnEffect: {fileID: 0}
+--- !u!1 &6703648939173568304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6703648939173568305}
+  - component: {fileID: 6703648939173568310}
+  m_Layer: 0
+  m_Name: Spawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6703648939173568305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939173568304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6703648939291654256}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6703648939173568310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939173568304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f03d6d12f699534e83f2ceb1ee271c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 311113944799118446, guid: f349a71bc269e4349a6ac0ab840efed5, type: 3}
+  - {fileID: 6446200640519447769, guid: 146ed64d137fe6e49ab014b48917de87, type: 3}
+  - {fileID: 3523142664327254453, guid: fe964fd4259a19843a1a0b1d6eeb8997, type: 3}
+  - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
+  - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
+  bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
+  miniboss: {fileID: 0}
+  shouldSpawnMiniboss: 0
+  minibossSpawnEffect: {fileID: 0}
+--- !u!1 &6703648939291654259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6703648939291654256}
+  m_Layer: 0
+  m_Name: MalignoStructure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6703648939291654256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939291654259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6703648939739867416}
+  - {fileID: 6703648939173568305}
+  - {fileID: 6703648939095366340}
+  - {fileID: 6703648937879108456}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6703648939739867419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6703648939739867416}
+  - component: {fileID: 6703648939739867417}
+  m_Layer: 0
+  m_Name: Spawner1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6703648939739867416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939739867419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6703648939291654256}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6703648939739867417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703648939739867419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f03d6d12f699534e83f2ceb1ee271c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 311113944799118446, guid: f349a71bc269e4349a6ac0ab840efed5, type: 3}
+  - {fileID: 6446200640519447769, guid: 146ed64d137fe6e49ab014b48917de87, type: 3}
+  - {fileID: 3523142664327254453, guid: fe964fd4259a19843a1a0b1d6eeb8997, type: 3}
+  - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
+  - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
+  bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
+  miniboss: {fileID: 2760284867535494283, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
+  shouldSpawnMiniboss: 1
+  minibossSpawnEffect: {fileID: 198267365771992106, guid: 2dc5347a44240ea4597cafb2d1d7c160, type: 3}
