@@ -34,10 +34,10 @@ public class Weapon : MonoBehaviour
         }
         else if (other.tag.Equals(targetTag) && !(other is BoxCollider))
         {
-            /*if(targetTag.Equals("Enemy"))
+            if(targetTag.Equals("Enemy"))
                 AudioManager.Instance.PlaySoundEffect(other.GetComponent<AIController>().GetAudioSource(), other.GetComponent<AIController>().GetDamageAudioClip());
             else if(targetTag.Equals("Player"))
-                AudioManager.Instance.PlaySoundEffect(other.GetComponent<PlayerController>().GetAudioSource(), other.GetComponent<PlayerController>().GetDamageAudioClip());*/
+                AudioManager.Instance.PlaySoundEffect(other.GetComponent<PlayerController>().GetAudioSource(), other.GetComponent<PlayerController>().GetDamageAudioClip());
 
             other.GetComponent<Health>().TakeDamage(GetDamage());
         }

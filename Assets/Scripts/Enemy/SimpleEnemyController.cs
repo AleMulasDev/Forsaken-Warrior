@@ -57,7 +57,7 @@ public class SimpleEnemyController : AIController
         {
             _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger(Attack);
-            //AudioManager.Instance.PlaySoundEffect(_audioSource, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+            AudioManager.Instance.PlaySoundEffect(_audioSource, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
         }
     }
     protected void Shoot()

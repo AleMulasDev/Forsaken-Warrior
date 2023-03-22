@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Menu" || scene.name == "LevelChooser")
+        if (scene.name == "Menu" || scene.name == "LevelChooser" || scene.name == "GabTestScene")
             return;
 
         ResetGameManager();
@@ -127,8 +127,8 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        _score += score;
-        _scoreText.text = "Score: " + _score;
+        //_score += score;
+        //_scoreText.text = "Score: " + _score;
     }
 
     public void AddKey()
