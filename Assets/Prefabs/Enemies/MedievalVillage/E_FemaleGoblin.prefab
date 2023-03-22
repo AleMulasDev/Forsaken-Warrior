@@ -401,18 +401,25 @@ MonoBehaviour:
   lFoot: {fileID: 7064307605687751216}
   rFoot: {fileID: 7064307605135795904}
   footstepAudioClips:
-  - {fileID: 8300000, guid: fdba3582e91ff49a5a93de23f68506c6, type: 3}
-  - {fileID: 8300000, guid: 93b7106dcc1ea42c89c3a0e6b9964fd6, type: 3}
-  - {fileID: 8300000, guid: ef5f48b2489d04a16a0701bfb2335f45, type: 3}
-  - {fileID: 8300000, guid: a683af98aab7c456bb84a104cfa50993, type: 3}
+  - {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+  - {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+  - {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+  - {fileID: 8300000, guid: fba95cafa5bba8649a7d269656e7317b, type: 3}
+  - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+  - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+  - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+  - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+  - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+  - {fileID: 8300000, guid: 02d4b2dff380d194fab91c0864b0c386, type: 3}
   deathAudioClips:
-  - {fileID: 8300000, guid: 42df765963a22e84987af2bd42ff99dc, type: 3}
-  - {fileID: 8300000, guid: 78acc8abafb15ee4b85848933aa837ce, type: 3}
-  - {fileID: 8300000, guid: d9e1a86d55e00e647be0b3468aad28f5, type: 3}
+  - {fileID: 8300000, guid: 05e63c77d06fd8542b2966dad78f3326, type: 3}
+  - {fileID: 8300000, guid: 79950f662f11f964d9e1f9d45113e75f, type: 3}
   takeDamageAudioClips:
-  - {fileID: 8300000, guid: 01d492501a8314509a7751ba7931c251, type: 3}
-  - {fileID: 8300000, guid: b2119b3cc732b4a0abfeea7179478077, type: 3}
-  - {fileID: 8300000, guid: 7b582c71f1073427b961f8b82f5cd752, type: 3}
+  - {fileID: 8300000, guid: aa5aeb9162d34f645a316b7a7f4af458, type: 3}
+  - {fileID: 8300000, guid: fec6528c1edb0be4eae8f9d8608c7843, type: 3}
+  - {fileID: 8300000, guid: a62c924b055353c4c8415727bb32ea7d, type: 3}
+  - {fileID: 8300000, guid: aa70f70c687c1914db7bb99f8f1aa378, type: 3}
+  - {fileID: 8300000, guid: ceda30cfcaa3da04a91ebf22896effbb, type: 3}
   attackAudioClips:
   - {fileID: 8300000, guid: ca6ec83bfb83b7e44a2aac82e94da314, type: 3}
   - {fileID: 8300000, guid: 9d8c365095977fc4b8435ed847c4b8f4, type: 3}

@@ -94,7 +94,7 @@ public class AIController : MonoBehaviour
     {
         SpawnPowerup();
         GameManager.Instance.AddScore(onKillScore);
-        //AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, deathAudioClips[Random.Range(0, deathAudioClips.Length)]);
     }
 
     public AudioSource GetAudioSource()
