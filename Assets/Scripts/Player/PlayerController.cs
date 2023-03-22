@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float heavyAttackMaxDuration;
     [SerializeField] private float heightOffset;
     [SerializeField] private float velocityModifier;
+    [SerializeField] private float fallVelocity;
     [Space]
     [Header("References")]
     [SerializeField] private Transform rFoot;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private float tempDodgeSpeed;
     private float tempJumpBSpeed;
     private float _velocity;
+    private float _tempVelocity;
 
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int CanDoCombo = Animator.StringToHash("canDoCombo");
@@ -60,7 +63,7 @@ public class PlayerController : MonoBehaviour
     private static readonly int LightAttackInputMovement = Animator.StringToHash("lightAttackInputMovement");
     private static readonly int HeavyAttackInput = Animator.StringToHash("heavyAttackInput");
 
-    private const float Gravity = -6F;
+    [SerializeField] private float Gravity = -6F;
 
     private GameObject lightningInstance;
 
@@ -69,17 +72,17 @@ public class PlayerController : MonoBehaviour
         return _isMoving;
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag.Equals("Ground"))
-            SetIsLanded(true);
-    }
+    //private void OnTriggerEnter(Collider collision)
+    //{
+    //    if (collision.gameObject.tag.Equals("Ground"))
+    //        SetIsLanded(true);
+    //}
 
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.gameObject.tag.Equals("Ground"))
-            SetIsLanded(false);
-    }
+    //private void OnTriggerExit(Collider collision)
+    //{
+    //    if (collision.gameObject.tag.Equals("Ground"))
+    //        SetIsLanded(false);
+    //}
 
     public static PlayerInput GetPlayerInput()
     {
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour
         _powerupManager = GetComponent<PowerupManager>();
         _weapon = GetComponentInChildren<Weapon>();
         source = GetComponent<AudioSource>();
+
         _footstepAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Footstep");
         _attackAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Attack");
         _deathAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Death");
@@ -118,6 +122,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        _tempVelocity = 0f;
         footstepParticles = GameManager.Instance.GetFootstepParticles();
     }
 
@@ -129,6 +134,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //print(_controller.isGrounded);
+
         HandleRotation();
         HandleMovement();
         HandleGravity();
@@ -161,9 +168,12 @@ public class PlayerController : MonoBehaviour
     {
         _cameraBasedMovement = ConvertToCameraSpace(_movement);
 
-        if (CanMove() || _characterState == ECharacterStates.ECS_Jumping)
+        if (CanMove())
         {
             _animator.SetBool(IsMoving, _isMoving);
+            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
+        } else if (_characterState == ECharacterStates.ECS_Jumping)
+        {
             _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
         }
         else
@@ -189,7 +199,29 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        _velocity += Gravity * 1.0f * Time.deltaTime;
+        if (_characterState == ECharacterStates.ECS_Jumping || !_controller.isGrounded)
+        {
+            if (_tempVelocity > fallVelocity)
+                _tempVelocity += Gravity * 1.0f * Time.deltaTime;
+            else
+                _tempVelocity = fallVelocity;
+            _velocity = _tempVelocity;
+            _animator.SetBool("isLanded", false);
+            _animator.SetBool("isFalling", true);
+        }
+        
+        if (_controller.isGrounded)
+        {
+            print("Landed");
+            _animator.SetBool("isLanded", true);
+            _animator.SetBool("isFalling", false);
+            _velocity = -1.0f;
+            _tempVelocity = 0f;
+        } else
+        {
+            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
+        }
+
         _movement.y = _velocity;
     }
 
@@ -202,6 +234,9 @@ public class PlayerController : MonoBehaviour
             float nextYVel = (oldYVel + newYVel) / 2;
             _movement.y = nextYVel;
         }
+
+        //if (_controller.isGrounded)
+        //    SetIsLanded(true);
     }
 
     public void SetJumpTrigger()
@@ -216,7 +251,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_characterState != ECharacterStates.ECS_Inoccupied && _characterState != ECharacterStates.ECS_LightAttack) return;
 
-        _animator.SetTrigger("jump");
+        _animator.Play("Jumping");
     }
 
     public void ChangeDamageModifier(int newDamageModifier)
@@ -357,6 +392,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetIsLanded(bool isLanded)
     {
+        print("Landed");
+        _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool("isLanded", isLanded);
     }
 
@@ -421,7 +458,6 @@ public class PlayerController : MonoBehaviour
 
     public void ResetState()
     {
-        _velocity = -1.0f;
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();

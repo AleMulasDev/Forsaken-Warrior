@@ -555,13 +555,6 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.6922752
-        functionName: ResetState
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
       - time: 0.04977375
         functionName: FootL
         data: 
@@ -571,6 +564,13 @@ ModelImporter:
         messageOptions: 0
       - time: 0.0995475
         functionName: FootR
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.12206579
+        functionName: ResetState
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
