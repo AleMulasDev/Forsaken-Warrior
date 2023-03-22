@@ -2950,7 +2950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6114109306437484178
 Transform:
   m_ObjectHideFlags: 0
@@ -3096,11 +3096,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7696dbadef582b6408486b62fe6567c8, type: 3}
   - {fileID: 8300000, guid: aa5aeb9162d34f645a316b7a7f4af458, type: 3}
   attackAudioClips:
-  - {fileID: 8300000, guid: da0a7393c8e00b44991a57f5abf73fe7, type: 3}
-  - {fileID: 8300000, guid: 400915b29d6df8f43b39fcdef4d18ecc, type: 3}
-  - {fileID: 8300000, guid: 0942c7d03769a0e4b8569f0bc9d8965b, type: 3}
-  - {fileID: 8300000, guid: 030b541c60f60734490d67795eb2ab3f, type: 3}
-  - {fileID: 8300000, guid: a9e6aefd82afd6f4aad15979d4c877f1, type: 3}
+  - {fileID: 8300000, guid: 1561932f0915c524eb3318a8e50ca051, type: 3}
+  - {fileID: 8300000, guid: 897e7558f4c1ec44c8103089bc1bd8c5, type: 3}
+  - {fileID: 8300000, guid: ba9cbb65437a25240acd93ecbf756b7a, type: 3}
+  - {fileID: 8300000, guid: 7c14cff916bc6464db054ff12b142c3a, type: 3}
   onEnemyBossKill:
     m_PersistentCalls:
       m_Calls: []
@@ -3118,7 +3117,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
