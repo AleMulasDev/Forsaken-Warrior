@@ -172,7 +172,8 @@ public class PlayerController : MonoBehaviour
         {
             _animator.SetBool(IsMoving, _isMoving);
             _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
-        } else if (_characterState == ECharacterStates.ECS_Jumping)
+        }
+        else if (_characterState == ECharacterStates.ECS_Jumping)
         {
             _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
         }
@@ -199,30 +200,37 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGravity()
     {
-        if (_characterState == ECharacterStates.ECS_Jumping || !_controller.isGrounded)
+        if (ShouldApplyGravity())
         {
             if (_tempVelocity > fallVelocity)
                 _tempVelocity += Gravity * 1.0f * Time.deltaTime;
             else
                 _tempVelocity = fallVelocity;
+
             _velocity = _tempVelocity;
             _animator.SetBool("isLanded", false);
             _animator.SetBool("isFalling", true);
         }
-        
+
         if (_controller.isGrounded)
         {
-            print("Landed");
             _animator.SetBool("isLanded", true);
             _animator.SetBool("isFalling", false);
             _velocity = -1.0f;
             _tempVelocity = 0f;
-        } else
+        }
+        else
         {
-            _controller.Move(GetSpeed() * Time.deltaTime * _cameraBasedMovement);
+            Vector3 downVector = new Vector3(0, _cameraBasedMovement.y, 0);
+            _controller.Move(GetSpeed() * Time.deltaTime * downVector);
         }
 
         _movement.y = _velocity;
+    }
+
+    private bool ShouldApplyGravity()
+    {
+        return _characterState == ECharacterStates.ECS_Jumping || !_controller.isGrounded && _characterState != ECharacterStates.ECS_Dodging && _characterState != ECharacterStates.ECS_BackwardJumping;
     }
 
     private void HandleJump()
@@ -251,7 +259,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_characterState != ECharacterStates.ECS_Inoccupied && _characterState != ECharacterStates.ECS_LightAttack) return;
 
-        _animator.Play("Jumping");
+        //_animator.SetTrigger("jump");
+        _animator.CrossFade("Jumping", 0f, 0, 0, 0.25f);
     }
 
     public void ChangeDamageModifier(int newDamageModifier)
@@ -272,13 +281,13 @@ public class PlayerController : MonoBehaviour
 
         if (_movementInput == Vector2.zero)
         {
-            _animator.SetTrigger("jumpB");
+            _animator.CrossFade("Jump-Backward", 0f, 0, 0, 0.25f);
             _characterState = ECharacterStates.ECS_BackwardJumping;
             AudioManager.Instance.PlaySoundEffect(source, _dodgeAudioClips[Random.Range(_dodgeAudioClips.Length / 2 + 1, _dodgeAudioClips.Length)]);
         }
         else
         {
-            _animator.SetTrigger("dodgeF");
+            _animator.CrossFade("Roll-Forward", 0f, 0, 0, 0.25f);
             _characterState = ECharacterStates.ECS_Dodging;
             AudioManager.Instance.PlaySoundEffect(source, _dodgeAudioClips[Random.Range(0, _dodgeAudioClips.Length / 2)]);
         }
@@ -341,6 +350,12 @@ public class PlayerController : MonoBehaviour
 
         _movement.x = _movementInput.x;
         _movement.z = _movementInput.y;
+
+        if(_characterState == ECharacterStates.ECS_Jumping)
+        {
+            _movement.x *= 0.75f; 
+            _movement.z *= 0.75f;
+        }
 
         if (_characterState == ECharacterStates.ECS_LightAttack)
         {
