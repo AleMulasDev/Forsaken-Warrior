@@ -28,7 +28,7 @@ public class AIController : MonoBehaviour
     protected Health _health;
     private CapsuleCollider _capsuleCollider;
     protected EEnemyState _enemyState = EEnemyState.EES_Inoccupied;
-
+   
     protected Vector3 newDestination;
     protected float _attackTimer = 0.0f;
 
@@ -166,6 +166,8 @@ public class AIController : MonoBehaviour
         {
             c.enabled = true;
         }
+
+        AudioManager.Instance.PlaySoundEffect(_audioSource, GetComponentInChildren<Weapon>().GetWeaponAudioClip());
     }
 
     private void DisableBox()

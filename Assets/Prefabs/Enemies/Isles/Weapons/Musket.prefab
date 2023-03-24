@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Enemy
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 0ab67612d0fe546cda545b05e6f08566, type: 3}
 --- !u!114 &-5894047115152787892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &2223131377097921590

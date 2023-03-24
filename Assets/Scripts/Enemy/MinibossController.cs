@@ -141,6 +141,7 @@ public class MinibossController : AIController
         {
             _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger("attack");
+            AudioManager.Instance.PlaySoundEffect(_audioSource, _currentRightHandWeaponInstance.GetWeaponAudioClip());
         }
     }
 
@@ -246,12 +247,14 @@ public class MinibossController : AIController
     {
         _enemyState = EEnemyState.EES_Attack;
         _currentRightHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, _currentRightHandWeaponInstance.GetWeaponAudioClip());
     }
 
     private void ShootL()
     {
         _enemyState = EEnemyState.EES_Attack;
         _currentLeftHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, _currentLeftHandWeaponInstance.GetWeaponAudioClip());
 
 
         if (_pickedInstance != null)
@@ -262,7 +265,7 @@ public class MinibossController : AIController
     {
         _enemyState = EEnemyState.EES_Attack;
         _currentRightHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
-
+        AudioManager.Instance.PlaySoundEffect(_audioSource, _currentRightHandWeaponInstance.GetWeaponAudioClip());
     }
 
     private void Pick()
@@ -282,4 +285,5 @@ public class MinibossController : AIController
         GetComponentInChildren<SpawnParticle>().SpawnParticleAtPosition();
         CinemachineShake.instance.ShakeCamera(5f, 5f);
     }
+
 }

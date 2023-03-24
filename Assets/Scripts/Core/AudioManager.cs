@@ -27,8 +27,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundEffect(AudioSource source, AudioClip clip)
     {
-        source.volume = 0.25f;
-        source.loop = false;
         source.PlayOneShot(clip);
     }
 

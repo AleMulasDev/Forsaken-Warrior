@@ -101,6 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 2
+  weaponAudioClips:
+  - {fileID: 8300000, guid: bb0d5414486fd69439abe4488f5f3cc6, type: 3}
+  - {fileID: 8300000, guid: 0b7c0bf4096c99142800f705b0e18b44, type: 3}
+  - {fileID: 8300000, guid: 9e6cce6c09d63b848a0c6bb91384c310, type: 3}
+  - {fileID: 8300000, guid: 191566c890f8f5342bb37d1a96463eb2, type: 3}
+  - {fileID: 8300000, guid: 834a348b895d6c043929abf50dcb01ac, type: 3}
 --- !u!65 &85283884433237403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &-3137463758291369636

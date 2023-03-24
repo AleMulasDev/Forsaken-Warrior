@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private string targetTag;
     [SerializeField] private int damage;
+    [SerializeField] private AudioClip[] weaponAudioClips;
 
     private PowerupManager _powerupManager;
     private Health _health;
@@ -79,5 +80,10 @@ public class Weapon : MonoBehaviour
         GetComponentInChildren<SpawnParticle>()?.SpawnParticleAtPosition();
         Projectile bulletInstance = Instantiate(bullet, transform.position, bullet.transform.rotation);
         bulletInstance.SetProjectile(player, damage);
+    }
+
+    public AudioClip GetWeaponAudioClip()
+    {
+        return weaponAudioClips[Random.Range(0, weaponAudioClips.Length)];
     }
 }

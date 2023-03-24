@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &1506161240200076910
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &4053506977642095077
@@ -1217,6 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &5852164581977244104
@@ -1621,6 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &2646273627975104922
@@ -1859,6 +1863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &7064977541295533460
@@ -2301,6 +2306,7 @@ GameObject:
   - component: {fileID: 2760284867535494280}
   - component: {fileID: 2760284867535494283}
   - component: {fileID: 2760284867535494284}
+  - component: {fileID: 2819029880645430199}
   m_Layer: 0
   m_Name: MB_Captain
   m_TagString: Enemy
@@ -2417,9 +2423,25 @@ MonoBehaviour:
   colliders: []
   lFoot: {fileID: 2760284867535136740}
   rFoot: {fileID: 2760284867535151830}
-  footstepAudioClips: []
-  deathAudioClips: []
-  takeDamageAudioClips: []
+  footstepAudioClips:
+  - {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+  - {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+  - {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+  - {fileID: 8300000, guid: fba95cafa5bba8649a7d269656e7317b, type: 3}
+  - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+  - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+  - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+  - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+  - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+  - {fileID: 8300000, guid: 02d4b2dff380d194fab91c0864b0c386, type: 3}
+  deathAudioClips:
+  - {fileID: 8300000, guid: c1829a72e9e0a3644a70b160f838215d, type: 3}
+  takeDamageAudioClips:
+  - {fileID: 8300000, guid: 9b0e834af69d1f34584492ac09798c9e, type: 3}
+  - {fileID: 8300000, guid: aa1e7a068fd4fa04480c24ab9be3713d, type: 3}
+  - {fileID: 8300000, guid: 450aab1acc511554bb29a4c764baaa66, type: 3}
+  - {fileID: 8300000, guid: c2b78210168ad8b43b9ffe53c535f218, type: 3}
+  - {fileID: 8300000, guid: 230b91cde2889f0488aeb9ac00662c6e, type: 3}
   attackAudioClips: []
   onEnemyBossKill:
     m_PersistentCalls:
@@ -2433,7 +2455,6 @@ MonoBehaviour:
     leftHandWeapon: {fileID: 6941930556950479469, guid: cb44112ae311fd64890ff1977e97bed4, type: 3}
     bullet: {fileID: -4315479916804622947, guid: 5f059e0a1393bef4ab2f3dbfb7cc963f, type: 3}
     weaponType: 2
-    collider: {fileID: 0}
   - circle: 1
     fireRate: 3
     damage: 3
@@ -2441,7 +2462,6 @@ MonoBehaviour:
     leftHandWeapon: {fileID: 0}
     bullet: {fileID: -4315479916804622947, guid: 79f351afca234b342bc978afedd9f420, type: 3}
     weaponType: 1
-    collider: {fileID: 0}
   - circle: 2
     fireRate: 2
     damage: 7
@@ -2449,10 +2469,10 @@ MonoBehaviour:
     leftHandWeapon: {fileID: 0}
     bullet: {fileID: 0}
     weaponType: 1
-    collider: {fileID: 0}
   leftHand: {fileID: 2760284867535056712}
   rightHand: {fileID: 2760284867535163144}
   spawnTimer: 30
+  skipUnsheath: 0
 --- !u!114 &2760284867535494284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2470,6 +2490,102 @@ MonoBehaviour:
   _currentHealth: 0
   healthBar: {fileID: 6679447263405410039}
   stunStars: {fileID: 1334071670866236, guid: edf12e91890b8434eb8ea701f9bc40a2, type: 3}
+--- !u!82 &2819029880645430199
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2760284867535494282}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 35
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2760284867535498238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2600,6 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &5767310504282056778
@@ -2744,6 +2861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &4571581752482457827

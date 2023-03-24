@@ -278,6 +278,7 @@ public class BossController : AIController
     {
         _enemyState = EEnemyState.EES_Attack;
 
+
         if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Projectile)
             _animator.SetTrigger("shootProjectile");
         else if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Spell)
