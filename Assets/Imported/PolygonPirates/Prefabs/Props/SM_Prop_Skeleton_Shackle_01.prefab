@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 446120}
   - component: {fileID: 3355682}
   - component: {fileID: 2362104}
+  - component: {fileID: 1990334925797442163}
   m_Layer: 0
   m_Name: SM_Prop_Skeleton_Shackle_01
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1990334925797442163
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161678}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 002185e453c54bc4c8ad5855b9b1e258, type: 3}

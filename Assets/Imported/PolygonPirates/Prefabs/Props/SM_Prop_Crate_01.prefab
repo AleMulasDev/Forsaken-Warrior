@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 410930}
   - component: {fileID: 3376404}
   - component: {fileID: 2356642}
+  - component: {fileID: 1853687052515380566}
   m_Layer: 0
   m_Name: SM_Prop_Crate_01
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1853687052515380566
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8441065, y: 0.8441065, z: 0.8441063}
+  m_Center: {x: -0.000000094052965, y: 0.4220532, z: -0.000000022011788}

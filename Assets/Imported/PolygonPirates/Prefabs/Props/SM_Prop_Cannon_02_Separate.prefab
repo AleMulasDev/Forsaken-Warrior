@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 410482}
   - component: {fileID: 3388366}
   - component: {fileID: 2317674}
+  - component: {fileID: 3503306303184271936}
   m_Layer: 0
   m_Name: SM_Prop_Cannon_02_Separate
   m_TagString: Untagged
@@ -335,3 +336,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3503306303184271936
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 00e92230cf7b67d45a8117fe9adb5a54, type: 3}

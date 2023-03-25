@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
@@ -198,6 +199,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Water"))
+            GameManager.Instance.Respawn(transform);
+    }
+
     private void HandleGravity()
     {
         if (ShouldApplyGravity())
@@ -242,9 +249,6 @@ public class PlayerController : MonoBehaviour
             float nextYVel = (oldYVel + newYVel) / 2;
             _movement.y = nextYVel;
         }
-
-        //if (_controller.isGrounded)
-        //    SetIsLanded(true);
     }
 
     public void SetJumpTrigger()
@@ -353,8 +357,8 @@ public class PlayerController : MonoBehaviour
 
         if(_characterState == ECharacterStates.ECS_Jumping)
         {
-            _movement.x *= 0.75f; 
-            _movement.z *= 0.75f;
+            _movement.x *= 0.9f; 
+            _movement.z *= 0.9f;
         }
 
         if (_characterState == ECharacterStates.ECS_LightAttack)
@@ -407,7 +411,6 @@ public class PlayerController : MonoBehaviour
 
     public void SetIsLanded(bool isLanded)
     {
-        print("Landed");
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool("isLanded", isLanded);
     }

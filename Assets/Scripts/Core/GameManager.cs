@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _keysText;
 
     [SerializeField] private bool _enabledCheats = false;
+    [SerializeField] Transform spawnPoint;
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
@@ -29,6 +30,16 @@ public class GameManager : MonoBehaviour
     public bool AreCheatsEnabled()
     {
         return _enabledCheats;
+    }
+
+    public void ChangeSpawnPoint(Transform newSpawnPoint)
+    {
+        spawnPoint.position = newSpawnPoint.position;
+    }
+
+    public void Respawn(Transform player)
+    {
+        player.position = spawnPoint.position;
     }
 
     private void Awake()
