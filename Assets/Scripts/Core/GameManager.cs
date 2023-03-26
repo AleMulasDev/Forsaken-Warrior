@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour
         _keyGathered = true;
         _keys++;
         _keysText.text = _keys + "/3";
+        SpawnPortal();
     }
 
     public void Show(CanvasGroup canvasGroup)
