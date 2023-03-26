@@ -166,8 +166,6 @@ public class AIController : MonoBehaviour
         {
             c.enabled = true;
         }
-
-        AudioManager.Instance.PlaySoundEffect(_audioSource, GetComponentInChildren<Weapon>().GetWeaponAudioClip());
     }
 
     private void DisableBox()
@@ -200,5 +198,10 @@ public class AIController : MonoBehaviour
         int _selection = UnityEngine.Random.Range(0, footstepParticles.Length - 1);
         AudioManager.Instance.PlaySoundEffect(_audioSource, footstepAudioClips[Random.Range(0, footstepAudioClips.Length)]);
         Destroy(Instantiate(footstepParticles[_selection], lFoot.transform.position, footstepParticles[_selection].transform.rotation).gameObject, 1f);
+    }
+
+    private void PlayAttackAudioClip()
+    {
+        AudioManager.Instance.PlaySoundEffect(_audioSource, GetComponentInChildren<Weapon>().GetWeaponAudioClip());
     }
 }

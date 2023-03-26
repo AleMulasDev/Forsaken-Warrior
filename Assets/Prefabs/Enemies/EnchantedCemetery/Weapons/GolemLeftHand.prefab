@@ -47,6 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 6e4473d65c5747e4bae4a48a476d5626, type: 3}
+  - {fileID: 8300000, guid: 64ca6cce50e72c54482197319f6d1a79, type: 3}
+  - {fileID: 8300000, guid: 1813f707f7bc59643b26d9b81f92fd9c, type: 3}
+  - {fileID: 8300000, guid: 7f1a2c6a158fe5545956006bf3c966b2, type: 3}
+  - {fileID: 8300000, guid: aea317914ba0ce847a6a33f9b1926bec, type: 3}
 --- !u!135 &-3502052814354161730
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -1162,7 +1162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4198217662419212552
 Transform:
   m_ObjectHideFlags: 0
@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 5
+  onKillScore: 0
   colliders: []
   lFoot: {fileID: 4198217662419218650}
   rFoot: {fileID: 4198217662419219514}
@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2485,7 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2515,4 +2515,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Enemy
   damage: 1
-  weaponAudioClips: []
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 0ab67612d0fe546cda545b05e6f08566, type: 3}

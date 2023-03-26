@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -1003,7 +1003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2799244034086063390
 Transform:
   m_ObjectHideFlags: 0
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 9098432d8c799ba4a84611e306a914bb, type: 3}
-  _maxHealth: 10
+  _maxHealth: 8
   _currentHealth: 0
 --- !u!114 &-6961658771979836866
 MonoBehaviour:
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 6
+  onKillScore: 0
   colliders:
   - {fileID: 2475894939274278540}
   lFoot: {fileID: 2799244034086077688}
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2339,7 +2339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2357,7 +2357,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
-  weaponAudioClips: []
+  weaponAudioClips:
+  - {fileID: 8300000, guid: da0a7393c8e00b44991a57f5abf73fe7, type: 3}
+  - {fileID: 8300000, guid: 400915b29d6df8f43b39fcdef4d18ecc, type: 3}
+  - {fileID: 8300000, guid: 0942c7d03769a0e4b8569f0bc9d8965b, type: 3}
+  - {fileID: 8300000, guid: 030b541c60f60734490d67795eb2ab3f, type: 3}
+  - {fileID: 8300000, guid: a9e6aefd82afd6f4aad15979d4c877f1, type: 3}
 --- !u!114 &4719393256082098646
 MonoBehaviour:
   m_ObjectHideFlags: 0

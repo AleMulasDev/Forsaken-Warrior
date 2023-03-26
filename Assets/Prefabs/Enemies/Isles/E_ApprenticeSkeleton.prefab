@@ -1191,7 +1191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2739579125779828199
 Transform:
   m_ObjectHideFlags: 0
@@ -1272,7 +1272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bloodParticle: {fileID: 1489431029902184, guid: 77ba31720714a1d40961e4e42ffaf485, type: 3}
-  _maxHealth: 6
+  _maxHealth: 8
   _currentHealth: 0
 --- !u!195 &2739579125779529825
 NavMeshAgent:
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 2
+  onKillScore: 0
   colliders:
   - {fileID: 2739579125779560979}
   - {fileID: 2739579125779541433}
@@ -1843,7 +1843,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
-  weaponAudioClips: []
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 41a52325d0fcf4ff4acd31dfb58b32c1, type: 3}
+  - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
+  - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
+  - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
 --- !u!1 &2739579125779545007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,7 +1996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2658,7 +2662,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
-  weaponAudioClips: []
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 41a52325d0fcf4ff4acd31dfb58b32c1, type: 3}
+  - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
+  - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
+  - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
 --- !u!1 &2739579125779562055
 GameObject:
   m_ObjectHideFlags: 0
