@@ -474,6 +474,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 41a52325d0fcf4ff4acd31dfb58b32c1, type: 3}
+  - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
+  - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
+  - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
 --- !u!1 &590509082388473258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +2750,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 41a52325d0fcf4ff4acd31dfb58b32c1, type: 3}
+  - {fileID: 8300000, guid: 3a16b1cc150764ac09e45d64d442fc92, type: 3}
+  - {fileID: 8300000, guid: e7929848ac5a74f8aad44dcc004447d1, type: 3}
+  - {fileID: 8300000, guid: b4d13bd0668e24c1c8e0d83987a33e20, type: 3}
 --- !u!1 &590509082388685744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,6 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 0
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &590509082393721003
@@ -3536,7 +3547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &590509082388913102
 Transform:
   m_ObjectHideFlags: 0

@@ -1050,8 +1050,8 @@ MonoBehaviour:
   powerupSpawnChance: 0.1
   onKillScore: 50
   colliders: []
-  lFoot: {fileID: 0}
-  rFoot: {fileID: 0}
+  lFoot: {fileID: 7417005772587923543}
+  rFoot: {fileID: 7417005773349474199}
   footstepAudioClips:
   - {fileID: 8300000, guid: c01bd08e40d58cd449ad0329b2fe04a3, type: 3}
   - {fileID: 8300000, guid: f42996d2ce83eb14ea1942d5873b4c30, type: 3}
@@ -1138,9 +1138,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 35
+  MaxDistance: 45
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

@@ -141,7 +141,6 @@ public class MinibossController : AIController
         {
             _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger("attack");
-            AudioManager.Instance.PlaySoundEffect(_audioSource, _currentRightHandWeaponInstance.GetWeaponAudioClip());
         }
     }
 
@@ -284,6 +283,7 @@ public class MinibossController : AIController
     {
         GetComponentInChildren<SpawnParticle>().SpawnParticleAtPosition();
         CinemachineShake.instance.ShakeCamera(5f, 5f);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, _currentRightHandWeaponInstance.GetWeaponAudioClip());
     }
 
 }

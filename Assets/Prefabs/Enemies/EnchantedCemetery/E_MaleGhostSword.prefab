@@ -2305,6 +2305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &3364100653322583450
@@ -2761,7 +2762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4561796508645592026
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,18 +2886,23 @@ MonoBehaviour:
   lFoot: {fileID: 3364100653547728982}
   rFoot: {fileID: 3364100651879400608}
   footstepAudioClips:
-  - {fileID: 8300000, guid: fdba3582e91ff49a5a93de23f68506c6, type: 3}
-  - {fileID: 8300000, guid: 93b7106dcc1ea42c89c3a0e6b9964fd6, type: 3}
-  - {fileID: 8300000, guid: ef5f48b2489d04a16a0701bfb2335f45, type: 3}
-  - {fileID: 8300000, guid: a683af98aab7c456bb84a104cfa50993, type: 3}
+  - {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+  - {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+  - {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+  - {fileID: 8300000, guid: fba95cafa5bba8649a7d269656e7317b, type: 3}
+  - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+  - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+  - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+  - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+  - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+  - {fileID: 8300000, guid: 02d4b2dff380d194fab91c0864b0c386, type: 3}
   deathAudioClips:
   - {fileID: 8300000, guid: 42df765963a22e84987af2bd42ff99dc, type: 3}
   - {fileID: 8300000, guid: 78acc8abafb15ee4b85848933aa837ce, type: 3}
   - {fileID: 8300000, guid: d9e1a86d55e00e647be0b3468aad28f5, type: 3}
   takeDamageAudioClips:
-  - {fileID: 8300000, guid: 01d492501a8314509a7751ba7931c251, type: 3}
-  - {fileID: 8300000, guid: b2119b3cc732b4a0abfeea7179478077, type: 3}
-  - {fileID: 8300000, guid: 7b582c71f1073427b961f8b82f5cd752, type: 3}
+  - {fileID: 8300000, guid: acbd7748a8b0dce41b30e524878da791, type: 3}
+  - {fileID: 8300000, guid: fbbff8ba4bd045e448cd131b15f1808f, type: 3}
   attackAudioClips:
   - {fileID: 8300000, guid: f1cabf316f6f9304a8846de3479806dd, type: 3}
   - {fileID: 8300000, guid: 6aeb1f047fd075c42bb924e48d74ddb0, type: 3}
@@ -3106,6 +3112,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: f1cabf316f6f9304a8846de3479806dd, type: 3}
+  - {fileID: 8300000, guid: 6aeb1f047fd075c42bb924e48d74ddb0, type: 3}
+  - {fileID: 8300000, guid: 8e11e7623c76bd742ac3a0951ab2ffb4, type: 3}
+  - {fileID: 8300000, guid: 3b7e20ddc90a0784aa33c4dc7cb0f409, type: 3}
+  - {fileID: 8300000, guid: d1e5df0830232074b917c4ccb430ac80, type: 3}
 --- !u!65 &5589983827409124392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3132,6 +3144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &5589983827409124390

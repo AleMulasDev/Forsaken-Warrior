@@ -115,6 +115,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: ca6ec83bfb83b7e44a2aac82e94da314, type: 3}
+  - {fileID: 8300000, guid: 9d8c365095977fc4b8435ed847c4b8f4, type: 3}
+  - {fileID: 8300000, guid: cb28c719a787a6640acc6ffd1918ecfd, type: 3}
+  - {fileID: 8300000, guid: 9e31e3238738d384883039c164868007, type: 3}
+  - {fileID: 8300000, guid: f8196ec9db2154045b8c962feb239037, type: 3}
 --- !u!114 &6499702766180171392
 MonoBehaviour:
   m_ObjectHideFlags: 0
