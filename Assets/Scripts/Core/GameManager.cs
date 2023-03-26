@@ -22,9 +22,19 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    private bool _minibossKilled = false;
+    private bool _keyGathered = false;
+    private Portal _portal;
+
     public void SwitchCheats(bool enabled)
     {
         _enabledCheats = enabled;
+    }
+
+    public void MinibossKilled()
+    {
+        _minibossKilled = true;
+        SpawnPortal();
     }
 
     public bool AreCheatsEnabled()
@@ -67,10 +77,13 @@ public class GameManager : MonoBehaviour
         _scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponentInChildren<TextMeshProUGUI>();
         _keysText = GameObject.FindGameObjectWithTag("keysText").GetComponentInChildren<TextMeshProUGUI>();
 
+        _portal = FindObjectOfType<Portal>();
         _score = 0;
         _time = 0;
         _scoreText.text = "0";
         _timeText.text = "0s";
+        _keyGathered = false;
+        _minibossKilled = false;
     }
 
     public ParticleSystem[] GetFootstepParticles()
@@ -110,6 +123,14 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void SpawnPortal()
+    {
+        if(_keyGathered && _minibossKilled)
+        {
+            _portal.ActivatePortal();
+        }
+    }
+
     public void GiveUp()
     {
         SceneManager.LoadScene("Menu");
@@ -138,12 +159,13 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(int score)
     {
-        //_score += score;
-        //_scoreText.text = "Score: " + _score;
+        _score += score;
+        _scoreText.text = "Score: " + _score;
     }
 
     public void AddKey()
     {
+        _keyGathered = true;
         _keys++;
         _keysText.text = _keys + "/3";
     }

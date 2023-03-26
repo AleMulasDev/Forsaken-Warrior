@@ -99,8 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0519e241cc5bcb34e8c5f7790d89be7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixedSpeed: 1
+  incrementalSpeedStep: 0
   bulletSpeed: 30
-  bulletDamage: 2
+  detachDistance: 0
+  isParticleSystem: 0
+  isThrowable: 0
+  throwableSpeed: 0
+  shouldDestroy: 1
+  shouldDissolve: 0
 --- !u!54 &6723513321406358679
 Rigidbody:
   m_ObjectHideFlags: 0

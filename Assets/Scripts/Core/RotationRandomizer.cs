@@ -5,28 +5,27 @@ using UnityEngine;
 
 public class RotationRandomizer : MonoBehaviour
 {
-    [SerializeField] Vector3 rotation;
-    [SerializeField] private float speed;
-
-    [SerializeField] private float degrees = 0;
-
+    [SerializeField] protected Vector3 m_from = new Vector3(0.0F, 45.0F, 0.0F);
+    [SerializeField] protected Vector3 m_to = new Vector3(0.0F, -45.0F, 0.0F);
+    [SerializeField] protected float m_frequency = 1.0F;
+    private float _selfRotateTimer;
     private bool _shouldRotate = true;
 
-    private void Start()
+    private void SelfRotateObject()
     {
-        rotation = new Vector3(GetRandomRotation(rotation.x), GetRandomRotation(rotation.y), GetRandomRotation(rotation.z));
-    }
+        Quaternion from = Quaternion.Euler(this.m_from);
+        Quaternion to = Quaternion.Euler(this.m_to);
 
-    private float GetRandomRotation(float axis)
-    {
-        return (Random.Range(0, 2) == 0 ? axis : -axis);
+        float lerp = 0.5f * (1.0f + Mathf.Sin(Mathf.PI * _selfRotateTimer * this.m_frequency));
+        this.transform.localRotation = Quaternion.Lerp(from, to, lerp);
     }
 
     void Update()
     {
         if (!_shouldRotate) return;
 
-        transform.Rotate(rotation * Time.deltaTime, degrees * speed);
+        _selfRotateTimer += Time.deltaTime;
+        SelfRotateObject();
     }
 
     public void StopRotating()

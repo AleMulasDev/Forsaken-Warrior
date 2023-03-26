@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 50
+  onKillScore: 15
   colliders: []
   lFoot: {fileID: 2760284867535136740}
   rFoot: {fileID: 2760284867535151830}
@@ -3182,7 +3182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6679447264075605237
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,7 +3220,10 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints: []
+  delayBetweenSpawns: 5
+  timesToSpawn: 1
+  enemiesPerSpawn: 2
 --- !u!1 &6679447264224074039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,7 +3393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6679447264858896608
 Transform:
   m_ObjectHideFlags: 0
@@ -3428,7 +3431,10 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints: []
+  delayBetweenSpawns: 5
+  timesToSpawn: 1
+  enemiesPerSpawn: 2
 --- !u!1 &6679447264991273857
 GameObject:
   m_ObjectHideFlags: 0

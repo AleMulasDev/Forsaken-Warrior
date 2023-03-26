@@ -28,12 +28,14 @@ public class MinibossController : AIController
     private EMinibossMode _bossMode = EMinibossMode.EMM_None;
     private MinibossWeapon _circleWeapon;
     private float _spawnTimer;
-    private List<Spawner> enemiesSpawners;
+    private List<Spawner> _enemiesSpawners;
+    private List<AIController> _spawnedEnemies = new List<AIController>();
 
     private Weapon _currentLeftHandWeaponInstance;
     private Weapon _currentRightHandWeaponInstance;
 
-    private bool _shouldSpawnEnemies = true;
+    private bool _shouldSpawnEnemies = false;
+    private bool _deadEntities = false;
 
     private GameObject _pickedInstance;
 
@@ -41,13 +43,29 @@ public class MinibossController : AIController
     {
         base.Start();
 
-        enemiesSpawners = new List<Spawner>(GetComponentsInChildren<Spawner>());
+        _enemiesSpawners = new List<Spawner>(GetComponentsInChildren<Spawner>());
         _spawnTimer = Mathf.Infinity;
+        StartCoroutine(DelaySpawn());
+    }
+
+    private IEnumerator DelaySpawn()
+    {
+        yield return new WaitForSeconds(1f);
+        _shouldSpawnEnemies = true;
     }
 
     protected override void Die()
     {
+        GameManager.Instance.MinibossKilled();
+        
         GetComponentInChildren<EnemyHealthBar>().HideHealthBar();
+
+        if(!_deadEntities)
+            foreach (AIController enemy in _spawnedEnemies)
+                enemy.GetComponent<Health>().Kill();
+
+        _deadEntities = true;
+
         base.Die();
     }
 
@@ -108,8 +126,18 @@ public class MinibossController : AIController
 
     private void Spawn()
     {
-        foreach (Spawner s in enemiesSpawners)
-            s.SpawnAllEnemies();
+        foreach (Spawner s in _enemiesSpawners)
+        {
+            UpdateEnemyList(s.SpawnAllEnemies());
+        }
+    }
+
+    public void UpdateEnemyList(List<AIController> list)
+    {
+        foreach (AIController ai in list)
+        {
+            _spawnedEnemies.Add(ai);
+        }
     }
 
     private void AttackBehaviour()

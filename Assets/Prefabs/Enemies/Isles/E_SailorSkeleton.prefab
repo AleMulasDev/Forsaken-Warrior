@@ -474,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips: []
 --- !u!1 &590509082388473258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2745,6 +2746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips: []
 --- !u!1 &590509082388685744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,7 +3501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
 --- !u!114 &590509082393721003
@@ -3654,7 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 0
+  onKillScore: 3
   colliders:
   - {fileID: 590509082388472222}
   - {fileID: 590509082388684698}

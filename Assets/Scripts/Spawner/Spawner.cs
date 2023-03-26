@@ -9,11 +9,27 @@ public class Spawner : MonoBehaviour
     [SerializeField] private BossProp bossProp;
     [SerializeField] private MinibossController miniboss;
     [SerializeField] private bool shouldSpawnMiniboss;
-    [SerializeField] private ParticleSystem minibossSpawnEffect;
+
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private float delayBetweenSpawns;
+    [SerializeField] private int timesToSpawn;
+    [SerializeField] private int enemiesPerSpawn;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
-    private MinibossController _spawnedMiniboss;
     private BossProp _propInstance;
+
+    private Coroutine _spawnCoroutine;
+
+    private int _lastSpawnerIndex = -1;
+    private bool _spawned = false;
+    private ParticleSystem minibossSpawnEffect;
+
+    private void Start()
+    {
+        if (shouldSpawnMiniboss)
+            minibossSpawnEffect = Resources.Load<ParticleSystem>("MinibossSpawnEffect");
+    }
+
     public List<AIController> SpawnEnemies(int enemiesNumber)
     {
         _spawnedEnemies.Clear();
@@ -29,19 +45,58 @@ public class Spawner : MonoBehaviour
         return _spawnedEnemies;
     }
 
+    private void Spawn()
+    {
+        if (shouldSpawnMiniboss)
+            SpawnMiniboss();
+        else
+            StartCoroutine(SpawnRandomEnemy());
+    }
+
+    private IEnumerator SpawnRandomEnemy()
+    {
+        for (int i = 0; i < timesToSpawn; i++)
+        {
+            for (int j = 0; j < enemiesPerSpawn; j++)
+            {
+                int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
+                _spawnedEnemies.Add(Instantiate(enemies[randomEnemy], GetRandomSpawnPosition(), Quaternion.identity));
+            }
+            yield return new WaitForSeconds(delayBetweenSpawns);
+        }
+    }
+
+    private Vector3 GetRandomSpawnPosition()
+    {
+        int _spawnerIndex = _lastSpawnerIndex;
+
+        while (_spawnerIndex == _lastSpawnerIndex)
+            _spawnerIndex = GetRandomSpawnerIndex();
+
+        _lastSpawnerIndex = _spawnerIndex;
+        return spawnPoints[_lastSpawnerIndex].position;
+    }
+
+    private int GetRandomSpawnerIndex()
+    {
+        return Random.Range(0, spawnPoints.Length);
+    }
+
     public bool GetShouldSpawnMiniboss()
     {
         return shouldSpawnMiniboss;
     }
 
-    public void SpawnAllEnemies()
+    public List<AIController> SpawnAllEnemies()
     {
         for (int i = 0; i < enemies.Length; i++)
         {
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
-            Instantiate(enemies[i], spawnPosition, Quaternion.identity);
+            _spawnedEnemies.Add(Instantiate(enemies[i], spawnPosition, Quaternion.identity));
         }
+
+        return _spawnedEnemies;
     }
 
     public void SpawnProp()
@@ -58,7 +113,18 @@ public class Spawner : MonoBehaviour
 
     public MinibossController SpawnMiniboss()
     {
-        Destroy(Instantiate(minibossSpawnEffect, transform.position, minibossSpawnEffect.transform.rotation), 3f);
-        return Instantiate(miniboss, transform.position, miniboss.transform.rotation);
+        Destroy(Instantiate(minibossSpawnEffect, spawnPoints[0].position, minibossSpawnEffect.transform.rotation), 3f);
+        return Instantiate(miniboss, spawnPoints[0].position, miniboss.transform.rotation);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (_spawned) return;
+
+        if (other.CompareTag("Player") && _spawnCoroutine == null)
+        {
+            _spawned = true;
+            Spawn();
+        }
     }
 }
