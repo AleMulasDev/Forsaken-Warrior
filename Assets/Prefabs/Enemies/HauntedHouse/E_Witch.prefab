@@ -1982,7 +1982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1015480169169477727
 Transform:
   m_ObjectHideFlags: 0
@@ -2591,6 +2591,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 6f883c891e63cad45a4f31456878bc3d, type: 3}
+  - {fileID: 8300000, guid: bffd04c63c968ad4fb0e13f0e411bace, type: 3}
+  - {fileID: 8300000, guid: eab1c36fda4dbc54f9b9ce81474629de, type: 3}
 --- !u!114 &1323292320918247640
 MonoBehaviour:
   m_ObjectHideFlags: 0

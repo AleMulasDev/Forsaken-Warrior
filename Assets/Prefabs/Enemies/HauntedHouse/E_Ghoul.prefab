@@ -796,6 +796,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: f85db8235bdc81245b48694e82a68767, type: 3}
+  - {fileID: 8300000, guid: 47d6daaa17bd6fe42a4310e3d3b2fcbc, type: 3}
 --- !u!1 &6446200640296653343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6446200640519447763
 Transform:
   m_ObjectHideFlags: 0
@@ -1507,6 +1510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: f85db8235bdc81245b48694e82a68767, type: 3}
+  - {fileID: 8300000, guid: 47d6daaa17bd6fe42a4310e3d3b2fcbc, type: 3}
 --- !u!1 &6446200640753070357
 GameObject:
   m_ObjectHideFlags: 0

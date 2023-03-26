@@ -101,6 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 1
+  weaponAudioClips:
+  - {fileID: 8300000, guid: a888f9f83ee770c40a03827911b04d6d, type: 3}
+  - {fileID: 8300000, guid: 3a4f7ed1bd6682248bcf7626b0782a76, type: 3}
+  - {fileID: 8300000, guid: dd75e72d0860fc64fadee9ade91dc12a, type: 3}
+  - {fileID: 8300000, guid: 183ec80007d9e964e84aaaeabb86d6b9, type: 3}
+  - {fileID: 8300000, guid: a63131d1a907b6449af7902d34b02154, type: 3}
 --- !u!65 &336913178757294648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1707,7 +1713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3577909919064106440
 Transform:
   m_ObjectHideFlags: 0

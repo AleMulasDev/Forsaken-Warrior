@@ -450,14 +450,14 @@ public class PlayerController : MonoBehaviour
     private void EnableBox()
     {
         weaponCollider.enabled = true;
-        AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
+        //AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
 
         EnableTrail();
     }
 
     public void PlayHeavyAttackSound()
     {
-        AudioManager.Instance.PlaySoundEffect(source, _attackAudioClips[Random.Range(0, _attackAudioClips.Length)]);
+        AudioManager.Instance.PlaySoundEffect(source, _weapon.GetWeaponAudioClip());
     }
 
     private void DisableBox()
@@ -527,5 +527,10 @@ public class PlayerController : MonoBehaviour
     {
         tempDodgeSpeed = dodgeSpeed;
         tempJumpBSpeed = jumpBackwardSpeed;
+    }
+
+    private void PlayAttackAudioClip()
+    {
+        AudioManager.Instance.PlaySoundEffect(source, _weapon.GetWeaponAudioClip());
     }
 }
