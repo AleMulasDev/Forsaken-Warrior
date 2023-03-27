@@ -687,6 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 1
   lerpTimerDeath: 1
 --- !u!114 &6740448253767027939
@@ -843,6 +844,7 @@ GameObject:
   - component: {fileID: 6716578650458933924}
   - component: {fileID: 6716578650458933926}
   - component: {fileID: 6716578650458933922}
+  - component: {fileID: 1710179886}
   m_Layer: 0
   m_Name: B_Maligno
   m_TagString: Enemy
@@ -932,11 +934,27 @@ MonoBehaviour:
   powerupSpawnChance: 0
   onKillScore: 0
   colliders: []
-  lFoot: {fileID: 0}
-  rFoot: {fileID: 0}
-  footstepAudioClips: []
-  deathAudioClips: []
-  takeDamageAudioClips: []
+  lFoot: {fileID: 6661781531456089216}
+  rFoot: {fileID: 6660129792764573834}
+  footstepAudioClips:
+  - {fileID: 8300000, guid: ecd647025e0a3c04fbd5829fff509e09, type: 3}
+  - {fileID: 8300000, guid: 3bd1b93317b7a3a49b13011cdaa64d0b, type: 3}
+  - {fileID: 8300000, guid: 7b4b6eb734482064c8c1e5fd45d4d76c, type: 3}
+  - {fileID: 8300000, guid: fba95cafa5bba8649a7d269656e7317b, type: 3}
+  - {fileID: 8300000, guid: e924ff5d774024542830602ee674d9a9, type: 3}
+  - {fileID: 8300000, guid: 281c105661e5ee14b8e76523200338bd, type: 3}
+  - {fileID: 8300000, guid: 3069c9f7e833f8e4099228c28f9d65dd, type: 3}
+  - {fileID: 8300000, guid: 82354d1fee336984994fbdcc8154c89c, type: 3}
+  - {fileID: 8300000, guid: 068414160a0ccf34ca0c11b55d43ffc8, type: 3}
+  - {fileID: 8300000, guid: 02d4b2dff380d194fab91c0864b0c386, type: 3}
+  deathAudioClips:
+  - {fileID: 8300000, guid: 94006653f58241b4d981e1ccf32b1528, type: 3}
+  takeDamageAudioClips:
+  - {fileID: 8300000, guid: aa70f70c687c1914db7bb99f8f1aa378, type: 3}
+  - {fileID: 8300000, guid: ceda30cfcaa3da04a91ebf22896effbb, type: 3}
+  - {fileID: 8300000, guid: 815df0686a62d2f42ade4172a40908d1, type: 3}
+  - {fileID: 8300000, guid: e475a647af0378a458de12d5dd8328a0, type: 3}
+  - {fileID: 8300000, guid: 9d78760804f5708438ebf389b93dc826, type: 3}
   attackAudioClips: []
   onEnemyBossKill:
     m_PersistentCalls:
@@ -950,7 +968,7 @@ MonoBehaviour:
   bossHealthBar: {fileID: 0}
   standDelay: 2.5
   groundCrackEffect: {fileID: 198106895250101352, guid: e7473d9620ab29341b98bf21b400e598, type: 3}
-  startingPhase: 3
+  startingPhase: 0
   bullet: {fileID: 4022279801653669454, guid: bbf0097ca33fb2249992f924ae14ac72, type: 3}
   weapons:
   - bossWeaponType: 0
@@ -970,6 +988,7 @@ MonoBehaviour:
     teleportDelay: 1
   spellbook: {fileID: 8651871061287516421, guid: 7fbc8ee116d25bc468e2ebd8c4e3df15, type: 3}
   rHand: {fileID: 6660117658542682430}
+  teleportAudioClip: {fileID: 8300000, guid: dbb547a3d6ae04167b14809fff81fcad, type: 3}
 --- !u!114 &6716578650458933922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,6 +1005,102 @@ MonoBehaviour:
   _maxHealth: 120
   _currentHealth: 0
   healthBar: {fileID: 0}
+--- !u!82 &1710179886
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6657717151610915168}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 35
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6657789890165892914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 1
   lerpTimerDeath: 1
 --- !u!114 &6635153917807584885
@@ -1974,6 +2090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 1
   lerpTimerDeath: 1
 --- !u!114 &6740319184414548553
@@ -2971,6 +3088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 1
   lerpTimerDeath: 1
 --- !u!114 &6636642294542830717
