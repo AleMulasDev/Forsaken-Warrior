@@ -360,7 +360,11 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints: []
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &2881393565811435416
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +767,11 @@ MonoBehaviour:
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints: []
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &2881393567238087318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +2803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5

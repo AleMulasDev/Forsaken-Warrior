@@ -30,6 +30,8 @@ public class BossController : AIController
     [SerializeField] private Transform rHand;
 
     [SerializeField] private AudioClip teleportAudioClip;
+
+    [SerializeField] private float minibossSpawnDelay;
     
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
     private EBossAttackStage _attackStage = EBossAttackStage.EBAS_FirstStage;
@@ -46,12 +48,16 @@ public class BossController : AIController
 
     private Weapon _spellbookInstance;
 
-    private List<AIController> spawnedEnemies = new List<AIController>();
-    private ParticleSystem lightningStrike;
-    private GameObject targetMarker;
+    private List<AIController> _spawnedEnemies = new List<AIController>();
+    private List<MinibossController> _spawnedMiniboss = new List<MinibossController>();
+
+    private ParticleSystem _lightningStrike;
+    private GameObject _targetMarker;
 
     private Coroutine _infiniteLightningCoroutine;
     private Coroutine _lightningCoroutine;
+
+    private int _minibossIndex = 0;
 
     override protected void Start()
     {
@@ -59,8 +65,8 @@ public class BossController : AIController
         _eligibleForTakeDamage = false;
         StartCoroutine(StandCoroutine());
         _animator.SetFloat("attackSpeed", 0.75f);
-        lightningStrike = Resources.Load<ParticleSystem>("MalignoSpell/LightningStrike");
-        targetMarker = Resources.Load<GameObject>("MalignoSpell/TargetMarker");
+        _lightningStrike = Resources.Load<ParticleSystem>("MalignoSpell/LightningStrike");
+        _targetMarker = Resources.Load<GameObject>("MalignoSpell/TargetMarker");
     }
 
     private void Update()
@@ -108,7 +114,7 @@ public class BossController : AIController
 
             UpdateEnemyList(mobSpawners[Random.Range(0, mobSpawners.Length)].SpawnEnemies(_enemiesToSpawn));
 
-            foreach (SimpleEnemyController enemy in spawnedEnemies)
+            foreach (SimpleEnemyController enemy in _spawnedEnemies)
                 enemy.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(1f));
         }
 
@@ -118,14 +124,14 @@ public class BossController : AIController
             _spawnTimer = 0;
             _enemiesToSpawn = 0;
 
-            foreach (SimpleEnemyController enemy in spawnedEnemies)
+            foreach (SimpleEnemyController enemy in _spawnedEnemies)
             {
                 if (enemy == null) continue;
 
                 enemy.onEnemyBossKill.RemoveAllListeners();
                 enemy.GetComponent<Health>().Kill();
             }
-            spawnedEnemies.Clear();
+            _spawnedEnemies.Clear();
             StartCoroutine(EndFirstPhase());
         }
     }
@@ -137,6 +143,15 @@ public class BossController : AIController
         yield return new WaitForSeconds(3f);
 
         _animator.SetTrigger("spawnEnemies");
+    }
+
+    public void KillAllMiniboss()
+    {
+        for (int i = 0; i < _spawnedMiniboss.Count; i++)
+        {
+            if(i == _minibossIndex)
+                _spawnedMiniboss[i].GetComponent<Health>().Kill();
+        }
     }
 
     private void SecondPhase()
@@ -162,9 +177,9 @@ public class BossController : AIController
             _spawnTimer = 0;
             _enemiesToSpawn = 0;
             IncreaseBossPhasePercentage(1f);
-            foreach (SimpleEnemyController enemy in spawnedEnemies)
+            foreach (SimpleEnemyController enemy in _spawnedEnemies)
                 enemy.GetComponent<Health>().Kill();
-            spawnedEnemies.Clear();
+            _spawnedEnemies.Clear();
             StartCoroutine(EndSecondPhase());
         }
     }
@@ -367,10 +382,18 @@ public class BossController : AIController
             {
                 var minibossInstance = mobSpawners[i].SpawnMiniboss();
                 minibossInstance.onEnemyBossKill.AddListener(() => IncreaseBossPhasePercentage(11f));
+                _spawnedMiniboss.Add(minibossInstance);
             }
             else
                 continue;
-            yield return new WaitForSeconds(5f);
+
+            if (_minibossIndex != 2)
+            {
+                yield return new WaitForSeconds(minibossSpawnDelay);
+                _minibossIndex++;
+            }
+
+            
         }
 
         _animator.SetTrigger("endCast");
@@ -396,7 +419,7 @@ public class BossController : AIController
     public void UpdateEnemyList(List<AIController> list)
     {
         foreach (AIController ai in list)
-            spawnedEnemies.Add(ai);
+            _spawnedEnemies.Add(ai);
     }
 
     public void IncreaseBossPhasePercentage(float amount)
@@ -443,7 +466,7 @@ public class BossController : AIController
     private IEnumerator LightningCoroutine()
     {
         bool isMoving = _playerController.GetComponent<PlayerController>().GetIsMoving();
-        var markerInstance = Instantiate(targetMarker, _playerController.transform);
+        var markerInstance = Instantiate(_targetMarker, _playerController.transform);
 
         if (!isMoving)
             markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), 0, 1f);
@@ -458,7 +481,7 @@ public class BossController : AIController
 
         Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
 
-        Destroy(Instantiate(lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
+        Destroy(Instantiate(_lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
         AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetLightningAudioClip());
     }
 

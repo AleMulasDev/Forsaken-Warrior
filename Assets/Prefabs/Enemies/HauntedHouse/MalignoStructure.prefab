@@ -53,7 +53,11 @@ MonoBehaviour:
   bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints: []
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &6703648939095366343
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,9 +109,14 @@ MonoBehaviour:
   - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
   - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
   bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
-  miniboss: {fileID: 0}
-  shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  miniboss: {fileID: 6701476905640777279, guid: 56c981ecae6cc714282e1c106025dafc, type: 3}
+  shouldSpawnMiniboss: 1
+  spawnPoints:
+  - {fileID: 6703648939095366340}
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &6703648939173568304
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,9 +168,14 @@ MonoBehaviour:
   - {fileID: 2382673485935338353, guid: d975e5fd71da1d34e9a2e8ed0a46b0a9, type: 3}
   - {fileID: 1105511526866036676, guid: 1e48a19d31301b644bfca9529fdd3267, type: 3}
   bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
-  miniboss: {fileID: 0}
-  shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  miniboss: {fileID: 6720754583145384498, guid: 0eef4332477846b43be6a4d70eb33ba3, type: 3}
+  shouldSpawnMiniboss: 1
+  spawnPoints:
+  - {fileID: 6703648939173568305}
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &6703648939291654259
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,4 +264,9 @@ MonoBehaviour:
   bossProp: {fileID: 4661520453839747092, guid: 42b35302f64c7224e9b528072268fc8f, type: 3}
   miniboss: {fileID: 2760284867535494283, guid: 769a53be88e3f1c45a6e8681a47e288a, type: 3}
   shouldSpawnMiniboss: 1
-  minibossSpawnEffect: {fileID: 198267365771992106, guid: 2dc5347a44240ea4597cafb2d1d7c160, type: 3}
+  spawnPoints:
+  - {fileID: 6703648939739867416}
+  delayBetweenSpawns: 0
+  timesToSpawn: 0
+  enemiesPerSpawn: 0
+  spawnAudioClip: {fileID: 0}

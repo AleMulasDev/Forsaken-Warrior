@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0
-  onKillScore: 0
+  onKillScore: 100
   colliders: []
   lFoot: {fileID: 6661781531456089216}
   rFoot: {fileID: 6660129792764573834}
@@ -989,6 +989,7 @@ MonoBehaviour:
   spellbook: {fileID: 8651871061287516421, guid: 7fbc8ee116d25bc468e2ebd8c4e3df15, type: 3}
   rHand: {fileID: 6660117658542682430}
   teleportAudioClip: {fileID: 8300000, guid: dbb547a3d6ae04167b14809fff81fcad, type: 3}
+  minibossSpawnDelay: 15
 --- !u!114 &6716578650458933922
 MonoBehaviour:
   m_ObjectHideFlags: 0
