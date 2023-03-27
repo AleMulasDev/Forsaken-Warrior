@@ -86,4 +86,14 @@ public class Weapon : MonoBehaviour
     {
         return weaponAudioClips[Random.Range(0, weaponAudioClips.Length)];
     }
+
+    public AudioClip GetLightningAudioClip()
+    {
+        return weaponAudioClips[Random.Range(1, weaponAudioClips.Length)];
+    }
+
+    public AudioClip GetSphereAudioClip()
+    {
+        return weaponAudioClips[Random.Range(0, 1)];
+    }
 }

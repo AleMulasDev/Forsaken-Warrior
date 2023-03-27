@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float delayBetweenSpawns;
     [SerializeField] private int timesToSpawn;
     [SerializeField] private int enemiesPerSpawn;
+    [SerializeField] private AudioClip spawnAudioClip;
 
     private List<AIController> _spawnedEnemies = new List<AIController>();
     private BossProp _propInstance;

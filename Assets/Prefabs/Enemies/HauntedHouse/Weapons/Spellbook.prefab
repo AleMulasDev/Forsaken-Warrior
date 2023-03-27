@@ -109,6 +109,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Player
   damage: 5
+  weaponAudioClips:
+  - {fileID: 8300000, guid: eab1c36fda4dbc54f9b9ce81474629de, type: 3}
+  - {fileID: 8300000, guid: 601485dcd398fda4fa083f21e00c7ef9, type: 3}
+  - {fileID: 8300000, guid: c7e839cb216494640b92e782eaf76702, type: 3}
+  - {fileID: 8300000, guid: 5197381c5ffc67d4e8ed283daa243964, type: 3}
+  - {fileID: 8300000, guid: 08960fed825b78f419ec19f26e444ded, type: 3}
 --- !u!95 &8651871061287516420
 Animator:
   serializedVersion: 4
@@ -142,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
+  resetParentState: 1
   lerpTimerSpawn: 1
   lerpTimerDeath: 1
 --- !u!114 &8651871061287516427

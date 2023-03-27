@@ -29,6 +29,8 @@ public class BossController : AIController
     [SerializeField] private Weapon spellbook;
     [SerializeField] private Transform rHand;
 
+    [SerializeField] private AudioClip teleportAudioClip;
+    
     private EBossPhase _bossPhase = EBossPhase.EBP_FirstPhase;
     private EBossAttackStage _attackStage = EBossAttackStage.EBAS_FirstStage;
 
@@ -280,13 +282,16 @@ public class BossController : AIController
 
 
         if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Projectile)
+        {
             _animator.SetTrigger("shootProjectile");
+            AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetSphereAudioClip());
+        }
         else if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Spell)
             _animator.SetTrigger("castSpell");
         else
         {
             _animator.SetTrigger("shootProjectile");
-
+            AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetSphereAudioClip());
         }
     }
 
@@ -311,6 +316,7 @@ public class BossController : AIController
 
     public void Appear()
     {
+        AudioManager.Instance.PlaySoundEffect(_audioSource, teleportAudioClip);
         foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
             ac.SpawnEffect();
 
@@ -319,10 +325,12 @@ public class BossController : AIController
 
     public void Disappear(float delay)
     {
+        AudioManager.Instance.PlaySoundEffect(_audioSource, teleportAudioClip);
         foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
             ac.Dissolve(delay);
 
         GetComponent<Collider>().enabled = false;
+
     }
 
     public void SpawnEnemies()
@@ -451,6 +459,7 @@ public class BossController : AIController
         Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
 
         Destroy(Instantiate(lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetLightningAudioClip());
     }
 
     public void NeedsReset()
