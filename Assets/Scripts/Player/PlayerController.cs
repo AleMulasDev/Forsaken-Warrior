@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Water"))
+        if (hit.gameObject.CompareTag("OOB"))
             GameManager.Instance.Respawn(transform);
     }
 
