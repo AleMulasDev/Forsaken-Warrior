@@ -11,8 +11,8 @@ TagManager:
   - scoreText
   - timeText
   - keysText
-  - Water
   - spawnPoint
+  - OOB
   layers:
   - Default
   - TransparentFX
