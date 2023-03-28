@@ -30,6 +30,7 @@ public class BossController : AIController
     [SerializeField] private Transform rHand;
 
     [SerializeField] private AudioClip teleportAudioClip;
+    [SerializeField] private AudioClip groundHitAudioClip;
 
     [SerializeField] private float minibossSpawnDelay;
     
@@ -299,14 +300,12 @@ public class BossController : AIController
         if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Projectile)
         {
             _animator.SetTrigger("shootProjectile");
-            AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetSphereAudioClip());
         }
         else if (weapons[(int)_attackStage].bossWeaponType == EBossWeaponType.EBWT_Spell)
             _animator.SetTrigger("castSpell");
         else
         {
             _animator.SetTrigger("shootProjectile");
-            AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetSphereAudioClip());
         }
     }
 
@@ -340,7 +339,6 @@ public class BossController : AIController
 
     public void Disappear(float delay)
     {
-        AudioManager.Instance.PlaySoundEffect(_audioSource, teleportAudioClip);
         foreach (AnimateCutout ac in GetComponentsInChildren<AnimateCutout>())
             ac.Dissolve(delay);
 
@@ -353,6 +351,7 @@ public class BossController : AIController
         CinemachineShake.instance.ShakeCamera(5f, 5f);
         ParticleSystem groundCrackInstance = Instantiate(groundCrackEffect, transform.position, groundCrackEffect.transform.rotation);
         groundCrackInstance.transform.position = new Vector3(groundCrackInstance.transform.position.x, 0.01f, groundCrackInstance.transform.position.z);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, groundHitAudioClip);
         Destroy(groundCrackInstance.gameObject, 2f);
 
         _bossPhase = EBossPhase.EBP_SecondPhase;
@@ -482,7 +481,7 @@ public class BossController : AIController
         Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
 
         Destroy(Instantiate(_lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
-        AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetLightningAudioClip());
+        //AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetLightningAudioClip());
     }
 
     public void NeedsReset()

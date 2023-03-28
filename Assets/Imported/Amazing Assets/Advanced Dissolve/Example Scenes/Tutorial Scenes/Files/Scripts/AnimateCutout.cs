@@ -12,19 +12,28 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
         [SerializeField] private bool resetParentState = true;
         [SerializeField] private float lerpTimerSpawn = 3.0f;
         [SerializeField] private float lerpTimerDeath = 5.0f;
-
+        
         private Material _material;
         private float timeElapsedSpawn = 0.0f;
         private float timeElapsedDissolve = 0.0f;
+        private AudioSource _audioSource;
+        private AudioClip _dissolveAudioClip;
 
         private void Start()
         {
             GetComponent<Renderer>();
 
+            _audioSource = GetComponentInParent<AudioSource>();
+
             _material = GetComponent<Renderer>().material;
 
             if(enableSpawnEffect)
                 SpawnEffect();
+
+            if (GetComponentInParent<BossController>())
+                _dissolveAudioClip = Resources.Load<AudioClip>("MalignoDissolveAudioClip");
+            else
+                _dissolveAudioClip = Resources.Load<AudioClip>("EnemyDissolveAudioClip");
         }
 
         public void Dissolve(float delay)
@@ -40,7 +49,7 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
         private IEnumerator DissolveCoroutine(float delay)
         {
             yield return new WaitForSeconds(delay);
-
+            AudioManager.Instance.PlaySoundEffect(_audioSource, _dissolveAudioClip);
             while (timeElapsedDissolve < lerpTimerDeath)
             {
                 float propertyValue = Mathf.Lerp(0, 1, timeElapsedDissolve / lerpTimerDeath);

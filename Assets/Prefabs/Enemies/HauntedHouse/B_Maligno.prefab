@@ -989,6 +989,7 @@ MonoBehaviour:
   spellbook: {fileID: 8651871061287516421, guid: 7fbc8ee116d25bc468e2ebd8c4e3df15, type: 3}
   rHand: {fileID: 6660117658542682430}
   teleportAudioClip: {fileID: 8300000, guid: dbb547a3d6ae04167b14809fff81fcad, type: 3}
+  groundHitAudioClip: {fileID: 8300000, guid: d0ca794a9113bb84ba62e5f37c99007e, type: 3}
   minibossSpawnDelay: 15
 --- !u!114 &6716578650458933922
 MonoBehaviour:

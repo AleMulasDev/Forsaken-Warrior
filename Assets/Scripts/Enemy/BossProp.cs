@@ -21,9 +21,14 @@ public class BossProp : MonoBehaviour
     private float _selfRotateTimer;
     private bool _isDestroyed = false;
     private BossController _boss;
+    private AudioClip _hittedAudioClip;
+    private AudioSource _audioSource;
+
     private void Start()
     {
         _boss = FindObjectOfType<BossController>();
+        _audioSource = GetComponent<AudioSource>();
+        _hittedAudioClip = Resources.Load<AudioClip>("BossPropHitAudioClip");
     }
     private void Update()
     {
@@ -73,6 +78,7 @@ public class BossProp : MonoBehaviour
         _startPosition = transform.position;
         _tempStartingRadius = startingRadius;
 
+        AudioManager.Instance.PlaySoundEffect(_audioSource, _hittedAudioClip);
         while (_tempStartingRadius > 0)
         {
             yield return new WaitForSeconds(delayBetweenShakes);
