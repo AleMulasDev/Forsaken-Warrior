@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private Transform _enemy;
 
     private bool _isMoving;
+    private bool _canJump;
     private float tempDodgeSpeed;
     private float tempJumpBSpeed;
     private float _velocity;
@@ -65,8 +66,6 @@ public class PlayerController : MonoBehaviour
     private static readonly int HeavyAttackInput = Animator.StringToHash("heavyAttackInput");
 
     [SerializeField] private float Gravity = -6F;
-
-    private GameObject lightningInstance;
 
     public bool GetIsMoving()
     {
@@ -85,6 +84,10 @@ public class PlayerController : MonoBehaviour
     //        SetIsLanded(false);
     //}
 
+    public void SwitchJump(bool enabled)
+    {
+        _canJump = enabled;
+    }
     public static PlayerInput GetPlayerInput()
     {
         return _playerInput;
