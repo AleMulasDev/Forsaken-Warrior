@@ -8,6 +8,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private CanvasGroup settingsCanvasGroup;
     [SerializeField] private CanvasGroup pauseCanvasGroup;
     [SerializeField] private CanvasGroup hudCanvasGroup;
+    [SerializeField] private CanvasGroup deathScreenCanvasGroup;
 
     private Coroutine _settingsCoroutine;
     private Coroutine _pauseCoroutine;
@@ -15,8 +16,15 @@ public class UIHandler : MonoBehaviour
 
     private PlayerInput _playerInput;
 
+    public static UIHandler Instance;
+
     void Start()
     {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+
         _playerInput = PlayerController.GetPlayerInput();
 
         _playerInput.PlayerControls.Pause.started += HandlePauseTrigger;
@@ -35,6 +43,14 @@ public class UIHandler : MonoBehaviour
             OpenPauseMenu();
         else
             ClosePauseMenu(true);
+    }
+
+    public void OpenDeathScreen()
+    {
+        deathScreenCanvasGroup.transform.SetAsLastSibling();
+
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, hudCanvasGroup));
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, deathScreenCanvasGroup));
     }
 
     public void OpenPauseMenu()

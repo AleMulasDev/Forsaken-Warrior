@@ -47,9 +47,16 @@ public class GameManager : MonoBehaviour
         spawnPoint.position = newSpawnPoint.position;
     }
 
+    private IEnumerator RespawnCoroutine(Transform player)
+    {
+        yield return new WaitForSeconds(1f);
+        player.gameObject.SetActive(true);
+        player.gameObject.GetComponent<CharacterController>().Move(spawnPoint.position - player.position);
+    }
+
     public void Respawn(Transform player)
     {
-        player.position = spawnPoint.position;
+        StartCoroutine(RespawnCoroutine(player));
     }
 
     private void Awake()

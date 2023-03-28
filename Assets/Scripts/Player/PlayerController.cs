@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private PowerupManager _powerupManager;
     private Weapon _weapon;
     private AudioSource source;
+    private PlayerHealth _health;
     private ECharacterStates _characterState = ECharacterStates.ECS_Inoccupied;
     private string _audioPath = "PlayerAudioClips";
 
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _cameraBasedMovement;
     private Coroutine _heavyAttackCoroutine;
     private Transform _enemy;
+    private ParticleSystem _respawnEffect;
+    private ParticleSystem _jumpEffect;
 
     private bool _isMoving;
     private bool _canJump;
@@ -102,7 +105,10 @@ public class PlayerController : MonoBehaviour
         _powerupManager = GetComponent<PowerupManager>();
         _weapon = GetComponentInChildren<Weapon>();
         source = GetComponent<AudioSource>();
+        _health = GetComponent<PlayerHealth>();
 
+        _jumpEffect = Resources.Load<ParticleSystem>("PlayerJumpEffect");
+        _respawnEffect = Resources.Load<ParticleSystem>("RespawnEffect");
         _footstepAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Footstep");
         _attackAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Attack");
         _deathAudioClips = Resources.LoadAll<AudioClip>(_audioPath + "/Death");
@@ -139,6 +145,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         //print(_controller.isGrounded);
+
+        if(_health.IsDead())
+        {
+            return;
+        }
 
         HandleRotation();
         HandleMovement();
@@ -205,7 +216,25 @@ public class PlayerController : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("OOB"))
-            GameManager.Instance.Respawn(transform);
+        {
+            Destroy(Instantiate(_respawnEffect, transform.position, _respawnEffect.transform.rotation).gameObject, 3f);
+
+            if (_health.GetHealth() > 8)
+            {
+                _health.TakeDamage(8);
+                GameManager.Instance.Respawn(transform);
+                gameObject.SetActive(false);
+            } else
+            {
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
+        _health.Kill();
+        UIHandler.Instance.OpenDeathScreen();
     }
 
     private void HandleGravity()
@@ -256,6 +285,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetJumpTrigger()
     {
+        Destroy(Instantiate(_jumpEffect, transform.position, _jumpEffect.transform.rotation).gameObject, 2f);
         ResetState();
         _characterState = ECharacterStates.ECS_Jumping;
     }
