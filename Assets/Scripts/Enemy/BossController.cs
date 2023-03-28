@@ -436,6 +436,7 @@ public class BossController : AIController
     private void CastSpell()
     {
         _lightningCoroutine = StartCoroutine(CastSpellCoroutine(false, 1f));
+        AudioManager.Instance.PlaySoundEffect(_audioSource, groundHitAudioClip);
     }
 
 
@@ -481,7 +482,6 @@ public class BossController : AIController
         Vector3 spawnPos = new Vector3(markerInstance.transform.position.x, 0, markerInstance.transform.position.z);
 
         Destroy(Instantiate(_lightningStrike, spawnPos, Quaternion.identity).gameObject, 3f);
-        //AudioManager.Instance.PlaySoundEffect(_audioSource, spellbook.GetLightningAudioClip());
     }
 
     public void NeedsReset()
