@@ -20,6 +20,7 @@ public class Utils
                     canvasGroup.alpha += 0.01f;
                     yield return null;
                 }
+                canvasGroup.gameObject.SetActive(true);
                 break;
             case EUIMode.EUIM_Hide:
                 canvasGroup.interactable = false;
@@ -28,6 +29,7 @@ public class Utils
                     canvasGroup.alpha -= 0.01f;
                     yield return null;
                 }
+                canvasGroup.gameObject.SetActive(false);
                 break;
         }
 

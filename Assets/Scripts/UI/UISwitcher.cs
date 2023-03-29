@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class UISwitcher : MonoBehaviour
@@ -12,6 +13,12 @@ public class UISwitcher : MonoBehaviour
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, newWindow.GetComponent<CanvasGroup>()));
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _currentWindow.GetComponent<CanvasGroup>()));
         newWindow.transform.SetAsLastSibling();
+
+        foreach (EventTrigger et in newWindow.gameObject.GetComponentsInChildren<EventTrigger>())
+            et.enabled = true;
+
+        foreach (EventTrigger et in _currentWindow.gameObject.GetComponentsInChildren<EventTrigger>())
+            et.enabled = false;
     }
 
     public void SetCurrentWindow(GameObject currentWindow)

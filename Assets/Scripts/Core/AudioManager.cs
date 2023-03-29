@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource gameMusicSource, menuMusicSource;
 
     private AudioClip _menuMusic;
+    private AudioClip _mainMenuMusic;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
 
         _menuMusic = Resources.Load<AudioClip>("MenuMusicAudioClip");
+        _mainMenuMusic = Resources.Load<AudioClip>("MainMenuMusicAudioClip");
     }
 
     public void PlaySoundEffect(AudioSource source, AudioClip clip)
@@ -40,6 +42,17 @@ public class AudioManager : MonoBehaviour
     public void StopMenuMusic()
     {
         menuMusicSource.Stop();
+    }
+
+    public void PlayMainMenuMusic(AudioSource source)
+    {
+        source.clip = _mainMenuMusic;
+        source.Play();
+    }
+
+    public void StopMainMenuMusic(AudioSource source)
+    {
+        source.Stop();
     }
 
     public void PlayGameMusic(AudioClip clip)

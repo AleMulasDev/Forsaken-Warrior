@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private LoadButton loadButton;
 
     private string _path;
+
     public void NewGame()
     {
         SceneManager.LoadScene("Isles");
