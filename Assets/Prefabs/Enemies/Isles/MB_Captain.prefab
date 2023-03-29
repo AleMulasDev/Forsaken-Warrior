@@ -3224,6 +3224,7 @@ MonoBehaviour:
   delayBetweenSpawns: 5
   timesToSpawn: 1
   enemiesPerSpawn: 2
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &6679447264224074039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3436,7 @@ MonoBehaviour:
   delayBetweenSpawns: 5
   timesToSpawn: 1
   enemiesPerSpawn: 2
+  spawnAudioClip: {fileID: 0}
 --- !u!1 &6679447264991273857
 GameObject:
   m_ObjectHideFlags: 0

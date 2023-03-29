@@ -27,7 +27,7 @@ public class MinibossController : AIController
 
     private EMinibossMode _bossMode = EMinibossMode.EMM_None;
     private MinibossWeapon _circleWeapon;
-    private float _spawnTimer;
+    private float _spawnTimer = Mathf.Infinity;
     private List<Spawner> _enemiesSpawners;
     private List<AIController> _spawnedEnemies = new List<AIController>();
 
@@ -58,11 +58,14 @@ public class MinibossController : AIController
     {
         GameManager.Instance.MinibossKilled();
         
-        GetComponentInChildren<EnemyHealthBar>().HideHealthBar();
+        GetComponentInChildren<EnemyHealthBar>(true).HideHealthBar();
 
-        if(!_deadEntities)
+        if (!_deadEntities)
             foreach (AIController enemy in _spawnedEnemies)
-                enemy.GetComponent<Health>().Kill();
+            {
+                if(enemy != null)
+                    enemy.GetComponent<Health>().Kill();
+            }
 
         _deadEntities = true;
 
@@ -77,8 +80,6 @@ public class MinibossController : AIController
     // Update is called once per frame
     void Update()
     {
-        if (_enemyState == EEnemyState.EES_Spawning) return;
-
         _animator.SetFloat("bossMode", (int)_bossMode);
 
         if (_health.IsDead())
@@ -188,6 +189,8 @@ public class MinibossController : AIController
 
     public void SetBossMode(EMinibossMode bossMode)
     {
+        if (_health.IsDead()) return;
+
         DisableNavMesh();
         _bossMode = bossMode;
 
@@ -205,10 +208,18 @@ public class MinibossController : AIController
 
         _attackTimer = 0f;
 
+        GetComponentInChildren<EnemyHealthBar>(true).gameObject.SetActive(true);
+
         if (bossMode == EMinibossMode.EMM_ThirdCircle)
-            GetComponentInChildren<EnemyHealthBar>().ShowHealthBar();
+            GetComponentInChildren<EnemyHealthBar>(true).ShowHealthBar();
         else
-            GetComponentInChildren<EnemyHealthBar>().HideHealthBar();
+            GetComponentInChildren<EnemyHealthBar>(true).HideHealthBar();
+    }
+
+    public void ClearPickedInstance()
+    {
+        if (_pickedInstance != null)
+            Destroy(_pickedInstance);
     }
 
     public void UnsheathWeapon()
@@ -222,7 +233,10 @@ public class MinibossController : AIController
         colliders.Clear();
 
         if (_pickedInstance != null)
+        {
+            print("Destroy instance");
             Destroy(_pickedInstance);
+        }
 
         if (_currentRightHandWeaponInstance != null)
             Destroy(_currentRightHandWeaponInstance.gameObject);
@@ -253,7 +267,6 @@ public class MinibossController : AIController
 
         if (_currentRightHandWeaponInstance != null && _currentRightHandWeaponInstance.TryGetComponent<Collider>(out Collider rightWeaponCollider))
             colliders.Add(rightWeaponCollider);
-
     }
 
     private void SpawnWeapon(bool isRightHanded)
@@ -282,7 +295,6 @@ public class MinibossController : AIController
         _enemyState = EEnemyState.EES_Attack;
         _currentLeftHandWeaponInstance.Shoot(_circleWeapon.bullet, _playerController);
         AudioManager.Instance.PlaySoundEffect(_audioSource, _currentLeftHandWeaponInstance.GetWeaponAudioClip());
-
 
         if (_pickedInstance != null)
             Destroy(_pickedInstance.gameObject);

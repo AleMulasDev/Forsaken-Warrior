@@ -186,13 +186,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2862111491149869644}
   - component: {fileID: 2862111491149869651}
+  - component: {fileID: 3790292689736446225}
   m_Layer: 0
   m_Name: RightSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2862111491149869644
 Transform:
   m_ObjectHideFlags: 0
@@ -221,16 +222,119 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1617411340088360252, guid: c30619e8b427db54a85aef59d61815fa, type: 3}
-  - {fileID: -4847785709254757084, guid: 5107f4d22ed4d3540a7ce6d1e2718375, type: 3}
-  - {fileID: -6961658771979836866, guid: 04087db5bfc0f6645917e937180fde94, type: 3}
-  - {fileID: 8305723747096316422, guid: 55b1000023068e44fa89df6dc2c04293, type: 3}
-  - {fileID: 4474121016267416679, guid: 4aa1d8cb2383fee49a226dd8d88adf05, type: 3}
-  - {fileID: 2809809949937962239, guid: 58275e3e668894749850cd7af51666f0, type: 3}
+  - {fileID: 7975197401839469860, guid: 2e514594604c25f48b2dd38bebbed776, type: 3}
+  - {fileID: 8622369615410526537, guid: cdaed8e591f776642b11bbd2e01c1739, type: 3}
+  - {fileID: 1720520767071763251, guid: 0e04c78a35306744b809e9c564a30829, type: 3}
+  - {fileID: 1096629229001980673, guid: 61c3ca4cae399c6409120252a743b111, type: 3}
+  - {fileID: 3862273099168203435, guid: 8bb7ff2ae5bd75b45a16a7e6ddd59c8e, type: 3}
+  - {fileID: 7230276341968251804, guid: ae36f746444a7814c9ef815da6631449, type: 3}
+  - {fileID: 607529974436394351, guid: 7ffc9ec3d8499ed4dabb4a0dfb26c3d0, type: 3}
+  - {fileID: 5394005698060531548, guid: 0307fe4652a06064c9df7e8f589cccd1, type: 3}
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints:
+  - {fileID: 2862111491149869644}
+  delayBetweenSpawns: 5
+  timesToSpawn: 5
+  enemiesPerSpawn: 2
+  spawnAudioClip: {fileID: 0}
+--- !u!82 &3790292689736446225
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862111491149869645}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2862111491351329685
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +493,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2862111491503722380
 MonoBehaviour:
@@ -448,13 +552,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2862111491987680857}
   - component: {fileID: 2862111491987680856}
+  - component: {fileID: 8169827811786370798}
   m_Layer: 0
   m_Name: LeftSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2862111491987680857
 Transform:
   m_ObjectHideFlags: 0
@@ -483,16 +588,119 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 1617411340088360252, guid: c30619e8b427db54a85aef59d61815fa, type: 3}
-  - {fileID: -4847785709254757084, guid: 5107f4d22ed4d3540a7ce6d1e2718375, type: 3}
-  - {fileID: -6961658771979836866, guid: 04087db5bfc0f6645917e937180fde94, type: 3}
-  - {fileID: 8305723747096316422, guid: 55b1000023068e44fa89df6dc2c04293, type: 3}
-  - {fileID: 4474121016267416679, guid: 4aa1d8cb2383fee49a226dd8d88adf05, type: 3}
-  - {fileID: 2809809949937962239, guid: 58275e3e668894749850cd7af51666f0, type: 3}
+  - {fileID: 7975197401839469860, guid: 2e514594604c25f48b2dd38bebbed776, type: 3}
+  - {fileID: 8622369615410526537, guid: cdaed8e591f776642b11bbd2e01c1739, type: 3}
+  - {fileID: 1720520767071763251, guid: 0e04c78a35306744b809e9c564a30829, type: 3}
+  - {fileID: 1096629229001980673, guid: 61c3ca4cae399c6409120252a743b111, type: 3}
+  - {fileID: 3862273099168203435, guid: 8bb7ff2ae5bd75b45a16a7e6ddd59c8e, type: 3}
+  - {fileID: 7230276341968251804, guid: ae36f746444a7814c9ef815da6631449, type: 3}
+  - {fileID: 607529974436394351, guid: 7ffc9ec3d8499ed4dabb4a0dfb26c3d0, type: 3}
+  - {fileID: 5394005698060531548, guid: 0307fe4652a06064c9df7e8f589cccd1, type: 3}
   bossProp: {fileID: 0}
   miniboss: {fileID: 0}
   shouldSpawnMiniboss: 0
-  minibossSpawnEffect: {fileID: 0}
+  spawnPoints:
+  - {fileID: 2862111491987680857}
+  delayBetweenSpawns: 5
+  timesToSpawn: 5
+  enemiesPerSpawn: 2
+  spawnAudioClip: {fileID: 0}
+--- !u!82 &8169827811786370798
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862111491987680858}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5876252461737391537, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2862111492029592025
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +805,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 60
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2862111492388500798
 MonoBehaviour:
@@ -949,7 +1157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6720754583145384499}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -9.72, y: 0, z: -36.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -962,7 +1170,7 @@ Transform:
   - {fileID: 7417005772673001859}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6720754583135883843
 Animator:
   serializedVersion: 4
@@ -1030,7 +1238,7 @@ NavMeshAgent:
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 3.63
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
@@ -2434,7 +2642,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 549c7e494b673714db1911b6b82d5b2f, type: 2}
+  - {fileID: 2100000, guid: 2872fff3ac17a734cb2ca1274f742048, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2528,7 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 1
+  enableSpawnEffect: 0
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5

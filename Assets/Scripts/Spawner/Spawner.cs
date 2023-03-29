@@ -27,9 +27,13 @@ public class Spawner : MonoBehaviour
     private bool _spawned = false;
     private ParticleSystem minibossSpawnEffect;
 
-    private void Start()
+    private void Awake()
     {
         spawnAudioClip = Resources.Load<AudioClip>("EnemyDissolveAudioClip");
+    }
+
+    private void Start()
+    {
         _audioSource = GetComponent<AudioSource>();
 
         if (shouldSpawnMiniboss)

@@ -43,8 +43,8 @@ public class AIController : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider>();
         _audioSource = GetComponent<AudioSource>();
 
-        if (_navMeshAgent != null)
-            _navMeshAgent.updateRotation = false;
+        //if (_navMeshAgent != null)
+            //_navMeshAgent.updateRotation = false;
 
         footstepParticles = GameManager.Instance.GetFootstepParticles();
     }

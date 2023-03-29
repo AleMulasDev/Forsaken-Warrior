@@ -18,11 +18,13 @@ public class EnemyHealthBar : MonoBehaviour
     }
     public void ShowHealthBar()
     {
+        gameObject.SetActive(true);
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, _canvasGroup));
     }
 
     public void HideHealthBar()
     {
+        gameObject.SetActive(true);
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _canvasGroup));
     }
 

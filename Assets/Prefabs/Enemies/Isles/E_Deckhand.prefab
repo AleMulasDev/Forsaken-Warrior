@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -1162,7 +1162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4198217662419212552
 Transform:
   m_ObjectHideFlags: 0
@@ -1699,9 +1699,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!1 &4198217662419003452
 GameObject:
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
   lerpTimerSpawn: 3
   lerpTimerDeath: 5
@@ -2485,9 +2485,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &1149884903377389571
 MonoBehaviour:

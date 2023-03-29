@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem _jumpEffect;
 
     private bool _isMoving;
-    private bool _canJump;
+    private bool _canJump = true;
     private float tempDodgeSpeed;
     private float tempJumpBSpeed;
     private float _velocity;
@@ -296,7 +296,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_characterState != ECharacterStates.ECS_Inoccupied && _characterState != ECharacterStates.ECS_LightAttack) return;
 
-        //_animator.SetTrigger("jump");
+        if (!_canJump) return;
+
         _animator.CrossFade("Jumping", 0f, 0, 0, 0.25f);
     }
 

@@ -104,6 +104,10 @@ MonoBehaviour:
   bulletSpeed: 30
   detachDistance: 0
   isParticleSystem: 0
+  isThrowable: 0
+  throwableSpeed: 0
+  shouldDestroy: 1
+  shouldDissolve: 0
 --- !u!54 &6723513321406358679
 Rigidbody:
   m_ObjectHideFlags: 0

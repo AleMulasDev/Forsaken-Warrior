@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2852545745372285928
 Transform:
   m_ObjectHideFlags: 0
@@ -230,12 +230,12 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 5
-  avoidancePriority: 50
+  avoidancePriority: 1
   m_AngularSpeed: 5000
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
-  m_AutoRepath: 1
+  m_AutoRepath: 0
   m_Height: 1.82
   m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 0
+  onKillScore: 3
   colliders: []
   lFoot: {fileID: 3924650975974436964}
   rFoot: {fileID: 3924650975379915922}
@@ -1956,7 +1956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &3924650975749750184
 MonoBehaviour:
@@ -3259,7 +3259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &7828898043002593762
 MonoBehaviour:

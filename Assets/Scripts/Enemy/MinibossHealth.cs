@@ -16,6 +16,7 @@ public class MinibossHealth : Health
 
         if(_currentHealth < (_maxHealth / 2) && !alreadyStunned)
         {
+            GetComponent<MinibossController>().ClearPickedInstance();
             Destroy(Instantiate(stunStars, transform.position + new Vector3(0, 2f, 0), stunStars.transform.rotation), 5f);
             alreadyStunned = true;
             GetComponent<Animator>().SetTrigger("stun");

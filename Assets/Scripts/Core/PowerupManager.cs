@@ -32,6 +32,7 @@ public class PowerupManager : MonoBehaviour
     {
         yield return new WaitForSeconds(powerupDuration);
         auraPowerup.Stop(true);
+        Destroy(auraPowerup.gameObject, 2f);
     }
 
     // When powerup is more likely a simple pickup

@@ -21,6 +21,7 @@ public class SimpleEnemyController : AIController
     void Update()
     {
         if(_enemyState == EEnemyState.EES_Spawning) { return; }
+
         if (_health.IsDead())
         {
             Die();
@@ -57,7 +58,6 @@ public class SimpleEnemyController : AIController
         {
             _enemyState = EEnemyState.EES_Attack;
             _animator.SetTrigger(Attack);
-            //AudioManager.Instance.PlaySoundEffect(_audioSource, attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
         }
     }
     protected void Shoot()

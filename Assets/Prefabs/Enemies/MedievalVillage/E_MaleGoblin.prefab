@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableSpawnEffect: 0
+  enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &860587207556912806
 MonoBehaviour:
@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1113980423733079349
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +435,8 @@ GameObject:
   - component: {fileID: 7492047434677523375}
   - component: {fileID: 7492047434677523361}
   - component: {fileID: 7492047434677523360}
+  - component: {fileID: 8665636606451196568}
+  - component: {fileID: 1867055848860296314}
   m_Layer: 0
   m_Name: SM_Item_Bags
   m_TagString: Untagged
@@ -485,7 +487,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a64cf0a23f83924f9debcb452685f6f, type: 2}
+  - {fileID: 2100000, guid: 21c6d320605707f488fff9bffd20dd86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -507,6 +509,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8665636606451196568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492047434677523374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
+  resetParentState: 1
+  lerpTimerSpawn: 1.5
+  lerpTimerDeath: 5
+--- !u!114 &1867055848860296314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492047434677523374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7492047434732649667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2111,8 @@ GameObject:
   - component: {fileID: 7492047435908543029}
   - component: {fileID: 7492047435908543031}
   - component: {fileID: 7492047435908543030}
+  - component: {fileID: 6418191615813831085}
+  - component: {fileID: 696065600449089855}
   m_Layer: 0
   m_Name: SM_Item_Horn
   m_TagString: Untagged
@@ -2131,7 +2163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a64cf0a23f83924f9debcb452685f6f, type: 2}
+  - {fileID: 2100000, guid: 21c6d320605707f488fff9bffd20dd86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2153,6 +2185,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6418191615813831085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492047435908543028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
+  resetParentState: 1
+  lerpTimerSpawn: 1.5
+  lerpTimerDeath: 5
+--- !u!114 &696065600449089855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492047435908543028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7492047435916414677
 GameObject:
   m_ObjectHideFlags: 0
