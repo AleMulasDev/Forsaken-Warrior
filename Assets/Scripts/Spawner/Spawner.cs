@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int enemiesPerSpawn;
     [SerializeField] private AudioClip spawnAudioClip;
 
+    private AudioSource _audioSource;
+
     private List<AIController> _spawnedEnemies = new List<AIController>();
     private BossProp _propInstance;
 
@@ -27,6 +29,9 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        spawnAudioClip = Resources.Load<AudioClip>("EnemyDissolveAudioClip");
+        _audioSource = GetComponent<AudioSource>();
+
         if (shouldSpawnMiniboss)
             minibossSpawnEffect = Resources.Load<ParticleSystem>("MinibossSpawnEffect");
     }
@@ -40,6 +45,7 @@ public class Spawner : MonoBehaviour
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
             int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
+            AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
             _spawnedEnemies.Add(Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity));
         }
 
@@ -62,6 +68,7 @@ public class Spawner : MonoBehaviour
             {
                 int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
                 _spawnedEnemies.Add(Instantiate(enemies[randomEnemy], GetRandomSpawnPosition(), Quaternion.identity));
+                AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
             }
             yield return new WaitForSeconds(delayBetweenSpawns);
         }
@@ -95,6 +102,7 @@ public class Spawner : MonoBehaviour
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
             _spawnedEnemies.Add(Instantiate(enemies[i], spawnPosition, Quaternion.identity));
+            AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
         }
 
         return _spawnedEnemies;
@@ -114,6 +122,7 @@ public class Spawner : MonoBehaviour
 
     public MinibossController SpawnMiniboss()
     {
+        AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
         Destroy(Instantiate(minibossSpawnEffect, spawnPoints[0].position, minibossSpawnEffect.transform.rotation), 3f);
         return Instantiate(miniboss, spawnPoints[0].position, miniboss.transform.rotation);
     }
