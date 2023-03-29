@@ -693,7 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &4166760076139611032
 MonoBehaviour:

@@ -40,9 +40,15 @@ public class UIHandler : MonoBehaviour
         }
 
         if (pauseCanvasGroup.alpha == 0)
+        {
+            AudioManager.Instance.PlayMenuMusic();
             OpenPauseMenu();
+        }
         else
+        {
+            AudioManager.Instance.StopMenuMusic();
             ClosePauseMenu(true);
+        }
     }
 
     public void OpenDeathScreen()
@@ -55,6 +61,7 @@ public class UIHandler : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+
         pauseCanvasGroup.transform.SetAsLastSibling();
 
         if (_pauseCoroutine != null) StopCoroutine(_pauseCoroutine);
@@ -66,6 +73,7 @@ public class UIHandler : MonoBehaviour
 
     public void ClosePauseMenu(bool openHud)
     {
+
         if (_pauseCoroutine != null) StopCoroutine(_pauseCoroutine);
 
         _pauseCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, pauseCanvasGroup));
@@ -90,6 +98,7 @@ public class UIHandler : MonoBehaviour
 
     public void OpenHUD()
     {
+
         Time.timeScale = 1;
 
         if (_hudCoroutine != null) StopCoroutine(_hudCoroutine);
@@ -99,6 +108,7 @@ public class UIHandler : MonoBehaviour
 
     public void CloseHUD()
     {
+
         Time.timeScale = 0;
 
         if (_hudCoroutine != null) StopCoroutine(_hudCoroutine);
@@ -108,6 +118,7 @@ public class UIHandler : MonoBehaviour
     
     public void Continue()
     {
+        AudioManager.Instance.StopMenuMusic();
         ClosePauseMenu(true);
     }
 }

@@ -7,7 +7,9 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
-    [SerializeField] private AudioSource musicSource, environmentSource;
+    [SerializeField] private AudioSource gameMusicSource, menuMusicSource;
+
+    private AudioClip _menuMusic;
 
     private void Awake()
     {
@@ -16,13 +18,7 @@ public class AudioManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        //environment audio default settings
-        environmentSource.volume = 0.2f;
-        environmentSource.loop = true;
-
-        //music audio default settings
-        musicSource.volume = 0.7f;
-        musicSource.loop = true;
+        _menuMusic = Resources.Load<AudioClip>("MenuMusicAudioClip");
     }
 
     public void PlaySoundEffect(AudioSource source, AudioClip clip)
@@ -35,25 +31,25 @@ public class AudioManager : MonoBehaviour
         source.Stop();
     }
 
-    public void PlayEnvironmentSound(AudioClip clip)
+    public void PlayMenuMusic()
     {
-        environmentSource.clip = clip;
-        environmentSource.Play();
+        menuMusicSource.clip = _menuMusic;
+        menuMusicSource.Play();
     }
 
-    public void StopEnvironmentSound()
+    public void StopMenuMusic()
     {
-        environmentSource.Stop();
+        menuMusicSource.Stop();
     }
 
-    public void PlayMusic(AudioClip clip)
+    public void PlayGameMusic(AudioClip clip)
     {
-        musicSource.clip = clip;
-        musicSource.Play();
+        gameMusicSource.clip = clip;
+        gameMusicSource.Play();
     }
 
-    public void StopMusic()
+    public void PauseGameMusic()
     {
-        musicSource.Stop();
+        gameMusicSource.Pause();
     }
 }
