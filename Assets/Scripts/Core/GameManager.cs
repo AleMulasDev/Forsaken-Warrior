@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private bool _keyGathered = false;
     private Portal _portal;
 
+
     public void SwitchCheats(bool enabled)
     {
         _enabledCheats = enabled;
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         player.gameObject.SetActive(true);
         player.gameObject.GetComponent<CharacterController>().Move(spawnPoint.position - player.position);
+    }
+
+    public void TryAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Respawn(Transform player)

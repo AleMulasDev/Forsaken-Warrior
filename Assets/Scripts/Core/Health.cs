@@ -42,10 +42,11 @@ public class Health : MonoBehaviour
 
             if (GetComponent<PlayerController>() != null)
                 AudioManager.Instance.PlaySoundEffect(GetComponent<PlayerController>()?.GetAudioSource(), GetComponent<PlayerController>()?.GetDeathAudioClip());
-            foreach(AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
-                aC.Dissolve(2f);
+            else
+                Destroy(gameObject, 7f);
 
-            Destroy(gameObject, 7f);
+            foreach (AnimateCutout aC in GetComponentsInChildren<AnimateCutout>())
+                aC.Dissolve(2f);
         }
 
         if (_navMeshAgent != null) // Enemy

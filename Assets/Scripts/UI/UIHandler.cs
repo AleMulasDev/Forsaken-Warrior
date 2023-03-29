@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,7 @@ public class UIHandler : MonoBehaviour
 
     public void OpenDeathScreen()
     {
+        Camera.main.gameObject.GetComponent<CinemachineBrain>().enabled = false;
         deathScreenCanvasGroup.transform.SetAsLastSibling();
 
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, hudCanvasGroup));

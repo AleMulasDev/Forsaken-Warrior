@@ -1170,6 +1170,8 @@ GameObject:
   - component: {fileID: 2387408330639291707}
   - component: {fileID: 2387408330639291704}
   - component: {fileID: 2387408330639291705}
+  - component: {fileID: 7108574661943042237}
+  - component: {fileID: 1869434127972317830}
   m_Layer: 0
   m_Name: SM_Wep_Greatsword_Straight_01
   m_TagString: Untagged
@@ -1222,7 +1224,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42b64fdb315e3054ea757d8d1c4bcfa7, type: 2}
+  - {fileID: 2100000, guid: 21c6d320605707f488fff9bffd20dd86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1269,6 +1271,34 @@ MonoBehaviour:
   subdivisions: 4
   _base: {fileID: 2387408329787425695}
   _tip: {fileID: 2387408331031152487}
+--- !u!114 &7108574661943042237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387408330639291719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  resetParentState: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
+--- !u!114 &1869434127972317830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387408330639291719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2387408330653166573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,8 +2088,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2387408331109366710}
   - component: {fileID: 2387408331109366697}
+  - component: {fileID: 1071767654}
+  - component: {fileID: 1071767655}
   m_Layer: 0
-  m_Name: Character_Hero_Knight_Male
+  m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2100,7 +2132,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42b64fdb315e3054ea757d8d1c4bcfa7, type: 2}
+  - {fileID: 2100000, guid: 21c6d320605707f488fff9bffd20dd86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2182,6 +2214,34 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00006508827, y: 0.88050526, z: -0.11747467}
     m_Extent: {x: 1.027118, y: 0.9938987, z: 0.33084455}
   m_DirtyAABB: 0
+--- !u!114 &1071767654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387408331109366711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1071767655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387408331109366711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 0
+  resetParentState: 0
+  lerpTimerSpawn: 3
+  lerpTimerDeath: 5
 --- !u!1 &2387408331117755897
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,7 +3021,6 @@ GameObject:
   - component: {fileID: 3505060504068232511}
   - component: {fileID: 3505060504068232510}
   - component: {fileID: 3505060504068232496}
-  - component: {fileID: 3505060504068232499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2976,7 +3035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3599084226818579183}
-  m_LocalRotation: {x: -0, y: 0.6671198, z: -0, w: 0.7449505}
+  m_LocalRotation: {x: 0, y: 0.6671177, z: 0, w: 0.7449523}
   m_LocalPosition: {x: -296.65, y: 0.46, z: 12.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3193,11 +3252,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &3505060504068232499
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3599084226818579183}
-  m_Enabled: 1
