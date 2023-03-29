@@ -45,11 +45,17 @@ public class Spawner : MonoBehaviour
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
             int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
-            AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
+            StartCoroutine(PlaySpawnSoundEffectCoroutine());
             _spawnedEnemies.Add(Instantiate(enemies[randomEnemy], spawnPosition, Quaternion.identity));
         }
 
         return _spawnedEnemies;
+    }
+
+    private IEnumerator PlaySpawnSoundEffectCoroutine()
+    {
+        yield return new WaitForSeconds(0.75f);
+        AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
     }
 
     private void Spawn()
@@ -67,8 +73,8 @@ public class Spawner : MonoBehaviour
             for (int j = 0; j < enemiesPerSpawn; j++)
             {
                 int randomEnemy = UnityEngine.Random.Range(0, enemies.Length);
+                StartCoroutine(PlaySpawnSoundEffectCoroutine());
                 _spawnedEnemies.Add(Instantiate(enemies[randomEnemy], GetRandomSpawnPosition(), Quaternion.identity));
-                AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
             }
             yield return new WaitForSeconds(delayBetweenSpawns);
         }
@@ -101,8 +107,8 @@ public class Spawner : MonoBehaviour
         {
             Vector3 randomPos = Random.insideUnitCircle * 5;
             Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
+            StartCoroutine(PlaySpawnSoundEffectCoroutine());
             _spawnedEnemies.Add(Instantiate(enemies[i], spawnPosition, Quaternion.identity));
-            AudioManager.Instance.PlaySoundEffect(_audioSource, spawnAudioClip);
         }
 
         return _spawnedEnemies;
