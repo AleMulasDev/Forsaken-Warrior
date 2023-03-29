@@ -89,6 +89,7 @@ public class UIHandler : MonoBehaviour
         if (_settingsCoroutine != null) StopCoroutine(_settingsCoroutine);
 
         _settingsCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, settingsCanvasGroup));
+        settingsCanvasGroup.gameObject.transform.SetAsLastSibling();
     }
 
     public void CloseSettings()

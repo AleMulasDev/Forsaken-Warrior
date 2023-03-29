@@ -12,13 +12,14 @@ public class UISwitcher : MonoBehaviour
     {
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, newWindow.GetComponent<CanvasGroup>()));
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _currentWindow.GetComponent<CanvasGroup>()));
-        newWindow.transform.SetAsLastSibling();
 
         foreach (EventTrigger et in newWindow.gameObject.GetComponentsInChildren<EventTrigger>())
             et.enabled = true;
 
         foreach (EventTrigger et in _currentWindow.gameObject.GetComponentsInChildren<EventTrigger>())
             et.enabled = false;
+
+        newWindow.transform.SetAsLastSibling();
     }
 
     public void SetCurrentWindow(GameObject currentWindow)

@@ -13,13 +13,13 @@ EditorBuildSettings:
     guid: 67e4ded21deb00a4bb64d4bd5425a929
   - enabled: 1
     path: Assets/Scenes/Isles.unity
-    guid: 091856d3878184403acdd73f42d4a2c3
-  - enabled: 1
-    path: Assets/Scenes/EnchantedCemetery.unity
-    guid: 3c7ff9aa8c5a640a3a65f5f154e97bfc
+    guid: eb46fb0eecd783f46aaedf4068446439
   - enabled: 1
     path: Assets/Scenes/MedievalVillage.unity
     guid: e005e2fc9b8a844a9a09d7c07de071ce
+  - enabled: 1
+    path: Assets/Scenes/EnchantedCemetery.unity
+    guid: 3c7ff9aa8c5a640a3a65f5f154e97bfc
   - enabled: 1
     path: Assets/Scenes/HauntedHouse.unity
     guid: ba2c5a1f85e644ca9bfa41420edab360
