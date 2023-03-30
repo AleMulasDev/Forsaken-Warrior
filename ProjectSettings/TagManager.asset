@@ -13,6 +13,7 @@ TagManager:
   - keysText
   - OOB
   - SpawnPoint
+  - VictoryScreen
   layers:
   - Default
   - TransparentFX

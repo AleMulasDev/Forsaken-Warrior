@@ -139,7 +139,9 @@ public class PlayerController : MonoBehaviour
     public void SetEnemy(Transform source)
     {
         _enemy = source;
-        indicator.GetComponentInChildren<ParticleSystem>().Play(true);
+
+        if(source != null)
+            indicator.GetComponentInChildren<ParticleSystem>().Play(true);
     }
 
     private void Update()

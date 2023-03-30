@@ -54,6 +54,8 @@ public class SavingSystem : MonoBehaviour
             _loadWorldData = true;
             SceneManager.LoadScene(loadedData.sceneName);
         }
+        else
+            FindObjectOfType<LevelChooser>().ShowNoDataText();
     }
 
     public void LoadDesiredLevel(string desiredLevel)

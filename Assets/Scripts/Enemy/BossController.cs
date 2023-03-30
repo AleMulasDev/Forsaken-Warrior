@@ -75,11 +75,15 @@ public class BossController : AIController
     private void Update()
     {
         if (!_introOver) return;
+
         if (_health.IsDead() && _flag) {
             _flag = false;
             Die();
             return; 
         }
+
+        if (_health.IsDead())
+            return;
 
         _timer += Time.deltaTime;
         _attackTimer += Time.deltaTime;
@@ -507,6 +511,7 @@ public class BossController : AIController
     {
         StopAllCoroutines();
         GameManager.Instance.ShowVictoryScreen();
+        _playerController.GetComponent<PlayerController>().SetEnemy(null);
         base.Die();
     }
 

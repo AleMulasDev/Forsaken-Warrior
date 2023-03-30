@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,13 +27,12 @@ public class GameManager : MonoBehaviour
     private bool _minibossKilled = false;
     private bool _keyGathered = false;
     private Portal _portal;
-
+    private CanvasGroup _cGVictoryScreen;
     private AudioClip _victoryAudioClip;
 
     private void Start()
     {
         _victoryAudioClip = Resources.Load<AudioClip>("VictoryAudioClip");
-        footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
     }
 
     public void SwitchCheats(bool enabled)
@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -87,6 +89,9 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Menu" || scene.name == "LevelChooser")
             return;
+
+        if (scene.name == "HauntedHouseT" || scene.name == "HauntedHouse")
+            _cGVictoryScreen = GameObject.FindGameObjectWithTag("VictoryScreen").GetComponent<CanvasGroup>();
 
         ResetGameManager();
     }
@@ -169,7 +174,20 @@ public class GameManager : MonoBehaviour
     public void ShowVictoryScreen()
     {
         AudioManager.Instance.PlayGameMusicOneShot(_victoryAudioClip);
-        _portal.ActivatePortal();
+        StartCoroutine(ShowVictoryScreenCoroutine());
+    }
+
+    private IEnumerator ShowVictoryScreenCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        _cGVictoryScreen.interactable = true;
+        while (_cGVictoryScreen.alpha < 1.0f)
+        {
+            _cGVictoryScreen.alpha += 0.01f;
+            yield return new WaitForSeconds(0.1f);
+            yield return null;
+        }
+        _cGVictoryScreen.gameObject.GetComponent<VictoryScreenUI>().ShowText();
     }
 
     public void GiveUp()
