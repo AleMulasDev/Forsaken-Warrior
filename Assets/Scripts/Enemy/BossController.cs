@@ -179,7 +179,10 @@ public class BossController : AIController
             _enemiesToSpawn = 0;
             IncreaseBossPhasePercentage(1f);
             foreach (SimpleEnemyController enemy in _spawnedEnemies)
-                enemy.GetComponent<Health>().Kill();
+            {
+                if(enemy != null)
+                    enemy.GetComponent<Health>().Kill();
+            }
             _spawnedEnemies.Clear();
             StartCoroutine(EndSecondPhase());
         }

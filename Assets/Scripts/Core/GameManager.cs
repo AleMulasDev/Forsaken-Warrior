@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Menu" || scene.name == "LevelChooser" || scene.name == "GabTestScene")
+        if (scene.name == "Menu" || scene.name == "LevelChooser")
             return;
 
         ResetGameManager();
