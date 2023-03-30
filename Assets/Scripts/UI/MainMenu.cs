@@ -12,10 +12,6 @@ public class MainMenu : MonoBehaviour
 
     private string _path;
 
-    public void NewGame()
-    {
-        SceneManager.LoadScene("Isles");
-    }
 
     public void Start()
     {
@@ -31,5 +27,10 @@ public class MainMenu : MonoBehaviour
             LoadButton button = Instantiate(loadButton, loadContentRoot);
             button.SetButton(file);
         }
+    }
+
+    public void NewGame()
+    {
+        GameManager.Instance.NewGame();
     }
 }
