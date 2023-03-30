@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool _enabledCheats = false;
     [SerializeField] private TMP_InputField inputField;
+    [SerializeField] private AudioMixer audioMixer;
     Transform _spawnPoint;
     private int _score = 0;
     private float _time = 0;
@@ -87,6 +89,11 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        audioMixer.SetFloat("GameMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("gameMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("gameMusicVolume")) * 20);
+        audioMixer.SetFloat("MenuMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("menuMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("menuMusicVolume")) * 20);
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
+        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+
         if (scene.name == "Menu" || scene.name == "LevelChooser")
             return;
 

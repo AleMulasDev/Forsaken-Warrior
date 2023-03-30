@@ -25,6 +25,14 @@ public class CinemachineShake : MonoBehaviour
         topRig = cinemachineCam.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         middleRig = cinemachineCam.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         bottomRig = cinemachineCam.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        UpdateSpeed();
+    }
+
+    public void UpdateSpeed()
+    {
+        cinemachineCam.m_YAxis.m_MaxSpeed = PlayerPrefs.GetFloat("cameraSens") == 0 ? 3 : PlayerPrefs.GetFloat("cameraSens") / 3;
+        cinemachineCam.m_XAxis.m_MaxSpeed = PlayerPrefs.GetFloat("cameraSens") == 0 ? 180 : PlayerPrefs.GetFloat("cameraSens") * 20;
     }
 
     private void Update()

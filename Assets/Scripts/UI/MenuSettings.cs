@@ -8,7 +8,6 @@ using UnityEngine.Rendering;
 
 public class MenuSettings : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI mouseSensValue;
     [SerializeField] private TextMeshProUGUI cameraSensValue;
     [SerializeField] private AudioMixer audioMixer;
 
@@ -18,37 +17,66 @@ public class MenuSettings : MonoBehaviour
     private void Awake()
     {
         _screenRes = Screen.resolutions;
-        //audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
-        //audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
-        //audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
+        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+        audioMixer.SetFloat("MenuMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("menuMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("menuMusicVolume")) * 20);
+        audioMixer.SetFloat("GameMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("gameMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("gameMusicVolume")) * 20);
+        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
     }
 
     public void ChangeCameraSens(float value)
     {
         cameraSensValue.text = value.ToString();
-    }
+        PlayerPrefs.SetFloat("cameraSens", value);
 
-    public void ChangeMouseSens(float value)
-    {
-        mouseSensValue.text = value.ToString();
+        if (CinemachineShake.instance != null)
+            CinemachineShake.instance.UpdateSpeed();
     }
 
     public void SetMasterVolume(float volume)
     {
         PlayerPrefs.SetFloat("masterVolume", volume);
-        audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+
+        if (volume > 0)
+        {
+            audioMixer.SetFloat("Master_Volume", Mathf.Log10(PlayerPrefs.GetFloat("masterVolume") == 0 ? 0 : PlayerPrefs.GetFloat("masterVolume")) * 20);
+        }
+        else
+            audioMixer.SetFloat("Master_Volume", -80);
     }
 
     public void SetSFXVolume(float volume)
     {
         PlayerPrefs.SetFloat("sfxVolume", volume);
-        audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
+
+        if (volume > 0)
+        {
+            audioMixer.SetFloat("SFX_Volume", Mathf.Log10(PlayerPrefs.GetFloat("sfxVolume") == 0 ? 0 : PlayerPrefs.GetFloat("sfxVolume")) * 20);
+        } else
+            audioMixer.SetFloat("SFX_Volume", -80);
     }
 
-    public void SetMusicVolume(float volume)
+    public void SetMenuMusicVolume(float volume)
     {
-        PlayerPrefs.SetFloat("musicVolume", volume);
-        audioMixer.SetFloat("Music_Volume", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("musicVolume")) * 20);
+        PlayerPrefs.SetFloat("menuMusicVolume", volume);
+
+        if (volume > 0)
+        {
+            audioMixer.SetFloat("MenuMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("menuMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("menuMusicVolume")) * 20);
+        }
+        else
+            audioMixer.SetFloat("MenuMusic_Volume", -80);
+    }
+
+    public void SetGameMusicVolume(float volume)
+    {
+        PlayerPrefs.SetFloat("gameMusicVolume", volume);
+
+        if (volume > 0)
+        {
+            audioMixer.SetFloat("GameMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("gameMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("gameMusicVolume")) * 20);
+        }
+        else
+            audioMixer.SetFloat("GameMusic_Volume", -80);
     }
 
     public void SetBrightness(float brightness)
