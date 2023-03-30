@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 0
+  onKillScore: 3
   colliders:
   - {fileID: 4662985271141441463}
   - {fileID: 4662985271394095933}

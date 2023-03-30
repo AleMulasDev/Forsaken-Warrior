@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableSpawnEffect: 1
   resetParentState: 1
-  lerpTimerSpawn: 3
+  lerpTimerSpawn: 1.5
   lerpTimerDeath: 5
 --- !u!114 &6762588896616113989
 MonoBehaviour:
@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupSpawnChance: 0.1
-  onKillScore: 0
+  onKillScore: 2
   colliders:
   - {fileID: 6762588897068283649}
   - {fileID: 6762588898210698451}

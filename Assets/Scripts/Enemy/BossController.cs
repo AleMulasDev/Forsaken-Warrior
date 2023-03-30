@@ -60,6 +60,8 @@ public class BossController : AIController
 
     private int _minibossIndex = 0;
 
+    private bool _flag = true;
+
     override protected void Start()
     {
         base.Start();
@@ -73,6 +75,11 @@ public class BossController : AIController
     private void Update()
     {
         if (!_introOver) return;
+        if (_health.IsDead() && _flag) {
+            _flag = false;
+            Die();
+            return; 
+        }
 
         _timer += Time.deltaTime;
         _attackTimer += Time.deltaTime;
@@ -108,7 +115,7 @@ public class BossController : AIController
         if (_timer > _spawnTimer)
         {
             _timer = 0;
-            _spawnTimer += 3;
+            _spawnTimer += 2;
 
             if (_enemiesToSpawn < 10)
                 _enemiesToSpawn++;
@@ -222,6 +229,7 @@ public class BossController : AIController
         _bossPhase = EBossPhase.EBP_FourthPhase;
         _attackTimer = 0;
         _teleportTimer = 0;
+        _eligibleForTakeDamage = true;
         Appear();
         _spellbookInstance = Instantiate(spellbook, rHand);
     }
@@ -265,7 +273,9 @@ public class BossController : AIController
 
         if (_infiniteLightningCoroutine == null)
         {
-            StopCoroutine(_lightningCoroutine);
+            //if(_lightningCoroutine == null)
+            //    StopCoroutine(_lightningCoroutine);
+
             _infiniteLightningCoroutine = InfiniteLightnings();
         }
     }
@@ -321,7 +331,7 @@ public class BossController : AIController
 
         yield return new WaitForSeconds(weapons[(int)_attackStage].teleportDelay);
 
-        Vector3 randomPos = Random.insideUnitCircle * 25;
+        Vector3 randomPos = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 7));
         Vector3 spawnPosition = new Vector3(randomPos.x + transform.position.x, 0, randomPos.y + transform.position.z);
         transform.position = spawnPosition;
         transform.LookAt(_playerController.transform);
@@ -440,6 +450,7 @@ public class BossController : AIController
     {
         _lightningCoroutine = StartCoroutine(CastSpellCoroutine(false, 1f));
         AudioManager.Instance.PlaySoundEffect(_audioSource, groundHitAudioClip);
+        CinemachineShake.instance.ShakeCamera(1f, 5f);
     }
 
 
@@ -472,9 +483,9 @@ public class BossController : AIController
         var markerInstance = Instantiate(_targetMarker, _playerController.transform);
 
         if (!isMoving)
-            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), 0, 1f);
+            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), -_playerController.transform.position.y, 1f);
         else
-            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), 0, 3f);
+            markerInstance.transform.localPosition += new Vector3(Random.Range(-1f, 1f), -_playerController.transform.position.y, 3f);
         
         markerInstance.transform.parent = null;
 
@@ -490,6 +501,13 @@ public class BossController : AIController
     public void NeedsReset()
     {
         _needsReset = true;
+    }
+
+    protected override void Die()
+    {
+        StopAllCoroutines();
+        GameManager.Instance.ShowVictoryScreen();
+        base.Die();
     }
 
     public bool EligibleForTakeDamage() { return _eligibleForTakeDamage; }

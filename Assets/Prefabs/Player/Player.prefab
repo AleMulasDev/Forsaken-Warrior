@@ -781,7 +781,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Enemy
   damage: 1
-  weaponAudioClips: []
+  weaponAudioClips:
+  - {fileID: 8300000, guid: 03e9f874800c3824e9894fa1efebc1b6, type: 3}
+  - {fileID: 8300000, guid: 648a49a9e4ddd2d4fa24cae77adafc27, type: 3}
+  - {fileID: 8300000, guid: 62e01ed3ce2a4b14d9b052e9df242c7e, type: 3}
+  - {fileID: 8300000, guid: 55bf53a6018947e4e8c3384c356e03e0, type: 3}
+  - {fileID: 8300000, guid: 931648b0eaa83c64a845c63ffa30263e, type: 3}
+  - {fileID: 8300000, guid: c14d47d10bbcb924290beafea8c865eb, type: 3}
+  - {fileID: 8300000, guid: e187d7bca1e34ba4cba204dc5cf4e340, type: 3}
+  - {fileID: 8300000, guid: 165123e6f821f5c40ac2d84b9bee4f40, type: 3}
+  - {fileID: 8300000, guid: 373499188b9692c47bfcc48fab324ff8, type: 3}
+  - {fileID: 8300000, guid: 56f1f35ffe50aef49b125db465fe80ea, type: 3}
 --- !u!1 &2387408330205567467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,7 +3088,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.94
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.25
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
@@ -3098,12 +3108,12 @@ MonoBehaviour:
   rotationSpeed: 15
   attackRotationSpeed: 1
   playerSpeed: 10
-  dodgeSpeed: 25
+  dodgeSpeed: 20
   jumpBackwardSpeed: 15
   playerJumpHeight: 3
   heavyAttackMaxDuration: 1
   heightOffset: 1
-  velocityModifier: 0.1
+  velocityModifier: 0.11
   fallVelocity: -10
   rFoot: {fileID: 2387408329888201539}
   lFoot: {fileID: 2387408329413539349}

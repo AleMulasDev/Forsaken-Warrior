@@ -335,13 +335,13 @@ public class PlayerController : MonoBehaviour
     public void Dash()
     {
         _controller.Move(tempDodgeSpeed * Time.deltaTime * transform.forward);
-        DecreaseVelocity();
+        //DecreaseVelocity();
     }
 
     public void JumpBackward()
     {
         _controller.Move(tempJumpBSpeed * Time.deltaTime * (transform.forward * -1));
-        DecreaseVelocity();
+        //DecreaseVelocity();
     }
 
     private void OnHeavyAttackStarted(InputAction.CallbackContext ctx)
@@ -513,6 +513,8 @@ public class PlayerController : MonoBehaviour
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
         DisableTrail();
+        tempDodgeSpeed = 0f;
+        tempJumpBSpeed = 0f;
     }
 
     public void EnableTrail()

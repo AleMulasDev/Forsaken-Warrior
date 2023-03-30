@@ -26,6 +26,12 @@ public class GameManager : MonoBehaviour
     private bool _keyGathered = false;
     private Portal _portal;
 
+    private AudioClip _victoryAudioClip;
+
+    private void Start()
+    {
+        _victoryAudioClip = Resources.Load<AudioClip>("VictoryAudioClip");
+    }
 
     public void SwitchCheats(bool enabled)
     {
@@ -144,15 +150,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ShowVictoryScreen()
+    {
+        AudioManager.Instance.PlayGameMusicOneShot(_victoryAudioClip);
+        _portal.ActivatePortal();
+    }
+
     public void GiveUp()
     {
         SceneManager.LoadScene("Menu");
-    }
-    
-
-    public void Restart()
-    {
-
     }
 
     public float GetTimeRaw()

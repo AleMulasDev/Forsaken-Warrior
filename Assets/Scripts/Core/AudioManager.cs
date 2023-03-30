@@ -62,6 +62,11 @@ public class AudioManager : MonoBehaviour
         gameMusicSource.Play();
     }
 
+    public void PlayGameMusicOneShot(AudioClip clip)
+    {
+        gameMusicSource.PlayOneShot(clip);
+    }
+
     public void ResumeGameMusic()
     {
         gameMusicSource.Play();
