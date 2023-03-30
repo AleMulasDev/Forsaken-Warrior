@@ -12,7 +12,8 @@ public class PlayerData
     public string sceneName;
     public int score;
     public float time;
-    public int health;
+    public int currentHealth;
+    public int maxHealth;
     public int keys;
     public bool keyGathered;
     public bool minibossKilled;
@@ -81,7 +82,8 @@ public class SavingSystem : MonoBehaviour
         data.position = _player.transform.position;
         data.score = GameManager.Instance.GetScore();
         data.time = GameManager.Instance.GetTimeRaw();
-        data.health = _player.GetComponent<Health>().GetHealth();
+        data.currentHealth = _player.GetComponent<Health>().GetHealth();
+        data.maxHealth = _player.GetComponent<Health>().GetMaxHealth();
         data.keys = GameManager.Instance.GetKeys();
         data.keyGathered = GameManager.Instance.GetKeyGathered();
         data.minibossKilled = GameManager.Instance.GetMinibossKilled();

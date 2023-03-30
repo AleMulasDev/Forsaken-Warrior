@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
             _time = data.time;
             _keyGathered = data.keyGathered;
             _minibossKilled = data.minibossKilled;
+            player.GetComponent<PlayerHealth>().SetHealth(data.currentHealth, data.maxHealth);
         }
     }
 

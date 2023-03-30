@@ -21,6 +21,13 @@ public class PlayerHealth : Health
         _multipleIconValueBarTool.RefreshUI();
     }
 
+    public void SetHealth(int currentHealth, int maxHealth)
+    {
+        _multipleIconValueBarTool.SetMaxValue(maxHealth);
+        _multipleIconValueBarTool.SetNowValue(currentHealth);
+        _multipleIconValueBarTool.RefreshUI();
+    }
+
     public void AddHealth(int health)
     {
         _currentHealth += health;
