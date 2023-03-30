@@ -143,4 +143,19 @@ public class UIHandler : MonoBehaviour
         AudioManager.Instance.StopMenuMusic();
         ClosePauseMenu(true);
     }
+
+    public void GiveUp()
+    {
+        GameManager.Instance.GiveUp();
+    }
+
+    public void Restart()
+    {
+        GameManager.Instance.Restart();
+    }
+
+    public void SaveGame()
+    {
+        SavingSystem.Instance.SaveGame();
+    }
 }

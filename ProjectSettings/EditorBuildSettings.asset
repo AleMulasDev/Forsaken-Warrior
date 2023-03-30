@@ -6,21 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/BuildLevels/Menu.unity
     guid: 393764307ed5f424e859e002809a1560
   - enabled: 1
-    path: Assets/Scenes/LevelChooser.unity
+    path: Assets/Scenes/BuildLevels/LevelChooser.unity
     guid: 67e4ded21deb00a4bb64d4bd5425a929
   - enabled: 1
-    path: Assets/Scenes/Isles.unity
-    guid: eb46fb0eecd783f46aaedf4068446439
+    path: Assets/Scenes/BuildLevels/Isles.unity
+    guid: f33423211ad83dd488da203b00a43e92
   - enabled: 1
-    path: Assets/Scenes/MedievalVillage.unity
-    guid: e005e2fc9b8a844a9a09d7c07de071ce
+    path: Assets/Scenes/BuildLevels/MedievalVillage.unity
+    guid: 815d550ee941fe443b240d561ffced4d
   - enabled: 1
-    path: Assets/Scenes/EnchantedCemetery.unity
-    guid: 3c7ff9aa8c5a640a3a65f5f154e97bfc
+    path: Assets/Scenes/BuildLevels/EnchantedCemetery.unity
+    guid: 2a62d1a480805da49a3933eff84360fd
   - enabled: 1
-    path: Assets/Scenes/HauntedHouse.unity
-    guid: ba2c5a1f85e644ca9bfa41420edab360
+    path: Assets/Scenes/BuildLevels/HauntedHouse.unity
+    guid: bb17b2a32eb49b24c858dddc9cd27ee5
   m_configObjects: {}

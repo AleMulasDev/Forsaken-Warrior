@@ -14,6 +14,8 @@ public class PlayerData
     public float time;
     public int health;
     public int keys;
+    public bool keyGathered;
+    public bool minibossKilled;
 }
 
 public class SavingSystem : MonoBehaviour
@@ -24,20 +26,14 @@ public class SavingSystem : MonoBehaviour
     private GameObject _player;
     private string _path;
 
+    private bool _loadWorldData = false;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            SaveGame();
-        }
     }
 
     public PlayerData GetPlayerData()
@@ -53,28 +49,40 @@ public class SavingSystem : MonoBehaviour
 
     public void LoadSavedData()
     {
-        SceneManager.LoadScene(loadedData.sceneName);
+        if (loadedData.sceneName != String.Empty)
+        {
+            _loadWorldData = true;
+            SceneManager.LoadScene(loadedData.sceneName);
+        }
     }
 
     public void LoadDesiredLevel(string desiredLevel)
     {
+        _loadWorldData = false;
         SceneManager.LoadScene(desiredLevel);
+    }
+
+    public bool ShouldLoadWorldData()
+    {
+        return _loadWorldData;
     }
 
     public void SaveGame()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        _path = Application.persistentDataPath + "/maswa.txt";
+        _path = Application.persistentDataPath + "/" + loadedData.playerName + ".txt";
 
         PlayerData data = new PlayerData();
 
-        data.playerName = "Maswa";
+        data.playerName = loadedData.playerName;
         data.sceneName = SceneManager.GetActiveScene().name;
         data.position = _player.transform.position;
         data.score = GameManager.Instance.GetScore();
         data.time = GameManager.Instance.GetTimeRaw();
         data.health = _player.GetComponent<Health>().GetHealth();
         data.keys = GameManager.Instance.GetKeys();
+        data.keyGathered = GameManager.Instance.GetKeyGathered();
+        data.minibossKilled = GameManager.Instance.GetMinibossKilled();
 
         string json = JsonUtility.ToJson(data);
 

@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _keysText;
 
     [SerializeField] private bool _enabledCheats = false;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] private TMP_InputField inputField;
+    Transform _spawnPoint;
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _victoryAudioClip = Resources.Load<AudioClip>("VictoryAudioClip");
+        footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
     }
 
     public void SwitchCheats(bool enabled)
@@ -51,14 +53,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeSpawnPoint(Transform newSpawnPoint)
     {
-        spawnPoint.position = newSpawnPoint.position;
+        _spawnPoint.position = newSpawnPoint.position;
     }
 
     private IEnumerator RespawnCoroutine(Transform player)
     {
         yield return new WaitForSeconds(1f);
         player.gameObject.SetActive(true);
-        player.gameObject.GetComponent<CharacterController>().Move(spawnPoint.position - player.position);
+        player.gameObject.GetComponent<CharacterController>().Move(_spawnPoint.position - player.position);
     }
 
     public void TryAgain()
@@ -78,7 +80,6 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        footstepParticles = Resources.LoadAll<ParticleSystem>("Footsteps");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -95,6 +96,7 @@ public class GameManager : MonoBehaviour
         _timeText = GameObject.FindGameObjectWithTag("timeText").GetComponentInChildren<TextMeshProUGUI>();
         _scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponentInChildren<TextMeshProUGUI>();
         _keysText = GameObject.FindGameObjectWithTag("keysText").GetComponentInChildren<TextMeshProUGUI>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         _portal = FindObjectOfType<Portal>();
         _score = 0;
@@ -103,6 +105,17 @@ public class GameManager : MonoBehaviour
         _timeText.text = "0s";
         _keyGathered = false;
         _minibossKilled = false;
+        _spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+
+        if (SavingSystem.Instance.ShouldLoadWorldData())
+        {
+            PlayerData data = SavingSystem.Instance.GetPlayerData();
+            player.transform.position = data.position;
+            _score = data.score;
+            _time = data.time;
+            _keyGathered = data.keyGathered;
+            _minibossKilled = data.minibossKilled;
+        }
     }
 
     public ParticleSystem[] GetFootstepParticles()
@@ -116,6 +129,9 @@ public class GameManager : MonoBehaviour
 
         _time += Time.deltaTime;
         _timeText.text = GetTime();
+        _keysText.text = _keys + "/3";
+        _scoreText.text = "Score: " + _score;
+
     }
 
     public void SpeedTime()
@@ -158,9 +174,15 @@ public class GameManager : MonoBehaviour
 
     public void GiveUp()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public float GetTimeRaw()
     {
         return _time;
@@ -198,5 +220,23 @@ public class GameManager : MonoBehaviour
     public void Hide(CanvasGroup canvasGroup)
     {
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, canvasGroup));
+    }
+
+    public void NewGame()
+    {
+        PlayerData newData = new PlayerData();
+        newData.playerName = inputField.text;
+        newData.sceneName = String.Empty;
+        SavingSystem.Instance.SetLoadedData(newData);
+    }
+
+    public bool GetKeyGathered()
+    {
+        return _keyGathered;
+    }
+
+    public bool GetMinibossKilled()
+    {
+        return _minibossKilled;
     }
 }
