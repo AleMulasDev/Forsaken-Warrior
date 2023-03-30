@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
         source.Play();
     }
 
+ 
     public void StopMainMenuMusic(AudioSource source)
     {
         source.Stop();
@@ -58,6 +59,11 @@ public class AudioManager : MonoBehaviour
     public void PlayGameMusic(AudioClip clip)
     {
         gameMusicSource.clip = clip;
+        gameMusicSource.Play();
+    }
+
+    public void ResumeGameMusic()
+    {
         gameMusicSource.Play();
     }
 

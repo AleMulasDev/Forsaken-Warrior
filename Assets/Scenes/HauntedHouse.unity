@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1554,8 +1554,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6674586424851050812, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 67e1924fb01e74925897a7aa90de512f, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 54f99ac4122717440a60e0e2289594eb, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
@@ -1780,7 +1780,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813919616}
-  m_LocalRotation: {x: -0.17165364, y: 0.23246749, z: -0.041721825, w: -0.9564273}
+  m_LocalRotation: {x: -0.17165364, y: 0.2324675, z: -0.04172182, w: -0.95642734}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1887,7 +1887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963417330}
-  m_LocalRotation: {x: -0.19834974, y: 0.23120898, z: -0.048210535, w: -0.9512494}
+  m_LocalRotation: {x: -0.19834976, y: 0.23120898, z: -0.04821053, w: -0.9512494}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2564,7 +2564,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525797163}
-  m_LocalRotation: {x: -0.1999513, y: 0.23112747, z: -0.048599802, w: -0.9509141}
+  m_LocalRotation: {x: -0.19995129, y: 0.23112744, z: -0.048599795, w: -0.9509141}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2758,6 +2758,7 @@ GameObject:
   - component: {fileID: 1620056225}
   - component: {fileID: 1620056224}
   - component: {fileID: 1620056223}
+  - component: {fileID: 1620056226}
   m_Layer: 0
   m_Name: FreeLookCamera
   m_TagString: Untagged
@@ -2915,6 +2916,36 @@ MonoBehaviour:
   - {fileID: 1525797165}
   - {fileID: 963417332}
   - {fileID: 813919618}
+--- !u!114 &1620056226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620056221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.25
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0.5
+  m_DampingWhenOccluded: 0.5
+  m_OptimalTargetDistance: 0
 --- !u!1 &1720175588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,7 +2973,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720175588}
-  m_LocalRotation: {x: -0.016335098, y: 0.9758053, z: -0.20347005, w: -0.07834015}
+  m_LocalRotation: {x: -0.016335094, y: 0.9758053, z: -0.20347005, w: -0.07834013}
   m_LocalPosition: {x: 7.53421, y: 10.63, z: 70.1099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3142,7 +3173,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enterTriggerEvents:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 714379005}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayGameMusic
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 44354bbaa0eef554aa861ea1c2dd84ea, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   exitTriggerEvents:
     m_PersistentCalls:
       m_Calls: []

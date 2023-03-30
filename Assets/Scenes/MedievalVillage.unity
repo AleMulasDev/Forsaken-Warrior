@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -262,7 +262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392408604}
-  m_LocalRotation: {x: -0.19995132, y: 0.23112753, z: -0.04859981, w: -0.95091414}
+  m_LocalRotation: {x: -0.19995134, y: 0.23112755, z: -0.048599817, w: -0.95091414}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -393,6 +393,7 @@ GameObject:
   - component: {fileID: 469434950}
   - component: {fileID: 469434949}
   - component: {fileID: 469434951}
+  - component: {fileID: 469434952}
   m_Layer: 0
   m_Name: MinibossSpawner
   m_TagString: Untagged
@@ -549,6 +550,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &469434952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469434947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8759c967b92b57d4696fbc1779a403a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterTriggerEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1680267115}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayGameMusic
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 9744dd69542010549b43179dcfb7c82d, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  exitTriggerEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &508748746 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3448738830227575786, guid: 0df5ef87ad77f7a47af4c64a61fa314a, type: 3}
@@ -1045,8 +1076,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701935639}
-  m_LocalRotation: {x: -0.016335087, y: 0.97580534, z: -0.20347, w: -0.07834013}
-  m_LocalPosition: {x: -35.48579, y: 16.64, z: 57.5299}
+  m_LocalRotation: {x: -0.027648168, y: 0.9675505, z: -0.21965936, w: -0.12178401}
+  m_LocalPosition: {x: -19.313871, y: 9.14, z: 30.63776}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1986,15 +2017,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595990107259190149, guid: 6cda9539cecc2a34cbed2d309a44296d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.48
+      value: -22.15
       objectReference: {fileID: 0}
     - target: {fileID: 3595990107259190149, guid: 6cda9539cecc2a34cbed2d309a44296d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.64
+      value: 2.14
       objectReference: {fileID: 0}
     - target: {fileID: 3595990107259190149, guid: 6cda9539cecc2a34cbed2d309a44296d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 45.19
+      value: 19.55
       objectReference: {fileID: 0}
     - target: {fileID: 3595990107259190149, guid: 6cda9539cecc2a34cbed2d309a44296d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4313,7 +4344,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020095756}
-  m_LocalRotation: {x: -0.17165358, y: 0.23246752, z: -0.041721813, w: -0.9564273}
+  m_LocalRotation: {x: -0.18985921, y: 0.18841323, z: -0.03715233, w: -0.9628466}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4391,7 +4422,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040165048}
-  m_LocalRotation: {x: -0.1983497, y: 0.231209, z: -0.048210528, w: -0.9512495}
+  m_LocalRotation: {x: -0.21726774, y: 0.18736544, z: -0.042536862, w: -0.95701605}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5147,6 +5178,7 @@ GameObject:
   - component: {fileID: 1317115589}
   - component: {fileID: 1317115588}
   - component: {fileID: 1317115587}
+  - component: {fileID: 1317115590}
   m_Layer: 0
   m_Name: FreeLookCamera
   m_TagString: Untagged
@@ -5162,7 +5194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317115585}
   m_LocalRotation: {x: -0, y: -0.9496921, z: -0, w: 0.31318542}
-  m_LocalPosition: {x: -35.48579, y: 16.64, z: 57.5299}
+  m_LocalPosition: {x: -20.15579, y: 9.14, z: 31.8899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5304,6 +5336,36 @@ MonoBehaviour:
   - {fileID: 392408606}
   - {fileID: 1040165050}
   - {fileID: 1020095758}
+--- !u!114 &1317115590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317115585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.25
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0.5
+  m_DampingWhenOccluded: 0.5
+  m_OptimalTargetDistance: 0
 --- !u!114 &1421147482 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5978636447540243976, guid: 0df5ef87ad77f7a47af4c64a61fa314a, type: 3}
@@ -5590,8 +5652,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6674586424851050812, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 67e1924fb01e74925897a7aa90de512f, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 39ab33ee1f7650a4c92b57b5d19a780a, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0.75
   m_Pitch: 1
   Loop: 1

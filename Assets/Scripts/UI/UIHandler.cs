@@ -43,11 +43,13 @@ public class UIHandler : MonoBehaviour
         if (pauseCanvasGroup.alpha == 0)
         {
             AudioManager.Instance.PlayMenuMusic();
+            AudioManager.Instance.PauseGameMusic();
             OpenPauseMenu();
         }
         else
         {
             AudioManager.Instance.StopMenuMusic();
+            AudioManager.Instance.ResumeGameMusic();
             ClosePauseMenu(true);
         }
     }
