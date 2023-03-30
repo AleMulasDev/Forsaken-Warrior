@@ -10,10 +10,12 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private CanvasGroup pauseCanvasGroup;
     [SerializeField] private CanvasGroup hudCanvasGroup;
     [SerializeField] private CanvasGroup deathScreenCanvasGroup;
+    [SerializeField] private CanvasGroup manualCanvasGroup;
 
     private Coroutine _settingsCoroutine;
     private Coroutine _pauseCoroutine;
     private Coroutine _hudCoroutine;
+    private Coroutine _manualCoroutine;
 
     private PlayerInput _playerInput;
 
@@ -84,6 +86,21 @@ public class UIHandler : MonoBehaviour
 
         if(openHud)
             OpenHUD();
+    }
+
+    public void OpenManual()
+    {
+        if (_manualCoroutine != null) StopCoroutine(_manualCoroutine);
+
+        _manualCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, manualCanvasGroup));
+        manualCanvasGroup.gameObject.transform.SetAsLastSibling();
+    }
+
+    public void CloseManual()
+    {
+        if (_manualCoroutine != null) StopCoroutine(_manualCoroutine);
+
+        _manualCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, manualCanvasGroup));
     }
 
     public void OpenSettings()
