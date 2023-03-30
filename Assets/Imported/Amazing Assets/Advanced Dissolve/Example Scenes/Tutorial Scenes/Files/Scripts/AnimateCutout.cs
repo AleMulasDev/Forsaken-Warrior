@@ -28,10 +28,10 @@ namespace AmazingAssets.AdvancedDissolve.ExampleScripts
 
             _audioSource = GetComponentInParent<AudioSource>();
 
-            if (GetComponentInParent<SimpleEnemyController>() || GetComponentInParent<MinibossController>())
-                _dissolveAudioClip = Resources.Load<AudioClip>("EnemyDissolveAudioClip");
-            else
+            if (GetComponentInParent<BossController>())
                 _dissolveAudioClip = Resources.Load<AudioClip>("MalignoDissolveAudioClip");
+            else
+                _dissolveAudioClip = Resources.Load<AudioClip>("EnemyDissolveAudioClip");
 
             if (enableSpawnEffect)
                 SpawnEffect();

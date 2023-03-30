@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7662497304103107129}
   - component: {fileID: 7643185343811938911}
   - component: {fileID: 7643185343811938910}
+  - component: {fileID: -1450834268453110748}
+  - component: {fileID: 28964264513048577}
   m_Layer: 0
   m_Name: RightSword
   m_TagString: Untagged
@@ -63,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2a12d3fc0532ba64e972160db18dfd99, type: 2}
+  - {fileID: 2100000, guid: e111b9b795d7426439b14337d7e64568, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,3 +120,31 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9e6cce6c09d63b848a0c6bb91384c310, type: 3}
   - {fileID: 8300000, guid: 191566c890f8f5342bb37d1a96463eb2, type: 3}
   - {fileID: 8300000, guid: 834a348b895d6c043929abf50dcb01ac, type: 3}
+--- !u!114 &-1450834268453110748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640310339910335021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1c0b8312985a409470d08733f4896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableSpawnEffect: 1
+  resetParentState: 1
+  lerpTimerSpawn: 1
+  lerpTimerDeath: 5
+--- !u!114 &28964264513048577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640310339910335021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0f5348a7a268d46b814cfde032efd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

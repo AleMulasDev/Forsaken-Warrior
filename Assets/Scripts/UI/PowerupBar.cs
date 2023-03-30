@@ -16,6 +16,8 @@ public class PowerupBar : MonoBehaviour
     private float _powerupDuration;
     private float _tempPowerupDuration;
 
+    private Coroutine _hideCoroutine;
+
     private void Start()
     {
         _cg = GetComponent<CanvasGroup>();
@@ -26,15 +28,21 @@ public class PowerupBar : MonoBehaviour
         _currentPowerup = powerup;
         _powerupDuration = powerupDuration;
         _tempPowerupDuration = powerupDuration;
-        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, _cg));
         powerupImage.sprite = powerup.GetSprite();
         powerupFillImage.color = powerup.GetPowerupColor();
         powerupFrame.color = powerup.GetPowerupColor();
+
+        if(_hideCoroutine != null)
+        {
+            StopCoroutine(_hideCoroutine);
+        }
+
+        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, _cg));
     }
 
     public void Hide()
     {
-        StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _cg));
+        _hideCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, _cg));
     }
 
     private void Update()

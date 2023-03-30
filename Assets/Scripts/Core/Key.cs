@@ -26,6 +26,7 @@ public class Key : MonoBehaviour
             GetComponentInChildren<AnimateCutout>().Dissolve(0f);
             foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
                 ps.Stop(true);
+            GetComponent<AudioSource>().Stop();
             Destroy(gameObject, 6f);
         }
     }

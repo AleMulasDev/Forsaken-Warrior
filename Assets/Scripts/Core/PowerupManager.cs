@@ -23,6 +23,7 @@ public class PowerupManager : MonoBehaviour
 
     public IEnumerator PowerupCoroutine(float powerupDuration)
     {
+        powerupBar.gameObject.SetActive(true);
         powerupBar.SetPowerupBar(powerupDuration, _currentPowerup);
         yield return new WaitForSeconds(powerupDuration);
         DisablePowerup();
