@@ -517,6 +517,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterState = ECharacterStates.ECS_Inoccupied;
         _animator.SetBool(CanDoCombo, false);
+        _weapon.ChangeDamageModifier(1);
         DisableTrail();
         tempDodgeSpeed = 0f;
         tempJumpBSpeed = 0f;
