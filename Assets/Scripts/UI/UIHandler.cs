@@ -23,6 +23,9 @@ public class UIHandler : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (Instance == null)
             Instance = this;
         else
@@ -61,12 +64,18 @@ public class UIHandler : MonoBehaviour
         Camera.main.gameObject.GetComponent<CinemachineBrain>().enabled = false;
         deathScreenCanvasGroup.transform.SetAsLastSibling();
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, hudCanvasGroup));
         StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Show, deathScreenCanvasGroup));
     }
 
     public void OpenPauseMenu()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         pauseCanvasGroup.transform.SetAsLastSibling();
 
         if (_pauseCoroutine != null) StopCoroutine(_pauseCoroutine);
@@ -78,7 +87,6 @@ public class UIHandler : MonoBehaviour
 
     public void ClosePauseMenu(bool openHud)
     {
-
         if (_pauseCoroutine != null) StopCoroutine(_pauseCoroutine);
 
         _pauseCoroutine = StartCoroutine(Utils.UIWindowHandler(EUIMode.EUIM_Hide, pauseCanvasGroup));
@@ -119,6 +127,8 @@ public class UIHandler : MonoBehaviour
 
     public void OpenHUD()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         Time.timeScale = 1;
 

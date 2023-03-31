@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
@@ -77,12 +76,6 @@ public class MenuSettings : MonoBehaviour
         }
         else
             audioMixer.SetFloat("GameMusic_Volume", -80);
-    }
-
-    public void SetBrightness(float brightness)
-    {
-        Screen.brightness = brightness;
-        PlayerPrefs.SetFloat("brightness", brightness);
     }
 
     public void SetRenderDistance(float renderDistance)
