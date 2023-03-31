@@ -149,6 +149,11 @@ public class UIHandler : MonoBehaviour
         GameManager.Instance.GiveUp();
     }
 
+    public void TryAgain()
+    {
+        GameManager.Instance.TryAgain();
+    }
+
     public void Restart()
     {
         GameManager.Instance.Restart();

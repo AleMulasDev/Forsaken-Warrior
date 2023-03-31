@@ -31,7 +31,8 @@ public class Weapon : MonoBehaviour
 
         if (IsOneShotEnabled(other) || HasCheats())
         {
-            other.GetComponent<Health>().Kill();
+            if(TryGetComponent<Health>(out Health health))
+                health.Kill();
         }
         else if (other.tag.Equals(targetTag) && !(other is BoxCollider))
         {
