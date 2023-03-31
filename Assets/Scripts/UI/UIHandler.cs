@@ -139,7 +139,6 @@ public class UIHandler : MonoBehaviour
 
     public void CloseHUD()
     {
-
         Time.timeScale = 0;
 
         if (_hudCoroutine != null) StopCoroutine(_hudCoroutine);

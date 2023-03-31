@@ -29,6 +29,9 @@ public class MainMenu : MonoBehaviour
             LoadButton button = Instantiate(loadButton, loadContentRoot);
             button.SetButton(file);
         }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void ShowDataAlreadyExists()
