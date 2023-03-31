@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _keysText;
 
     [SerializeField] private bool _enabledCheats = false;
-    [SerializeField] private TMP_InputField inputField;
     [SerializeField] private AudioMixer audioMixer;
     Transform _spawnPoint;
     private int _score = 0;
@@ -288,14 +287,15 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        if (File.Exists(Application.persistentDataPath + "/" + inputField.text + ".txt"))
+        string playerName = FindObjectOfType<MainMenu>().GetInputText();
+        if (File.Exists(Application.persistentDataPath + "/" + playerName + ".txt"))
         {
             FindObjectOfType<MainMenu>().ShowDataAlreadyExists();
             return;
         }
 
         PlayerData newData = new PlayerData();
-        newData.playerName = inputField.text;
+        newData.playerName = playerName;
         newData.sceneName = String.Empty;
         SavingSystem.Instance.SetLoadedData(newData);
     }

@@ -11,9 +11,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Transform loadContentRoot;
     [SerializeField] private LoadButton loadButton;
     [SerializeField] private GameObject dataAlreadyExists;
+    [SerializeField] private TMP_InputField inputField;
 
     private string _path;
 
+    public string GetInputText()
+    {
+        return inputField.text;
+    }
 
     public void Start()
     {

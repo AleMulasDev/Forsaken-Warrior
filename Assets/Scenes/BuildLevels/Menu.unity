@@ -2944,6 +2944,7 @@ MonoBehaviour:
   loadContentRoot: {fileID: 1467507226}
   loadButton: {fileID: 8888266128257442307, guid: baad2324a5161844aa2ab35b9de14fba, type: 3}
   dataAlreadyExists: {fileID: 276233013}
+  inputField: {fileID: 664071260}
 --- !u!1 &405896835
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,7 +5168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enabledCheats: 0
-  inputField: {fileID: 664071260}
   audioMixer: {fileID: 24100000, guid: e68ee2747da854da3a034e1acc6995c6, type: 2}
 --- !u!1 &811706951
 GameObject:

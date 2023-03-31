@@ -19,9 +19,9 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 41374
+  controlID: 93
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,12 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1496
+    width: 1458
     height: 947
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 41375
+  controlID: 94
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1496
-    height: 608
+    width: 1458
+    height: 555
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 41376
+  controlID: 49
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -180,22 +180,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: SceneHierarchyWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 307
-    height: 608
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 16}
+    width: 244
+    height: 555
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 20}
+  - {fileID: 17}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -211,18 +212,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 307
+    x: 244
     y: 0
-    width: 1189
-    height: 608
+    width: 1214
+    height: 555
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 21}
   m_Panes:
-  - {fileID: 17}
-  - {fileID: 15}
+  - {fileID: 21}
+  - {fileID: 19}
+  - {fileID: 22}
   - {fileID: 18}
-  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &10
@@ -243,13 +244,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 608
-    width: 1496
-    height: 339
+    y: 555
+    width: 1458
+    height: 392
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 41478
+  controlID: 95
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -267,16 +268,18 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 878
-    height: 339
+    width: 851
+    height: 392
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 23}
   m_Panes:
-  - {fileID: 19}
-  - {fileID: 20}
-  - {fileID: 21}
-  - {fileID: 22}
+  - {fileID: 23}
+  - {fileID: 24}
+  - {fileID: 25}
+  - {fileID: 26}
+  - {fileID: 15}
+  - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
@@ -294,18 +297,19 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 878
+    x: 851
     y: 0
-    width: 618
-    height: 339
+    width: 607
+    height: 392
   m_MinSize: {x: 232, y: 271}
   m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 23}
+  m_ActualView: {fileID: 27}
   m_Panes:
-  - {fileID: 23}
-  - {fileID: 24}
-  m_Selected: 0
-  m_LastSelected: 1
+  - {fileID: 16}
+  - {fileID: 27}
+  - {fileID: 28}
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -321,20 +325,2610 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1496
+    x: 1458
     y: 0
-    width: 424
+    width: 462
     height: 947
-  m_MinSize: {x: 275, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 25}
+  m_MinSize: {x: 276, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 29}
   m_Panes:
-  - {fileID: 25}
-  - {fileID: 26}
-  - {fileID: 27}
+  - {fileID: 29}
+  - {fileID: 30}
+  - {fileID: 31}
   m_Selected: 0
   m_LastSelected: 2
 --- !u!114 &14
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f63771cb4067ea4a92313f0c1e69659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Brush Properties
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 628
+    width: 959
+    height: 371
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  _data:
+    _version: 3.4
+    _rootDirectory: Assets/PluginMaster/DesignTools/Editor/PrefabWorldBuilder
+    _autoSavePeriodMinutes: 1
+    _undoBrushProperties: 1
+    _undoPalette: 1
+    _controlPointSize: 1
+    _closeAllWindowsWhenClosingTheToolbar: 0
+    _thumbnailLayer: 7
+    _unsavedChangesAction: 0
+    _paletteManager:
+      _selectedPaletteIdx: 0
+      _selectedBrushIdx: -1
+      _showBrushName: 0
+      _viewList: 0
+    pinManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _repeat: 0
+        _flatteningSettings:
+          _hardness: 0
+          _padding: 0
+          _clearTrees: 1
+          _clearDetails: 1
+        _flattenTerrain: 0
+        _avoidOverlapping: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _repeat: 0
+        _flatteningSettings:
+          _hardness: 0
+          _padding: 0
+          _clearTrees: 1
+          _clearDetails: 1
+        _flattenTerrain: 0
+        _avoidOverlapping: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _rotationSnapValue: 5
+    _brushManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _radius: 1
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _brushShape: 1
+        _density: 50
+        _orientAlongBrushstroke: 0
+        _additionalOrientationAngle: {x: 0, y: 0, z: 0}
+        _spacingType: 0
+        _minSpacing: 1
+        _randomizePositions: 1
+        _randomness: 1
+        _paintOnSurfaceToolSettings:
+          _paintOnMeshesWithoutCollider: 0
+          _paintOnSelectedOnly: 0
+          _paintOnPalettePrefabs: 0
+          _mode: 0
+          _paralellToTheSurface: 1
+        _maxHeightFromCenter: 2
+        _heightType: 1
+        _avoidOverlapping: 4
+        _layerFilter:
+          serializedVersion: 2
+          m_Bits: 4294967295
+        _tagFilter:
+        - Untagged
+        - Respawn
+        - Finish
+        - EditorOnly
+        - MainCamera
+        - Player
+        - GameController
+        - Ground
+        - Enemy
+        - Sword
+        - FxTemporaire
+        - scoreText
+        - timeText
+        - keysText
+        - OOB
+        - SpawnPoint
+        - VictoryScreen
+        - Boundaries
+        _slopeFilter:
+          _v1: 0
+          _v2: 60
+          _min: 0
+          _max: 60
+        _terrainLayerIds: []
+        _showPreview: 0
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _radius: 2.8982785
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _brushShape: 1
+        _density: 50
+        _orientAlongBrushstroke: 0
+        _additionalOrientationAngle: {x: 0, y: 0, z: 0}
+        _spacingType: 0
+        _minSpacing: 3.249519
+        _randomizePositions: 1
+        _randomness: 1
+        _paintOnSurfaceToolSettings:
+          _paintOnMeshesWithoutCollider: 0
+          _paintOnSelectedOnly: 0
+          _paintOnPalettePrefabs: 0
+          _mode: 0
+          _paralellToTheSurface: 1
+        _maxHeightFromCenter: 2.8982785
+        _heightType: 1
+        _avoidOverlapping: 4
+        _layerFilter:
+          serializedVersion: 2
+          m_Bits: 4294967295
+        _tagFilter:
+        - Untagged
+        - Respawn
+        - Finish
+        - EditorOnly
+        - MainCamera
+        - Player
+        - GameController
+        - Ground
+        - Enemy
+        - Sword
+        - FxTemporaire
+        - scoreText
+        - timeText
+        - keysText
+        - OOB
+        - SpawnPoint
+        - VictoryScreen
+        - Boundaries
+        _slopeFilter:
+          _v1: 0
+          _v2: 60
+          _min: 0
+          _max: 60
+        _terrainLayerIds: []
+        _showPreview: 0
+    _gravityToolManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _radius: 1
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _brushShape: 0
+        _density: 50
+        _orientAlongBrushstroke: 0
+        _additionalOrientationAngle: {x: 0, y: 0, z: 0}
+        _spacingType: 0
+        _minSpacing: 1
+        _randomizePositions: 1
+        _randomness: 1
+        _simData:
+          _maxIterations: 1000
+          _gravity: {x: 0, y: -9.81, z: 0}
+          _drag: 0
+          _angularDrag: 0.05
+          _maxSpeed: 100
+          _maxAngularSpeed: 10
+          _mass: 1
+          _changeLayer: 0
+          _tempLayer: 0
+          _ignoreSceneColliders: 0
+        _height: 10
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _radius: 1
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _brushShape: 0
+        _density: 50
+        _orientAlongBrushstroke: 0
+        _additionalOrientationAngle: {x: 0, y: 0, z: 0}
+        _spacingType: 0
+        _minSpacing: 1
+        _randomizePositions: 1
+        _randomness: 1
+        _simData:
+          _maxIterations: 1000
+          _gravity: {x: 0, y: -9.81, z: 0}
+          _drag: 0
+          _angularDrag: 0.05
+          _maxSpeed: 100
+          _maxAngularSpeed: 10
+          _mass: 1
+          _changeLayer: 0
+          _tempLayer: 0
+          _ignoreSceneColliders: 0
+        _height: 10
+    _lineManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _projectionDirection: {x: 0, y: -1, z: 0}
+        _objectsOrientedAlongTheLine: 1
+        _axisOrientedAlongTheLine: 0
+        _spacingType: 0
+        _gapSize: 0
+        _spacing: 10
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _projectionDirection: {x: 0, y: -1, z: 0}
+        _objectsOrientedAlongTheLine: 1
+        _axisOrientedAlongTheLine: 0
+        _spacingType: 0
+        _gapSize: 0
+        _spacing: 10
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _sceneItems: []
+    _shapeManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _projectionDirection: {x: 0, y: -1, z: 0}
+        _objectsOrientedAlongTheLine: 1
+        _axisOrientedAlongTheLine: 0
+        _spacingType: 0
+        _gapSize: 0
+        _spacing: 10
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _shapeType: 1
+        _sidesCount: 5
+        _axisNormalToSurface: 1
+        _normal: {x: 0, y: 1, z: 0}
+        _projectInNormalDir: 1
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _projectionDirection: {x: 0, y: -1, z: 0}
+        _objectsOrientedAlongTheLine: 1
+        _axisOrientedAlongTheLine: 0
+        _spacingType: 0
+        _gapSize: 0
+        _spacing: 10
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+        _shapeType: 1
+        _sidesCount: 5
+        _axisNormalToSurface: 1
+        _normal: {x: 0, y: 1, z: 0}
+        _projectInNormalDir: 1
+      _sceneItems: []
+    _tilingManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _cellSizeType: 0
+        _cellSize: {x: 1, y: 1}
+        _rotation: {x: 0, y: 0, z: 0, w: 1}
+        _spacing: {x: 0, y: 0}
+        _axisAlignedWithNormal:
+          _axis: 1
+          _sign: 1
+        _showPreview: 1
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _paintOnMeshesWithoutCollider: 0
+        _paintOnSelectedOnly: 0
+        _paintOnPalettePrefabs: 0
+        _mode: 0
+        _paralellToTheSurface: 1
+        _cellSizeType: 0
+        _cellSize: {x: 1, y: 1}
+        _rotation: {x: 0, y: 0, z: 0, w: 1}
+        _spacing: {x: 0, y: 0}
+        _axisAlignedWithNormal:
+          _axis: 1
+          _sign: 1
+        _showPreview: 1
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _sceneItems: []
+    _replacerManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _radius: 1
+        _modifierTool:
+          _command: 0
+          _allButSelected: 0
+          _onlyTheClosest: 0
+        _keepTargetSize: 0
+        _maintainProportions: 0
+        _outermostPrefabFilter: 1
+        _overwriteBrushProperties: 0
+        _brushProperties:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _radius: 1
+        _modifierTool:
+          _command: 0
+          _allButSelected: 0
+          _onlyTheClosest: 0
+        _keepTargetSize: 0
+        _maintainProportions: 0
+        _outermostPrefabFilter: 1
+        _overwriteBrushProperties: 0
+        _brushProperties:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _eraserManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _radius: 1
+        _modifierTool:
+          _command: 0
+          _allButSelected: 0
+          _onlyTheClosest: 0
+        _outermostPrefabFilter: 1
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _radius: 1
+        _modifierTool:
+          _command: 0
+          _allButSelected: 0
+          _onlyTheClosest: 0
+        _outermostPrefabFilter: 1
+    _selectionToolManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _rotateToTheSurface: 0
+        _move: 1
+        _rotate: 0
+        _scale: 0
+        _handleSpace: 1
+        _boxSpace: 1
+        _paletteFilter: 0
+        _brushFilter: 0
+        _layerFilter:
+          serializedVersion: 2
+          m_Bits: 4294967295
+        _tagFilter:
+        - Untagged
+        - Respawn
+        - Finish
+        - EditorOnly
+        - MainCamera
+        - Player
+        - GameController
+        - Ground
+        - Enemy
+        - Sword
+        - FxTemporaire
+        - scoreText
+        - timeText
+        - keysText
+        - OOB
+        - SpawnPoint
+        - VictoryScreen
+        - Boundaries
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _rotateToTheSurface: 0
+        _move: 1
+        _rotate: 0
+        _scale: 0
+        _handleSpace: 1
+        _boxSpace: 1
+        _paletteFilter: 0
+        _brushFilter: 0
+        _layerFilter:
+          serializedVersion: 2
+          m_Bits: 4294967295
+        _tagFilter:
+        - Untagged
+        - Respawn
+        - Finish
+        - EditorOnly
+        - MainCamera
+        - Player
+        - GameController
+        - Ground
+        - Enemy
+        - Sword
+        - FxTemporaire
+        - scoreText
+        - timeText
+        - keysText
+        - OOB
+        - SpawnPoint
+        - VictoryScreen
+        - Boundaries
+    _extrudeSettings:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _space: 0
+        _spacing: {x: 0, y: 0, z: 0}
+        _spacingType: 1
+        _multiplier: {x: 1, y: 1, z: 1}
+        _rotationAccordingTo: 0
+        _sameParentAsSource: 1
+        _eulerOffset: {x: 0, y: 0, z: 0}
+        _addRandomRotation: 0
+        _rotationFactor: 90
+        _rotateInMultiples: 0
+        _randomEulerOffset:
+          x:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          y:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          z:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _space: 0
+        _spacing: {x: 0, y: 0, z: 0}
+        _spacingType: 1
+        _multiplier: {x: 1, y: 1, z: 1}
+        _rotationAccordingTo: 0
+        _sameParentAsSource: 1
+        _eulerOffset: {x: 0, y: 0, z: 0}
+        _addRandomRotation: 0
+        _rotationFactor: 90
+        _rotateInMultiples: 0
+        _randomEulerOffset:
+          x:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          y:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          z:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+    _mirrorManager:
+      _profileKeys:
+      - Default
+      _profileValues:
+      - _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _rotateToTheSurface: 0
+        _reflectRotation: 1
+        _action: 1
+        _sameParentAsSource: 1
+        _mirrorPose:
+          position: {x: 0, y: 0, z: 0}
+          rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        _invertScale: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+      _selectedProfileName: Default
+      _unsavedProfile:
+        _embedInSurface: 0
+        _embedAtPivotHeight: 0
+        _surfaceDistance: 0
+        _rotateToTheSurface: 0
+        _reflectRotation: 1
+        _action: 1
+        _sameParentAsSource: 1
+        _mirrorPose:
+          position: {x: 0, y: 0, z: 0}
+          rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+        _invertScale: 0
+        _paintTool:
+          _parentGlobalId: 
+          _autoCreateParent: 1
+          _createSubparentPerPalette: 1
+          _createSubparentPerTool: 1
+          _createSubparentPerBrush: 0
+          _createSubparentPerPrefab: 1
+          _overwritePrefabLayer: 0
+          _layer: 0
+          _overwriteBrushProperties: 0
+          _brushSettings:
+            _surfaceDistance: 0
+            _embedInSurface: 0
+            _embedAtPivotHeight: 1
+            _localPositionOffset: {x: 0, y: 0, z: 0}
+            _rotateToTheSurface: 1
+            _eulerOffset: {x: 0, y: 0, z: 0}
+            _addRandomRotation: 0
+            _rotationFactor: 90
+            _rotateInMultiples: 0
+            _randomEulerOffset:
+              x:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              y:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+              z:
+                _v1: 0
+                _v2: 0
+                _min: 0
+                _max: 0
+            _separateScaleAxes: 0
+            _scaleMultiplier: {x: 1, y: 1, z: 1}
+            _randomScaleMultiplier: 0
+            _randomScaleMultiplierRange:
+              x:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              y:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+              z:
+                _v1: 1
+                _v2: 1
+                _min: 1
+                _max: 1
+            _thumbnailSettings:
+              _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+              _lightEuler: {x: 130, y: -165}
+              _lightColor: {r: 1, g: 1, b: 1, a: 1}
+              _lightIntensity: 1
+              _zoom: 1
+              _targetEuler: {x: 0, y: 125, z: 0}
+              _targetOffset: {x: 0, y: 0}
+    _snapManager:
+      _settings:
+        _snappingEnabled: 0
+        _snappingOn:
+          x: 0
+          y: 0
+          z: 0
+        _visibleGrid: 0
+        _gridOn:
+          x: 0
+          y: 1
+          z: 0
+        _lockedGrid: 0
+        _step: {x: 1, y: 1, z: 1}
+        _origin: {x: 0, y: -2.1064522, z: 0}
+        _rotation: {x: 0, y: 0, z: 0, w: 1}
+        _showPositionHandle: 1
+        _showRotationHandle: 0
+        _showScaleHandle: 0
+        _radialGridEnabled: 0
+        _radialStep: 1
+        _radialSectors: 8
+        _snapToRadius: 1
+        _snapToCircunference: 1
+        _majorLinesGap: {x: 10, y: 10, z: 10}
+  _selection: 00000000
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a97f6267c6df1458b68e1cc4e27218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Tool Properties
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 628
+    width: 959
+    height: 371
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  _lineData:
+    _id: 638158740955610323
+    _objectPoses: []
+    _controlPoints:
+    - position: {x: 0, y: 0, z: 0}
+      type: 1
+    - position: {x: 0, y: 0, z: 0}
+      type: 1
+    - position: {x: 0, y: 0, z: 0}
+      type: 1
+    - position: {x: 0, y: 0, z: 0}
+      type: 1
+    _settings:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _state: 0
+    _initialBrushId: -1
+    _closed: 0
+  _tilingData:
+    _id: 638158740955700330
+    _objectPoses: []
+    _controlPoints:
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0, z: 0}
+    _settings:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _cellSizeType: 0
+      _cellSize: {x: 1, y: 1}
+      _rotation: {x: 0, y: 0, z: 0, w: 1}
+      _spacing: {x: 0, y: 0}
+      _axisAlignedWithNormal:
+        _axis: 1
+        _sign: 1
+      _showPreview: 1
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _state: 0
+    _initialBrushId: -1
+  _mirrorSettings:
+    _embedInSurface: 0
+    _embedAtPivotHeight: 0
+    _surfaceDistance: 0
+    _rotateToTheSurface: 0
+    _reflectRotation: 1
+    _action: 1
+    _sameParentAsSource: 1
+    _mirrorPose:
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+    _invertScale: 0
+    _paintTool:
+      _parentGlobalId: 
+      _autoCreateParent: 1
+      _createSubparentPerPalette: 1
+      _createSubparentPerTool: 1
+      _createSubparentPerBrush: 0
+      _createSubparentPerPrefab: 1
+      _overwritePrefabLayer: 0
+      _layer: 0
+      _overwriteBrushProperties: 0
+      _brushSettings:
+        _surfaceDistance: 0
+        _embedInSurface: 0
+        _embedAtPivotHeight: 1
+        _localPositionOffset: {x: 0, y: 0, z: 0}
+        _rotateToTheSurface: 1
+        _eulerOffset: {x: 0, y: 0, z: 0}
+        _addRandomRotation: 0
+        _rotationFactor: 90
+        _rotateInMultiples: 0
+        _randomEulerOffset:
+          x:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          y:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+          z:
+            _v1: 0
+            _v2: 0
+            _min: 0
+            _max: 0
+        _separateScaleAxes: 0
+        _scaleMultiplier: {x: 1, y: 1, z: 1}
+        _randomScaleMultiplier: 0
+        _randomScaleMultiplierRange:
+          x:
+            _v1: 1
+            _v2: 1
+            _min: 1
+            _max: 1
+          y:
+            _v1: 1
+            _v2: 1
+            _min: 1
+            _max: 1
+          z:
+            _v1: 1
+            _v2: 1
+            _min: 1
+            _max: 1
+        _thumbnailSettings:
+          _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+          _lightEuler: {x: 130, y: -165}
+          _lightColor: {r: 1, g: 1, b: 1, a: 1}
+          _lightIntensity: 1
+          _zoom: 1
+          _targetEuler: {x: 0, y: 125, z: 0}
+          _targetOffset: {x: 0, y: 0}
+  _shapeData:
+    _id: 638158740955690326
+    _objectPoses: []
+    _controlPoints: []
+    _settings:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+      _shapeType: 1
+      _sidesCount: 5
+      _axisNormalToSurface: 1
+      _normal: {x: 0, y: 1, z: 0}
+      _projectInNormalDir: 1
+    _state: 0
+    _initialBrushId: -1
+    _radius: 0
+    _arcAngle: 360
+    _normal: {x: 0, y: 1, z: 0}
+    _firstVertexIdxAfterIntersection: 2
+    _lastVertexIdxBeforeIntersection: 1
+    _arcIntersections:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+  _tilingManager:
+    _profileKeys:
+    - Default
+    _profileValues:
+    - _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _cellSizeType: 0
+      _cellSize: {x: 1, y: 1}
+      _rotation: {x: 0, y: 0, z: 0, w: 1}
+      _spacing: {x: 0, y: 0}
+      _axisAlignedWithNormal:
+        _axis: 1
+        _sign: 1
+      _showPreview: 1
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _selectedProfileName: Default
+    _unsavedProfile:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _cellSizeType: 0
+      _cellSize: {x: 1, y: 1}
+      _rotation: {x: 0, y: 0, z: 0, w: 1}
+      _spacing: {x: 0, y: 0}
+      _axisAlignedWithNormal:
+        _axis: 1
+        _sign: 1
+      _showPreview: 1
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _sceneItems: []
+  _shapeManager:
+    _profileKeys:
+    - Default
+    _profileValues:
+    - _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+      _shapeType: 1
+      _sidesCount: 5
+      _axisNormalToSurface: 1
+      _normal: {x: 0, y: 1, z: 0}
+      _projectInNormalDir: 1
+    _selectedProfileName: Default
+    _unsavedProfile:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+      _shapeType: 1
+      _sidesCount: 5
+      _axisNormalToSurface: 1
+      _normal: {x: 0, y: 1, z: 0}
+      _projectInNormalDir: 1
+    _sceneItems: []
+  _lineManager:
+    _profileKeys:
+    - Default
+    _profileValues:
+    - _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _selectedProfileName: Default
+    _unsavedProfile:
+      _paintOnMeshesWithoutCollider: 0
+      _paintOnSelectedOnly: 0
+      _paintOnPalettePrefabs: 0
+      _mode: 0
+      _paralellToTheSurface: 1
+      _projectionDirection: {x: 0, y: -1, z: 0}
+      _objectsOrientedAlongTheLine: 1
+      _axisOrientedAlongTheLine: 0
+      _spacingType: 0
+      _gapSize: 0
+      _spacing: 10
+      _paintTool:
+        _parentGlobalId: 
+        _autoCreateParent: 1
+        _createSubparentPerPalette: 1
+        _createSubparentPerTool: 1
+        _createSubparentPerBrush: 0
+        _createSubparentPerPrefab: 1
+        _overwritePrefabLayer: 0
+        _layer: 0
+        _overwriteBrushProperties: 0
+        _brushSettings:
+          _surfaceDistance: 0
+          _embedInSurface: 0
+          _embedAtPivotHeight: 1
+          _localPositionOffset: {x: 0, y: 0, z: 0}
+          _rotateToTheSurface: 1
+          _eulerOffset: {x: 0, y: 0, z: 0}
+          _addRandomRotation: 0
+          _rotationFactor: 90
+          _rotateInMultiples: 0
+          _randomEulerOffset:
+            x:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            y:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+            z:
+              _v1: 0
+              _v2: 0
+              _min: 0
+              _max: 0
+          _separateScaleAxes: 0
+          _scaleMultiplier: {x: 1, y: 1, z: 1}
+          _randomScaleMultiplier: 0
+          _randomScaleMultiplierRange:
+            x:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            y:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+            z:
+              _v1: 1
+              _v2: 1
+              _min: 1
+              _max: 1
+          _thumbnailSettings:
+            _backgroudColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+            _lightEuler: {x: 130, y: -165}
+            _lightColor: {r: 1, g: 1, b: 1, a: 1}
+            _lightIntensity: 1
+            _zoom: 1
+            _targetEuler: {x: 0, y: 125, z: 0}
+            _targetOffset: {x: 0, y: 0}
+    _sceneItems: []
+--- !u!114 &16
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b1631d2f97eb64fbcd9a779d952b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Palette
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 960
+    y: 628
+    width: 678
+    height: 371
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  _paletteManager:
+    _selectedPaletteIdx: 0
+    _selectedBrushIdx: -1
+    _showBrushName: 0
+    _viewList: 0
+--- !u!114 &17
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa73d1b34378b7245bac62615fea9e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 32, y: 32}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Tools
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 0
+    y: 73
+    width: 272
+    height: 534
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,7 +2983,7 @@ MonoBehaviour:
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 0}
     m_SearchString: 
---- !u!114 &15
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -409,10 +3003,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 307
+    x: 244
     y: 73
-    width: 1187
-    height: 587
+    width: 1212
+    height: 534
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -423,7 +3017,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1187, y: 566}
+  m_TargetSize: {x: 1920, y: 1080}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -432,16 +3026,16 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -593.5
-    m_HBaseRangeMax: 593.5
-    m_VBaseRangeMin: -283
-    m_VBaseRangeMax: 283
+    m_HBaseRangeMin: -960
+    m_HBaseRangeMax: 960
+    m_VBaseRangeMin: -540
+    m_VBaseRangeMax: 540
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -450,7 +3044,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -459,29 +3053,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1187
-      height: 566
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 593.5, y: 283}
+      width: 1212
+      height: 513
+    m_Scale: {x: 0.47500002, y: 0.475}
+    m_Translation: {x: 606, y: 256.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -593.5
-      y: -283
-      width: 1187
-      height: 566
+      x: -1275.7894
+      y: -540
+      width: 2551.5789
+      height: 1080
     m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1187, y: 587}
+  m_defaultScale: 0.475
+  m_LastWindowPixelSize: {x: 1212, y: 534}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &16
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -503,8 +3097,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 306
-    height: 587
+    width: 243
+    height: 534
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -514,7 +3108,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: def2b3ff30f3b3ffd283b4ff7ec3b4ff84b9b5ff30d6b5ff72d6b5ffa8d6b5fff4dbb5ff46dcb5fff46eb6ffaaaeb6ffbaa4b7ffb4c1b7ff00c2b7ff3ac2b7ff6058b8ffba7ab8ffdc80b8ff3281b8fffe13b9ffd253b9ff004abaffe066baff4667baff9e67baff4819bbff8c19bbff66acbbff48ecbbff84e2bcffacffbcfff8ffbcff3200bdff820cbdff184dbdfff6eabdff8619beffec61beff4c64bfff685fc0ff7e13c1ff58dac1ff20ffc3ff24ffc3ff28ffc3ff2cffc3ff6cffc3ff88ffc3ff8cffc3ffc0ffc3ffc4ffc3ffdeffc3ff7c8dc4ff16d8c5ff40f4c5ff44f4c5ff48f4c5ff4cf4c5ff8cf4c5ffa8f4c5ffacf4c5ffe0f4c5ffe4f4c5fffef4c5ff9c82c6ff8a85c6ff701fc7ffa0f6c7ff5804c8ff109ec8ff02e4c8ffe882c9fff494c9fff894c9fffc94c9ff0095c9ff4095c9ff5c95c9ff6095c9ff9495c9ff9895c9ff5023caffc018cbff727dccfff89eccff42e6ccff3ee2cdff98fdcdff1a1cceffea56cfffacbbd0ff782ad2ffe88ad3ffdad8d5ff2e3bd8ff0a5cd8ff545dd9ff30a2daffc289e0ff9cabe0ffa80de2ff6076e2ffb8d0e3ffe2d3e3ffe835e5ffe4f2e6ffbaf8e6ff0263e9ff3c05ebff48c9ecff5e80eeff2ea8eeff8eabeeff7eb7eeffbc56f0ffa2f4f0ff20e5f1ff1ce8f1ff26a5f2ff72aff2ff34b6f2ffe4baf2ffdcbef2ff74c1f2ff50c7f2ff6640f3ff8a41f3ffa444f3ff765ef3ffe660f3ff507cf3ff807df3ff3883f3ffde85f3ff429df3ff5c23f4ff58b7f4ff4cbaf4ff964df5ff90e3f5ff3476f6ffce19f7ff2c1bf7ff2e27f7ff48adf7ff2488f9ff8809faffc60cfaffd250faff7ec3faff46bbfbffbefcfbffba41fcffc842fcffb24afcffca45fdff4884fdff9610feffae13feff7454feff10befeff9233ffff8636ffff285affff9c8fffffeccdffff78f0ffffaa2101006c23010046240100ce26010074290100062c0100162c0100802d0100d82d0100ea2e0100b0af0100cc600300fa6c0300d2ee0300d2c80600d4d0060066d20600b2d20600ac520700e2120900b494090040a1090012230a00261f0d004a1f0d00c01f0d0018200d00e6d90d0094210e0028870f00788c0f00a28c0f00de8c0f00b4940f00d8940f00a6950f00cc960f0008970f00daaf0f00feaf0f00ccb00f0012b30f00eab40f0048b60f00b6b60f00dab60f005ab70f009ab70f00b8b70f0038d60f0040d60f0064d60f004ed70f00248e14002e9514000c97140000171500742e1500a02e15008a2f150044db1500165d1600087219009a371b00dc3e1b00d06920009a6a2000684a2400464c24003acc24009c76260066772600367e270008002800c02b2800442c2800762c2800b2212900702c2900aa34290066442900da47290070562900d277290054802900ea8629005c8a2900306b2e00386b2e005c6b2e008e6b2e009a6b2e00dc6b2e00fe6b2e000a6c2e00466c2e0096c82f000eca2f00a6ca2f00c6cb2f00
+      m_ExpandedIDs: 8efaf2ff6016f4ff0a1bf4ff0825f4ff862ef4ff104ef4ff8655f4ff964df5ff4c20f8ff68d1f9ffee48fbffa272fbffb072fbff7ea2fbff46c5fbffeed2fbff40d3fbffe265fcff8ea5fcff949bfdff40b8fdff84b8fdffc6b8fdff32befeff8a0bffff4a0effff161dffff341dffff3a1dffffe41efffffea4ffffeadeffff22dfffff7cdfffff9adfffffa0dfffff4ae1ffff96ebffffe2fafffffea20400beb304004ce60400583005001c970a00aa990a00582714000a331400b838140048ba1400
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -538,7 +3132,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &17
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -558,10 +3152,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 307
+    x: 244
     y: 73
-    width: 1187
-    height: 587
+    width: 1212
+    height: 534
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -791,14 +3385,14 @@ MonoBehaviour:
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 629.8497, y: 262.23517, z: 6.627787}
+    m_Target: {x: -133.94475, y: -33.162575, z: -32.962555}
     speed: 2
-    m_Value: {x: 629.8497, y: 262.23517, z: 6.627787}
+    m_Value: {x: -133.94475, y: -33.162575, z: -32.962555}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -845,20 +3439,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.15435265, y: 0.7393473, z: -0.18117888, w: -0.62995934}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.1540704, y: 0.7402419, z: -0.18139808, w: -0.62880754}
   m_Size:
-    m_Target: 301.33563
+    m_Target: 84.15997
     speed: 2
-    m_Value: 301.33563
+    m_Value: 0.000017320508
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.8040599
-    m_SpeedNormalized: 0.40200007
+    m_Speed: 2
+    m_SpeedNormalized: 1
     m_SpeedMin: 0.0001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -869,14 +3463,14 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.03313241, y: -0.95608336, z: 0.2647986, w: 0.121198185}
+  m_LastSceneViewRotation: {x: 0.2423578, y: -0.67752916, z: 0.25411102, w: 0.64625996}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &18
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1368,7 +3962,7 @@ MonoBehaviour:
     m_Text: PlayerInput (Input Actions)
     m_Image: {fileID: 0}
     m_Tooltip: 
---- !u!114 &19
+--- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1389,14 +3983,14 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 681
-    width: 877
-    height: 318
+    y: 628
+    width: 850
+    height: 371
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &20
+--- !u!114 &24
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1417,9 +4011,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 681
-    width: 684
-    height: 318
+    y: 628
+    width: 850
+    height: 371
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1437,22 +4031,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Imported/PolygonFantasyKingdom/Prefabs/FX_Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
-  m_StartGridSize: 16
+  m_StartGridSize: 96
   m_LastFolders:
-  - Assets
-  m_LastFoldersGridSize: 16
+  - Assets/Imported/PolygonFantasyKingdom/Prefabs/FX_Prefabs
+  m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\VG Rig\Desktop\Progetto VGD\Le-cronache-di-Yarnia
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 781d0100
-    m_LastClickedID: 73080
-    m_ExpandedIDs: 00000000781d01007a1d01007c1d01007e1d0100801d0100821d0100841d0100861d0100881d01008a1d01008c1d01008e1d0100901d0100921d0100941d0100961d0100981d01009a1d01009c1d01009e1d0100a01d0100a21d0100a41d0100a61d0100a81d0100aa1d0100ac1d0100ae1d0100b01d0100b21d0100b41d0100b61d0100b81d0100ba1d0100bc1d0100be1d0100c01d0100c21d0100c41d0100c61d0100c81d0100ca1d0100cc1d0100ce1d0100d01d0100d21d0100d41d0100d61d0100d81d0100da1d0100dc1d0100de1d0100e01d0100e21d0100e41d0100e61d0100e81d0100ea1d0100ec1d0100ee1d0100f01d0100f21d0100f41d0100f61d0100f81d0100fa1d0100fc1d0100fe1d0100001e010000ca9a3b
+    scrollPos: {x: 0, y: 609}
+    m_SelectedIDs: 64f60b00
+    m_LastClickedID: 783972
+    m_ExpandedIDs: 00000000de6e0000e06e0000e26e0000e46e0000e66e0000e86e0000ea6e0000ec6e0000ee6e0000f06e0000f26e0000f46e0000f66e0000f86e0000fa6e0000fc6e0000fe6e0000006f0000026f0000046f0000066f0000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f00007c6f00008cf10b008af60b0000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1480,7 +4074,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000781d01007a1d01007c1d01007e1d0100801d0100821d0100841d0100861d0100881d01008a1d01008c1d01008e1d0100901d0100921d0100941d0100961d0100981d01009a1d01009c1d01009e1d0100a01d0100a21d0100a41d0100a61d0100a81d0100aa1d0100ac1d0100ae1d0100b01d0100b21d0100b41d0100b61d0100b81d0100ba1d0100bc1d0100be1d0100c01d0100c21d0100c41d0100c61d0100c81d0100ca1d0100cc1d0100ce1d0100d01d0100d21d0100d41d0100d61d0100d81d0100da1d0100dc1d0100de1d0100e01d0100e21d0100e41d0100e61d0100e81d0100ea1d0100ec1d0100ee1d0100f01d0100f21d0100f41d0100f61d0100f81d0100fa1d0100fc1d0100fe1d0100001e010000ca9a3b
+    m_ExpandedIDs: 00000000de6e0000e06e0000e26e0000e46e0000e66e0000e86e0000ea6e0000ec6e0000ee6e0000f06e0000f26e0000f46e0000f66e0000f86e0000fa6e0000fc6e0000fe6e0000006f0000026f0000046f0000066f0000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1507,7 +4101,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300003463010080510100525101002cc401001a9c000072390100ee260100cc7600001c760000d2bc02007c3a01007abc020000000000943a01009c3a0100f2380100e8370100868c0300da6c00000a770000b25c01002a490300f6480300624803004e49030076480300ccf20000eaf2000066f600007cf80000f0f90000f6fa000004f70100daa002002c0401000c1d0100f822010018230100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1532,11 +4126,11 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
-    m_GridSize: 16
+    m_ScrollPosition: {x: 0, y: 322}
+    m_GridSize: 96
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 270
---- !u!114 &21
+--- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1567,7 +4161,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_LastSelectedObjectID: 3132216
---- !u!114 &22
+--- !u!114 &26
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1743,7 +4337,7 @@ MonoBehaviour:
   m_ShowReferencedBuses: 1
   m_ShowBusConnections: 0
   m_ShowBusConnectionsOfSelection: 0
---- !u!114 &23
+--- !u!114 &27
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,10 +4357,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 878
-    y: 681
-    width: 616
-    height: 318
+    x: 851
+    y: 628
+    width: 605
+    height: 371
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1784,22 +4378,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/BuildLevels
+    - Assets/Imported
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes/BuildLevels
+  - Assets/Imported
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\VG Rig\Desktop\Progetto VGD\Le-cronache-di-Yarnia
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 1910}
-    m_SelectedIDs: 80210100
-    m_LastClickedID: 74112
-    m_ExpandedIDs: 00000000781d01007a1d01007c1d01007e1d0100801d0100821d0100841d0100861d0100881d01008a1d01008c1d01008e1d0100901d0100921d0100941d0100961d0100981d01009a1d01009c1d01009e1d0100a01d0100a21d0100a41d0100a61d0100a81d0100aa1d0100ac1d0100ae1d0100b01d0100b21d0100b41d0100b61d0100b81d0100ba1d0100bc1d0100be1d0100c01d0100c21d0100c41d0100c61d0100c81d0100ca1d0100cc1d0100ce1d0100d01d0100d21d0100d41d0100d61d0100d81d0100da1d0100dc1d0100de1d0100e01d0100e21d0100e41d0100e61d0100e81d0100ea1d0100ec1d0100ee1d0100f01d0100f21d0100f41d0100f61d0100f81d0100fa1d0100fc1d0100fe1d0100001e01001a1e0100221e01004a163000d01e300000ca9a3b
+    scrollPos: {x: 0, y: 127}
+    m_SelectedIDs: 7c6f0000
+    m_LastClickedID: 28540
+    m_ExpandedIDs: 00000000de6e0000e06e0000e26e0000e46e0000e66e0000e86e0000ea6e0000ec6e0000ee6e0000f06e0000f26e0000f46e0000f66e0000f86e0000fa6e0000fc6e0000fe6e0000006f0000026f0000046f0000066f0000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f00007c6f0000846f0000828e000086f10b008cf10b00c0b4170000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1827,7 +4421,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000781d01007a1d01007c1d01007e1d0100801d0100821d0100841d0100861d0100881d01008a1d01008c1d01008e1d0100901d0100921d0100941d0100961d0100981d01009a1d01009c1d01009e1d0100a01d0100a21d0100a41d0100a61d0100a81d0100aa1d0100ac1d0100ae1d0100b01d0100b21d0100b41d0100b61d0100b81d0100ba1d0100bc1d0100be1d0100c01d0100c21d0100c41d0100c61d0100c81d0100ca1d0100cc1d0100ce1d0100d01d0100d21d0100d41d0100d61d0100d81d0100da1d0100dc1d0100de1d0100e01d0100e21d0100e41d0100e61d0100e81d0100ea1d0100ec1d0100ee1d0100f01d0100f21d0100f41d0100f61d0100f81d0100fa1d0100fc1d0100fe1d0100001e010000ca9a3b
+    m_ExpandedIDs: 00000000de6e0000e06e0000e26e0000e46e0000e66e0000e86e0000ea6e0000ec6e0000ee6e0000f06e0000f26e0000f46e0000f66e0000f86e0000fa6e0000fc6e0000fe6e0000006f0000026f0000046f0000066f0000086f00000a6f00000c6f00000e6f0000106f0000126f0000146f0000166f0000186f00001a6f00001c6f00001e6f0000206f0000226f0000246f0000266f0000286f00002a6f00002c6f00002e6f0000306f0000326f0000346f0000366f0000386f00003a6f00003c6f00003e6f0000406f0000426f0000446f0000466f0000486f00004a6f00004c6f00004e6f0000506f0000526f0000546f0000566f0000586f00005a6f00005c6f00005e6f0000606f0000626f0000646f0000666f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1858,18 +4452,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: daa00200644503005e45030036aa00003a6a010000000000f21010002e35100074f21d00d69c02007a0d0400bc09040004260100d8c6040090340600d62b01000ec10900d8e10b0054000e00da580500b07a070098360800063708000c3708001a370800d2d50000f8220100eec0370032a6040074a9040078d00200081f3000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: FX_Dust_Big_01
+      m_OriginalName: FX_Dust_Big_01
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 1549370
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
@@ -1883,7 +4477,7 @@ MonoBehaviour:
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 212
---- !u!114 &24
+--- !u!114 &28
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1903,10 +4497,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 736
-    y: 551
-    width: 762
-    height: 448
+    x: 960
+    y: 801
+    width: 678
+    height: 198
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -2202,7 +4796,7 @@ MonoBehaviour:
   m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &25
+--- !u!114 &29
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2222,9 +4816,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1496
+    x: 1458
     y: 73
-    width: 423
+    width: 461
     height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -2237,13 +4831,13 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 437
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &26
+--- !u!114 &30
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2271,7 +4865,7 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &27
+--- !u!114 &31
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2306,7 +4900,7 @@ MonoBehaviour:
     m_CachedPref: 383
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 962546
+  m_LastInspectedObjectInstanceID: 27872
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
