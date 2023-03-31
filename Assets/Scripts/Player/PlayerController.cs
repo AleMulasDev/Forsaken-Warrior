@@ -226,16 +226,19 @@ public class PlayerController : MonoBehaviour
                 _health.TakeDamage(8);
                 GameManager.Instance.Respawn(transform);
                 gameObject.SetActive(false);
-            } else
+            }
+            else
             {
                 Die();
+                _health.Kill();
             }
+
+            ResetState();
         }
     }
 
-    private void Die()
+    public void Die()
     {
-        _health.Kill();
         UIHandler.Instance.OpenDeathScreen();
     }
 

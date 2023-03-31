@@ -68,8 +68,6 @@ public class Projectile : MonoBehaviour
         if (!other.tag.Equals("Player") || other is BoxCollider)
             return;
 
-        print(other);
-
         _player.GetComponent<Health>().TakeDamage(_damage);
 
         DestroyProjectile();

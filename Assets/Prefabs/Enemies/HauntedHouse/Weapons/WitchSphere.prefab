@@ -47,8 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0519e241cc5bcb34e8c5f7790d89be7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fixedSpeed: 1
+  incrementalSpeedStep: 0
   bulletSpeed: 10
+  detachDistance: 2
   isParticleSystem: 1
+  isThrowable: 0
+  throwableSpeed: 0
+  shouldDestroy: 0
+  shouldDissolve: 0
 --- !u!54 &8682987539970262330
 Rigidbody:
   m_ObjectHideFlags: 0

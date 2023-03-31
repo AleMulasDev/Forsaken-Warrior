@@ -9,26 +9,31 @@ public class OnTriggerEnterEvent : MonoBehaviour
     [SerializeField] UnityEvent exitTriggerEvents;
     [SerializeField] private bool shouldTriggerOnce;
 
-    private bool _triggered = false;
+    private bool _enterTriggered = false;
+    private bool _exitTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_triggered) return;
+        if(_enterTriggered) return;
 
         if(other.CompareTag("Player"))
         {
-            _triggered = true;
+            if(shouldTriggerOnce)
+                _exitTriggered = true;
+
             enterTriggerEvents.Invoke();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (_triggered) return;
+        if (_exitTriggered) return;
 
         if (other.CompareTag("Player"))
         {
-            _triggered = true;
+            if (shouldTriggerOnce)
+                _exitTriggered = true;
+
             exitTriggerEvents.Invoke();
         }
     }

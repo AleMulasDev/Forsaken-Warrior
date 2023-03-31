@@ -14,6 +14,7 @@ TagManager:
   - OOB
   - SpawnPoint
   - VictoryScreen
+  - Boundaries
   layers:
   - Default
   - TransparentFX

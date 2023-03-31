@@ -67,7 +67,6 @@ public class UIHandler : MonoBehaviour
 
     public void OpenPauseMenu()
     {
-
         pauseCanvasGroup.transform.SetAsLastSibling();
 
         if (_pauseCoroutine != null) StopCoroutine(_pauseCoroutine);

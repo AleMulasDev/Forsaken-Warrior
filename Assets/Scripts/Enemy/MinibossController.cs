@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct MinibossWeapon
@@ -36,6 +37,7 @@ public class MinibossController : AIController
 
     private bool _shouldSpawnEnemies = false;
     private bool _deadEntities = false;
+    private bool _boundariesDisabled = false;
 
     private GameObject _pickedInstance;
 
@@ -57,7 +59,13 @@ public class MinibossController : AIController
     protected override void Die()
     {
         GameManager.Instance.MinibossKilled();
-        
+
+        if (!_boundariesDisabled && SceneManager.GetActiveScene().name != "HauntedHouse")
+        {
+            GameObject.FindGameObjectWithTag("Boundaries").SetActive(false);
+            _boundariesDisabled = true;
+        }
+
         GetComponentInChildren<EnemyHealthBar>(true).HideHealthBar();
 
         if (!_deadEntities)

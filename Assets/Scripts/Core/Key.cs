@@ -18,6 +18,7 @@ public class Key : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (_picked) return;
+        if (GameManager.Instance.GetKeyGathered()) return;
 
         if(other.CompareTag("Player"))
         {

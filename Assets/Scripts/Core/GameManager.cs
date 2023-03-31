@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +24,9 @@ public class GameManager : MonoBehaviour
     private int _score = 0;
     private float _time = 0;
     private int _keys = 0;
+
+    private float _totalTime = 0;
+    private int _totalScore = 0;
 
     private ParticleSystem[] footstepParticles;
 
@@ -87,6 +93,26 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    public void UpdateTotalRecord()
+    {
+        _totalScore = SavingSystem.Instance.GetPlayerData().totalScore;
+        _totalTime = SavingSystem.Instance.GetPlayerData().totalTime;
+        _totalScore += _score;
+        _totalTime += _time;
+
+        SavingSystem.Instance.SaveGame();
+    }
+
+    public int GetTotalScore()
+    {
+        return _totalScore;
+    }
+
+    public float GetTotalTime()
+    {
+        return _totalTime;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         audioMixer.SetFloat("GameMusic_Volume", Mathf.Log10(PlayerPrefs.GetFloat("gameMusicVolume") == 0 ? 0 : PlayerPrefs.GetFloat("gameMusicVolume")) * 20);
@@ -105,6 +131,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameManager()
     {
+        PlayerData data = SavingSystem.Instance.GetPlayerData();
         _timeText = GameObject.FindGameObjectWithTag("timeText").GetComponentInChildren<TextMeshProUGUI>();
         _scoreText = GameObject.FindGameObjectWithTag("scoreText").GetComponentInChildren<TextMeshProUGUI>();
         _keysText = GameObject.FindGameObjectWithTag("keysText").GetComponentInChildren<TextMeshProUGUI>();
@@ -113,21 +140,31 @@ public class GameManager : MonoBehaviour
         _portal = FindObjectOfType<Portal>();
         _score = 0;
         _time = 0;
+        print("Reset game manager..");
+        print("Chiavi trovati nel salvataggio: " + data.keys);
+        _keys = data.keys;
+        _keysText.text = _keys + "/3";
         _scoreText.text = "0";
         _timeText.text = "0s";
         _keyGathered = false;
         _minibossKilled = false;
         _spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+        _totalScore = data.totalScore;
+        _totalTime = data.totalTime;
 
         if (SavingSystem.Instance.ShouldLoadWorldData())
         {
-            PlayerData data = SavingSystem.Instance.GetPlayerData();
             player.transform.position = data.position;
-            _score = data.score;
-            _time = data.time;
+            _score = data.sceneScore;
+            _time = data.sceneTime;
             _keyGathered = data.keyGathered;
             _minibossKilled = data.minibossKilled;
+            _keys = data.keys;
+            _keysText.text = _keys + "/3";
             player.GetComponent<PlayerHealth>().SetHealth(data.currentHealth, data.maxHealth);
+
+            if (_keyGathered && _minibossKilled)
+                _portal.ResetPortal();
         }
     }
 
@@ -141,7 +178,7 @@ public class GameManager : MonoBehaviour
         if (_timeText == null) return;
 
         _time += Time.deltaTime;
-        _timeText.text = GetTime();
+        _timeText.text = GetTime(_time);
         _keysText.text = _keys + "/3";
         _scoreText.text = "Score: " + _score;
 
@@ -152,13 +189,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale *= 100;
     }
 
-    public string GetTime()
+    public string GetTime(float time)
     {
-        int minutes = (int)_time / 60;
+        int minutes = (int)time / 60;
 
         if (minutes > 0)
         {
-            float rawMinutes = _time / 60f;
+            float rawMinutes = time / 60f;
             float seconds = (rawMinutes - (float)Math.Truncate(rawMinutes)) * 60f;
 
             //print("Minuti col decimale: " + rawMinutes + ", operazione: " + rawMinutes + " - " + (float)Math.Truncate(rawMinutes) + " quindi secondi: " + seconds);
@@ -167,7 +204,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            return Mathf.RoundToInt(_time).ToString() + "s";
+            return Mathf.RoundToInt(time).ToString() + "s";
         }
     }
     
@@ -175,13 +212,14 @@ public class GameManager : MonoBehaviour
     {
         if(_keyGathered && _minibossKilled)
         {
-            _portal.ActivatePortal();
+            _portal.ActivatePortal(true);
         }
     }
 
     public void ShowVictoryScreen()
     {
         AudioManager.Instance.PlayGameMusicOneShot(_victoryAudioClip);
+        SavingSystem.Instance.SaveGame();
         StartCoroutine(ShowVictoryScreenCoroutine());
     }
 
@@ -250,6 +288,12 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
+        if (File.Exists(Application.persistentDataPath + "/" + inputField.text + ".txt"))
+        {
+            FindObjectOfType<MainMenu>().ShowDataAlreadyExists();
+            return;
+        }
+
         PlayerData newData = new PlayerData();
         newData.playerName = inputField.text;
         newData.sceneName = String.Empty;

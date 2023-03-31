@@ -10,8 +10,10 @@ public class PlayerData
     public string playerName;
     public Vector3 position;
     public string sceneName;
-    public int score;
-    public float time;
+    public int totalScore;
+    public int sceneScore;
+    public float sceneTime;
+    public float totalTime;
     public int currentHealth;
     public int maxHealth;
     public int keys;
@@ -39,13 +41,29 @@ public class SavingSystem : MonoBehaviour
 
     public PlayerData GetPlayerData()
     {
-        return loadedData;
+        _path = Application.persistentDataPath + "/" + loadedData.playerName + ".txt";
+
+        if (File.Exists(_path))
+        {
+            print("Il file esiste");
+            return JsonUtility.FromJson<PlayerData>(File.ReadAllText(_path));
+        }
+        else
+        {
+            print("Il file non esiste");
+            return loadedData;
+        }
     }
 
     public void SetLoadedData(PlayerData loadedData)
     {
         this.loadedData = loadedData;
         SceneManager.LoadScene("LevelChooser");
+    }
+
+    public void ChangeShouldLoadWorldData(bool shouldLoad)
+    {
+        _loadWorldData = shouldLoad;
     }
 
     public void LoadSavedData()
@@ -56,11 +74,17 @@ public class SavingSystem : MonoBehaviour
             SceneManager.LoadScene(loadedData.sceneName);
         }
         else
-            FindObjectOfType<LevelChooser>().ShowNoDataText();
+            FindObjectOfType<LevelChooser>().ShowWarning("there is no saved level in the current data, please choose a level below");
     }
 
     public void LoadDesiredLevel(string desiredLevel)
     {
+        if (desiredLevel == "HauntedHouse" && loadedData.keys != 3)
+        {
+            FindObjectOfType<LevelChooser>().ShowWarning("You need 3 keys to access to Haunted House level");
+            return;
+        }
+
         _loadWorldData = false;
         SceneManager.LoadScene(desiredLevel);
     }
@@ -80,8 +104,10 @@ public class SavingSystem : MonoBehaviour
         data.playerName = loadedData.playerName;
         data.sceneName = SceneManager.GetActiveScene().name;
         data.position = _player.transform.position;
-        data.score = GameManager.Instance.GetScore();
-        data.time = GameManager.Instance.GetTimeRaw();
+        data.sceneScore = GameManager.Instance.GetScore();
+        data.sceneTime = GameManager.Instance.GetTimeRaw();
+        data.totalTime = GameManager.Instance.GetTotalTime();
+        data.totalScore = GameManager.Instance.GetTotalScore();
         data.currentHealth = _player.GetComponent<Health>().GetHealth();
         data.maxHealth = _player.GetComponent<Health>().GetMaxHealth();
         data.keys = GameManager.Instance.GetKeys();

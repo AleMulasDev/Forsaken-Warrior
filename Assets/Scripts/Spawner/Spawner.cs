@@ -64,9 +64,9 @@ public class Spawner : MonoBehaviour
 
     private void Spawn()
     {
-        if (shouldSpawnMiniboss)
+        if (shouldSpawnMiniboss && !GameManager.Instance.GetMinibossKilled())
             SpawnMiniboss();
-        else
+        else if (!shouldSpawnMiniboss)
             StartCoroutine(SpawnRandomEnemy());
     }
 
